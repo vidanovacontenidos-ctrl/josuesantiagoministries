@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nuestra Visión | Kingdom in Action</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.bio-wrap{max-width:1360px;margin:0 auto;padding:88px 60px;display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;}
+.bio-img{position:relative;height:500px;overflow:hidden;border-radius:2px;}
+.bio-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.bio-img-tag{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(6,6,6,.85),transparent);font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);}
+.bio-text p{font-size:15px;line-height:1.85;color:rgba(238,235,230,.62);margin-bottom:16px;}
+.bio-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.bio-tag{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:6px 13px;border:1px solid rgba(46,196,182,.22);color:var(--teal);border-radius:2px;}
+/* VISION PILLARS with bg photo */
+.v3-wrap{background:var(--black);}
+.v3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.v3-card{position:relative;height:460px;overflow:hidden;}
+.v3-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(.4);transition:transform 8s ease;}
+.v3-card:hover img{transform:scale(1.04);}
+.v3-line{position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);}
+.v3-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.95)0%,rgba(6,6,6,.3)60%,transparent 100%);}
+.v3-cnt{position:absolute;bottom:0;left:0;right:0;padding:30px 28px;}
+.v3-num{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:800;color:rgba(46,196,182,.18);line-height:1;margin-bottom:4px;}
+.v3-t{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:8px;}
+.v3-p{font-size:13px;color:rgba(238,235,230,.58);line-height:1.6;}
+.v3-verse{font-size:11px;font-style:italic;color:var(--teal);margin-top:10px;}
+/* BELIEFS */
+.beliefs{background:var(--char);}
+.beliefs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px;}
+.belief{background:var(--mid);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:20px 22px;display:flex;gap:12px;align-items:flex-start;}
+.belief-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:6px;}
+.belief p{font-size:14px;line-height:1.7;color:rgba(238,235,230,.62);}
+@media(max-width:1024px){.bio-wrap{grid-template-columns:1fr;gap:40px;}.bio-img{height:300px;}.v3-grid{grid-template-columns:1fr;}.v3-card{height:320px;}.beliefs-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){.bio-wrap{padding:60px 20px;}.beliefs .sec{padding:60px 20px;}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Josué Santiago · Ministerio Internacional</span><span data-en>Josué Santiago · International Ministry</span></a>
+  <ul class="nav-links">
+    <li><a href="vision.html" class="active" data-es>Nuestra Visión</a><a href="vision.html" class="active" data-en>Our Vision</a></li>
+    <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
+    <li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li>
+    <li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li>
+    <li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div>
+</nav>
+<div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()">EEUU</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a></div>
+
+<!-- HERO — foto pareja B&N de fondo -->
+<div class="page-hero">
+  <img src="assets/img/couple.jpg" alt="Josué y su familia">
+  <div class="page-hero-ov"></div>
+  <div class="page-hero-cnt">
+    <div class="ey" data-es>El Ministerio</div><div class="ey" data-en>The Ministry</div>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-es>Nuestra Visión</h1>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-en>Our Vision</h1>
+  </div>
+</div>
+
+<!-- BIO — info only, no galleries -->
+<div style="background:var(--dark);">
+  <div class="bio-wrap rev">
+    <div class="bio-img">
+      <img src="assets/img/couple.jpg" alt="Josué y su esposa">
+      <div class="bio-img-tag" data-es>Josué Santiago y su familia</div>
+      <div class="bio-img-tag" data-en>Josué Santiago and his family</div>
+    </div>
+    <div>
+      <div class="ey" data-es>Los Pastores</div><div class="ey" data-en>The Pastors</div>
+      <h2 class="stitle" data-es>Josué &amp; Su Familia</h2><h2 class="stitle" data-en>Josué &amp; His Family</h2>
+      <span class="rule"></span>
+      <div class="bio-text">
+        <p data-es>Josué Santiago y su esposa son el corazón detrás de Kingdom in Action. Unidos en el llamado, llevan el mensaje del Reino a tres naciones con la misma pasión: ver a la gente encontrarse con el amor transformador de Dios.</p>
+        <p data-en>Josué Santiago and his wife are the heart behind Kingdom in Action. United in calling, they carry the Kingdom message to three nations with the same passion: seeing people encounter the transforming love of God.</p>
+        <p data-es>En los Estados Unidos, Josué sirve como pastor principal de <strong style="color:var(--white)">Family of Faith Community Church</strong>, donde lidera y equipa a una comunidad de fe activa. Es conferencista internacional de liderazgo y desarrollo personal, capacitando a líderes, pastores y profesionales en propósito, identidad y transformación comunitaria.</p>
+        <p data-en>In the United States, Josué serves as senior pastor of <strong style="color:var(--white)">Family of Faith Community Church</strong>, where he leads and equips an active faith community. He is an international speaker on leadership and personal development, training leaders, pastors and professionals in purpose, identity and community transformation.</p>
+        <p data-es>Como líder apostólico, brinda cobertura espiritual y mentoría a pastores y ministerios tanto en los EE.UU. como internacionalmente. Juntos, han construido una familia ministerial que se extiende a través de Argentina, Cuba y los Estados Unidos.</p>
+        <p data-en>As an apostolic leader, he provides spiritual covering and mentorship to pastors and ministries both in the U.S. and internationally. Together, they have built a ministry family that extends across Argentina, Cuba and the United States.</p>
+      </div>
+      <div class="bio-tags rev d1">
+        <span class="bio-tag" data-es>Pastor Principal</span><span class="bio-tag" data-en>Senior Pastor</span>
+        <span class="bio-tag" data-es>Conferencista Internacional</span><span class="bio-tag" data-en>Int'l Speaker</span>
+        <span class="bio-tag" data-es>Líder Apostólico</span><span class="bio-tag" data-en>Apostolic Leader</span>
+        <span class="bio-tag" data-es>Tres Naciones</span><span class="bio-tag" data-en>Three Nations</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISION PILLARS — fotos de fondo, sin galerías -->
+<div class="v3-wrap">
+  <div class="sec" style="padding-bottom:0;">
+    <div class="rev"><div class="ey" data-es>La Visión</div><div class="ey" data-en>The Vision</div><h2 class="stitle" data-es>Hacer lo que Jesús Hizo</h2><h2 class="stitle" data-en>Doing What Jesus Did</h2></div>
+  </div>
+  <div class="v3-grid rev d1" style="margin-top:32px;">
+    <div class="v3-card">
+      <img src="assets/img/arg2/arg_miracle.jpg" alt="">
+      <div class="v3-line"></div><div class="v3-ov"></div>
+      <div class="v3-cnt">
+        <div class="v3-num">01</div>
+        <div class="v3-t" data-es>Hacer lo que Jesús Hizo</div><div class="v3-t" data-en>Do What Jesus Did</div>
+        <div class="v3-p" data-es>Sanar enfermos, liberar cautivos, anunciar el evangelio del Reino con poder sobrenatural. No como espectáculo, sino como expresión del amor del Padre.</div><div class="v3-p" data-en>Heal the sick, free the captive, proclaim the Kingdom gospel with supernatural power. Not as spectacle, but as an expression of the Father's love.</div>
+        <div class="v3-verse">"Sanen a los enfermos y digan: el reino de Dios se ha acercado." — Lucas 10:9</div>
+      </div>
+    </div>
+    <div class="v3-card">
+      <img src="assets/img/arg2/arg2.jpg" alt="">
+      <div class="v3-line"></div><div class="v3-ov"></div>
+      <div class="v3-cnt">
+        <div class="v3-num">02</div>
+        <div class="v3-t" data-es>Cuidar a Quienes Jesús Cuidó</div><div class="v3-t" data-en>Care for Those Jesus Cared For</div>
+        <div class="v3-p" data-es>Los pobres, los huérfanos, las viudas, los marginados. El evangelio no es solo palabras, es amor tangible que cambia vidas reales en comunidades reales.</div><div class="v3-p" data-en>The poor, orphans, widows, the marginalized. The gospel is not just words — it is tangible love that changes real lives in real communities.</div>
+        <div class="v3-verse">"La religión pura es esta: visitar a los huérfanos y a las viudas." — Santiago 1:27</div>
+      </div>
+    </div>
+    <div class="v3-card">
+      <img src="assets/img/eeuu2/usa_youth.jpg" alt="">
+      <div class="v3-line"></div><div class="v3-ov"></div>
+      <div class="v3-cnt">
+        <div class="v3-num">03</div>
+        <div class="v3-t" data-es>Hacer Discípulos</div><div class="v3-t" data-en>Make Disciples</div>
+        <div class="v3-p" data-es>No construir una multitud, sino levantar hijos e hijas del Reino que a su vez vayan, sirvan y transformen su generación.</div><div class="v3-p" data-en>Not building a crowd, but raising sons and daughters of the Kingdom who in turn go, serve and transform their generation.</div>
+        <div class="v3-verse">"Vayan y hagan discípulos de todas las naciones." — Mateo 28:19</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EN QUE CREEMOS -->
+<div class="beliefs"><div class="sec">
+  <div class="rev"><div class="ey" data-es>Fundamento</div><div class="ey" data-en>Foundation</div><h2 class="stitle" data-es>En Qué Creemos</h2><h2 class="stitle" data-en>What We Believe</h2></div>
+  <div class="beliefs-grid rev d1">
+    <div class="belief"><div class="belief-dot"></div><p data-es>En Dios, Padre, Hijo y Espíritu Santo, en toda su manifestación y plenitud.</p><p data-en>In God, Father, Son and Holy Spirit, in all His manifestation and fullness.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>En Cristo como columna y piedra angular, el Fundamento desde donde edificamos todas las cosas.</p><p data-en>In Christ as cornerstone and foundation from which we build all things.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>En la Palabra de Dios plena y veraz para edificar la vida de Cristo en nosotros.</p><p data-en>In the full and true Word of God to build the life of Christ in us.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>Que somos hijos y herederos del Reino con todo lo necesario para triunfar.</p><p data-en>That we are children and heirs of the Kingdom with everything needed to triumph.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>Que la adoración profética desata la revelación del Reino.</p><p data-en>That prophetic worship releases Kingdom revelation.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>Que la Iglesia es familia con el poder de influenciar y transformar el medio que nos rodea.</p><p data-en>That the Church is family with the power to influence and transform our surroundings.</p></div>
+  </div>
+</div></div>
+
+<div class="qband"><blockquote data-es>"El Espíritu del Señor está sobre mí, porque me ha ungido para dar buenas nuevas a los pobres."</blockquote><blockquote data-en>"The Spirit of the Lord is upon me, because he has anointed me to proclaim good news to the poor."</blockquote><cite>Lucas 4:18</cite></div>
+
+<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eventos.html" data-es>Eventos</a></div></footer>
+
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación apoya misiones, pastores, huérfanos y comunidades.</p><p class="dmodal-sub" data-en>Your donation supports missions, pastors, orphans and communities.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
+    <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div></div></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
+<script>
+function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}
+function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+(function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
+function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
+let lbSet=[],lbI=0;
+function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
+document.addEventListener('keydown',e=>{if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.1});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body></html>

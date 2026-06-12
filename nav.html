@@ -1,0 +1,38 @@
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    Kingdom in Action
+    <span data-es>Josué Santiago · Ministerio Internacional</span>
+    <span data-en>Josué Santiago · International Ministry</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#inicio" data-es>Inicio</a><a href="index.html#inicio" data-en>Home</a></li>
+    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li>
+    <li><a href="argentina.html" data-es>Argentina</a><a href="argentina.html" data-en>Argentina</a></li>
+    <li><a href="cuba.html">Cuba</a></li>
+    <li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li>
+    <li><a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-lang">
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <div class="lang-div"></div>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="burger" id="burger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-ov" id="navOv">
+  <button class="nav-ov-x" onclick="toggleNav()">&#10005;</button>
+  <a href="index.html" onclick="toggleNav()" data-es>Inicio</a>
+  <a href="index.html" onclick="toggleNav()" data-en>Home</a>
+  <a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a>
+  <a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a>
+  <a href="argentina.html" onclick="toggleNav()">Argentina</a>
+  <a href="cuba.html" onclick="toggleNav()">Cuba</a>
+  <a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a>
+  <a href="eeuu.html" onclick="toggleNav()" data-en>United States</a>
+  <a href="proyectos.html" onclick="toggleNav()" data-es>Proyectos</a>
+  <a href="proyectos.html" onclick="toggleNav()" data-en>Projects</a>
+</div>

@@ -1,0 +1,20 @@
+<!-- DONATE FLOAT -->
+<button class="donate-float" onclick="openDonate()">
+  <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+  <span data-es>Donar</span><span data-en>Give</span>
+</button>
+<!-- DONATE MODAL -->
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()">
+  <div class="dmodal">
+    <span class="dmodal-x" onclick="closeDonate()">&#10005;</span>
+    <h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2>
+    <p class="dmodal-sub" data-es>Tu donación sostiene misiones, pastores, huérfanos y comunidades en Argentina, Cuba y Estados Unidos.</p>
+    <p class="dmodal-sub" data-en>Your donation supports missions, pastors, orphans and communities in Argentina, Cuba and the United States.</p>
+    <div class="dblock"><div class="dblock-label">Zelle / USA</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div>
+    <div class="dblock"><div class="dblock-label">PayPal / Wire</div><div class="dblock-val" data-es>Contactanos para instrucciones</div><div class="dblock-val" data-en>Contact us for transfer instructions</div><div class="dblock-note"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
+    <p style="font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6;" data-es>Kingdom in Action es un ministerio sin fines de lucro. 100% de tu donación va al campo misionero.</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6;" data-en>Kingdom in Action is a non-profit ministry. 100% of your donation goes to the mission field.</p>
+  </div>
+</div>
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>

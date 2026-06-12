@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eventos | Kingdom in Action</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.ev-hero{position:relative;height:55vh;min-height:360px;overflow:hidden;margin-top:var(--nav-h);}
+.ev-hero img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(.42);}
+.ev-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.92)0%,rgba(6,6,6,.35)55%,rgba(6,6,6,.05)100%);}
+.ev-hero-cnt{position:absolute;bottom:0;left:0;right:0;padding:40px 60px;}
+/* UPCOMING — big featured event */
+.ev-featured{max-width:1360px;margin:0 auto;padding:80px 60px 40px;}
+.ev-feat-card{background:var(--char);border:1px solid rgba(46,196,182,.2);border-radius:2px;padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;margin-top:40px;}
+.ev-feat-date{text-align:center;flex-shrink:0;}
+.ev-feat-day{font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:800;color:var(--teal);line-height:1;}
+.ev-feat-mon{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);}
+.ev-feat-yr{font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--steel);}
+.ev-feat-div{width:1px;height:80px;background:rgba(46,196,182,.2);margin:0 4px;}
+.ev-feat-body{}
+.ev-feat-loc{font-size:9px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.ev-feat-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--white);margin-bottom:10px;}
+.ev-feat-desc{font-size:14px;line-height:1.7;color:var(--muted);}
+.ev-feat-tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.ev-tag{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(46,196,182,.22);color:var(--teal);border-radius:2px;}
+/* GRID */
+.ev-section{max-width:1360px;margin:0 auto;padding:40px 60px 80px;}
+.ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.ev-card{background:var(--mid);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:24px;display:flex;align-items:flex-start;gap:20px;transition:border-color .25s;}
+.ev-card:hover{border-color:rgba(46,196,182,.28);}
+.ev-date-box{flex-shrink:0;width:60px;height:60px;background:var(--char);border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ev-day{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:700;color:var(--teal);line-height:1;}
+.ev-mon{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.ev-card-loc{font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:5px;}
+.ev-card-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:5px;}
+.ev-card-desc{font-size:13px;line-height:1.6;color:var(--muted);}
+/* PAST */
+.past-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.past-card{position:relative;height:260px;overflow:hidden;cursor:pointer;}
+.past-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%);transition:transform .6s,filter .4s;}
+.past-card:hover img{transform:scale(1.04);filter:grayscale(0%);}
+.past-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.85)0%,rgba(6,6,6,.1)60%);}
+.past-card-cnt{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;}
+.past-card-loc{font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
+.past-card-title{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;color:var(--white);}
+/* PARTNER SECTION */
+.partner-band{background:var(--char);border-top:1px solid rgba(46,196,182,.1);}
+.partner-in{max-width:1360px;margin:0 auto;padding:80px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.partner-text p{font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);margin-bottom:14px;}
+.ways{display:flex;flex-direction:column;gap:14px;}
+.way-row{display:flex;align-items:center;gap:16px;background:var(--mid);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:18px 20px;transition:border-color .25s;}
+.way-row:hover{border-color:rgba(46,196,182,.3);}
+.way-row-num{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:rgba(46,196,182,.3);flex-shrink:0;width:32px;}
+.way-row-t{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:3px;}
+.way-row-d{font-size:12px;color:var(--muted);}
+@media(max-width:1024px){.ev-feat-card{grid-template-columns:1fr;}.ev-feat-div{display:none;}.ev-grid{grid-template-columns:1fr;}.past-grid{grid-template-columns:1fr 1fr;}.partner-in{grid-template-columns:1fr;}}
+@media(max-width:768px){.ev-hero-cnt{padding:20px;}.ev-featured{padding:60px 20px 20px;}.ev-section{padding:20px 20px 60px;}.past-grid{grid-template-columns:1fr;}.partner-in{padding:60px 20px;}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Eventos y Viajes</span><span data-en>Events & Trips</span></a>
+  <ul class="nav-links">
+    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li>
+    <li><a href="argentina.html">Argentina</a></li>
+    <li><a href="cuba.html">Cuba</a></li>
+    <li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li>
+    <li><a href="eventos.html" class="active" data-es>Eventos</a><a href="eventos.html" class="active" data-en>Events</a></li>
+    <li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div>
+</nav>
+<div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span>
+  <a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a>
+  <a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a>
+  <a href="argentina.html" onclick="toggleNav()">Argentina</a>
+  <a href="cuba.html" onclick="toggleNav()">Cuba</a>
+  <a href="eeuu.html" onclick="toggleNav()">EEUU</a>
+</div>
+
+<!-- HERO -->
+<div class="ev-hero">
+  <img src="assets/img/arg2/jujuy2.jpg" alt="Eventos">
+  <div class="ev-hero-ov"></div>
+  <div class="ev-hero-cnt">
+    <div class="ey" data-es>Agenda 2026</div><div class="ey" data-en>2026 Schedule</div>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-es>Próximos Eventos</h1>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-en>Upcoming Events</h1>
+    <p style="font-size:14px;color:rgba(238,235,230,.5);margin-top:10px;" data-es>Viajes misioneros, conferencias y cruzadas en Argentina, Cuba y Estados Unidos.</p>
+    <p style="font-size:14px;color:rgba(238,235,230,.5);margin-top:10px;" data-en>Mission trips, conferences and crusades in Argentina, Cuba and the United States.</p>
+  </div>
+</div>
+
+<!-- FEATURED EVENT -->
+<div style="background:var(--dark);">
+  <div class="ev-featured rev">
+    <div class="ey" data-es>Próximo · Destacado</div><div class="ey" data-en>Next · Featured</div>
+    <h2 class="stitle" data-es>El Que Viene</h2><h2 class="stitle" data-en>Coming Up</h2>
+    <div class="ev-feat-card">
+      <div class="ev-feat-date">
+        <div class="ev-feat-day">15</div>
+        <div class="ev-feat-mon">AGO</div>
+        <div class="ev-feat-yr">2026</div>
+      </div>
+      <div class="ev-feat-div"></div>
+      <div class="ev-feat-body">
+        <div class="ev-feat-loc">Havana, Cuba</div>
+        <div class="ev-feat-title" data-es>Viaje Misión Cuba 2026</div>
+        <div class="ev-feat-title" data-en>Cuba Mission Trip 2026</div>
+        <div class="ev-feat-desc" data-es>Dos semanas de ministerio, alcance y construcción del Reino en Cuba. Llevaremos alimentos, apoyaremos pastores, visitaremos orfanatos y ministraremos en iglesias locales. Un viaje que cambia vidas — la tuya y la de quienes alcanzás.</div>
+        <div class="ev-feat-desc" data-en>Two weeks of ministry, outreach, and Kingdom building in Cuba. We will bring food, support pastors, visit orphanages and minister in local churches. A trip that changes lives — yours and those you reach.</div>
+        <div class="ev-feat-tags">
+          <span class="ev-tag" data-es>Viaje Misionero</span><span class="ev-tag" data-en>Mission Trip</span>
+          <span class="ev-tag">Cuba</span>
+          <span class="ev-tag" data-es>2 Semanas</span><span class="ev-tag" data-en>2 Weeks</span>
+          <span class="ev-tag" data-es>Lugares Limitados</span><span class="ev-tag" data-en>Limited Spots</span>
+        </div>
+      </div>
+      <a href="index.html#contacto" class="btn-teal" data-es>Inscribirse</a>
+      <a href="index.html#contacto" class="btn-teal" data-en>Register</a>
+    </div>
+  </div>
+</div>
+
+<!-- ALL EVENTS GRID -->
+<div style="background:var(--char);">
+  <div class="ev-section rev">
+    <div class="ey" data-es>Calendario Completo</div><div class="ey" data-en>Full Calendar</div>
+    <h2 class="stitle" data-es>Todos los Eventos</h2><h2 class="stitle" data-en>All Events</h2>
+    <div class="ev-grid">
+      <div class="ev-card"><div class="ev-date-box"><div class="ev-day">15</div><div class="ev-mon">AGO</div></div><div><div class="ev-card-loc">Havana, Cuba</div><div class="ev-card-title" data-es>Viaje Misión Cuba</div><div class="ev-card-title" data-en>Cuba Mission Trip</div><div class="ev-card-desc" data-es>Ministerio, alcance y construcción del Reino. Lugares limitados.</div><div class="ev-card-desc" data-en>Ministry, outreach and Kingdom building. Limited spots.</div></div></div>
+      <div class="ev-card"><div class="ev-date-box"><div class="ev-day">22</div><div class="ev-mon">SEP</div></div><div><div class="ev-card-loc">Baltimore, MD · USA</div><div class="ev-card-title" data-es>Conferencia Baltimore</div><div class="ev-card-title" data-en>Baltimore Outreach</div><div class="ev-card-desc" data-es>Transformación comunitaria con principios del Reino en acción local.</div><div class="ev-card-desc" data-en>Local community transformation — Kingdom principles in action.</div></div></div>
+      <div class="ev-card"><div class="ev-date-box"><div class="ev-day">08</div><div class="ev-mon">OCT</div></div><div><div class="ev-card-loc">Iowa, USA</div><div class="ev-card-title" data-es>Itinerario Iowa</div><div class="ev-card-title" data-en>Iowa Itinerary</div><div class="ev-card-desc" data-es>Conferencias, reuniones de avivamiento y capacitación de líderes.</div><div class="ev-card-desc" data-en>Speaking engagements, revival meetings and leader equipping.</div></div></div>
+      <div class="ev-card"><div class="ev-date-box"><div class="ev-day">05</div><div class="ev-mon">NOV</div></div><div><div class="ev-card-loc">Buenos Aires, Argentina</div><div class="ev-card-title" data-es>Cruzada Buenos Aires</div><div class="ev-card-title" data-en>Buenos Aires Crusade</div><div class="ev-card-desc" data-es>Noches de cruzada con sanidades, salvaciones y transformación comunitaria.</div><div class="ev-card-desc" data-en>Crusade nights with healings, salvations and community transformation.</div></div></div>
+      <div class="ev-card"><div class="ev-date-box"><div class="ev-day">15</div><div class="ev-mon">NOV</div></div><div><div class="ev-card-loc">Jujuy, Argentina</div><div class="ev-card-title" data-es>Cruzada Jujuy</div><div class="ev-card-title" data-en>Jujuy Crusade</div><div class="ev-card-desc" data-es>Vuelta al norte argentino con más fuego, más milagros y más discípulos.</div><div class="ev-card-desc" data-en>Back to northern Argentina with more fire, more miracles and more disciples.</div></div></div>
+      <div class="ev-card"><div class="ev-date-box"><div class="ev-day">06</div><div class="ev-mon">DIC</div></div><div><div class="ev-card-loc">Havana, Cuba</div><div class="ev-card-title" data-es>Navidad en Cuba</div><div class="ev-card-title" data-en>Christmas in Cuba</div><div class="ev-card-desc" data-es>Distribución navideña, ministerio y presencia con familias cubanas en diciembre.</div><div class="ev-card-desc" data-en>Christmas distribution, ministry and presence with Cuban families in December.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAST EVENTS — photo cards -->
+<div style="background:var(--dark);"><div class="sec">
+  <div class="rev"><div class="ey" data-es>Lo que Pasó</div><div class="ey" data-en>What Happened</div><h2 class="stitle" data-es>Eventos Recientes</h2><h2 class="stitle" data-en>Recent Events</h2></div>
+  <div class="past-grid rev d1" style="margin-top:36px;">
+    <div class="past-card">
+      <img src="assets/img/arg2/arg_miracle.jpg" alt="">
+      <div class="past-card-ov"></div>
+      <div class="past-card-cnt"><div class="past-card-loc" data-es>Argentina · 2025</div><div class="past-card-loc" data-en>Argentina · 2025</div><div class="past-card-title" data-es>Cruzada Del Viso</div><div class="past-card-title" data-en>Del Viso Crusade</div></div>
+    </div>
+    <div class="past-card">
+      <img src="assets/img/cuba2/cub4.jpg" alt="">
+      <div class="past-card-ov"></div>
+      <div class="past-card-cnt"><div class="past-card-loc">Cuba · 2025</div><div class="past-card-title" data-es>Misión Cuba</div><div class="past-card-title" data-en>Cuba Mission</div></div>
+    </div>
+    <div class="past-card">
+      <img src="assets/img/eeuu2/usa_youth.jpg" alt="">
+      <div class="past-card-ov"></div>
+      <div class="past-card-cnt"><div class="past-card-loc" data-es>EEUU · 2025</div><div class="past-card-loc" data-en>USA · 2025</div><div class="past-card-title" data-es>Conferencia Jóvenes</div><div class="past-card-title" data-en>Youth Conference</div></div>
+    </div>
+    <div class="past-card">
+      <img src="assets/img/arg2/jujuy2.jpg" alt="">
+      <div class="past-card-ov"></div>
+      <div class="past-card-cnt"><div class="past-card-loc" data-es>Jujuy · 2025</div><div class="past-card-loc" data-en>Jujuy · 2025</div><div class="past-card-title" data-es>Cruzada Jujuy</div><div class="past-card-title" data-en>Jujuy Crusade</div></div>
+    </div>
+    <div class="past-card">
+      <img src="assets/img/arg2/delviso4.jpg" alt="">
+      <div class="past-card-ov"></div>
+      <div class="past-card-cnt"><div class="past-card-loc" data-es>Argentina · 2024</div><div class="past-card-loc" data-en>Argentina · 2024</div><div class="past-card-title" data-es>Noche de Milagros</div><div class="past-card-title" data-en>Night of Miracles</div></div>
+    </div>
+    <div class="past-card">
+      <img src="assets/img/cuba2/cub1.jpg" alt="">
+      <div class="past-card-ov"></div>
+      <div class="past-card-cnt"><div class="past-card-loc">Cuba · 2024</div><div class="past-card-title" data-es>Distribución Cuba</div><div class="past-card-title" data-en>Cuba Distribution</div></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- PARTNER SECTION -->
+<div class="partner-band"><div class="partner-in">
+  <div class="rev">
+    <div class="ey" data-es>Sé Parte</div><div class="ey" data-en>Be Part</div>
+    <h2 class="stitle" data-es>Tres Formas de Participar</h2><h2 class="stitle" data-en>Three Ways to Participate</h2>
+    <p class="partner-text" style="font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);margin-top:12px;" data-es>No tenés que cruzar un océano para cambiar una nación. Empezá donde estás.</p>
+    <p class="partner-text" style="font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);margin-top:12px;" data-en>You don't have to cross an ocean to change a nation. Start right where you are.</p>
+  </div>
+  <div class="ways rev d1">
+    <div class="way-row"><div class="way-row-num">01</div><div><div class="way-row-t" data-es>Viajá con Nosotros</div><div class="way-row-t" data-en>Travel With Us</div><div class="way-row-d" data-es>Unite a un viaje misionero a Cuba o Argentina. Contactanos para reservar tu lugar.</div><div class="way-row-d" data-en>Join a mission trip to Cuba or Argentina. Contact us to reserve your spot.</div></div><a href="index.html#contacto" class="btn-teal" style="margin-left:auto;flex-shrink:0;" data-es>Inscribirse</a><a href="index.html#contacto" class="btn-teal" style="margin-left:auto;flex-shrink:0;" data-en>Register</a></div>
+    <div class="way-row"><div class="way-row-num">02</div><div><div class="way-row-t" data-es>Intercede</div><div class="way-row-t" data-en>Pray</div><div class="way-row-d" data-es>Únete a nuestra red de oración e intercede por las misiones en las tres naciones.</div><div class="way-row-d" data-en>Join our prayer network and intercede for missions in the three nations.</div></div><a href="index.html#contacto" class="btn-ring" style="margin-left:auto;flex-shrink:0;white-space:nowrap;" data-es>Red de Oración</a><a href="index.html#contacto" class="btn-ring" style="margin-left:auto;flex-shrink:0;white-space:nowrap;" data-en>Prayer Network</a></div>
+    <div class="way-row"><div class="way-row-num">03</div><div><div class="way-row-t" data-es>Doná</div><div class="way-row-t" data-en>Give</div><div class="way-row-d" data-es>Tu apoyo financiero hace posible cada viaje, cruzada y proyecto.</div><div class="way-row-d" data-en>Your financial support makes every trip, crusade and project possible.</div></div><button onclick="openDonate()" class="btn-teal" style="margin-left:auto;flex-shrink:0;" data-es>Cómo Donar</button><button onclick="openDonate()" class="btn-teal" style="margin-left:auto;flex-shrink:0;" data-en>How to Give</button></div>
+  </div>
+</div></div>
+
+<div class="qband"><blockquote data-es>"Vayan por todo el mundo y anuncien las buenas nuevas a toda criatura."</blockquote><blockquote data-en>"Go into all the world and proclaim the gospel to the whole creation."</blockquote><cite>Marcos 16:15</cite></div>
+
+<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
+
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación hace posible cada viaje, cruzada y proyecto.</p><p class="dmodal-sub" data-en>Your donation makes every trip, crusade and project possible.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
+    <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div></div></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
+<script>
+function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}
+function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+(function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
+function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
+let lbSet=[],lbI=0;
+function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
+document.addEventListener('keydown',e=>{if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.08});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body></html>

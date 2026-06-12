@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estados Unidos | Kingdom in Action</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* SPLIT sections */
+.split{max-width:1360px;margin:0 auto;padding:88px 60px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.split.flip{direction:rtl;}.split.flip>*{direction:ltr;}
+.split-img{position:relative;overflow:hidden;border-radius:2px;}
+.split-img img{width:100%;height:460px;object-fit:cover;filter:grayscale(100%) brightness(.6);display:block;}
+.split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.4),transparent 60%);}
+.split-text p{font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);margin-bottom:14px;}
+/* FULLBLEED PHOTO with text overlay */
+.fb-section{position:relative;overflow:hidden;}
+.fb-section img{width:100%;height:520px;object-fit:cover;filter:grayscale(100%) brightness(.45);display:block;}
+.fb-section-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(6,6,6,.88)36%,rgba(6,6,6,.1));}
+.fb-section-cnt{position:absolute;inset:0;display:flex;align-items:center;padding:0 60px;}
+.fb-section-text{max-width:520px;}
+.fb-section-text p{font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);margin-bottom:12px;}
+/* CONF CARDS */
+.conf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px;}
+.conf-card{background:var(--mid);border:1px solid rgba(255,255,255,.07);border-radius:2px;padding:28px 24px;transition:border-color .25s;}
+.conf-card:hover{border-color:rgba(46,196,182,.3);}
+.conf-t{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:10px;}
+.conf-d{font-size:14px;line-height:1.75;color:var(--muted);}
+/* FOFCC band */
+.fofcc{background:var(--char);border-top:1px solid rgba(46,196,182,.1);border-bottom:1px solid rgba(46,196,182,.1);}
+.fofcc-in{max-width:1360px;margin:0 auto;padding:60px 60px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+.fofcc-logo{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);line-height:1.15;flex-shrink:0;}
+.fofcc-sub{font-size:9px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+.fofcc-text p{font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);}
+@media(max-width:1024px){.split{grid-template-columns:1fr;direction:ltr!important;}.split.flip{direction:ltr;}.conf-grid{grid-template-columns:1fr;}.fofcc-in{grid-template-columns:1fr;gap:24px;}}
+@media(max-width:768px){.split{padding:60px 20px;}.fb-section img{height:360px;}.fb-section-cnt{padding:0 20px;}.fofcc-in{padding:40px 20px;}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Misión EEUU</span><span data-en>USA Mission</span></a>
+  <ul class="nav-links">
+    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li>
+    <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
+    <li><a href="eeuu.html" class="active" data-es>Estados Unidos</a><a href="eeuu.html" class="active" data-en>United States</a></li>
+    <li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li>
+    <li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div>
+</nav>
+<div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a></div>
+
+<!-- HERO — USA_youth fullbleed B&N -->
+<div class="page-hero" style="height:70vh;">
+  <img src="assets/img/eeuu2/usa_youth.jpg" alt="Estados Unidos">
+  <div class="page-hero-ov"></div>
+  <div class="page-hero-cnt">
+    <div class="ey" data-es>Misión · Estados Unidos</div><div class="ey" data-en>Mission · United States</div>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-es>Equipando Líderes</h1>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-en>Equipping Leaders</h1>
+  </div>
+</div>
+
+<!-- FOFCC -->
+<div class="fofcc rev">
+  <div class="fofcc-in">
+    <div><div class="fofcc-logo">Family of<br>Faith</div><div class="fofcc-sub">Community Church</div></div>
+    <div class="fofcc-text"><p data-es>En los Estados Unidos, Josué Santiago sirve como pastor principal de Family of Faith Community Church — una comunidad de fe activa donde lidera, discipula y equipa a creyentes para vivir una fe transformadora que impacta la cultura y la sociedad que los rodea.</p><p data-en>In the United States, Josué Santiago serves as senior pastor of Family of Faith Community Church — an active faith community where he leads, disciples and equips believers to live a transforming faith that impacts the culture and society around them.</p></div>
+  </div>
+</div>
+
+<!-- EU1B fullbleed with conference text -->
+<div class="fb-section rev">
+  <img src="assets/img/eeuu2/eu1b.jpg" alt="Conferencias">
+  <div class="fb-section-ov"></div>
+  <div class="fb-section-cnt">
+    <div class="fb-section-text">
+      <div class="ey" data-es>Conferencias</div><div class="ey" data-en>Conferences</div>
+      <h2 class="stitle" data-es>Conferencista Internacional</h2><h2 class="stitle" data-en>International Speaker</h2>
+      <span class="rule"></span>
+      <p data-es>Josué viaja regularmente para capacitar a líderes, pastores y profesionales en iglesias, universidades y organizaciones de todo el país en temas de liderazgo, propósito, identidad y transformación comunitaria.</p>
+      <p data-en>Josué regularly travels to train leaders, pastors and professionals in churches, universities and organizations across the country on leadership, purpose, identity and community transformation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SPLIT: eu2b left + conf cards right -->
+<div style="background:var(--dark);">
+  <div class="split rev">
+    <div class="split-img"><img src="assets/img/eeuu2/eu2b.jpg" alt="Conferencias EEUU"></div>
+    <div>
+      <div class="ey" data-es>Áreas de Ministerio</div><div class="ey" data-en>Ministry Areas</div>
+      <h2 class="stitle" data-es>Lo que Hacemos</h2><h2 class="stitle" data-en>What We Do</h2>
+      <div class="conf-grid" style="margin-top:28px;">
+        <div class="conf-card"><div class="conf-t" data-es>Iglesias y Universidades</div><div class="conf-t" data-en>Churches & Universities</div><div class="conf-d" data-es>Conferencias de liderazgo, propósito y desarrollo personal que transforman cultura desde adentro hacia afuera.</div><div class="conf-d" data-en>Leadership, purpose and personal development conferences that transform culture from the inside out.</div></div>
+        <div class="conf-card"><div class="conf-t" data-es>Jóvenes y Adultos</div><div class="conf-t" data-en>Youth & Young Adults</div><div class="conf-d" data-es>Eventos para que jóvenes descubran su identidad, desarrollen su potencial y se conviertan en agentes de cambio.</div><div class="conf-d" data-en>Events for youth to discover their identity, develop their potential and become agents of change.</div></div>
+        <div class="conf-card"><div class="conf-t" data-es>Cobertura Apostólica</div><div class="conf-t" data-en>Apostolic Covering</div><div class="conf-d" data-es>Cobertura espiritual, mentoría y acompañamiento a pastores y ministerios en EE.UU. e internacionalmente.</div><div class="conf-d" data-en>Spiritual covering, mentorship and accompaniment to pastors and ministries in the U.S. and internationally.</div></div>
+        <div class="conf-card"><div class="conf-t" data-es>Servicio Comunitario</div><div class="conf-t" data-en>Community Service</div><div class="conf-d" data-es>Iniciativas de ayuda humanitaria enfocadas en los pobres, huérfanos, viudas y familias en necesidad.</div><div class="conf-d" data-en>Humanitarian aid initiatives focused on the poor, orphans, widows and families in need.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EU3B fullbleed -->
+<div class="fb-section rev">
+  <img src="assets/img/eeuu2/eu3b.jpg" alt="EEUU ministerio">
+  <div class="fb-section-ov" style="background:linear-gradient(to left,rgba(6,6,6,.88)36%,rgba(6,6,6,.1));"></div>
+  <div class="fb-section-cnt" style="justify-content:flex-end;">
+    <div class="fb-section-text" style="text-align:right;">
+      <div class="ey" style="justify-content:flex-end;" data-es>Liderazgo</div><div class="ey" style="justify-content:flex-end;" data-en>Leadership</div>
+      <h2 class="stitle" data-es>Levantando la<br>Próxima Generación</h2><h2 class="stitle" data-en>Raising the<br>Next Generation</h2>
+      <span class="rule" style="margin-left:auto;"></span>
+      <p data-es>La próxima generación de líderes está siendo levantada. No solo para el ministerio, sino para transformar cada esfera de la sociedad con los valores del Reino.</p>
+      <p data-en>The next generation of leaders is being raised up. Not just for ministry, but to transform every sphere of society with Kingdom values.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div style="background:var(--dark);"><div class="sec">
+  <div class="rev"><div class="ey" data-es>Conferencias en Video</div><div class="ey" data-en>Conferences on Video</div><h2 class="stitle" data-es>Ver el Ministerio</h2><h2 class="stitle" data-en>Watch the Ministry</h2></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px;" class="rev d1">
+    <div style="background:var(--char);border-radius:2px;overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;inset:0;width:100%;height:100%;border:none;" src="https://www.youtube.com/embed/SIOHioQSwdo" allowfullscreen loading="lazy"></iframe></div><div style="padding:13px 15px;font-size:11px;color:var(--muted);border-top:1px solid rgba(255,255,255,.05);" data-es>Kingdom in Action · Resumen</div><div style="padding:13px 15px;font-size:11px;color:var(--muted);border-top:1px solid rgba(255,255,255,.05);" data-en>Kingdom in Action · Highlights</div></div>
+    <div style="background:var(--char);border-radius:2px;overflow:hidden;"><div style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;inset:0;width:100%;height:100%;border:none;" src="https://www.youtube.com/embed/I1xKoxNKNc4" allowfullscreen loading="lazy"></iframe></div><div style="padding:13px 15px;font-size:11px;color:var(--muted);border-top:1px solid rgba(255,255,255,.05);" data-es>Kingdom in Action · Impacto</div><div style="padding:13px 15px;font-size:11px;color:var(--muted);border-top:1px solid rgba(255,255,255,.05);" data-en>Kingdom in Action · Impact</div></div>
+  </div>
+  <div style="text-align:center;margin-top:28px;" class="rev"><a href="https://www.youtube.com/@Pastorjosuesantiago" target="_blank" class="btn-teal" data-es>Ver Canal</a><a href="https://www.youtube.com/@Pastorjosuesantiago" target="_blank" class="btn-teal" data-en>Watch Channel</a></div>
+</div></div>
+
+<div class="qband"><blockquote data-es>"Su misión es levantar líderes íntegros, fortalecer comunidades y movilizar personas para vivir una vida de propósito e impacto."</blockquote><blockquote data-en>"His mission is to raise wholehearted leaders, strengthen communities, and mobilize people to live lives of purpose and impact."</blockquote><cite>Kingdom in Action</cite></div>
+<div style="text-align:center;padding:50px 20px;background:var(--dark);" class="rev"><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-es>¿Querés invitar a Josué a tu iglesia, universidad u organización?</p><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-en>Want to invite Josué to your church, university or organization?</p><a href="index.html#contacto" class="btn-teal" data-es>Contactanos</a><a href="index.html#contacto" class="btn-teal" data-en>Contact Us</a></div>
+
+<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eventos.html" data-es>Eventos</a></div></footer>
+
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación apoya misiones, pastores y comunidades.</p><p class="dmodal-sub" data-en>Your donation supports missions, pastors and communities.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div><div class="dblock"><div class="dblock-label">Email</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div></div></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
+<script>
+function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}
+function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+(function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
+function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
+let lbSet=[],lbI=0;
+function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
+document.addEventListener('keydown',e=>{if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.08});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body></html>

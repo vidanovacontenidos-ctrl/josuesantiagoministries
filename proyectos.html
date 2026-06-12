@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proyectos Cuba | Kingdom in Action</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* Photo slider for hero — multiple Cuba images cycling */
+.cuba-hero{position:relative;height:70vh;min-height:460px;overflow:hidden;margin-top:var(--nav-h);}
+.cuba-hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s var(--ease);}
+.cuba-hero-slide.on{opacity:1;}
+.cuba-hero-slide img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(.45);}
+.cuba-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.92)0%,rgba(6,6,6,.35)55%,rgba(6,6,6,.05)100%);}
+.cuba-hero-cnt{position:absolute;bottom:0;left:0;right:0;padding:44px 60px;}
+/* INTRO SPLIT */
+.intro-split{max-width:1360px;margin:0 auto;padding:88px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.intro-img{position:relative;overflow:hidden;border-radius:2px;}
+.intro-img img{width:100%;height:460px;object-fit:cover;filter:grayscale(15%);}
+.intro-text p{font-size:15px;line-height:1.85;color:rgba(238,235,230,.62);margin-bottom:14px;}
+.intro-text ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px;}
+.intro-text li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(238,235,230,.6);line-height:1.6;}
+.intro-text li::before{content:'';width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:7px;}
+/* PROJECTS — photo left/right alternating, full width section cards */
+.proj-section{width:100%;}
+.proj-section:nth-child(odd){background:var(--dark);}
+.proj-section:nth-child(even){background:var(--char);}
+.proj-inner{max-width:1360px;margin:0 auto;padding:80px 60px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.proj-inner.rev-order{direction:rtl;}
+.proj-inner.rev-order>*{direction:ltr;}
+.proj-photo{position:relative;overflow:hidden;border-radius:2px;}
+.proj-photo img{width:100%;height:420px;object-fit:cover;filter:grayscale(10%);transition:transform .6s var(--ease);}
+.proj-photo:hover img{transform:scale(1.02);}
+.proj-photo-tag{position:absolute;top:16px;left:16px;background:var(--teal);color:var(--black);font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;padding:5px 12px;border-radius:2px;}
+.proj-num{font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:800;color:rgba(46,196,182,.12);line-height:1;margin-bottom:2px;}
+.proj-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--white);margin-bottom:8px;}
+.proj-d{font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);margin-bottom:14px;}
+.proj-dream{background:rgba(46,196,182,.08);border:1px solid rgba(46,196,182,.2);border-radius:2px;padding:14px 18px;margin-top:18px;font-size:13px;color:var(--teal);line-height:1.6;}
+.proj-dream strong{color:var(--white);}
+/* BELIEFS */
+.beliefs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px;}
+.belief{background:var(--mid);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:20px 22px;display:flex;gap:12px;}
+.belief-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:6px;}
+.belief p{font-size:14px;line-height:1.7;color:rgba(238,235,230,.62);}
+@media(max-width:1024px){.intro-split{grid-template-columns:1fr;gap:40px;}.proj-inner{grid-template-columns:1fr;}.proj-inner.rev-order{direction:ltr;}.beliefs-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){.intro-split{padding:60px 20px;}.proj-inner{padding:60px 20px;}.cuba-hero-cnt{padding:24px 20px;}.proj-photo img{height:260px;}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Cuba · Proyectos</span><span data-en>Cuba · Projects</span></a>
+  <ul class="nav-links">
+    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li>
+    <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
+    <li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li>
+    <li><a href="proyectos.html" class="active" data-es>Proyectos</a><a href="proyectos.html" class="active" data-en>Projects</a></li>
+    <li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div>
+</nav>
+<div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()">EEUU</a></div>
+
+<!-- HERO — cuba_banner as main (B&N), cycling through Cuba photos -->
+<div class="cuba-hero" id="cubaHero">
+  <div class="cuba-hero-slide on"><img src="assets/img/cuba2/cuba_banner.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img src="assets/img/cuba2/cuba_rice.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img src="assets/img/cuba2/cub4.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img src="assets/img/cuba2/cub1.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-cnt">
+    <div class="ey" data-es>Cuba · Amor en Acción</div><div class="ey" data-en>Cuba · Love in Action</div>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-es>Proyectos</h1>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-en>Projects</h1>
+    <p style="font-size:14px;color:rgba(238,235,230,.55);margin-top:10px;max-width:580px;" data-es>Dios nos llamó a ser instrumentos de transformación. Tu generosidad se convierte en alimento, oportunidad y un futuro lleno de esperanza para el pueblo cubano.</p>
+    <p style="font-size:14px;color:rgba(238,235,230,.55);margin-top:10px;max-width:580px;" data-en>God called us to be instruments of transformation. Your generosity becomes food, opportunity and a future filled with hope for the Cuban people.</p>
+  </div>
+</div>
+
+<!-- INTRO — who we are, cuba_banner photo as main image -->
+<div style="background:var(--dark);">
+  <div class="intro-split rev">
+    <div class="intro-img">
+      <img src="assets/img/cuba2/cuba_banner.jpg" alt="Cuba misión">
+    </div>
+    <div class="intro-text">
+      <div class="ey" data-es>Reino en Acción · Cuba</div><div class="ey" data-en>Kingdom in Action · Cuba</div>
+      <h2 class="stitle" data-es>Quiénes Somos</h2><h2 class="stitle" data-en>Who We Are</h2>
+      <span class="rule"></span>
+      <p data-es>Reino en Acción es un ministerio con una asignación: establecer el Reino de Dios. Somos el Cuerpo de Cristo funcionando a través de congregaciones y ministerios que se han unido para edificarse mutuamente y expresar a Cristo como el centro.</p>
+      <p data-en>Kingdom in Action is a ministry with one assignment: to establish the Kingdom of God. We are the Body of Christ functioning through congregations and ministries united to build each other up and express Christ as the center.</p>
+      <p data-es>Es un mover donde invitamos a la Iglesia a vivir como hijos y una sola familia — manifestando el poder sobrenatural de Dios y alcanzando como luz a todo aquel que esté en tinieblas.</p>
+      <p data-en>It is a move where we invite the Church to live as sons and one family — manifesting God's supernatural power and reaching as light everyone who is in darkness.</p>
+      <ul>
+        <li data-es>Llevar el Evangelio del Reino a las naciones estableciendo un modelo de familia.</li><li data-en>Carry the Kingdom Gospel establishing a family model.</li>
+        <li data-es>Plantar nuevas congregaciones a través de envíos apostólicos.</li><li data-en>Plant new congregations through apostolic sendings.</li>
+        <li data-es>Impulsar y ayudar a pastores y ministerios en su asignación.</li><li data-en>Strengthen and help pastors and ministries in their assignment.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 01 — PASTORES -->
+<div class="proj-section">
+  <div class="proj-inner rev">
+    <div class="proj-photo">
+      <img src="assets/img/cuba2/cub1.jpg" alt="Pastores">
+      <div class="proj-photo-tag" data-es>Proyecto 01</div><div class="proj-photo-tag" data-en>Project 01</div>
+    </div>
+    <div>
+      <div class="proj-num">01</div>
+      <div class="proj-t" data-es>Apoyo a Pastores</div><div class="proj-t" data-en>Pastors Help</div>
+      <span class="rule"></span>
+      <p class="proj-d" data-es>Apoyamos a pastores que sirven fielmente a sus comunidades en condiciones muy difíciles. Estos líderes no reciben salario ni tienen una fuente segura de ingresos. Tu generosidad les brinda alivio, aliento y ayuda práctica para que puedan continuar ministrando a su pueblo.</p>
+      <p class="proj-d" data-en>We support pastors who faithfully serve their communities in very difficult conditions. These leaders receive no salary and have no secure source of income. Your generosity provides relief, encouragement, and practical help so they can continue ministering to their people.</p>
+      <div class="proj-dream" data-es><strong>Nuestro sueño:</strong> fortalecer y equipar a 100 pastores en 2026 con cobertura espiritual, mentoría y recursos prácticos.</div>
+      <div class="proj-dream" data-en><strong>Our dream:</strong> strengthen and resource 100 pastors in 2026 with spiritual covering, mentorship and practical resources.</div>
+      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 02 — CONSTRUCCION -->
+<div class="proj-section">
+  <div class="proj-inner rev-order rev">
+    <div class="proj-photo">
+      <img src="assets/img/cuba2/cub2.jpg" alt="Construcción">
+      <div class="proj-photo-tag" data-es>Proyecto 02</div><div class="proj-photo-tag" data-en>Project 02</div>
+    </div>
+    <div>
+      <div class="proj-num">02</div>
+      <div class="proj-t" data-es>Construcción</div><div class="proj-t" data-en>Construction</div>
+      <span class="rule"></span>
+      <p class="proj-d" data-es>Apoyamos lugares de adoración, comedores para adultos mayores y espacios de servicio comunitario, mejorando sus condiciones para que puedan servir mejor a la comunidad. Nuestro deseo es que sean espacios dignos y acogedores preparados para impactar vidas.</p>
+      <p class="proj-d" data-en>We support places of worship, dining facilities for the elderly and community service spaces by improving their conditions so they can better serve the community. Our desire is that they become dignified, welcoming spaces prepared to impact lives.</p>
+      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 03 — COMPASION — rice photo -->
+<div class="proj-section">
+  <div class="proj-inner rev">
+    <div class="proj-photo">
+      <img src="assets/img/cuba2/cuba_rice.jpg" alt="Compasión">
+      <div class="proj-photo-tag" data-es>Proyecto 03</div><div class="proj-photo-tag" data-en>Project 03</div>
+    </div>
+    <div>
+      <div class="proj-num">03</div>
+      <div class="proj-t" data-es>Compasión</div><div class="proj-t" data-en>Compassion</div>
+      <span class="rule"></span>
+      <p class="proj-d" data-es>Un gran porcentaje del presupuesto anual va a ayudar a los que más lo necesitan: alimentos, apoyo a mujeres en situación vulnerable, niños y familias con discapacidades, y centros de asistencia alimentaria.</p>
+      <p class="proj-d" data-en>A large percentage of the annual budget goes to help those most in need: food, support for vulnerable women, children and families with disabilities, and food assistance centers.</p>
+      <div class="proj-dream" data-es><strong>Nuestro sueño:</strong> donar 44,000 libras de arroz en 2025.</div>
+      <div class="proj-dream" data-en><strong>Our dream:</strong> donate 44,000 lbs of rice in 2025.</div>
+      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 04 — HUERFANOS -->
+<div class="proj-section">
+  <div class="proj-inner rev-order rev">
+    <div class="proj-photo">
+      <img src="assets/img/cuba2/cub5.jpg" alt="Huérfanos">
+      <div class="proj-photo-tag" data-es>Proyecto 04</div><div class="proj-photo-tag" data-en>Project 04</div>
+    </div>
+    <div>
+      <div class="proj-num">04</div>
+      <div class="proj-t" data-es>Huérfanos y Granja</div><div class="proj-t" data-en>Orphans & Farm</div>
+      <span class="rule"></span>
+      <p class="proj-d" data-es>Cada niño merece amor, cuidado y un lugar seguro. Cuando das, traes alimento, refugio y esperanza a niños que más lo necesitan. Nuestra granja produce frutas y vegetales para la comunidad, ayudando a cientos de personas a sobrevivir.</p>
+      <p class="proj-d" data-en>Every child deserves love, care, and a safe place. When you give, you bring food, shelter and hope to children who need it most. Our farm produces fruit and vegetables for the community, helping hundreds of people survive.</p>
+      <div class="proj-dream" data-es><strong>El llamado:</strong> ser las manos de Jesús en nuestra ciudad.</div>
+      <div class="proj-dream" data-en><strong>The calling:</strong> being the hands of Jesus in our city.</div>
+      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- EN QUE CREEMOS -->
+<div style="background:var(--char);"><div class="sec">
+  <div class="rev"><div class="ey" data-es>Nuestro Fundamento</div><div class="ey" data-en>Our Foundation</div><h2 class="stitle" data-es>En Qué Creemos</h2><h2 class="stitle" data-en>What We Believe</h2></div>
+  <div class="beliefs-grid rev d1">
+    <div class="belief"><div class="belief-dot"></div><p data-es>Reino en Acción no es una denominación. Es una red familiar donde la Iglesia intercambia talentos, dones y recursos.</p><p data-en>Kingdom in Action is not a denomination. It is a family network where the Church exchanges talents, gifts and resources.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>No buscamos recibir ayuda financiera ni interferir en el sistema de gobierno de tu ministerio.</p><p data-en>We do not seek financial help, nor do we interfere with the governance structure of your ministry.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>Creemos que la adoración profética desata la revelación del Reino y que la honra trae recompensa.</p><p data-en>We believe prophetic worship releases Kingdom revelation and that honor brings reward.</p></div>
+    <div class="belief"><div class="belief-dot"></div><p data-es>Creemos en el poder de las conexiones como herramientas de Dios para alinearnos y destruir el poder de las tinieblas.</p><p data-en>We believe in the power of connections as God's tools to align us and destroy the power of darkness.</p></div>
+  </div>
+</div></div>
+
+<div class="qband"><blockquote data-es>"Porque tuve hambre, y me dieron de comer; tuve sed, y me dieron de beber; fui forastero, y me recibieron."</blockquote><blockquote data-en>"For I was hungry and you gave me food, I was thirsty and you gave me drink, I was a stranger and you welcomed me."</blockquote><cite>Mateo 25:35</cite></div>
+<div style="text-align:center;padding:50px 20px;background:var(--dark);" class="rev"><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-es>¿Querés apoyar los proyectos en Cuba?</p><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-en>Want to support the projects in Cuba?</p><button onclick="openDonate()" class="btn-teal" data-es>Cómo Donar</button><button onclick="openDonate()" class="btn-teal" data-en>How to Give</button></div>
+
+<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
+
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en Cuba.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions in Cuba.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
+    <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-es>100% de tu donación va al campo misionero.</p><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-en>100% of your donation goes to the mission field.</p></div></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
+
+<script>
+function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}
+function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+(function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
+function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
+// Cuba hero slider
+let chI=0;const chS=document.querySelectorAll('.cuba-hero-slide');
+function chNext(){chS[chI].classList.remove('on');chI=(chI+1)%chS.length;chS[chI].classList.add('on');}
+setInterval(chNext,4500);
+let lbSet=[],lbI=0;
+function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
+document.addEventListener('keydown',e=>{if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.08});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+</body></html>
