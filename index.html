@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es" data-lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kingdom in Action | Josué Santiago</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Josué Santiago Ministries — Ministerio Internacional en Argentina, Cuba y Estados Unidos. El Reino en Movimiento.">
+<title>Josué Santiago Ministries</title>
 <link rel="stylesheet" href="shared.css">
 <style>
 /* ── HERO ── */
 .hero{position:relative;height:100vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:url('assets/img/PORTADA.jpg') center/cover no-repeat;}
+.hero-bg{position:absolute;inset:0;background:url('assets/img/portada/portada.jpg') center/cover no-repeat;}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(170deg,rgba(6,6,6,.72)0%,rgba(6,6,6,.15)45%,rgba(6,6,6,0)60%,rgba(6,6,6,.9)100%);}
 .hero-bar{position:absolute;left:0;right:0;background:var(--black);z-index:2;}
 .hero-bar.t{top:0;height:48px;}.hero-bar.b{bottom:0;height:48px;}
@@ -151,35 +151,57 @@
   .ms-slider{height:auto;}
   .ms-slide{position:relative;opacity:1;pointer-events:auto;grid-template-columns:1fr;display:none;}
   .ms-slide.on{display:grid;}
-  .ms-photo{height:240px;}
+  .ms-photo{height:260px;}
   .ms-photo-ov{background:linear-gradient(to top,var(--dark),transparent);}
   .imp-grid{grid-template-columns:1fr 1fr;}
   .vid-grid{grid-template-columns:1fr 1fr;}
   .ways-grid{grid-template-columns:1fr 1fr;}
-  .ct-in{grid-template-columns:1fr;}
+  .ct-in{grid-template-columns:1fr;gap:40px;}
   .ev-grid{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
-  .hero-cnt{padding:0 20px 86px;}
-  .hero-bar.t,.hero-bar.b{height:34px;}
-  .vision-band-in{padding:40px 20px;}
-  .ms-in{padding:60px 20px;}
-  .imp-in{padding:60px 20px;}
-  .news-cnt{padding:28px 20px;}
-  .news-title{font-size:1.4rem;}
-  .imp-grid{grid-template-columns:1fr 1fr;gap:20px;}
-  .vid-grid{grid-template-columns:1fr;}
-  .ways-grid{grid-template-columns:1fr;}
-  .ct-in{padding:60px 20px;}
-  .cf-row{grid-template-columns:1fr;}
-  .ev-wrap .sec{padding:60px 20px;}
-  .ways-wrap .sec{padding:60px 20px;}
-  .vid-wrap .sec{padding:60px 20px;}
-  .ms-content{padding:28px 20px;}
+  /* Hero */
+  .hero-cnt{padding:0 20px 72px;}
+  .hero-bar.t,.hero-bar.b{height:28px;}
+  .hero-cta{flex-direction:column;align-items:flex-start;}
+  /* Vision band */
+  .vision-band-in{padding:36px 20px;grid-template-columns:1fr;}
+  .vision-band-img{display:none;}
+  /* Missions */
+  .ms-in{padding:52px 20px 20px;}
+  .ms-content{padding:24px 20px;}
+  .ms-title{font-size:1.8rem;}
+  .ms-nav{flex-wrap:wrap;gap:10px;}
+  /* Impact */
+  .imp-in{padding:52px 20px;}
+  .imp-grid{grid-template-columns:1fr 1fr;gap:16px;}
+  /* News */
+  .news-cnt{padding:24px 20px;}
+  .news-title{font-size:1.3rem;}
+  .news-body{font-size:13px;}
   .news-right{display:none;}
-  .news-dots-mob{display:flex;justify-content:center;gap:7px;padding:12px 0;background:var(--black);}
+  .news-dots-mob{display:flex;justify-content:center;gap:7px;padding:14px 0;background:var(--black);}
   .news-dot-mob{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .3s;}
   .news-dot-mob.on{background:var(--teal);}
+  /* Videos */
+  .vid-wrap .sec{padding:52px 20px;}
+  .vid-grid{grid-template-columns:1fr;}
+  /* Events */
+  .ev-wrap .sec{padding:52px 20px;}
+  .ev-grid{grid-template-columns:1fr;}
+  /* Ways */
+  .ways-wrap .sec{padding:52px 20px;}
+  .ways-grid{grid-template-columns:1fr;}
+  /* Contact */
+  .ct-in{padding:52px 20px;gap:32px;}
+  .cf-row{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .hero-cnt{padding:0 16px 60px;}
+  .imp-grid{grid-template-columns:1fr 1fr;}
+  .ms-in{padding:44px 16px 16px;}
+  .ms-content{padding:20px 16px;}
+  .ct-in{padding:44px 16px;}
 }
 </style>
 </head>
@@ -217,7 +239,7 @@
   <div class="hero-bar t"></div><div class="hero-bar b"></div>
   <div class="hero-cnt">
     <div class="hero-ey"><span data-es>El Reino en Movimiento</span><span data-en>The Kingdom in Motion</span></div>
-    <h1 class="hero-title">Kingdom<em>in Action</em></h1>
+    <h1 class="hero-title">Josué<em>Santiago</em></h1>
     <p class="hero-sub">Argentina · Cuba · Estados Unidos</p>
     <div class="hero-cta">
       <a href="vision.html" class="btn-teal" data-es>Nuestra Visión</a><a href="vision.html" class="btn-teal" data-en>Our Vision</a>
@@ -228,10 +250,10 @@
 
 <!-- VERSE SLIDER -->
 <div class="vs" id="vs">
-  <div class="vs-slide on"><img src="assets/img/arg2/arg_miracle.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"Vengan a mí todos los que están cansados y agobiados, y yo les daré descanso."</p><p class="vs-text" data-en>"Come to me, all you who are weary and burdened, and I will give you rest."</p><span class="vs-ref">Mateo 11:28</span></div></div>
-  <div class="vs-slide"><img src="assets/img/arg2/delviso4.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"Vayan por todo el mundo y anuncien las buenas nuevas a toda criatura."</p><p class="vs-text" data-en>"Go into all the world and proclaim the gospel to the whole creation."</p><span class="vs-ref">Marcos 16:15</span></div></div>
-  <div class="vs-slide"><img src="assets/img/cuba2/cub4.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"El Espíritu del Señor está sobre mí, para dar buenas noticias a los pobres."</p><p class="vs-text" data-en>"The Spirit of the Lord is upon me, to proclaim good news to the poor."</p><span class="vs-ref">Lucas 4:18</span></div></div>
-  <div class="vs-slide"><img src="assets/img/arg2/jujuy2.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"Pidan, y se les dará; busquen, y encontrarán; llamen, y se les abrirá."</p><p class="vs-text" data-en>"Ask, and it will be given; seek, and you will find; knock, and it will be opened."</p><span class="vs-ref">Mateo 7:7</span></div></div>
+  <div class="vs-slide on"><img src="assets/img/argentina/arg_miracle.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"Vengan a mí todos los que están cansados y agobiados, y yo les daré descanso."</p><p class="vs-text" data-en>"Come to me, all you who are weary and burdened, and I will give you rest."</p><span class="vs-ref">Mateo 11:28</span></div></div>
+  <div class="vs-slide"><img src="assets/img/argentina/delviso4.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"Vayan por todo el mundo y anuncien las buenas nuevas a toda criatura."</p><p class="vs-text" data-en>"Go into all the world and proclaim the gospel to the whole creation."</p><span class="vs-ref">Marcos 16:15</span></div></div>
+  <div class="vs-slide"><img src="assets/img/cuba/cub4.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"El Espíritu del Señor está sobre mí, para dar buenas noticias a los pobres."</p><p class="vs-text" data-en>"The Spirit of the Lord is upon me, to proclaim good news to the poor."</p><span class="vs-ref">Lucas 4:18</span></div></div>
+  <div class="vs-slide"><img src="assets/img/argentina/jujuy2.jpg" alt=""><div class="vs-cnt"><p class="vs-text" data-es>"Pidan, y se les dará; busquen, y encontrarán; llamen, y se les abrirá."</p><p class="vs-text" data-en>"Ask, and it will be given; seek, and you will find; knock, and it will be opened."</p><span class="vs-ref">Mateo 7:7</span></div></div>
   <button class="vs-btn p" onclick="vsNav(-1)">&#8249;</button>
   <button class="vs-btn n" onclick="vsNav(1)">&#8250;</button>
   <div class="vs-dots" id="vsDots"><div class="vdot on"></div><div class="vdot"></div><div class="vdot"></div><div class="vdot"></div></div>
@@ -247,7 +269,7 @@
       <p data-en>Doing what Jesus did. Caring for the people Jesus cared for. Making disciples. Josué Santiago and his family carry this calling to three nations with supernatural power and practical love.</p>
       <div style="margin-top:20px;"><a href="vision.html" class="btn-teal" data-es>Conocer más</a><a href="vision.html" class="btn-teal" data-en>Learn more</a></div>
     </div>
-    <div class="vision-band-img"><img src="assets/img/couple.jpg" alt="Josué y su familia"></div>
+    <div class="vision-band-img"><img src="assets/img/portada/couple.jpg" alt="Josué y su familia"></div>
   </div>
 </div>
 
@@ -266,7 +288,7 @@
       <!-- ARGENTINA -->
       <div class="ms-slide on" id="ms-0">
         <div class="ms-photo">
-          <img src="assets/img/arg2/arg_worship.jpg" alt="Argentina">
+          <img src="assets/img/argentina/arg_worship.jpg" alt="Argentina">
           <div class="ms-photo-ov"></div>
         </div>
         <div class="ms-content">
@@ -294,7 +316,7 @@
       <!-- CUBA -->
       <div class="ms-slide" id="ms-1">
         <div class="ms-photo">
-          <img src="assets/img/cuba2/cuba_dance.jpg" alt="Cuba">
+          <img src="assets/img/cuba/cuba_dance.jpg" alt="Cuba">
           <div class="ms-photo-ov"></div>
         </div>
         <div class="ms-content">
@@ -322,7 +344,7 @@
       <!-- EEUU -->
       <div class="ms-slide" id="ms-2">
         <div class="ms-photo">
-          <img src="assets/img/eeuu2/eeuu_worship.jpg" alt="Estados Unidos">
+          <img src="assets/img/eeuu/eeuu_worship.jpg" alt="Estados Unidos">
           <div class="ms-photo-ov"></div>
         </div>
         <div class="ms-content">
@@ -353,8 +375,8 @@
 
 <!-- PHOTO STRIP -->
 <div class="strip"><div class="strip-in">
-  <img src="assets/img/arg2/arg1.jpg" alt=""><img src="assets/img/arg2/arg2.jpg" alt=""><img src="assets/img/arg2/arg_miracle.jpg" alt=""><img src="assets/img/arg2/delviso1.jpg" alt=""><img src="assets/img/arg2/delviso4.jpg" alt=""><img src="assets/img/arg2/jujuy1.jpg" alt=""><img src="assets/img/cuba2/cub4.jpg" alt=""><img src="assets/img/eeuu2/usa_youth.jpg" alt=""><img src="assets/img/eeuu2/eu2b.jpg" alt="">
-  <img src="assets/img/arg2/arg1.jpg" alt=""><img src="assets/img/arg2/arg2.jpg" alt=""><img src="assets/img/arg2/arg_miracle.jpg" alt=""><img src="assets/img/arg2/delviso1.jpg" alt=""><img src="assets/img/arg2/delviso4.jpg" alt=""><img src="assets/img/arg2/jujuy1.jpg" alt=""><img src="assets/img/cuba2/cub4.jpg" alt=""><img src="assets/img/eeuu2/usa_youth.jpg" alt=""><img src="assets/img/eeuu2/eu2b.jpg" alt="">
+  <img src="assets/img/argentina/arg1.jpg" alt=""><img src="assets/img/argentina/arg2.jpg" alt=""><img src="assets/img/argentina/arg_miracle.jpg" alt=""><img src="assets/img/argentina/delviso1.jpg" alt=""><img src="assets/img/argentina/delviso4.jpg" alt=""><img src="assets/img/argentina/jujuy1.jpg" alt=""><img src="assets/img/cuba/cub4.jpg" alt=""><img src="assets/img/eeuu/usa_youth.jpg" alt=""><img src="assets/img/eeuu/eu2b.jpg" alt="">
+  <img src="assets/img/argentina/arg1.jpg" alt=""><img src="assets/img/argentina/arg2.jpg" alt=""><img src="assets/img/argentina/arg_miracle.jpg" alt=""><img src="assets/img/argentina/delviso1.jpg" alt=""><img src="assets/img/argentina/delviso4.jpg" alt=""><img src="assets/img/argentina/jujuy1.jpg" alt=""><img src="assets/img/cuba/cub4.jpg" alt=""><img src="assets/img/eeuu/usa_youth.jpg" alt=""><img src="assets/img/eeuu/eu2b.jpg" alt="">
 </div></div>
 
 <!-- IMPACTO -->
@@ -377,7 +399,7 @@
 
     <!-- ARGENTINA -->
     <div class="news-slide on">
-      <img src="assets/img/arg2/arg_miracle.jpg" alt="">
+      <img src="assets/img/argentina/arg_miracle.jpg" alt="">
       <div class="news-slide-ov"></div>
       <div class="news-cnt">
         <div class="news-left">
@@ -396,7 +418,7 @@
 
     <!-- CUBA -->
     <div class="news-slide">
-      <img src="assets/img/cuba2/cuba_banner.jpg" alt="">
+      <img src="assets/img/cuba/cuba_banner.jpg" alt="">
       <div class="news-slide-ov"></div>
       <div class="news-cnt">
         <div class="news-left">
@@ -415,7 +437,7 @@
 
     <!-- EEUU -->
     <div class="news-slide">
-      <img src="assets/img/eeuu2/usa_youth.jpg" alt="">
+      <img src="assets/img/eeuu/usa_youth.jpg" alt="">
       <div class="news-slide-ov"></div>
       <div class="news-cnt">
         <div class="news-left">
@@ -474,7 +496,7 @@
 </div></div>
 
 <!-- QUOTE -->
-<div class="qband"><blockquote data-es>"Venga tu reino, hágase tu voluntad, así en la tierra como en el cielo."</blockquote><blockquote data-en>"Your kingdom come, Your will be done, on earth as it is in heaven."</blockquote><cite>Mateo 6:10 · Kingdom in Action</cite></div>
+<div class="qband"><blockquote data-es>"Venga tu reino, hágase tu voluntad, así en la tierra como en el cielo."</blockquote><blockquote data-en>"Your kingdom come, Your will be done, on earth as it is in heaven."</blockquote><cite>Mateo 6:10 · Josué Santiago Ministries</cite></div>
 
 <!-- CONTACT -->
 <div class="ct-wrap" id="contacto"><div class="ct-in">

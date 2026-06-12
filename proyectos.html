@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" data-lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Josué Santiago Ministries — Ministerio Internacional.">
 <title>Proyectos Cuba | Kingdom in Action</title>
 <link rel="stylesheet" href="shared.css">
 <style>
@@ -43,11 +43,27 @@
 .belief p{font-size:14px;line-height:1.7;color:rgba(238,235,230,.62);}
 @media(max-width:1024px){.intro-split{grid-template-columns:1fr;gap:40px;}.proj-inner{grid-template-columns:1fr;}.proj-inner.rev-order{direction:ltr;}.beliefs-grid{grid-template-columns:1fr;}}
 @media(max-width:768px){.intro-split{padding:60px 20px;}.proj-inner{padding:60px 20px;}.cuba-hero-cnt{padding:24px 20px;}.proj-photo img{height:260px;}}
+
+@media(max-width:1024px){.split{grid-template-columns:1fr;direction:ltr!important;}.pill3{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){
+  .split{padding:44px 20px;}
+  .split-img img{height:280px;}
+  .fb-section img{height:320px;}
+  .fb-section-cnt{padding:0 20px;}
+  .pill3{grid-template-columns:1fr;padding:0 20px;}
+  .mc-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .split{padding:36px 16px;}
+  .pill3{padding:0 16px;}
+  .fb-section img{height:260px;}
+  .mc-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 <nav class="nav" id="nav">
-  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Cuba · Proyectos</span><span data-en>Cuba · Projects</span></a>
+  <a href="index.html" class="nav-logo">Josué Santiago<span data-es>Cuba · Proyectos</span><span data-en>Cuba · Projects</span></a>
   <ul class="nav-links">
     <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li>
     <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
@@ -61,10 +77,10 @@
 
 <!-- HERO — cuba_banner as main (B&N), cycling through Cuba photos -->
 <div class="cuba-hero" id="cubaHero">
-  <div class="cuba-hero-slide on"><img src="assets/img/cuba2/cuba_banner.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img src="assets/img/cuba2/cuba_rice.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img src="assets/img/cuba2/cub4.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img src="assets/img/cuba2/cub1.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide on"><img src="assets/img/cuba/cuba_banner.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img src="assets/img/cuba/cuba_rice.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img src="assets/img/cuba/cub4.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img src="assets/img/cuba/cub1.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
   <div class="cuba-hero-cnt">
     <div class="ey" data-es>Cuba · Amor en Acción</div><div class="ey" data-en>Cuba · Love in Action</div>
     <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-es>Proyectos</h1>
@@ -78,7 +94,7 @@
 <div style="background:var(--dark);">
   <div class="intro-split rev">
     <div class="intro-img">
-      <img src="assets/img/cuba2/cuba_banner.jpg" alt="Cuba misión">
+      <img src="assets/img/cuba/cuba_banner.jpg" alt="Cuba misión">
     </div>
     <div class="intro-text">
       <div class="ey" data-es>Reino en Acción · Cuba</div><div class="ey" data-en>Kingdom in Action · Cuba</div>
@@ -101,7 +117,7 @@
 <div class="proj-section">
   <div class="proj-inner rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba2/cub1.jpg" alt="Pastores">
+      <img src="assets/img/cuba/cub1.jpg" alt="Pastores">
       <div class="proj-photo-tag" data-es>Proyecto 01</div><div class="proj-photo-tag" data-en>Project 01</div>
     </div>
     <div>
@@ -121,7 +137,7 @@
 <div class="proj-section">
   <div class="proj-inner rev-order rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba2/cub2.jpg" alt="Construcción">
+      <img src="assets/img/cuba/cub2.jpg" alt="Construcción">
       <div class="proj-photo-tag" data-es>Proyecto 02</div><div class="proj-photo-tag" data-en>Project 02</div>
     </div>
     <div>
@@ -139,7 +155,7 @@
 <div class="proj-section">
   <div class="proj-inner rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba2/cuba_rice.jpg" alt="Compasión">
+      <img src="assets/img/cuba/cuba_rice.jpg" alt="Compasión">
       <div class="proj-photo-tag" data-es>Proyecto 03</div><div class="proj-photo-tag" data-en>Project 03</div>
     </div>
     <div>
@@ -159,7 +175,7 @@
 <div class="proj-section">
   <div class="proj-inner rev-order rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba2/cub5.jpg" alt="Huérfanos">
+      <img src="assets/img/cuba/cub5.jpg" alt="Huérfanos">
       <div class="proj-photo-tag" data-es>Proyecto 04</div><div class="proj-photo-tag" data-en>Project 04</div>
     </div>
     <div>
@@ -189,7 +205,7 @@
 <div class="qband"><blockquote data-es>"Porque tuve hambre, y me dieron de comer; tuve sed, y me dieron de beber; fui forastero, y me recibieron."</blockquote><blockquote data-en>"For I was hungry and you gave me food, I was thirsty and you gave me drink, I was a stranger and you welcomed me."</blockquote><cite>Mateo 25:35</cite></div>
 <div style="text-align:center;padding:50px 20px;background:var(--dark);" class="rev"><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-es>¿Querés apoyar los proyectos en Cuba?</p><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-en>Want to support the projects in Cuba?</p><button onclick="openDonate()" class="btn-teal" data-es>Cómo Donar</button><button onclick="openDonate()" class="btn-teal" data-en>How to Give</button></div>
 
-<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
+<footer class="footer"><div class="f-logo">Josué Santiago Ministries</div><div class="f-copy">© 2026 Josué Santiago International Ministries</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
 
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
 <div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en Cuba.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions in Cuba.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>

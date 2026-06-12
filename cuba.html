@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" data-lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cuba | Kingdom in Action</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Josué Santiago Ministries — Ministerio Internacional.">
+<title>Cuba | Josué Santiago Ministries</title>
 <link rel="stylesheet" href="shared.css">
 <style>
 /* SPLIT */
@@ -136,12 +136,28 @@
   .hv-tab.on[data-yr="2025"]{border-color:rgba(46,196,182,.3);}
   .hv-photo img{height:260px;}
 }
+
+@media(max-width:1024px){.split{grid-template-columns:1fr;direction:ltr!important;}.pill3{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){
+  .split{padding:44px 20px;}
+  .split-img img{height:280px;}
+  .fb-section img{height:320px;}
+  .fb-section-cnt{padding:0 20px;}
+  .pill3{grid-template-columns:1fr;padding:0 20px;}
+  .mc-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .split{padding:36px 16px;}
+  .pill3{padding:0 16px;}
+  .fb-section img{height:260px;}
+  .mc-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
 <nav class="nav" id="nav">
-  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Misión Cuba</span><span data-en>Cuba Mission</span></a>
+  <a href="index.html" class="nav-logo">Josué Santiago<span data-es>Misión Cuba</span><span data-en>Cuba Mission</span></a>
   <ul class="nav-links">
     <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li>
     <li><a href="argentina.html">Argentina</a></li>
@@ -166,7 +182,7 @@
 
 <!-- HERO -->
 <div class="page-hero" style="height:70vh;">
-  <img src="assets/img/cuba2/cuba_dance.jpg" alt="Cuba">
+  <img src="assets/img/cuba/cuba_dance.jpg" alt="Cuba">
   <div class="page-hero-ov"></div>
   <div class="page-hero-cnt">
     <div class="ey" data-es>Misión · Cuba</div><div class="ey" data-en>Mission · Cuba</div>
@@ -177,10 +193,10 @@
 
 <!-- VERSE SLIDER -->
 <div class="vs" style="height:440px;" id="vs">
-  <div class="vs-slide on"><img src="assets/img/cuba2/cuba_banner.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"La religión pura y sin mancha delante de Dios es esta: visitar a los huérfanos y a las viudas en sus tribulaciones."</p><p class="vs-text" data-en>"Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress."</p><span class="vs-ref">Santiago 1:27</span></div></div>
-  <div class="vs-slide"><img src="assets/img/cuba2/cuba_rice_dist.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"Porque tuve hambre, y me dieron de comer; tuve sed, y me dieron de beber; fui forastero, y me recibieron."</p><p class="vs-text" data-en>"For I was hungry and you gave me food, I was thirsty and you gave me drink, I was a stranger and you welcomed me."</p><span class="vs-ref">Mateo 25:35</span></div></div>
-  <div class="vs-slide"><img src="assets/img/cuba2/cuba_prayer.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"El Señor me ha ungido para dar buenas noticias a los pobres, para sanar a los quebrantados de corazón."</p><p class="vs-text" data-en>"The Lord has anointed me to bring good news to the poor, to bind up the brokenhearted."</p><span class="vs-ref">Isaías 61:1</span></div></div>
-  <div class="vs-slide"><img src="assets/img/cuba2/cub4.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"En esto conocerán todos que son mis discípulos, si se tienen amor los unos a los otros."</p><p class="vs-text" data-en>"By this everyone will know that you are my disciples, if you love one another."</p><span class="vs-ref">Juan 13:35</span></div></div>
+  <div class="vs-slide on"><img src="assets/img/cuba/cuba_banner.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"La religión pura y sin mancha delante de Dios es esta: visitar a los huérfanos y a las viudas en sus tribulaciones."</p><p class="vs-text" data-en>"Religion that God our Father accepts as pure and faultless is this: to look after orphans and widows in their distress."</p><span class="vs-ref">Santiago 1:27</span></div></div>
+  <div class="vs-slide"><img src="assets/img/cuba/cuba_rice_dist.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"Porque tuve hambre, y me dieron de comer; tuve sed, y me dieron de beber; fui forastero, y me recibieron."</p><p class="vs-text" data-en>"For I was hungry and you gave me food, I was thirsty and you gave me drink, I was a stranger and you welcomed me."</p><span class="vs-ref">Mateo 25:35</span></div></div>
+  <div class="vs-slide"><img src="assets/img/cuba/cuba_prayer.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"El Señor me ha ungido para dar buenas noticias a los pobres, para sanar a los quebrantados de corazón."</p><p class="vs-text" data-en>"The Lord has anointed me to bring good news to the poor, to bind up the brokenhearted."</p><span class="vs-ref">Isaías 61:1</span></div></div>
+  <div class="vs-slide"><img src="assets/img/cuba/cub4.jpg" alt="Cuba"><div class="vs-cnt"><p class="vs-text" data-es>"En esto conocerán todos que son mis discípulos, si se tienen amor los unos a los otros."</p><p class="vs-text" data-en>"By this everyone will know that you are my disciples, if you love one another."</p><span class="vs-ref">Juan 13:35</span></div></div>
   <button class="vs-btn p" onclick="vsNav(-1)">&#8249;</button>
   <button class="vs-btn n" onclick="vsNav(1)">&#8250;</button>
   <div class="vs-dots"><div class="vdot on"></div><div class="vdot"></div><div class="vdot"></div><div class="vdot"></div></div>
@@ -189,7 +205,7 @@
 <!-- QUIENES SOMOS -->
 <div style="background:var(--dark);">
   <div class="split rev">
-    <div class="split-img"><img src="assets/img/cuba2/cub4.jpg" alt="Cuba misión" style="filter:grayscale(8%);"></div>
+    <div class="split-img"><img src="assets/img/cuba/cub4.jpg" alt="Cuba misión" style="filter:grayscale(8%);"></div>
     <div class="split-text">
       <div class="ey" data-es>Reino en Acción · Cuba</div><div class="ey" data-en>Kingdom in Action · Cuba</div>
       <h2 class="stitle" data-es>Quiénes Somos</h2><h2 class="stitle" data-en>Who We Are</h2>
@@ -209,7 +225,7 @@
 
 <!-- COMPASION fullbleed -->
 <div class="fb rev">
-  <img src="assets/img/cuba2/cuba_rice_dist.jpg" alt="Compasión Cuba" style="filter:grayscale(5%);">
+  <img src="assets/img/cuba/cuba_rice_dist.jpg" alt="Compasión Cuba" style="filter:grayscale(5%);">
   <div class="fb-ov"></div>
   <div class="fb-cnt">
     <div class="fb-txt">
@@ -265,7 +281,7 @@
     <!-- PANEL 2024 -->
     <div class="hv-panel on yr2024" id="hv-2024">
       <div class="hv-photo">
-        <img src="assets/img/cuba2/cuba_prayer.jpg" alt="Cuba 2024">
+        <img src="assets/img/cuba/cuba_prayer.jpg" alt="Cuba 2024">
         <div class="hv-photo-bar">
           <div class="hv-photo-yr">2024</div>
           <div class="hv-photo-sub" data-es>Cuba · Un año de fe</div>
@@ -332,7 +348,7 @@
     <!-- PANEL 2025 -->
     <div class="hv-panel yr2025" id="hv-2025">
       <div class="hv-photo">
-        <img src="assets/img/cuba2/cuba_rice_dist.jpg" alt="Cuba 2025">
+        <img src="assets/img/cuba/cuba_rice_dist.jpg" alt="Cuba 2025">
         <div class="hv-photo-bar">
           <div class="hv-photo-yr">2025</div>
           <div class="hv-photo-sub" data-es>Cuba · Resiliencia y expansión</div>
@@ -442,8 +458,8 @@
 </div>
 
 <footer class="footer">
-  <div class="f-logo">Kingdom in Action</div>
-  <div class="f-copy">© 2026 Josué Santiago · International Ministry</div>
+  <div class="f-logo">Josué Santiago Ministries</div>
+  <div class="f-copy">© 2026 Josué Santiago International Ministries</div>
   <div class="f-links">
     <a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a>
     <a href="argentina.html">Argentina</a>

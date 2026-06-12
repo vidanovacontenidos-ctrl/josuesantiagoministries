@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" data-lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Josué Santiago Ministries — Ministerio Internacional.">
 <title>Nuestra Visión | Kingdom in Action</title>
 <link rel="stylesheet" href="shared.css">
 <style>
@@ -33,11 +33,27 @@
 .belief p{font-size:14px;line-height:1.7;color:rgba(238,235,230,.62);}
 @media(max-width:1024px){.bio-wrap{grid-template-columns:1fr;gap:40px;}.bio-img{height:300px;}.v3-grid{grid-template-columns:1fr;}.v3-card{height:320px;}.beliefs-grid{grid-template-columns:1fr;}}
 @media(max-width:768px){.bio-wrap{padding:60px 20px;}.beliefs .sec{padding:60px 20px;}}
+
+@media(max-width:1024px){.split{grid-template-columns:1fr;direction:ltr!important;}.pill3{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){
+  .split{padding:44px 20px;}
+  .split-img img{height:280px;}
+  .fb-section img{height:320px;}
+  .fb-section-cnt{padding:0 20px;}
+  .pill3{grid-template-columns:1fr;padding:0 20px;}
+  .mc-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .split{padding:36px 16px;}
+  .pill3{padding:0 16px;}
+  .fb-section img{height:260px;}
+  .mc-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 <nav class="nav" id="nav">
-  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Josué Santiago · Ministerio Internacional</span><span data-en>Josué Santiago · International Ministry</span></a>
+  <a href="index.html" class="nav-logo">Josué Santiago<span data-es>Ministerios Internacionales</span><span data-en>International Ministries</span></a>
   <ul class="nav-links">
     <li><a href="vision.html" class="active" data-es>Nuestra Visión</a><a href="vision.html" class="active" data-en>Our Vision</a></li>
     <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
@@ -51,7 +67,7 @@
 
 <!-- HERO — foto pareja B&N de fondo -->
 <div class="page-hero">
-  <img src="assets/img/couple.jpg" alt="Josué y su familia">
+  <img src="assets/img/portada/couple.jpg" alt="Josué y su familia">
   <div class="page-hero-ov"></div>
   <div class="page-hero-cnt">
     <div class="ey" data-es>El Ministerio</div><div class="ey" data-en>The Ministry</div>
@@ -64,7 +80,7 @@
 <div style="background:var(--dark);">
   <div class="bio-wrap rev">
     <div class="bio-img">
-      <img src="assets/img/couple.jpg" alt="Josué y su esposa">
+      <img src="assets/img/portada/couple.jpg" alt="Josué y su esposa">
       <div class="bio-img-tag" data-es>Josué Santiago y su familia</div>
       <div class="bio-img-tag" data-en>Josué Santiago and his family</div>
     </div>
@@ -97,7 +113,7 @@
   </div>
   <div class="v3-grid rev d1" style="margin-top:32px;">
     <div class="v3-card">
-      <img src="assets/img/arg2/arg_miracle.jpg" alt="">
+      <img src="assets/img/argentina/arg_miracle.jpg" alt="">
       <div class="v3-line"></div><div class="v3-ov"></div>
       <div class="v3-cnt">
         <div class="v3-num">01</div>
@@ -107,7 +123,7 @@
       </div>
     </div>
     <div class="v3-card">
-      <img src="assets/img/arg2/arg2.jpg" alt="">
+      <img src="assets/img/argentina/arg2.jpg" alt="">
       <div class="v3-line"></div><div class="v3-ov"></div>
       <div class="v3-cnt">
         <div class="v3-num">02</div>
@@ -117,7 +133,7 @@
       </div>
     </div>
     <div class="v3-card">
-      <img src="assets/img/eeuu2/usa_youth.jpg" alt="">
+      <img src="assets/img/eeuu/usa_youth.jpg" alt="">
       <div class="v3-line"></div><div class="v3-ov"></div>
       <div class="v3-cnt">
         <div class="v3-num">03</div>
@@ -144,7 +160,7 @@
 
 <div class="qband"><blockquote data-es>"El Espíritu del Señor está sobre mí, porque me ha ungido para dar buenas nuevas a los pobres."</blockquote><blockquote data-en>"The Spirit of the Lord is upon me, because he has anointed me to proclaim good news to the poor."</blockquote><cite>Lucas 4:18</cite></div>
 
-<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eventos.html" data-es>Eventos</a></div></footer>
+<footer class="footer"><div class="f-logo">Josué Santiago Ministries</div><div class="f-copy">© 2026 Josué Santiago International Ministries</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eventos.html" data-es>Eventos</a></div></footer>
 
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
 <div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación apoya misiones, pastores, huérfanos y comunidades.</p><p class="dmodal-sub" data-en>Your donation supports missions, pastors, orphans and communities.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
