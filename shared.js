@@ -99,44 +99,35 @@ function animateCounters(container){
 /* ── CONTACT FORM SUBMIT — Formspree ── */
 function doSubmit(btn){
   var form=btn.closest('.cf');
-  var inputs=form.querySelectorAll('.cf-inp,.cf-ta,.cf-sel');
-  var email=form.querySelector('input[type="email"]');
-  var name=form.querySelector('input[type="text"]');
+  var nombre=form.querySelector('input[name="nombre"]');
+  var email=form.querySelector('input[name="email"]');
   var l=document.documentElement.getAttribute('data-lang');
 
-  /* Validación básica */
-  if(!name||!name.value.trim()){name.style.borderColor='var(--accent)';name.focus();return;}
+  if(!nombre||!nombre.value.trim()){nombre.style.borderColor='var(--accent)';nombre.focus();return;}
   if(!email||!email.value.trim()||!email.value.includes('@')){email.style.borderColor='var(--accent)';email.focus();return;}
 
-  /* Honeypot anti-spam (si existe) */
   var hp=form.querySelector('input[name="_gotcha"]');
   if(hp&&hp.value)return;
 
   btn.disabled=true;
   btn.innerHTML='<span>'+(l==='es'?'Enviando...':'Sending...')+'</span>';
 
-  /* Armar datos */
   var data=new FormData();
-  inputs.forEach(function(inp){
-    var label=inp.previousElementSibling;
-    var key=label?label.textContent.replace('*','').trim():inp.type;
-    if(inp.value.trim())data.append(key,inp.value.trim());
-  });
+  form.querySelectorAll('[name]').forEach(function(el){if(el.name&&el.value)data.append(el.name,el.value);});
 
-  /* Enviar a Formspree — REEMPLAZAR TU_ID_FORMSPREE con tu ID real */
   fetch('https://formspree.io/f/mojoywvg',{
     method:'POST',body:data,headers:{'Accept':'application/json'}
   }).then(function(r){
     if(r.ok){
       btn.innerHTML='<span>'+(l==='es'?'¡Mensaje enviado!':'Message sent!')+'</span>';
       btn.style.background='#1a7a1a';
-      inputs.forEach(function(inp){inp.value='';inp.style.borderColor='';});
+      form.querySelectorAll('.cf-inp,.cf-ta,.cf-sel').forEach(function(el){el.value='';});
     }else{
       btn.innerHTML='<span>'+(l==='es'?'Error, intentá de nuevo':'Error, try again')+'</span>';
-      btn.style.background='var(--accent)';btn.disabled=false;
+      btn.disabled=false;
     }
   }).catch(function(){
     btn.innerHTML='<span>'+(l==='es'?'Error de conexión':'Connection error')+'</span>';
-    btn.style.background='var(--accent)';btn.disabled=false;
+    btn.disabled=false;
   });
 }
