@@ -1,35 +1,105 @@
+/* ══════════════════════════════════════════
+   SHARED.JS — Kingdom in Action
+   Paleta Roja + Gold + Cream
+   ══════════════════════════════════════════ */
+
+/* ── LANGUAGE ── */
 function setLang(l){
   document.documentElement.setAttribute('data-lang',l);
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));
-  localStorage.setItem('lang',l);
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.classList.toggle('active',b.textContent.trim().toLowerCase()===l);
+  });
+  try{localStorage.setItem('lang',l);}catch(e){}
 }
+(function(){try{setLang(localStorage.getItem('lang')||'es');}catch(e){setLang('es');}})();
+
+/* ── NAV ── */
 function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
-// Restore lang
-(function(){var l=localStorage.getItem('lang')||'es';setLang(l);})();
-// Donate modal
+window.addEventListener('scroll',function(){
+  var n=document.getElementById('nav');
+  if(n)n.classList.toggle('scrolled',scrollY>50);
+});
+
+/* ── DONATE MODAL ── */
 function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
 function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
-// Reveal
-const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.1});
-document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
-// Verse slider (if present)
-if(document.getElementById('vs')){
-  let vI=0;
-  const vS=document.querySelectorAll('.vs-slide');
-  const vD=document.querySelectorAll('.vdot');
-  window.showV=function(i){vS[vI].classList.remove('on');vD[vI].classList.remove('on');vI=(i+vS.length)%vS.length;vS[vI].classList.add('on');vD[vI].classList.add('on');};
-  window.vsNav=function(d){showV(vI+d);};
-  setInterval(()=>showV(vI+1),5500);
-}
-// Lightbox
-let lbSet=[],lbI=0;
+
+/* ── LIGHTBOX ── */
+var lbSet=[],lbI=0;
 function openLb(set,i){lbSet=set;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
 function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
 function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
-document.addEventListener('keydown',e=>{
-  if(document.getElementById('lb').classList.contains('open')){
-    if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();
-  }
-  if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();
+
+/* ── KEYBOARD ── */
+document.addEventListener('keydown',function(e){
+  var lb=document.getElementById('lb'),dm=document.getElementById('dmodal');
+  if(lb&&lb.classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}
+  if(dm&&dm.classList.contains('open')&&e.key==='Escape')closeDonate();
 });
+
+/* ── VERSE SLIDER ── */
+(function(){
+  var el=document.getElementById('vs');if(!el)return;
+  var vI=0,vS=el.querySelectorAll('.vs-slide'),vD=el.querySelectorAll('.vdot');
+  if(!vS.length)return;
+  window.showV=function(i){vS[vI].classList.remove('on');if(vD[vI])vD[vI].classList.remove('on');vI=(i+vS.length)%vS.length;vS[vI].classList.add('on');if(vD[vI])vD[vI].classList.add('on');};
+  window.vsNav=function(d){showV(vI+d);};
+  setInterval(function(){showV(vI+1);},5500);
+})();
+
+/* ── SCROLL REVEAL ── */
+var revObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on');});
+},{threshold:0.08});
+document.querySelectorAll('.rev').forEach(function(el){revObs.observe(el);});
+
+/* ── GALLERY AUTO-INIT → LIGHTBOX ── */
+(function(){
+  document.querySelectorAll('.gallery').forEach(function(gal){
+    var items=gal.querySelectorAll('.gallery-item'),srcs=[];
+    items.forEach(function(item,idx){var img=item.querySelector('img');if(img)srcs.push(img.src);item.addEventListener('click',function(){openLb(srcs,idx);});});
+  });
+})();
+
+/* ── CAROUSEL E3 → LIGHTBOX ── */
+(function(){
+  document.querySelectorAll('.carousel-e3').forEach(function(car){
+    var items=car.querySelectorAll('.carousel-e3-item'),srcs=[];
+    items.forEach(function(item,idx){var img=item.querySelector('img');if(img)srcs.push(img.src);item.addEventListener('click',function(){openLb(srcs,idx);});});
+  });
+})();
+
+/* ── COUNTER ANIMATION ON SCROLL ── */
+function animateCounters(container){
+  var els=container.querySelectorAll('[data-anim]');
+  els.forEach(function(el){
+    var target=parseInt(el.dataset.anim),count=0,steps=55,inc=target/steps;
+    var bar=el.closest('.impact-card');
+    if(bar){var b=bar.querySelector('.impact-bar');if(b)b.style.width='100%';}
+    var timer=setInterval(function(){
+      count=Math.min(count+inc,target);
+      if(target>=10000)el.textContent=Math.round(count/1000).toLocaleString()+'K+';
+      else if(target>=1000)el.textContent=Math.round(count).toLocaleString()+'+';
+      else el.textContent=Math.round(count)+'+';
+      if(count>=target)clearInterval(timer);
+    },30);
+  });
+}
+(function(){
+  var impactSections=document.querySelectorAll('.impact-row');
+  impactSections.forEach(function(sec){
+    var done=false;
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting&&!done){done=true;animateCounters(sec);}});
+    },{threshold:0.2});
+    obs.observe(sec);
+  });
+})();
+
+/* ── CONTACT FORM SUBMIT ── */
+function doSubmit(btn){
+  btn.disabled=true;
+  var l=document.documentElement.getAttribute('data-lang');
+  btn.innerHTML='<span>'+(l==='es'?'Enviando...':'Sending...')+'</span>';
+  setTimeout(function(){btn.innerHTML='<span>'+(l==='es'?'¡Mensaje enviado!':'Message sent!')+'</span>';btn.style.background='var(--accent-dk)';},1200);
+}

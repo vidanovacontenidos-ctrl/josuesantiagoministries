@@ -1,0 +1,66 @@
+# GUÍA DE IMÁGENES — Kingdom in Action
+# Para cambiar una foto: reemplazá el archivo manteniendo el mismo nombre.
+
+## assets/img/hero/ — Inicio (3 fotos que rotan)
+  hero1.jpg    ← Foto 1 del slideshow principal
+  hero2.jpg    ← Foto 2 del slideshow principal
+  hero3.jpg    ← Foto 3 del slideshow principal
+
+## assets/img/index/ — Otras imágenes del inicio
+  couple.jpg   ← Sección "Nuestra Visión" (Josué y familia)
+  portada.jpg  ← Respaldo / alternativa
+
+## assets/img/argentina/hero/
+  hero.jpg     ← Hero principal de la página Argentina
+
+## assets/img/argentina/verse/ — Slider de versículos
+  verse1.jpg   ← Versículo 1
+  verse2.jpg   ← Versículo 2
+  verse3.jpg   ← Versículo 3
+  verse4.jpg   ← Versículo 4
+
+## assets/img/argentina/fullbleed/ — Fotos grandes a ancho completo
+  delviso.jpg  ← Fullbleed sección Del Viso
+  jujuy.jpg    ← Fullbleed sección Jujuy
+
+## assets/img/argentina/split/ — Fotos en secciones con texto al lado
+  buenosaires.jpg  ← Split Buenos Aires
+  delviso.jpg      ← Split Del Viso
+
+## assets/img/argentina/gallery-buenosaires/ — Galería Buenos Aires
+  foto1.jpg, foto2.jpg, foto3.jpg, foto4.jpg
+
+## assets/img/argentina/gallery-jujuy/ — Galería Jujuy
+  foto1.jpg, foto2.jpg, foto3.jpg, foto4.jpg
+
+## assets/img/argentina/gallery-tucuman/ — Galería Tucumán
+  (agregar fotos: foto1.jpg, foto2.jpg, etc.)
+
+## assets/img/cuba/hero/
+  hero.jpg     ← Hero principal de Cuba
+
+## assets/img/cuba/verse/ — Slider de versículos
+  verse1.jpg, verse2.jpg, verse3.jpg, verse4.jpg
+
+## assets/img/cuba/fullbleed/
+  compasion.jpg ← Fullbleed sección compasión
+
+## assets/img/cuba/elder/
+  ancianos.jpg  ← Fondo sección adultos mayores
+
+## assets/img/cuba/split/
+  quienes.jpg   ← Split "Quiénes Somos"
+
+## assets/img/cuba/historia/
+  2024.jpg      ← Tab Historia Viva 2024
+  2025.jpg      ← Tab Historia Viva 2025
+
+## assets/img/eeuu/hero/
+  hero.jpg      ← Hero EEUU
+
+## assets/img/eeuu/verse/
+  verse1.jpg, verse2.jpg
+
+## assets/img/logo/
+  kiaf-dark.jpg  ← Logo KIAF fondo negro (para footer)
+  kiaf-light.jpg ← Logo KIAF fondo blanco
