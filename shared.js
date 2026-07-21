@@ -131,3 +131,13 @@ function doSubmit(btn){
     btn.disabled=false;
   });
 }
+
+/* Donation form → Formspree then PayPal */
+function submitDonation(){
+  var n=document.getElementById('dnNombre').value.trim();
+  var a=document.getElementById('dnApellido').value.trim();
+  var e=document.getElementById('dnEmail').value.trim();
+  if(!n||!a||!e){alert('Por favor completá todos los campos / Please fill in all fields');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert('Email inválido / Invalid email');return;}
+  fetch('https://formspree.io/f/mojoywvg',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Nueva Donación / New Donation',nombre:n,apellido:a,email:e,tipo:'Donación PayPal'})}).then(function(r){if(r.ok){window.open('https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW','_blank');document.getElementById('dnNombre').value='';document.getElementById('dnApellido').value='';document.getElementById('dnEmail').value='';alert('¡Gracias! Se abrió PayPal en una nueva pestaña. / Thank you! PayPal opened in a new tab.');}else{alert('Error al enviar. Intentá de nuevo. / Error sending. Please try again.');}}).catch(function(){alert('Error de conexión. / Connection error.');});
+}
