@@ -20,10 +20,18 @@
 .stmt-rule{width:44px;height:2px;background:var(--accent);margin:0 auto 32px;}
 .stmt-ey{font-size:10px;font-weight:600;letter-spacing:.5em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
 /* CINEMATIC — parallax photo bands */
-.cin-photo{position:relative;height:80vh;min-height:500px;overflow:hidden;isolation:isolate;}
-.cin-photo-bg{position:absolute;inset:0;width:100%;height:120%;top:-10%;background-size:cover;background-position:center;background-attachment:fixed;}
-@supports (-webkit-touch-callout:none){.cin-photo-bg{background-attachment:scroll;inset:0;width:100%;height:100%;}}
-.cin-photo-ov{position:absolute;inset:0;background:rgba(13,15,17,.5);}
+.cin-photo{position:relative;height:clamp(420px,78vh,760px);overflow:hidden;isolation:isolate;background:var(--night);}
+/* La imagen es un <img> sobredimensionado que se desplaza con transform.
+   Nada de background-attachment:fixed — eso escala respecto al viewport
+   y produce el salto de tamaño y el corte al scrollear. */
+.cin-photo-img{position:absolute;left:0;top:-14%;width:100%;height:128%;object-fit:cover;object-position:center;
+  will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden;}
+.cin-photo-ov{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,rgba(13,15,17,.55)0%,rgba(13,15,17,.34)32%,rgba(13,15,17,.34)68%,rgba(13,15,17,.62)100%);}
+/* grano sutil para unificar con el resto del sitio */
+.cin-photo::after{content:'';position:absolute;inset:0;z-index:2;opacity:.05;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
+@media(prefers-reduced-motion:reduce){.cin-photo-img{top:0;height:100%;transform:none!important;}}
 /* Beliefs — minimal */
 .beliefs-min{max-width:740px;margin:0 auto;padding:100px 60px;}
 .beliefs-min-item{padding:18px 0;border-bottom:1px solid rgba(204,34,34,.1);font-size:16px;line-height:1.8;color:var(--muted-lt);display:flex;gap:16px;align-items:baseline;}
@@ -62,8 +70,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <div id="prog"></div>
 
 <!-- NAV -->
-<nav class="nav" id="nav"><a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Josué Santiago</span><span data-en>Josué Santiago</span></a><ul class="nav-links"><li><a href="vision.html" class="active" data-es>Nuestra Visión</a><a href="vision.html" class="active" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li><li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li><li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li><li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li></ul><div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div></nav>
-<div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" class="active" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" class="active" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()" data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()" data-en>Projects</a></div>
+<nav class="nav" id="nav"><a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Josué Santiago</span><span data-en>Josué Santiago</span></a><ul class="nav-links"><li><a href="vision.html" class="active" data-es>Nuestra Visión</a><a href="vision.html" class="active" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li><li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li><li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>Úneted States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li><li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li></ul><div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div></nav>
+<div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" class="active" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" class="active" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>Úneted States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()" data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()" data-en>Projects</a></div>
 
 <!-- HERO -->
 <div class="page-hero" style="height:80vh;"><img fetchpriority="high" src="assets/img/vision/web/hero.jpg" alt="Kingdom in Action"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Kingdom in Action</div><div class="ey" data-en>Kingdom in Action</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,7vw,6rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.9;" data-es>Nuestra<br>Visión</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,7vw,6rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.9;" data-en>Our<br>Vision</h1></div></div>
@@ -76,12 +84,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <div class="stmt-big" data-es>Kingdom in Action existe para extender el Reino de Dios a las naciones</div>
     <div class="stmt-big" data-en>Kingdom in Action exists to extend the Kingdom of God to the nations</div>
     <div class="stmt-body" data-es>A través del evangelismo, el discipulado y el servicio a los más necesitados. Operamos en tres naciones — Estados Unidos, Argentina y Cuba — plantando iglesias, equipando líderes y sirviendo a comunidades vulnerables con el amor tangible de Cristo.</div>
-    <div class="stmt-body" data-en>Through evangelism, discipleship and service to those most in need. We operate in three nations — the United States, Argentina and Cuba — planting churches, equipping leaders and serving vulnerable communities with the tangible love of Christ.</div>
+    <div class="stmt-body" data-en>Through evangelism, discipleship and service to those most in need. We operate in three nations — the Úneted States, Argentina and Cuba — planting churches, equipping leaders and serving vulnerable communities with the tangible love of Christ.</div>
   </div>
 </div>
 
 <!-- PHOTO — Argentina -->
-<div class="cin-photo rev"><div class="cin-photo-bg" style="background-image:url('assets/img/vision/web/band1.jpg');"></div><div class="cin-photo-ov"></div></div>
+<div class="cin-photo rev"><img class="cin-photo-img" src="assets/img/vision/web/band1.jpg" alt="" loading="lazy" decoding="async"><div class="cin-photo-ov"></div></div>
 
 <!-- STATEMENT 2 — Pilar 1 -->
 <div class="stmt rev">
@@ -97,7 +105,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 </div>
 
 <!-- PHOTO — Cuba -->
-<div class="cin-photo rev"><div class="cin-photo-bg" style="background-image:url('assets/img/vision/web/band2.jpg');"></div><div class="cin-photo-ov"></div></div>
+<div class="cin-photo rev"><img class="cin-photo-img" src="assets/img/vision/web/band2.jpg" alt="" loading="lazy" decoding="async"><div class="cin-photo-ov"></div></div>
 
 <!-- STATEMENT 3 — Pilar 2 -->
 <div class="stmt rev">
@@ -113,7 +121,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 </div>
 
 <!-- PHOTO — EEUU -->
-<div class="cin-photo rev"><div class="cin-photo-bg" style="background-image:url('assets/img/vision/web/band3.jpg');"></div><div class="cin-photo-ov"></div></div>
+<div class="cin-photo rev"><img class="cin-photo-img" src="assets/img/vision/web/band3.jpg" alt="" loading="lazy" decoding="async"><div class="cin-photo-ov"></div></div>
 
 <!-- STATEMENT 4 — Pilar 3 -->
 <div class="stmt rev">
@@ -158,9 +166,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <!-- CTA -->
 <div class="stmt" style="min-height:40vh;background:var(--dark);">
   <div class="stmt-inner rev">
-    <div class="stmt-body" style="margin-bottom:28px;" data-es>¿Querés ser parte de lo que Dios está haciendo a través de Kingdom in Action?</div>
+    <div class="stmt-body" style="margin-bottom:28px;" data-es>¿Quieres ser parte de lo que Dios está haciendo a través de Kingdom in Action?</div>
     <div class="stmt-body" style="margin-bottom:28px;" data-en>Want to be part of what God is doing through Kingdom in Action?</div>
-    <a href="index.html#contacto" class="btn-accent" data-es>Contactanos</a>
+    <a href="index.html#contacto" class="btn-accent" data-es>Contáctanos</a>
     <a href="index.html#contacto" class="btn-accent" data-en>Contact Us</a>
   </div>
 </div>
@@ -180,16 +188,28 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var prog=document.getElementById('prog');
   var bands=[].slice.call(document.querySelectorAll('.fb-parallax'));
+  var cine=[].slice.call(document.querySelectorAll('.cin-photo-img'));
   var tick=false;
   function frame(){
     var st=pageYOffset,H=document.documentElement.scrollHeight-innerHeight;
     if(prog)prog.style.width=(H>0?(st/H)*100:0)+'%';
-    if(!rm)bands.forEach(function(b){
-      var r=b.getBoundingClientRect();
-      if(r.bottom>0&&r.top<innerHeight){
-        var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
-        b.style.backgroundPosition='center calc(50% + '+(p*-45).toFixed(1)+'px)';
-      }});
+    if(!rm){
+      bands.forEach(function(b){
+        var r=b.getBoundingClientRect();
+        if(r.bottom>0&&r.top<innerHeight){
+          var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+          b.style.backgroundPosition='center calc(50% + '+(p*-45).toFixed(1)+'px)';
+        }});
+      /* parallax de las bandas cinematograficas: la imagen sobresale 14% arriba
+         y abajo, asi que puede desplazarse ese margen sin dejar huecos */
+      cine.forEach(function(im){
+        var host=im.parentNode, r=host.getBoundingClientRect();
+        if(r.bottom<0||r.top>innerHeight) return;
+        var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
+        var max=r.height*0.13;
+        im.style.transform='translate3d(0,'+(-p*max).toFixed(1)+'px,0)';
+      });
+    }
     tick=false;
   }
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
