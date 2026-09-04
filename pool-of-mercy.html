@@ -29,10 +29,10 @@
   text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px;}
 .pj-crumb a{color:var(--brand);}
 .pj-crumb a:hover{text-decoration:underline;text-underline-offset:3px;}
-.pj-mark{width:clamp(72px,9vw,104px);height:clamp(72px,9vw,104px);border-radius:50%;
+.pj-mark{width:clamp(104px,13vw,152px);height:clamp(104px,13vw,152px);border-radius:50%;
   background:var(--wash);border:1px solid var(--brand);display:flex;align-items:center;justify-content:center;
   margin-bottom:22px;}
-.pj-mark img,.pj-mark svg{width:72%;height:72%;object-fit:contain;}
+.pj-mark img,.pj-mark svg{width:82%;height:82%;object-fit:contain;}
 .pj-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;
   text-transform:uppercase;line-height:.94;letter-spacing:.01em;color:var(--deep);}
 .pj-kick{font-size:9.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;
@@ -405,8 +405,8 @@
     <div class="pj-card"><div class="pj-card-t">Instagram</div><div class="pj-card-d"><a href="https://instagram.com/Pool.of.Mercy" target="_blank" rel="noopener" style="color:var(--pj-brand)">@Pool.of.Mercy</a></div></div>
   </div>
   <div class="pj-cta">
-    <button class="btn-pj" onclick="openDonate()" data-es>Donar ahora</button>
-    <button class="btn-pj" onclick="openDonate()" data-en>Give now</button>
+    <a class="btn-pj" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-es>Donar ahora</a>
+    <a class="btn-pj" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-en>Give now</a>
     <a href="index.html#contacto" class="btn-pj btn-pj--ghost" data-es>Quiero ser voluntario</a>
     <a href="index.html#contacto" class="btn-pj btn-pj--ghost" data-en>I want to volunteer</a>
   </div>
@@ -434,8 +434,36 @@
 <footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
 
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
-<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en tres naciones.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions across three nations.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
-    <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-es>100% de tu donación va al campo misionero.</p><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-en>100% of your donation goes to the mission field.</p></div></div>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal">
+<button class="dmodal-x" onclick="closeDonate()">&#10005;</button>
+<h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2>
+<p class="dmodal-sub" data-es>Tu donación sostiene misiones, pastores, huérfanos y comunidades en 3 naciones.</p>
+<p class="dmodal-sub" data-en>Your donation supports missions, pastors, orphans and communities in 3 nations.</p>
+
+<div class="dpay">
+  <div class="dpay-k" data-es>Donar con tarjeta o PayPal</div>
+  <div class="dpay-k" data-en>Give with card or PayPal</div>
+  <p class="dpay-help" data-es>Déjanos tus datos y te llevamos a PayPal. Si prefieres, puedes ir directo.</p>
+  <p class="dpay-help" data-en>Leave your details and we will take you to PayPal. If you prefer, you can go straight there.</p>
+  <div class="dpay-form">
+    <input type="text" id="dnNombre" placeholder="Nombre / First name" autocomplete="given-name">
+    <input type="text" id="dnApellido" placeholder="Apellido / Last name" autocomplete="family-name">
+    <input type="email" id="dnEmail" placeholder="Email" autocomplete="email">
+  </div>
+  <button class="dpay-btn" onclick="submitDonation()">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 21.3H4.1a.7.7 0 0 1-.7-.8L6.2 3.4a.9.9 0 0 1 .9-.7h6.4c3.5 0 5.6 1.7 5.1 5-.5 3.6-3.1 5.3-6.6 5.3H9.7a.9.9 0 0 0-.9.7l-.8 6.8a.5.5 0 0 1-.4.8z"/><path opacity=".55" d="M19.4 8.1c.6 2.9-1.5 5.6-5.4 5.6h-1.9a.9.9 0 0 0-.9.8l-.9 6.1a.7.7 0 0 0 .7.8h2.9a.8.8 0 0 0 .8-.7l.6-4.2a.8.8 0 0 1 .8-.7h1c3.1 0 5.4-1.5 5.9-4.7.3-1.7-.3-2.8-1.6-3z"/></svg>
+    <span data-es>Ir a PayPal</span><span data-en>Go to PayPal</span>
+  </button>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-es>Ir directo a PayPal, sin dejar datos</a>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-en>Go straight to PayPal, without leaving details</a>
+  <div class="dpay-msg" id="dnMsg"></div>
+</div>
+
+<div class="dblock"><div class="dblock-label">Zelle / USA</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div>
+<div class="dblock"><div class="dblock-label" data-es>Transferencia / Otros medios</div><div class="dblock-label" data-en>Wire / Other methods</div><div class="dblock-val" data-es>Escríbenos y te damos las instrucciones.</div><div class="dblock-val" data-en>Write to us and we will send instructions.</div><div class="dblock-note"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--accent)">Kingdominactionministry@gmail.com</a></div></div>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p>
+</div></div>
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
 
 <script>

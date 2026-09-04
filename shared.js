@@ -219,3 +219,53 @@ function doSubmit(btn){
   }
   addEventListener('scroll', onScroll, {passive:true});
 })();
+
+/* ============ DONACIÓN → PAYPAL ============
+   Registra los datos del donante y SIEMPRE abre PayPal.
+   Si el envío del formulario falla, PayPal se abre igual:
+   nunca se bloquea una donación por un problema de red. */
+var KIAF_PAYPAL = 'https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW';
+
+function submitDonation(){
+  var n = (document.getElementById('dnNombre')||{}).value || '';
+  var a = (document.getElementById('dnApellido')||{}).value || '';
+  var e = (document.getElementById('dnEmail')||{}).value || '';
+  var msg = document.getElementById('dnMsg');
+  var btn = document.querySelector('.dpay-btn');
+  var es = document.documentElement.getAttribute('data-lang') !== 'en';
+
+  function go(){
+    var w = window.open(KIAF_PAYPAL, '_blank', 'noopener');
+    if(!w) location.href = KIAF_PAYPAL;   /* si el navegador bloquea la pestaña */
+  }
+  function say(t, cls){ if(msg){ msg.textContent=t; msg.className='dpay-msg '+(cls||''); } }
+
+  n=n.trim(); a=a.trim(); e=e.trim();
+  /* sin datos: igual se dona */
+  if(!n && !a && !e){ go(); return; }
+  if(e && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){
+    say(es?'Revisa el email e inténtalo de nuevo.':'Please check the email and try again.','err');
+    return;
+  }
+  if(btn) btn.disabled = true;
+  say(es?'Abriendo PayPal…':'Opening PayPal…');
+
+  var done=false;
+  function finish(ok){
+    if(done) return; done=true;
+    if(btn) btn.disabled=false;
+    say(ok ? (es?'¡Gracias! Se abrió PayPal en otra pestaña.':'Thank you! PayPal opened in another tab.')
+           : (es?'Se abrió PayPal. No pudimos guardar tus datos, pero tu donación sigue adelante.'
+                : 'PayPal opened. We could not save your details, but your donation continues.'),
+        ok?'ok':'err');
+    go();
+  }
+  /* si Formspree tarda, no hacemos esperar al donante */
+  setTimeout(function(){ finish(true); }, 2500);
+
+  fetch('https://formspree.io/f/mojoywvg', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({_subject:'Nueva Donación / New Donation', nombre:n, apellido:a, email:e, origen: location.pathname})
+  }).then(function(r){ finish(r.ok); }).catch(function(){ finish(false); });
+}

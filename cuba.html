@@ -247,7 +247,36 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 
 <!-- DONATE + LB -->
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
-<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><button class="dmodal-x" onclick="closeDonate()">&#10005;</button><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sostiene misiones en Cuba.</p><p class="dmodal-sub" data-en>Your donation supports missions in Cuba.</p><div class="dblock"><div class="dblock-label">Zelle / USA</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div><div class="dblock"><div class="dblock-label">PayPal / Wire</div><div class="dblock-val" data-es>Contáctanos para instrucciones</div><div class="dblock-val" data-en>Contact us for instructions</div><div class="dblock-note"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--accent)">Kingdominactionministry@gmail.com</a></div></div><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p></div></div>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal">
+<button class="dmodal-x" onclick="closeDonate()">&#10005;</button>
+<h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2>
+<p class="dmodal-sub" data-es>Tu donación sostiene misiones, pastores, huérfanos y comunidades en 3 naciones.</p>
+<p class="dmodal-sub" data-en>Your donation supports missions, pastors, orphans and communities in 3 nations.</p>
+
+<div class="dpay">
+  <div class="dpay-k" data-es>Donar con tarjeta o PayPal</div>
+  <div class="dpay-k" data-en>Give with card or PayPal</div>
+  <p class="dpay-help" data-es>Déjanos tus datos y te llevamos a PayPal. Si prefieres, puedes ir directo.</p>
+  <p class="dpay-help" data-en>Leave your details and we will take you to PayPal. If you prefer, you can go straight there.</p>
+  <div class="dpay-form">
+    <input type="text" id="dnNombre" placeholder="Nombre / First name" autocomplete="given-name">
+    <input type="text" id="dnApellido" placeholder="Apellido / Last name" autocomplete="family-name">
+    <input type="email" id="dnEmail" placeholder="Email" autocomplete="email">
+  </div>
+  <button class="dpay-btn" onclick="submitDonation()">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 21.3H4.1a.7.7 0 0 1-.7-.8L6.2 3.4a.9.9 0 0 1 .9-.7h6.4c3.5 0 5.6 1.7 5.1 5-.5 3.6-3.1 5.3-6.6 5.3H9.7a.9.9 0 0 0-.9.7l-.8 6.8a.5.5 0 0 1-.4.8z"/><path opacity=".55" d="M19.4 8.1c.6 2.9-1.5 5.6-5.4 5.6h-1.9a.9.9 0 0 0-.9.8l-.9 6.1a.7.7 0 0 0 .7.8h2.9a.8.8 0 0 0 .8-.7l.6-4.2a.8.8 0 0 1 .8-.7h1c3.1 0 5.4-1.5 5.9-4.7.3-1.7-.3-2.8-1.6-3z"/></svg>
+    <span data-es>Ir a PayPal</span><span data-en>Go to PayPal</span>
+  </button>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-es>Ir directo a PayPal, sin dejar datos</a>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-en>Go straight to PayPal, without leaving details</a>
+  <div class="dpay-msg" id="dnMsg"></div>
+</div>
+
+<div class="dblock"><div class="dblock-label">Zelle / USA</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div>
+<div class="dblock"><div class="dblock-label" data-es>Transferencia / Otros medios</div><div class="dblock-label" data-en>Wire / Other methods</div><div class="dblock-val" data-es>Escríbenos y te damos las instrucciones.</div><div class="dblock-val" data-en>Write to us and we will send instructions.</div><div class="dblock-note"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--accent)">Kingdominactionministry@gmail.com</a></div></div>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p>
+</div></div>
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
 
 <script>window.KIAF_INVITE={"id": "cuba", "img": "assets/img/cuba/web/hero-mujer.jpg", "badgeEs": "Cuba · Reino en Acción", "badgeEn": "Cuba · Kingdom in Action", "eyEs": "Cuba te necesita", "eyEn": "Cuba needs you", "titleEs": "120.000 libras de arroz<br>empezaron con una decisión", "titleEn": "120,000 pounds of rice<br>started with one decision", "textEs": "Alimentamos a 16.000 personas cada mes en 35 iglesias. No hay intermediarios: lo que das llega a la mesa de una familia cubana. El 100% va al campo misionero.", "textEn": "We feed 16,000 people each month across 35 churches. There are no middlemen: what you give reaches a Cuban family’s table. 100% goes to the mission field.", "actions": [{"action": "donate", "es": "Donar a Cuba", "en": "Give to Cuba"}, {"href": "proyectos.html", "es": "Ver los proyectos", "en": "See the projects", "ghost": true}]};</script>

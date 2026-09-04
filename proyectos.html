@@ -341,7 +341,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .intro-fig-img{position:relative;overflow:hidden;border-radius:4px;background:var(--sand-border);
   box-shadow:0 1px 2px rgba(44,42,37,.06),0 22px 50px -24px rgba(44,42,37,.30);}
 .intro-fig-img::before{content:'';display:block;padding-top:118%;}
-.intro-fig-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+.intro-fig-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;
   filter:saturate(.96);transition:transform 1.6s var(--ease);}
 .intro-fig:hover .intro-fig-img img{transform:scale(1.035);}
 /* marco desplazado: ancla la imagen al fondo crema */
@@ -364,7 +364,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .intro-fig-stat i{display:block;font-style:normal;font-size:9.5px;font-weight:600;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted-dk);margin-top:8px;line-height:1.5;}
 @media(max-width:1024px){
-  .intro-fig-img::before{padding-top:78%;}
+  .intro-fig-img::before{padding-top:104%;}
   .intro-fig-stat{right:0;bottom:96px;min-width:0;padding:14px 18px;}
   .intro-fig-stat b{font-size:1.6rem;}
 }
@@ -477,7 +477,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 
 /* ===== ISOTIPO SOLAR HOPE NETWORK (logo original) ===== */
-.ini-mark img.shn-mark{width:74%;height:74%;object-fit:contain;
+.ini-mark img.shn-mark{width:84%;height:auto;object-fit:contain;
   transition:transform .7s var(--ease),filter .5s;}
 .ini-mark:hover img.shn-mark{transform:scale(1.06) rotate(-2deg);}
 /* el halo late alrededor del logo, como una luz encendida */
@@ -489,7 +489,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .ini-card.on .ini-mark:has(img.shn-mark){animation:shnHalo 4.6s var(--ease) infinite;}
 /* respaldo para navegadores sin :has() */
 .ini-card.on .ini-mark.is-shn{animation:shnHalo 4.6s var(--ease) infinite;}
-.ph-hero-tag.shn img{width:22px;height:22px;object-fit:contain;flex-shrink:0;}
+.ph-hero-tag.shn img{width:24px;height:auto;object-fit:contain;flex-shrink:0;}
 @media(prefers-reduced-motion:reduce){.ini-card.on .ini-mark:has(img.shn-mark),.ini-card.on .ini-mark.is-shn{animation:none;}}
 
 /* ===== ISOTIPO POOL OF MERCY ===== */
@@ -772,6 +772,34 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
         <div class="ini-num r-i"><div class="ini-num-n">$75</div><div class="ini-num-l" data-es>Por familia<br>alcanzada</div><div class="ini-num-l" data-en>Per family<br>reached</div></div>
       </div>
 
+
+      <div class="ini-ways">
+        <div class="ini-way r-i">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M15.5 2h-7A1.5 1.5 0 0 0 7 3.5v17A1.5 1.5 0 0 0 8.5 22h7a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 15.5 2zM12 20.4a1.1 1.1 0 1 1 1.1-1.1A1.1 1.1 0 0 1 12 20.4zM15.4 17H8.6V4.6h6.8z"/></svg></div>
+          <div class="ini-way-t" data-es>Carga de Teléfonos</div><div class="ini-way-t" data-en>Phone Charging</div>
+          <div class="ini-way-d" data-es>Estaciones donde las familias vuelven a comunicarse durante los apagones.</div>
+          <div class="ini-way-d" data-en>Stations where families reconnect during blackouts.</div>
+        </div>
+        <div class="ini-way r-i">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M18 6h-2.2A3.8 3.8 0 0 0 12 2.6 3.8 3.8 0 0 0 8.2 6H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm-6-1.4A1.6 1.6 0 1 1 10.4 6 1.6 1.6 0 0 1 12 4.6zM8 12.4h8v1.8H8zm0 3.6h5.4v1.8H8z"/></svg></div>
+          <div class="ini-way-t" data-es>Refrigeración</div><div class="ini-way-t" data-en>Refrigeration</div>
+          <div class="ini-way-d" data-es>Alimentos y medicamentos que se conservan aunque no haya red eléctrica.</div>
+          <div class="ini-way-d" data-en>Food and medicine preserved even with no grid power.</div>
+        </div>
+        <div class="ini-way r-i">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M12 3a5.6 5.6 0 0 0-3.2 10.2 2 2 0 0 1 .8 1.5v.7h4.8v-.7a2 2 0 0 1 .8-1.5A5.6 5.6 0 0 0 12 3zM9.6 17.2h4.8v1.2H9.6zm.6 2.6h3.6a1.8 1.8 0 0 1-3.6 0z"/></svg></div>
+          <div class="ini-way-t" data-es>Luz y Ventilación</div><div class="ini-way-t" data-en>Light and Ventilation</div>
+          <div class="ini-way-d" data-es>Iluminación y ventiladores para quienes sufren el calor extremo.</div>
+          <div class="ini-way-d" data-en>Lighting and fans for those suffering extreme heat.</div>
+        </div>
+        <div class="ini-way r-i">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M12 3 3 8v2h18V8zm-7 9v6H3v2h18v-2h-2v-6h-2v6h-3v-6h-2v6H7v-6z"/></svg></div>
+          <div class="ini-way-t" data-es>Refugio en Crisis</div><div class="ini-way-t" data-en>Shelter in Crisis</div>
+          <div class="ini-way-d" data-es>Un espacio seguro y abierto cuando la comunidad entera está a oscuras.</div>
+          <div class="ini-way-d" data-en>A safe, open space when the whole community is in darkness.</div>
+        </div>
+      </div>
+
       <div class="ini-phases">
         <div class="ini-phase r-i">
           <div class="ini-phase-k" data-es>Fase 1</div><div class="ini-phase-k" data-en>Phase 1</div>
@@ -824,8 +852,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       <p data-es>No estamos simplemente entregando cajas ni instalando paneles. Estamos <em>iluminando comunidades enteras.</em></p>
       <p data-en>We are not simply delivering boxes or installing panels. We are <em>lighting up entire communities.</em></p>
       <div class="ini-cta">
-        <a href="index.html#contacto" class="btn-ini" data-es>Quiero Colaborar</a>
-        <a href="index.html#contacto" class="btn-ini" data-en>I Want to Partner</a>
+        <a href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" class="btn-ini" data-es>Donar ahora</a>
+        <a href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" class="btn-ini" data-en>Give now</a>
         <a href="mailto:kingdominactionministry@gmail.com" class="btn-ini btn-ini--ghost" data-es>Escríbenos</a>
         <a href="mailto:kingdominactionministry@gmail.com" class="btn-ini btn-ini--ghost" data-en>Email Us</a>
       </div>
@@ -852,8 +880,36 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
 
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
-<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en tres naciones.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions across three nations.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
-    <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-es>100% de tu donación va al campo misionero.</p><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-en>100% of your donation goes to the mission field.</p></div></div>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal">
+<button class="dmodal-x" onclick="closeDonate()">&#10005;</button>
+<h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2>
+<p class="dmodal-sub" data-es>Tu donación sostiene misiones, pastores, huérfanos y comunidades en 3 naciones.</p>
+<p class="dmodal-sub" data-en>Your donation supports missions, pastors, orphans and communities in 3 nations.</p>
+
+<div class="dpay">
+  <div class="dpay-k" data-es>Donar con tarjeta o PayPal</div>
+  <div class="dpay-k" data-en>Give with card or PayPal</div>
+  <p class="dpay-help" data-es>Déjanos tus datos y te llevamos a PayPal. Si prefieres, puedes ir directo.</p>
+  <p class="dpay-help" data-en>Leave your details and we will take you to PayPal. If you prefer, you can go straight there.</p>
+  <div class="dpay-form">
+    <input type="text" id="dnNombre" placeholder="Nombre / First name" autocomplete="given-name">
+    <input type="text" id="dnApellido" placeholder="Apellido / Last name" autocomplete="family-name">
+    <input type="email" id="dnEmail" placeholder="Email" autocomplete="email">
+  </div>
+  <button class="dpay-btn" onclick="submitDonation()">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 21.3H4.1a.7.7 0 0 1-.7-.8L6.2 3.4a.9.9 0 0 1 .9-.7h6.4c3.5 0 5.6 1.7 5.1 5-.5 3.6-3.1 5.3-6.6 5.3H9.7a.9.9 0 0 0-.9.7l-.8 6.8a.5.5 0 0 1-.4.8z"/><path opacity=".55" d="M19.4 8.1c.6 2.9-1.5 5.6-5.4 5.6h-1.9a.9.9 0 0 0-.9.8l-.9 6.1a.7.7 0 0 0 .7.8h2.9a.8.8 0 0 0 .8-.7l.6-4.2a.8.8 0 0 1 .8-.7h1c3.1 0 5.4-1.5 5.9-4.7.3-1.7-.3-2.8-1.6-3z"/></svg>
+    <span data-es>Ir a PayPal</span><span data-en>Go to PayPal</span>
+  </button>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-es>Ir directo a PayPal, sin dejar datos</a>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-en>Go straight to PayPal, without leaving details</a>
+  <div class="dpay-msg" id="dnMsg"></div>
+</div>
+
+<div class="dblock"><div class="dblock-label">Zelle / USA</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div>
+<div class="dblock"><div class="dblock-label" data-es>Transferencia / Otros medios</div><div class="dblock-label" data-en>Wire / Other methods</div><div class="dblock-val" data-es>Escríbenos y te damos las instrucciones.</div><div class="dblock-val" data-en>Write to us and we will send instructions.</div><div class="dblock-note"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--accent)">Kingdominactionministry@gmail.com</a></div></div>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p>
+</div></div>
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
 
 <script>
@@ -1066,6 +1122,58 @@ document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
   }
   addEventListener('scroll', onScroll, {passive:true});
 })();
+
+</script>
+<script>
+/* ============ DONACIÓN → PAYPAL ============
+   Registra los datos del donante y SIEMPRE abre PayPal.
+   Si el envío del formulario falla, PayPal se abre igual:
+   nunca se bloquea una donación por un problema de red. */
+var KIAF_PAYPAL = 'https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW';
+
+function submitDonation(){
+  var n = (document.getElementById('dnNombre')||{}).value || '';
+  var a = (document.getElementById('dnApellido')||{}).value || '';
+  var e = (document.getElementById('dnEmail')||{}).value || '';
+  var msg = document.getElementById('dnMsg');
+  var btn = document.querySelector('.dpay-btn');
+  var es = document.documentElement.getAttribute('data-lang') !== 'en';
+
+  function go(){
+    var w = window.open(KIAF_PAYPAL, '_blank', 'noopener');
+    if(!w) location.href = KIAF_PAYPAL;   /* si el navegador bloquea la pestaña */
+  }
+  function say(t, cls){ if(msg){ msg.textContent=t; msg.className='dpay-msg '+(cls||''); } }
+
+  n=n.trim(); a=a.trim(); e=e.trim();
+  /* sin datos: igual se dona */
+  if(!n && !a && !e){ go(); return; }
+  if(e && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){
+    say(es?'Revisa el email e inténtalo de nuevo.':'Please check the email and try again.','err');
+    return;
+  }
+  if(btn) btn.disabled = true;
+  say(es?'Abriendo PayPal…':'Opening PayPal…');
+
+  var done=false;
+  function finish(ok){
+    if(done) return; done=true;
+    if(btn) btn.disabled=false;
+    say(ok ? (es?'¡Gracias! Se abrió PayPal en otra pestaña.':'Thank you! PayPal opened in another tab.')
+           : (es?'Se abrió PayPal. No pudimos guardar tus datos, pero tu donación sigue adelante.'
+                : 'PayPal opened. We could not save your details, but your donation continues.'),
+        ok?'ok':'err');
+    go();
+  }
+  /* si Formspree tarda, no hacemos esperar al donante */
+  setTimeout(function(){ finish(true); }, 2500);
+
+  fetch('https://formspree.io/f/mojoywvg', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({_subject:'Nueva Donación / New Donation', nombre:n, apellido:a, email:e, origen: location.pathname})
+  }).then(function(r){ finish(r.ok); }).catch(function(){ finish(false); });
+}
 
 </script>
 </body></html>
