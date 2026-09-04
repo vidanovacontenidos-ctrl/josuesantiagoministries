@@ -37,7 +37,7 @@
 .proj-photo img{width:100%;height:420px;object-fit:cover;filter:grayscale(10%);transition:transform .6s var(--ease);}
 .proj-photo:hover img{transform:scale(1.02);}
 .proj-photo-tag{position:absolute;top:16px;left:16px;background:var(--teal);color:var(--black);font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;padding:5px 12px;border-radius:2px;}
-.proj-num{font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:800;color:rgba(46,196,182,.12);line-height:1;margin-bottom:2px;}
+.proj-num{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6vw,4rem);font-weight:800;color:rgba(46,196,182,.12);line-height:1;margin-bottom:2px;}
 .proj-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--white);margin-bottom:8px;}
 .proj-d{font-size:15px;line-height:1.85;color:rgba(238,235,230,.6);margin-bottom:14px;}
 .proj-dream{background:rgba(46,196,182,.08);border:1px solid rgba(46,196,182,.2);border-radius:2px;padding:14px 18px;margin-top:18px;font-size:13px;color:var(--teal);line-height:1.6;}
@@ -49,6 +49,19 @@
 .belief p{font-size:14px;line-height:1.7;color:rgba(238,235,230,.62);}
 @media(max-width:1024px){.intro-split{grid-template-columns:1fr;gap:40px;}.proj-inner{grid-template-columns:1fr;}.proj-inner.rev-order{direction:ltr;}.beliefs-grid{grid-template-columns:1fr;}}
 @media(max-width:768px){.intro-split{padding:60px 20px;}.proj-inner{padding:60px 20px;}.cuba-hero-cnt{padding:24px 20px;}.proj-photo img{height:260px;}}
+
+/* ===== TOUCH TARGETS — WCAG 2.5.5 / Apple HIG (min 44px) ===== */
+/* El punto sigue viendose igual; el area tactil se agranda con un pseudo invisible */
+.hero-dot,.ms-dot,.vdot,.hv-tl-dot,.ph-thumb,.city-dot{position:relative;}
+.hero-dot::after,.ms-dot::after,.vdot::after,.hv-tl-dot::after,.city-dot::after{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:44px;height:44px;border-radius:50%;}
+.ms-arrow,.past-arrow,.city-arrow,.lb-p,.lb-nx,.lb-x,.dmodal-x,.nav-ov-x{min-width:44px;min-height:44px;}
+@media(hover:none){
+  /* en tactil, separar los dots para que las areas de 44px no se solapen */
+  .hero-dots,.ms-dots,.city-nav,.hv-timeline{gap:14px;}
+}
+
 </style>
 </head>
 <body>
@@ -67,12 +80,12 @@
 
 <!-- HERO — cuba_banner as main (B&N), cycling through Cuba photos -->
 <div class="cuba-hero" id="cubaHero">
-  <div class="cuba-hero-slide on"><img src="assets/img/cuba/cuba_banner.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img src="assets/img/cuba/cuba_rice.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img src="assets/img/cuba/CUB4.jpeg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img src="assets/img/cuba/CUB1.jpeg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide on"><img fetchpriority="high" src="assets/img/cuba/web/fb-compasion.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img loading="lazy" decoding="async" src="assets/img/cuba/web/rice.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img loading="lazy" decoding="async" src="assets/img/cuba/cub3.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
+  <div class="cuba-hero-slide"><img loading="lazy" decoding="async" src="assets/img/cuba/cub1.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
   <div class="cuba-hero-cnt">
-    <div class="ey" data-es>Cuba · Amor en Acción</div><div class="ey" data-en>Cuba · Love in Action</div>
+    <div class="ey" data-es>Cuba · Reino en Acción</div><div class="ey" data-en>Cuba · Kingdom in Action</div>
     <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-es>Proyectos</h1>
     <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-en>Projects</h1>
     <p style="font-size:14px;color:rgba(238,235,230,.55);margin-top:10px;max-width:580px;" data-es>Dios nos llamó a ser instrumentos de transformación. Tu generosidad se convierte en alimento, oportunidad y un futuro lleno de esperanza para el pueblo cubano.</p>
@@ -84,7 +97,7 @@
 <div style="background:var(--dark);">
   <div class="intro-split rev">
     <div class="intro-img">
-      <img src="assets/img/cuba/cuba_banner.jpg" alt="Cuba misión">
+      <img loading="lazy" decoding="async" src="assets/img/cuba/web/fb-compasion.jpg" alt="Cuba misión">
     </div>
     <div class="intro-text">
       <div class="ey" data-es>Reino en Acción · Cuba</div><div class="ey" data-en>Kingdom in Action · Cuba</div>
@@ -107,7 +120,7 @@
 <div class="proj-section">
   <div class="proj-inner rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba/CUB1.jpeg" alt="Pastores">
+      <img loading="lazy" decoding="async" src="assets/img/cuba/cub1.jpg" alt="Pastores">
       <div class="proj-photo-tag" data-es>Proyecto 01</div><div class="proj-photo-tag" data-en>Project 01</div>
     </div>
     <div>
@@ -127,7 +140,7 @@
 <div class="proj-section">
   <div class="proj-inner rev-order rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba/CUB2.jpeg" alt="Construcción">
+      <img loading="lazy" decoding="async" src="assets/img/cuba/cub2.jpg" alt="Construcción">
       <div class="proj-photo-tag" data-es>Proyecto 02</div><div class="proj-photo-tag" data-en>Project 02</div>
     </div>
     <div>
@@ -145,7 +158,7 @@
 <div class="proj-section">
   <div class="proj-inner rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba/cuba_rice.jpg" alt="Compasión">
+      <img loading="lazy" decoding="async" src="assets/img/cuba/web/rice.jpg" alt="Compasión">
       <div class="proj-photo-tag" data-es>Proyecto 03</div><div class="proj-photo-tag" data-en>Project 03</div>
     </div>
     <div>
@@ -165,15 +178,15 @@
 <div class="proj-section">
   <div class="proj-inner rev-order rev">
     <div class="proj-photo">
-      <img src="assets/img/cuba/CUB5.jpeg" alt="Huérfanos">
+      <img loading="lazy" decoding="async" src="assets/img/cuba/cub5.jpg" alt="Huérfanos">
       <div class="proj-photo-tag" data-es>Proyecto 04</div><div class="proj-photo-tag" data-en>Project 04</div>
     </div>
     <div>
       <div class="proj-num">04</div>
-      <div class="proj-t" data-es>Huérfanos y Granja</div><div class="proj-t" data-en>Orphans & Farm</div>
+      <div class="proj-t" data-es>Huérfanos</div><div class="proj-t" data-en>Orphans</div>
       <span class="rule"></span>
-      <p class="proj-d" data-es>Cada niño merece amor, cuidado y un lugar seguro. Cuando das, traes alimento, refugio y esperanza a niños que más lo necesitan. Nuestra granja produce frutas y vegetales para la comunidad, ayudando a cientos de personas a sobrevivir.</p>
-      <p class="proj-d" data-en>Every child deserves love, care, and a safe place. When you give, you bring food, shelter and hope to children who need it most. Our farm produces fruit and vegetables for the community, helping hundreds of people survive.</p>
+      <p class="proj-d" data-es>Cada niño merece amor, cuidado y un lugar seguro. Cuando das, traes alimento, refugio y esperanza a los niños que más lo necesitan.</p>
+      <p class="proj-d" data-en>Every child deserves love, care, and a safe place. When you give, you bring food, shelter and hope to the children who need it most.</p>
       <div class="proj-dream" data-es><strong>El llamado:</strong> ser las manos de Jesús en nuestra ciudad.</div>
       <div class="proj-dream" data-en><strong>The calling:</strong> being the hands of Jesus in our city.</div>
       <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
@@ -200,7 +213,7 @@
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
 <div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en Cuba.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions in Cuba.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
     <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-es>100% de tu donación va al campo misionero.</p><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-en>100% of your donation goes to the mission field.</p></div></div>
-<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
 
 <script>
 function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}

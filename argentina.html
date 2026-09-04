@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="shared.css">
 <style>
 /* City blocks */
-.city{max-width:1360px;margin:0 auto;padding:88px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.city{max-width:1360px;margin:0 auto;display:grid;align-items:center;}
 .city.flip{direction:rtl;}.city.flip>*{direction:ltr;}
 .city-text h3{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:1;margin-bottom:14px;}
 .city-text .city-loc{font-size:11px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
@@ -43,7 +43,7 @@
 .city-text h3{font-size:clamp(2.2rem,4.6vw,3.4rem);letter-spacing:.02em;}
 .city-text p{max-width:56ch;}
 .city-text .city-quote{position:relative;border-left:3px solid var(--accent);padding:18px 22px 18px 46px;font-size:15.5px;line-height:1.78;margin-top:22px;}
-.city-text .city-quote::before{content:'\201C';position:absolute;left:13px;top:0;font-family:'Barlow Condensed',sans-serif;font-size:3.6rem;font-weight:800;color:var(--accent);opacity:.42;line-height:1;}
+.city-text .city-quote::before{content:'\201C';position:absolute;left:13px;top:0;font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6vw,3.6rem);font-weight:800;color:var(--accent);opacity:.42;line-height:1;}
 
 /* A — filmstrip vertical: una foto principal 4:5 + tira lateral */
 .ph-strip{display:grid;grid-template-columns:1fr 88px;gap:10px;}
@@ -116,7 +116,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
   .ph-duo figure:last-child{margin-top:0;}
   .ar-stats{grid-template-columns:1fr 1fr;}
 }
-@media(max-width:600px){.ar-stats{grid-template-columns:1fr;}.ar-stat{border-right:none;border-bottom:1px solid rgba(248,244,237,.07);}}
+@media(max-width:600px){.ph-duo{grid-template-columns:1fr;gap:12px;}.ar-stats{grid-template-columns:1fr;}.ar-stat{border-right:none;border-bottom:1px solid rgba(248,244,237,.07);}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;}.rev,.rev-l,.rev-r,.stag>*{opacity:1!important;transform:none!important;}}
 </style>
 </head>
@@ -128,7 +128,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()" class="active">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a></div>
 
 <!-- HERO -->
-<div class="page-hero" style="height:75vh;"><img src="assets/img/argentina/web/hero.jpg" alt="Argentina"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Argentina</div><div class="ey" data-en>Mission · Argentina</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>El Fuego Recorre Argentina</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>The Fire Sweeps Argentina</h1><div class="cue"><span data-es>Seguí bajando</span><span data-en>Keep scrolling</span><i></i></div></div></div>
+<div class="page-hero" style="height:75vh;"><img fetchpriority="high" src="assets/img/argentina/web/hero.jpg" alt="Argentina"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Argentina</div><div class="ey" data-en>Mission · Argentina</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>El Fuego Recorre Argentina</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>The Fire Sweeps Argentina</h1><div class="cue"><span data-es>Seguí bajando</span><span data-en>Keep scrolling</span><i></i></div></div></div>
 
 <!-- MARQUEE -->
 <div class="marquee marquee-accent"><div class="marquee-inner"><span>BUENOS AIRES · JUJUY · TUCUMÁN · DEL VISO</span><span class="sep">✦</span><span>CRUZADA DE MILAGROS</span><span class="sep">✦</span><span>EL FUEGO RECORRE ARGENTINA</span><span class="sep">✦</span><span>BUENOS AIRES · JUJUY · TUCUMÁN · DEL VISO</span><span class="sep">✦</span><span>CRUZADA DE MILAGROS</span><span class="sep">✦</span><span>EL FUEGO RECORRE ARGENTINA</span><span class="sep">✦</span></div></div>
@@ -159,10 +159,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="bg-dark"><div class="city rev" data-city="ba">
   <div class="ph-strip">
     <div class="ph-main" id="ba-main">
-      <img src="assets/img/argentina/web/ba-foto1.jpg" alt="Buenos Aires" class="on">
-      <img src="assets/img/argentina/web/ba-foto2.jpg" alt="Buenos Aires">
-      <img src="assets/img/argentina/web/ba-foto3.jpg" alt="Buenos Aires">
-      <img src="assets/img/argentina/web/ba-foto4.jpg" alt="Buenos Aires">
+      <img loading="lazy" decoding="async" src="assets/img/argentina/web/ba-foto1.jpg" alt="Buenos Aires" class="on">
+      <img loading="lazy" decoding="async" src="assets/img/argentina/web/ba-foto2.jpg" alt="Buenos Aires">
+      <img loading="lazy" decoding="async" src="assets/img/argentina/web/ba-foto3.jpg" alt="Buenos Aires">
+      <img loading="lazy" decoding="async" src="assets/img/argentina/web/ba-foto4.jpg" alt="Buenos Aires">
       <div class="ph-frame"></div>
     </div>
     <div class="ph-thumbs" id="ba-thumbs">
@@ -225,12 +225,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 </div></div>
 
 <!-- FOOTER -->
-<footer class="footer"><img src="assets/img/logo/kiaf-dark.jpg" alt="KIAF" class="f-logo-img"><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></div></footer>
+<footer class="footer"><img loading="lazy" decoding="async" src="assets/img/logo/kiaf-dark.jpg" alt="KIAF" class="f-logo-img"><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></div></footer>
 
 <!-- DONATE -->
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
 <div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><button class="dmodal-x" onclick="closeDonate()">&#10005;</button><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sostiene misiones en Argentina, Cuba y Estados Unidos.</p><p class="dmodal-sub" data-en>Your donation supports missions in Argentina, Cuba and the United States.</p><div class="dblock"><div class="dblock-label">Zelle / USA</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div><div class="dblock"><div class="dblock-label">PayPal / Wire</div><div class="dblock-val" data-es>Contactanos para instrucciones</div><div class="dblock-val" data-en>Contact us for instructions</div><div class="dblock-note"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--accent)">Kingdominactionministry@gmail.com</a></div></div><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p></div></div>
-<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
 
 <script src="shared.js"></script>
 <script>

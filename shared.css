@@ -344,3 +344,15 @@ html[data-lang=en] [data-es]{display:none!important;}
 .marquee-inner span{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;}
 .marquee-inner .sep{margin:0 24px;opacity:.5;}
 @keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ===== TOUCH TARGETS — WCAG 2.5.5 / Apple HIG (min 44px) ===== */
+/* El punto sigue viendose igual; el area tactil se agranda con un pseudo invisible */
+.hero-dot,.ms-dot,.vdot,.hv-tl-dot,.ph-thumb,.city-dot{position:relative;}
+.hero-dot::after,.ms-dot::after,.vdot::after,.hv-tl-dot::after,.city-dot::after{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:44px;height:44px;border-radius:50%;}
+.ms-arrow,.past-arrow,.city-arrow,.lb-p,.lb-nx,.lb-x,.dmodal-x,.nav-ov-x{min-width:44px;min-height:44px;}
+@media(hover:none){
+  /* en tactil, separar los dots para que las areas de 44px no se solapen */
+  .hero-dots,.ms-dots,.city-nav,.hv-timeline{gap:14px;}
+}

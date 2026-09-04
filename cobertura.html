@@ -19,7 +19,7 @@
 /* Convictions */
 .cv-conv{display:flex;gap:26px;padding:30px 0;border-bottom:1px solid rgba(204,34,34,.12);}
 .cv-conv:last-child{border-bottom:none;}
-.cv-conv-n{font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:800;color:var(--accent);line-height:1;flex-shrink:0;width:60px;}
+.cv-conv-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4vw,2.6rem);font-weight:800;color:var(--accent);line-height:1;flex-shrink:0;width:60px;}
 .cv-conv-t{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dk);margin-bottom:4px;}
 .cv-conv-v{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
 .cv-conv-d{font-size:15px;line-height:1.8;color:var(--muted-dk);margin-bottom:8px;}
@@ -70,7 +70,7 @@
 /* Steps */
 .cv-step{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid rgba(0,0,0,.07);}
 .cv-step:last-child{border-bottom:none;}
-.cv-step-n{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1;width:44px;flex-shrink:0;}
+.cv-step-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,3.4vw,2.2rem);font-weight:800;color:var(--accent);line-height:1;width:44px;flex-shrink:0;}
 .cv-step-t{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dk);margin-bottom:6px;}
 .cv-step-d{font-size:15px;line-height:1.78;color:var(--muted-dk);}
 @media(max-width:1024px){.cv-grid{grid-template-columns:1fr;}}
@@ -99,7 +99,7 @@
 .cv-tri figure:hover img{transform:scale(1.05);filter:grayscale(0)contrast(1.06);}
 .cv-tri figure::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(13,15,17,.92)0%,rgba(13,15,17,.15)55%,transparent 100%);}
 .cv-tri figcaption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:26px 24px;}
-.cv-tri-n{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;}
+.cv-tri-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.9rem,3.6vw,2.4rem);font-weight:800;color:var(--accent);line-height:1;}
 .cv-tri-t{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-lt);margin-top:2px;}
 .cv-tri-d{font-size:12px;line-height:1.6;color:rgba(248,244,237,.6);margin-top:6px;}
 /* Quote over photo */
@@ -160,14 +160,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a></div>
 
 <!-- HERO -->
-<div class="page-hero" style="height:75vh;"><img src="assets/img/cobertura/hero/hero.jpg" alt="Cobertura Apostólica"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Hay un lugar para vos en esta familia</div><div class="ey" data-en>There is a place for you in this family</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-es>Cobertura<br><span style="color:var(--accent);">Apostólica</span></h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-en>Apostolic<br><span style="color:var(--accent);">Covering</span></h1></div></div>
+<div class="page-hero" style="height:75vh;"><img fetchpriority="high" src="assets/img/cobertura/hero/hero.jpg" alt="Cobertura Apostólica"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Hay un lugar para vos en esta familia</div><div class="ey" data-en>There is a place for you in this family</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-es>Cobertura<br><span style="color:var(--accent);">Apostólica</span></h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-en>Apostolic<br><span style="color:var(--accent);">Covering</span></h1></div></div>
 
 <!-- MARQUEE -->
 <div class="marquee marquee-accent"><div class="marquee-inner"><span>UNIDAD</span><span class="sep">✦</span><span>PROPÓSITO</span><span class="sep">✦</span><span>RELACIÓN</span><span class="sep">✦</span><span>MISIÓN</span><span class="sep">✦</span><span>UNIDAD</span><span class="sep">✦</span><span>PROPÓSITO</span><span class="sep">✦</span><span>RELACIÓN</span><span class="sep">✦</span><span>MISIÓN</span><span class="sep">✦</span></div></div>
 
 <!-- STATEMENT -->
 <div class="cv-seam"></div>
-<div class="cv-hero-quote rev"><div class="cv-hq-media"><img src="assets/img/cobertura/split/relacion.jpg" alt=""></div><div class="cv-hero-quote-in">
+<div class="cv-hero-quote rev"><div class="cv-hq-media"><img loading="lazy" decoding="async" src="assets/img/cobertura/split/relacion.jpg" alt=""></div><div class="cv-hero-quote-in">
   <div class="cv-stmt-big" data-es>Nadie fue llamado a cumplir su asignación <em>en aislamiento.</em></div>
   <div class="cv-stmt-big" data-en>No one was called to fulfill their assignment <em>in isolation.</em></div>
   <span class="rule"></span>
@@ -183,7 +183,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <span class="rule"></span>
   </div>
   <div class="cv-ed rev-l d1" style="padding:0;margin-top:34px;">
-   <div class="cv-ed-fig"><img src="assets/img/cobertura/split/impartacion.jpg" alt="Imposición de manos"><div class="cv-ed-cap" data-es>Caminar juntos</div><div class="cv-ed-cap" data-en>Walking together</div></div>
+   <div class="cv-ed-fig"><img loading="lazy" decoding="async" src="assets/img/cobertura/split/impartacion.jpg" alt="Imposición de manos"><div class="cv-ed-cap" data-es>Caminar juntos</div><div class="cv-ed-cap" data-en>Walking together</div></div>
    <div>
     <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-es>Muchos pastores cargan solos un peso que Dios nunca quiso que llevaran sin compañía: las decisiones difíciles, las temporadas de presión, las preguntas que no se pueden hacer en voz alta frente a la congregación.</p>
     <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-en>Many pastors carry alone a weight God never intended them to carry without company: the hard decisions, the seasons of pressure, the questions that cannot be asked out loud in front of the congregation.</p>
@@ -254,9 +254,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 <!-- TRIPTICO -->
 <div class="cv-tri rev">
-  <figure><img src="assets/img/cobertura/grid/g1.jpg" alt=""><figcaption><div class="cv-tri-n">01</div><div class="cv-tri-t" data-es>Poder</div><div class="cv-tri-t" data-en>Power</div><div class="cv-tri-d" data-es>Sanidad, liberación y restauración.</div><div class="cv-tri-d" data-en>Healing, freedom and restoration.</div></figcaption></figure>
-  <figure><img src="assets/img/cobertura/grid/g3.jpg" alt=""><figcaption><div class="cv-tri-n">02</div><div class="cv-tri-t" data-es>Compasión</div><div class="cv-tri-t" data-en>Compassion</div><div class="cv-tri-d" data-es>El corazón de Cristo hecho visible.</div><div class="cv-tri-d" data-en>The heart of Christ made visible.</div></figcaption></figure>
-  <figure><img src="assets/img/cobertura/grid/g2.jpg" alt=""><figcaption><div class="cv-tri-n">03</div><div class="cv-tri-t" data-es>Multiplicación</div><div class="cv-tri-t" data-en>Multiplication</div><div class="cv-tri-d" data-es>Discípulos formados y enviados.</div><div class="cv-tri-d" data-en>Disciples formed and sent.</div></figcaption></figure>
+  <figure><img loading="lazy" decoding="async" src="assets/img/cobertura/grid/g1.jpg" alt=""><figcaption><div class="cv-tri-n">01</div><div class="cv-tri-t" data-es>Poder</div><div class="cv-tri-t" data-en>Power</div><div class="cv-tri-d" data-es>Sanidad, liberación y restauración.</div><div class="cv-tri-d" data-en>Healing, freedom and restoration.</div></figcaption></figure>
+  <figure><img loading="lazy" decoding="async" src="assets/img/cobertura/grid/g3.jpg" alt=""><figcaption><div class="cv-tri-n">02</div><div class="cv-tri-t" data-es>Compasión</div><div class="cv-tri-t" data-en>Compassion</div><div class="cv-tri-d" data-es>El corazón de Cristo hecho visible.</div><div class="cv-tri-d" data-en>The heart of Christ made visible.</div></figcaption></figure>
+  <figure><img loading="lazy" decoding="async" src="assets/img/cobertura/grid/g2.jpg" alt=""><figcaption><div class="cv-tri-n">03</div><div class="cv-tri-t" data-es>Multiplicación</div><div class="cv-tri-t" data-en>Multiplication</div><div class="cv-tri-d" data-es>Discípulos formados y enviados.</div><div class="cv-tri-d" data-en>Disciples formed and sent.</div></figcaption></figure>
 </div>
 
 <!-- COMPASIÓN — fullbleed -->
@@ -276,7 +276,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <span class="rule"></span>
   </div>
   <div class="cv-ed flip rev-r d1" style="padding:0;margin-top:34px;">
-   <div class="cv-ed-fig"><img src="assets/img/cobertura/split/oracion.jpg" alt="Oración" style="object-position:center 22%;"><div class="cv-ed-cap" data-es>Relación, no jerarquía</div><div class="cv-ed-cap" data-en>Relationship, not hierarchy</div></div>
+   <div class="cv-ed-fig"><img loading="lazy" decoding="async" src="assets/img/cobertura/split/oracion.jpg" alt="Oración" style="object-position:center 22%;"><div class="cv-ed-cap" data-es>Relación, no jerarquía</div><div class="cv-ed-cap" data-en>Relationship, not hierarchy</div></div>
    <div>
     <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);margin-bottom:16px;" data-es>En Kingdom in Action Family no entendemos la cobertura como una estructura diseñada para colocar a una persona por debajo de otra, sino como una relación de alineación espiritual que conecta, fortalece, corrige, equipa y empodera.</p>
     <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);margin-bottom:16px;" data-en>At Kingdom in Action Family we do not understand covering as a structure designed to place one person beneath another, but as a relationship of spiritual alignment that connects, strengthens, corrects, equips and empowers.</p>
@@ -510,12 +510,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 </div></div></div>
 
 <!-- FOOTER -->
-<footer class="footer"><img src="assets/img/logo/kiaf-dark.jpg" alt="KIAF" class="f-logo-img"><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="vision.html" data-es>Visión</a><a href="vision.html" data-en>Vision</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></div></footer>
+<footer class="footer"><img loading="lazy" decoding="async" src="assets/img/logo/kiaf-dark.jpg" alt="KIAF" class="f-logo-img"><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="vision.html" data-es>Visión</a><a href="vision.html" data-en>Vision</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></div></footer>
 
 <!-- DONATE + LB -->
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
 <div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><button class="dmodal-x" onclick="closeDonate()">&#10005;</button><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sostiene misiones en 3 naciones.</p><p class="dmodal-sub" data-en>Your donation supports missions in 3 nations.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div><div class="dblock" style="border:none;padding-top:4px;"><div class="dblock-label">PayPal</div><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;"><input type="text" id="dnNombre" placeholder="Nombre / First Name" required style="padding:10px 12px;border:1px solid rgba(248,244,237,.12);background:rgba(248,244,237,.05);color:var(--text-lt);border-radius:4px;font-size:14px;outline:none;"><input type="text" id="dnApellido" placeholder="Apellido / Last Name" required style="padding:10px 12px;border:1px solid rgba(248,244,237,.12);background:rgba(248,244,237,.05);color:var(--text-lt);border-radius:4px;font-size:14px;outline:none;"><input type="email" id="dnEmail" placeholder="Email" required style="padding:10px 12px;border:1px solid rgba(248,244,237,.12);background:rgba(248,244,237,.05);color:var(--text-lt);border-radius:4px;font-size:14px;outline:none;"><button onclick="submitDonation()" class="btn-accent" style="font-size:14px;cursor:pointer;margin-top:4px;" data-es>Donar con PayPal</button><button onclick="submitDonation()" class="btn-accent" style="font-size:14px;cursor:pointer;margin-top:4px;" data-en>Donate with PayPal</button></div></div><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p></div></div>
-<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
 
 <script src="shared.js"></script>
 <script>
