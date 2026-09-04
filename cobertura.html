@@ -150,6 +150,62 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   .rev,.rev-l,.rev-r{opacity:1!important;transform:none!important;}
 }
 
+
+/* ===== PATERNIDAD ESPIRITUAL ===== */
+.pe{position:relative;background:var(--night);overflow:hidden;}
+.pe::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 80% at 50% 0%,rgba(204,34,34,.10),transparent 62%);}
+.pe-in{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,120px) clamp(20px,5vw,60px);}
+/* las cuatro palabras del compromiso */
+.pe-verbs{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(204,34,34,.18);
+  border:1px solid rgba(204,34,34,.18);margin:38px 0 44px;}
+.pe-verb{background:var(--night);padding:clamp(24px,3.4vw,34px) 16px;text-align:center;position:relative;overflow:hidden;}
+.pe-verb b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.15rem,2.4vw,1.6rem);
+  font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--text-lt);transition:color .4s;}
+.pe-verb i{display:block;font-style:normal;font-size:9px;font-weight:600;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--muted-lt);margin-top:9px;}
+.pe-verb::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease);}
+.pe.on .pe-verb::after{transform:scaleX(1);}
+.pe.on .pe-verb:nth-child(1)::after{transition-delay:.10s}.pe.on .pe-verb:nth-child(2)::after{transition-delay:.24s}
+.pe.on .pe-verb:nth-child(3)::after{transition-delay:.38s}.pe.on .pe-verb:nth-child(4)::after{transition-delay:.52s}
+.pe-verb:hover b{color:var(--accent);}
+/* contraste: lo que NO buscamos / lo que SI */
+.pe-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(20px,3vw,40px);align-items:center;margin-bottom:44px;}
+.pe-vs-col{padding:26px 24px;border-radius:2px;}
+.pe-vs-a{background:rgba(248,244,237,.03);border:1px solid rgba(248,244,237,.08);}
+.pe-vs-b{background:rgba(204,34,34,.07);border:1px solid rgba(204,34,34,.28);}
+.pe-vs-k{font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px;}
+.pe-vs-a .pe-vs-k{color:var(--muted-lt);}
+.pe-vs-b .pe-vs-k{color:var(--accent);}
+.pe-vs-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.1rem,2.2vw,1.45rem);font-weight:700;
+  text-transform:uppercase;letter-spacing:.03em;line-height:1.2;}
+.pe-vs-a .pe-vs-t{color:rgba(248,244,237,.45);text-decoration:line-through;text-decoration-color:rgba(204,34,34,.5);
+  text-decoration-thickness:2px;}
+.pe-vs-b .pe-vs-t{color:var(--text-lt);}
+.pe-arrow{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;color:var(--accent);line-height:1;}
+/* versiculo destacado */
+.pe-verse{position:relative;border-left:3px solid var(--accent);padding:30px 32px 30px 62px;margin:0 0 38px;
+  background:linear-gradient(90deg,rgba(204,34,34,.06),transparent 70%);}
+.pe-verse::before{content:'\201C';position:absolute;left:18px;top:6px;font-family:'Barlow Condensed',sans-serif;
+  font-size:4.6rem;font-weight:800;color:var(--accent);opacity:.35;line-height:1;}
+.pe-verse p{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.3rem,2.8vw,1.95rem);font-weight:600;
+  line-height:1.32;color:var(--text-lt);}
+.pe-verse cite{display:block;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);margin-top:14px;}
+/* cierre */
+.pe-close{text-align:center;padding-top:8px;}
+.pe-close-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:800;
+  text-transform:uppercase;letter-spacing:.02em;line-height:1.14;color:var(--text-lt);max-width:19ch;margin:0 auto;}
+.pe-close-t em{font-style:normal;color:var(--accent);}
+@media(max-width:900px){
+  .pe-verbs{grid-template-columns:1fr 1fr;}
+  .pe-vs{grid-template-columns:1fr;gap:14px;}
+  .pe-arrow{transform:rotate(90deg);justify-self:center;}
+  .pe-verse{padding:26px 22px 26px 50px;}
+}
+@media(max-width:520px){.pe-verbs{grid-template-columns:1fr;}}
+
 </style>
 </head>
 <body>
@@ -157,10 +213,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 <!-- NAV -->
 <nav class="nav" id="nav"><a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Cobertura Apostólica</span><span data-en>Apostolic Covering</span></a><ul class="nav-links"><li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" class="active" data-es>Cobertura</a><a href="cobertura.html" class="active" data-en>Covering</a></li><li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li><li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li><li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li></ul><div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div></nav>
-<div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a></div>
+<div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()" data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()" data-en>Projects</a></div>
 
 <!-- HERO -->
 <div class="page-hero" style="height:75vh;"><img fetchpriority="high" src="assets/img/cobertura/hero/hero.jpg" alt="Cobertura Apostólica"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Hay un lugar para vos en esta familia</div><div class="ey" data-en>There is a place for you in this family</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-es>Cobertura<br><span style="color:var(--accent);">Apostólica</span></h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-en>Apostolic<br><span style="color:var(--accent);">Covering</span></h1></div></div>
+
+<div class="cue"><span data-es>Seguí bajando</span><span data-en>Keep scrolling</span><i></i></div>
 
 <!-- MARQUEE -->
 <div class="marquee marquee-accent"><div class="marquee-inner"><span>UNIDAD</span><span class="sep">✦</span><span>PROPÓSITO</span><span class="sep">✦</span><span>RELACIÓN</span><span class="sep">✦</span><span>MISIÓN</span><span class="sep">✦</span><span>UNIDAD</span><span class="sep">✦</span><span>PROPÓSITO</span><span class="sep">✦</span><span>RELACIÓN</span><span class="sep">✦</span><span>MISIÓN</span><span class="sep">✦</span></div></div>
@@ -325,6 +383,59 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <div class="cv-purpose-row"><b data-es>Enviar</b><b data-en>Send</b><span data-es>a cumplir la asignación</span><span data-en>to fulfill the assignment</span></div>
     <div style="font-size:13px;font-style:italic;color:var(--accent);margin-top:20px;padding-top:18px;border-top:1px solid rgba(204,34,34,.15);" data-es>"Hasta que todos lleguemos... a la medida de la estatura de la plenitud de Cristo." — Efesios 4:13</div>
     <div style="font-size:13px;font-style:italic;color:var(--accent);margin-top:20px;padding-top:18px;border-top:1px solid rgba(204,34,34,.15);" data-en>"Until we all reach... the measure of the stature of the fullness of Christ." — Ephesians 4:13</div>
+  </div>
+</div></div>
+
+
+<!-- PATERNIDAD ESPIRITUAL -->
+<div class="pe rev"><div class="pe-in">
+  <div style="text-align:center;">
+    <div class="stmt-ey" style="justify-content:center;" data-es>Cómo lo entendemos</div>
+    <div class="stmt-ey" style="justify-content:center;" data-en>How we understand it</div>
+    <div style="width:44px;height:2px;background:var(--accent);margin:0 auto 26px;"></div>
+    <h2 class="stitle" style="font-size:clamp(2rem,4.6vw,3.4rem);" data-es>Paternidad Espiritual</h2>
+    <h2 class="stitle" style="font-size:clamp(2rem,4.6vw,3.4rem);" data-en>Spiritual Fatherhood</h2>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);max-width:62ch;margin:18px auto 0;" data-es>En Reino en Acción entendemos la paternidad espiritual como una responsabilidad de amar, servir, formar y proyectar.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);max-width:62ch;margin:18px auto 0;" data-en>At Kingdom in Action we understand spiritual fatherhood as a responsibility to love, serve, form and project.</p>
+  </div>
+
+  <div class="pe-verbs">
+    <div class="pe-verb"><b data-es>Amar</b><b data-en>Love</b><i data-es>Sin condiciones</i><i data-en>Without conditions</i></div>
+    <div class="pe-verb"><b data-es>Servir</b><b data-en>Serve</b><i data-es>Antes que dirigir</i><i data-en>Before leading</i></div>
+    <div class="pe-verb"><b data-es>Formar</b><b data-en>Form</b><i data-es>Hacia la madurez</i><i data-en>Toward maturity</i></div>
+    <div class="pe-verb"><b data-es>Proyectar</b><b data-en>Project</b><i data-es>Más allá de nosotros</i><i data-en>Beyond ourselves</i></div>
+  </div>
+
+  <div class="pe-vs">
+    <div class="pe-vs-col pe-vs-a">
+      <div class="pe-vs-k" data-es>No buscamos</div><div class="pe-vs-k" data-en>We don't seek</div>
+      <div class="pe-vs-t" data-es>Hijos que dependan de nosotros</div>
+      <div class="pe-vs-t" data-en>Children who depend on us</div>
+    </div>
+    <div class="pe-arrow">&#10230;</div>
+    <div class="pe-vs-col pe-vs-b">
+      <div class="pe-vs-k" data-es>Buscamos</div><div class="pe-vs-k" data-en>We seek</div>
+      <div class="pe-vs-t" data-es>Hijos a quienes servir</div>
+      <div class="pe-vs-t" data-en>Children to serve</div>
+    </div>
+  </div>
+
+  <div style="max-width:66ch;margin:0 auto 38px;">
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);margin-bottom:16px;" data-es>Padres que invierten en sus hijos, que crean oportunidades y allanan el camino para que cada uno alcance plenamente el llamado de Dios.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);margin-bottom:16px;" data-en>Fathers who invest in their children, who create opportunities and clear the path so each one may fully reach God's calling.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);" data-es>Medimos nuestro fruto no por los que permanecen debajo de nuestro alcance, sino por aquellos a quienes ayudamos a crecer y llegar más lejos.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);" data-en>We measure our fruit not by those who remain under our reach, but by those we help grow and go further.</p>
+  </div>
+
+  <div class="pe-verse">
+    <p data-es>No deben atesorar los hijos para los padres, sino los padres para los hijos.</p>
+    <p data-en>Children ought not to lay up for their parents, but parents for their children.</p>
+    <cite data-es>2 Corintios 12:14</cite><cite data-en>2 Corinthians 12:14</cite>
+  </div>
+
+  <div class="pe-close">
+    <div class="pe-close-t" data-es>Nuestro mayor éxito será ver a nuestros hijos <em>llegar más lejos que nosotros.</em></div>
+    <div class="pe-close-t" data-en>Our greatest success will be seeing our children <em>go further than we did.</em></div>
   </div>
 </div></div>
 
