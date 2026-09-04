@@ -371,8 +371,9 @@ html[data-lang=en] [data-es]{display:none!important;}
 /* panel de foto */
 .inv-img{position:relative;overflow:hidden;background:var(--slate);min-height:340px;}
 .inv-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  transform:scale(1.06);transition:transform 9s var(--ease);}
-.inv-bg.open .inv-img img{transform:scale(1);}
+  opacity:0;transform:scale(1.06);transition:opacity 1.5s var(--ease),transform 9s var(--ease);}
+.inv-img img.on{opacity:1;}
+.inv-bg.open .inv-img img.on{transform:scale(1);}
 .inv-img::after{content:'';position:absolute;inset:0;
   background:linear-gradient(to top,rgba(13,15,17,.55),transparent 55%);}
 .inv-badge{position:absolute;left:0;bottom:0;z-index:2;padding:20px 22px;

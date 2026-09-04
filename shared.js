@@ -160,8 +160,9 @@ function doSubmit(btn){
     ".inv{position:relative;width:min(880px,100%);max-height:88vh;overflow:hidden;border-radius:6px;background:#F8F4ED;display:grid;grid-template-columns:.85fr 1fr;box-shadow:0 40px 100px -30px rgba(0,0,0,.8);transform:translateY(26px) scale(.97);opacity:0;transition:transform .6s cubic-bezier(.22,.61,.36,1),opacity .6s}"+
     ".inv-bg.open .inv{transform:none;opacity:1}"+
     ".inv-img{position:relative;overflow:hidden;background:#1E2328;min-height:340px}"+
-    ".inv-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 9s ease-out}"+
-    ".inv-bg.open .inv-img img{transform:scale(1)}"+
+    ".inv-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.5s ease,transform 9s ease-out}"+
+    ".inv-img img.on{opacity:1}"+
+    ".inv-bg.open .inv-img img.on{transform:scale(1)}"+
     ".inv-img:after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,15,17,.55),transparent 55%)}"+
     ".inv-badge{position:absolute;left:0;bottom:0;z-index:2;padding:20px 22px;font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#fff}"+
     ".inv-body{padding:clamp(30px,4vw,46px) clamp(24px,3.4vw,44px);display:flex;flex-direction:column;justify-content:center;overflow-y:auto}"+
@@ -200,7 +201,10 @@ function doSubmit(btn){
   el.innerHTML =
     '<div class="inv">'+
       '<button class="inv-x" aria-label="Cerrar">&#10005;</button>'+
-      '<div class="inv-img"><img src="'+cfg.img+'" alt="" loading="lazy" decoding="async">'+
+      '<div class="inv-img">'+
+        (cfg.imgs && cfg.imgs.length
+          ? cfg.imgs.map(function(s,i){ return '<img class="inv-ph'+(i?'':' on')+'" src="'+s+'" alt="" loading="lazy" decoding="async">'; }).join('')
+          : '<img class="inv-ph on" src="'+cfg.img+'" alt="" loading="lazy" decoding="async">')+
         '<div class="inv-badge" data-es>'+cfg.badgeEs+'</div>'+
         '<div class="inv-badge" data-en>'+cfg.badgeEn+'</div></div>'+
       '<div class="inv-body">'+
@@ -215,6 +219,19 @@ function doSubmit(btn){
   document.body.appendChild(el);
 
   var open = false, lastFocus = null;
+  /* si hay varias fotos, se alternan con un fundido lento */
+  var phs = [].slice.call(el.querySelectorAll('.inv-ph')), phI = 0, phT = null;
+  function startSlides(){
+    if(phs.length < 2) return;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    stopSlides();
+    phT = setInterval(function(){
+      phs[phI].classList.remove('on');
+      phI = (phI + 1) % phs.length;
+      phs[phI].classList.add('on');
+    }, 5200);
+  }
+  function stopSlides(){ if(phT){ clearInterval(phT); phT = null; } }
   function show(){
     if(open || seen()) return;
     var dm = document.getElementById('dmodal');
@@ -223,11 +240,12 @@ function doSubmit(btn){
     if(nv && nv.classList.contains('open')) return;   /* ni el menú móvil */
     open = true; lastFocus = document.activeElement;
     el.classList.add('open');
+    startSlides();
     document.body.style.overflow = 'hidden';
     var f = el.querySelector('.inv-x'); if(f) f.focus();
   }
   function hide(){
-    open = false; remember();
+    open = false; remember(); stopSlides();
     el.classList.remove('open');
     document.body.style.overflow = '';
     if(lastFocus && lastFocus.focus) lastFocus.focus();
