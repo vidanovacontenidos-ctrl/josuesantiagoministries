@@ -98,6 +98,39 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
   .hero-dots,.ms-dots,.city-nav,.hv-timeline{gap:14px;}
 }
 
+
+/* ===== HERO CUBA — zoom lento sobre el primer plano ===== */
+.cuba-hero{overflow:hidden;isolation:isolate;}
+/* El rostro esta arriba al centro y el titulo abajo: el zoom abre desde
+   la cara hacia los brazos y la bandera, sin taparle la cara con el degradado. */
+.cuba-hero .kb-zoom{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  transform-origin:center 30%;
+  animation:cubaKB 26s cubic-bezier(.33,.02,.32,1) infinite alternate;
+  will-change:transform;backface-visibility:hidden;
+}
+@keyframes cubaKB{
+  0%  {transform:scale(1.15);}
+  100%{transform:scale(1.00);}
+}
+/* degradado desde abajo: deja el rostro limpio y da base al titulo */
+.cuba-hero .page-hero-ov{
+  background:linear-gradient(to top,
+    rgba(13,15,17,.96) 0%,
+    rgba(13,15,17,.86) 18%,
+    rgba(13,15,17,.42) 42%,
+    rgba(13,15,17,.10) 66%,
+    rgba(13,15,17,.22) 100%);}
+/* refuerzo puntual detras del bloque de texto (abajo a la izquierda) */
+.cuba-hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(78% 52% at 22% 100%,rgba(13,15,17,.62)0%,transparent 66%);}
+.cuba-hero .page-hero-cnt{z-index:2;}
+@media(prefers-reduced-motion:reduce){.cuba-hero .kb-zoom{animation:none;transform:scale(1.03);}}
+@media(max-width:768px){
+  .cuba-hero{height:64vh!important;}
+  .cuba-hero .kb-zoom{object-position:center 26%;}
+  .cuba-hero .page-hero-ov{background:linear-gradient(to top,rgba(13,15,17,.96)0%,rgba(13,15,17,.80)26%,rgba(13,15,17,.30)55%,rgba(13,15,17,.16)100%);}
+}
 </style>
 </head>
 <body>
@@ -108,7 +141,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()" class="active">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>Úneted States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()" data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()" data-en>Projects</a></div>
 
 <!-- HERO -->
-<div class="page-hero" style="height:70vh;"><img fetchpriority="high" src="assets/img/cuba/web/hero.jpg" alt="Cuba"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Cuba</div><div class="ey" data-en>Mission · Cuba</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>Reino en Acción en Cuba</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>Kingdom in Action in Cuba</h1></div></div>
+<div class="page-hero cuba-hero" style="height:76vh;"><img fetchpriority="high" src="assets/img/cuba/web/hero-mujer.jpg" alt="Cuba" class="kb-zoom"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Cuba</div><div class="ey" data-en>Mission · Cuba</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>Reino en Acción en Cuba</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>Kingdom in Action in Cuba</h1></div></div>
 
 <div class="cue"><span data-es>Desliza</span><span data-en>Keep scrolling</span><i></i></div>
 
