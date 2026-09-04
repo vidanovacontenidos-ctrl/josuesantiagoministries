@@ -148,6 +148,73 @@
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent-lt);outline-offset:3px;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important;}.rev,.rev-l,.rev-r,.stag>*{opacity:1!important;transform:none!important;}}
 
+
+/* ================= PROYECTOS EN LA HOME ================= */
+.hp{--pm:#17788A;--pm-d:#0E2A47;--sh:#E9A825;--sh-d:#0B2545;
+  --ink:#1B2B3A;--soft:#5A6B7A;--paper:#FBF9F5;--line:#E3DDD3;
+  background:var(--paper);color:var(--ink);position:relative;overflow:hidden;}
+.hp::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 46% at 8% 0%,rgba(23,120,138,.08),transparent 60%),
+             radial-gradient(56% 44% at 94% 60%,rgba(233,168,37,.11),transparent 62%);}
+.hp-in{position:relative;z-index:1;max-width:1240px;margin:0 auto;
+  padding:clamp(64px,9vw,110px) clamp(20px,5vw,60px);}
+.hp-head{text-align:center;max-width:62ch;margin:0 auto;}
+.hp-ey{display:flex;align-items:center;justify-content:center;gap:12px;font-size:10px;font-weight:700;
+  letter-spacing:.4em;text-transform:uppercase;color:var(--pm);margin-bottom:16px;}
+.hp-ey::before,.hp-ey::after{content:'';width:30px;height:1px;background:currentColor;}
+.hp-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800;
+  text-transform:uppercase;line-height:1.05;color:var(--ink);}
+.hp-lead{font-size:clamp(.98rem,1.6vw,1.1rem);line-height:1.85;color:var(--soft);margin-top:16px;}
+/* dos tarjetas */
+.hp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(36px,5vw,56px);}
+.hp-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  display:flex;flex-direction:column;text-decoration:none;
+  box-shadow:0 1px 2px rgba(27,43,58,.04),0 14px 40px -22px rgba(27,43,58,.20);
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .45s;}
+.hp-card:hover{transform:translateY(-5px);border-color:var(--c);
+  box-shadow:0 1px 2px rgba(27,43,58,.05),0 30px 66px -26px rgba(27,43,58,.30);}
+.hp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--c);z-index:3;}
+.hp-photo{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line);}
+.hp-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease),filter .6s;}
+.hp-card:hover .hp-photo img{transform:scale(1.06);}
+.hp-photo::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,26,40,.62),transparent 58%);}
+.hp-mark{position:absolute;left:22px;bottom:-30px;z-index:2;width:68px;height:68px;border-radius:50%;
+  background:#fff;border:1px solid var(--c);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 26px -12px rgba(27,43,58,.4);transition:transform .55s var(--ease);}
+.hp-card:hover .hp-mark{transform:scale(1.06) rotate(-3deg);}
+.hp-mark img{width:78%;height:auto;object-fit:contain;}
+.hp-mark svg{width:62%;height:62%;}
+.hp-body{padding:46px 26px 26px;display:flex;flex-direction:column;flex:1;}
+.hp-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;
+  text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--d);}
+.hp-kick{font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--c);margin-top:8px;}
+.hp-d{font-size:14.5px;line-height:1.78;color:var(--soft);margin-top:14px;flex:1;}
+.hp-stat{display:flex;align-items:baseline;gap:10px;margin-top:18px;padding-top:16px;
+  border-top:1px solid var(--line);}
+.hp-stat b{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:800;color:var(--c);line-height:1;}
+.hp-stat span{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);line-height:1.5;}
+.hp-go{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-size:10.5px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--d);transition:gap .35s,color .35s;}
+.hp-card:hover .hp-go{gap:15px;color:var(--c);}
+.hp-go svg{width:13px;height:13px;fill:currentColor;}
+/* pie de la seccion */
+.hp-foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;
+  margin-top:clamp(30px,4vw,44px);}
+.btn-hp{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:16px 30px;border-radius:3px;background:var(--pm-d);color:#fff;border:1px solid var(--pm-d);
+  transition:background .35s,color .35s,transform .35s var(--ease);}
+.btn-hp:hover{background:transparent;color:var(--pm-d);transform:translateY(-2px);}
+.btn-hp--pay{background:var(--accent);border-color:var(--accent);}
+.btn-hp--pay:hover{background:var(--accent-dk);border-color:var(--accent-dk);color:#fff;}
+/* entrada */
+.hp-card{opacity:0;transform:translateY(30px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease),box-shadow .55s,border-color .45s;}
+.hp-grid.on .hp-card{opacity:1;transform:none;}
+.hp-grid.on .hp-card:nth-child(2){transition-delay:.14s;}
+@media(max-width:860px){.hp-grid{grid-template-columns:1fr;}}
+@media(prefers-reduced-motion:reduce){.hp-card{opacity:1!important;transform:none!important;}}
+
 </style>
 </head>
 <body>
@@ -200,6 +267,67 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <!-- FULLBLEED parallax -->
 <div class="fb fb-parallax rev" style="background-image:url('assets/img/argentina/web/fb-delviso.jpg');"><div class="fb-ov"></div><div class="fb-cnt"><div class="fb-txt"><div class="ey" data-es>El Fuego en las Naciones</div><div class="ey" data-en>The Fire in the Nations</div><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-es>Lo Que Está Pasando</h2><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-en>What's Happening</h2><span class="rule"></span><p data-es>Argentina, Cuba y Estados Unidos vivieron noches de avivamiento que transformaron comunidades enteras.</p><p data-en>Argentina, Cuba and the Úneted States witnessed revival nights that transformed entire communities.</p></div></div></div>
 
+
+
+<!-- PROYECTOS — resumen en la home -->
+<div class="hp">
+ <div class="hp-in">
+  <div class="hp-head rev">
+    <div class="hp-ey" data-es>Nuestros Proyectos</div><div class="hp-ey" data-en>Our Projects</div>
+    <h2 class="hp-h" data-es>Alimento donde hay hambre.<br>Luz donde hay oscuridad.</h2>
+    <h2 class="hp-h" data-en>Food where there is hunger.<br>Light where there is darkness.</h2>
+    <p class="hp-lead" data-es>Dos iniciativas que llevan el Reino más allá del púlpito. Las dos nacen del mismo corazón y se sostienen con la misma generosidad.</p>
+    <p class="hp-lead" data-en>Two initiatives that carry the Kingdom beyond the pulpit. Both are born from the same heart and sustained by the same generosity.</p>
+  </div>
+
+  <div class="hp-grid rev d1" id="hpGrid">
+    <a href="pool-of-mercy.html" class="hp-card" style="--c:#17788A;--d:#0E2A47;">
+      <div class="hp-photo">
+        <img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/abuela.jpg" alt="Entrega de alimentos en Cuba">
+        <div class="hp-mark"><svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 6.5s16 18.4 16 28.6A16 16 0 0 1 16 35.1C16 24.9 32 6.5 32 6.5z" fill="none" stroke="#0E2A47" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M18.6 34.6c4.4-3.2 8.8-3.2 13.2 0s8.8 3.2 13.2 0" fill="none" stroke="#17788A" stroke-width="3" stroke-linecap="round"/>
+            <path d="M20.4 42.6c3.9-2.8 7.8-2.8 11.7 0s7.8 2.8 11.7 0" fill="none" stroke="#2FA0B4" stroke-width="2.8" stroke-linecap="round"/>
+          </svg></div>
+      </div>
+      <div class="hp-body">
+        <div class="hp-name">Pool of Mercy</div>
+        <div class="hp-kick" data-es>Ayuda humanitaria · Ayuda en desastres</div>
+        <div class="hp-kick" data-en>Humanitarian aid · Disaster relief</div>
+        <div class="hp-d" data-es>Contenedores de alimentos, medicamentos y suministros que salen de una iglesia y terminan en la mesa de una familia.</div>
+        <div class="hp-d" data-en>Containers of food, medicine and supplies that leave a church and end up on a family's table.</div>
+        <div class="hp-stat"><b>20.000</b><span data-es>personas alimentadas<br>cada mes</span><span data-en>people fed<br>each month</span></div>
+        <div class="hp-go" data-es>Ver el proyecto<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
+        <div class="hp-go" data-en>See the project<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
+      </div>
+    </a>
+
+    <a href="solar-hope.html" class="hp-card" style="--c:#E9A825;--d:#0B2545;">
+      <div class="hp-photo">
+        <img loading="lazy" decoding="async" src="assets/img/iniciativas/shn/paneles.jpg" alt="Paneles solares en una iglesia">
+        <div class="hp-mark"><img src="assets/img/logo/shn-mark.png" alt="Solar Hope Network" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="hp-body">
+        <div class="hp-name">Solar Hope Network</div>
+        <div class="hp-kick" data-es>Faros de esperanza</div>
+        <div class="hp-kick" data-en>Lighthouses of hope</div>
+        <div class="hp-d" data-es>Cien iglesias equipadas con energía solar para sostener a sus comunidades cuando todo lo demás se apaga.</div>
+        <div class="hp-d" data-en>One hundred churches equipped with solar power to sustain their communities when everything else goes dark.</div>
+        <div class="hp-stat"><b>10.000</b><span data-es>familias<br>impactadas</span><span data-en>families<br>impacted</span></div>
+        <div class="hp-go" data-es>Ver el proyecto<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
+        <div class="hp-go" data-en>See the project<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="hp-foot rev d2">
+    <a href="proyectos.html" class="btn-hp" data-es>Ver todos los proyectos</a>
+    <a href="proyectos.html" class="btn-hp" data-en>See all projects</a>
+    <a href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" class="btn-hp btn-hp--pay" data-es>Donar ahora</a>
+    <a href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" class="btn-hp btn-hp--pay" data-en>Give now</a>
+  </div>
+ </div>
+</div>
 
 <!-- NUESTRO MINISTERIO — YouTube -->
 <div style="background:var(--dark);"><div class="sec">
@@ -300,7 +428,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 </div></div>
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
 
-<script>window.KIAF_INVITE={"id": "home", "img": "assets/img/iniciativas/pom/entrega.jpg", "badgeEs": "Cuba · Entrega de alimentos", "badgeEn": "Cuba · Food delivery", "eyEs": "Kingdom in Action", "eyEn": "Kingdom in Action", "titleEs": "Tu generosidad<br>llega más lejos de lo que crees", "titleEn": "Your generosity<br>reaches further than you think", "textEs": "Alimentos donde hay hambre, luz donde hay oscuridad, acompañamiento donde hay soledad. Operamos en tres naciones y el 100% de lo que recibimos va al campo misionero.", "textEn": "Food where there is hunger, light where there is darkness, support where there is loneliness. We operate in three nations and 100% of what we receive goes to the mission field.", "actions": [{"action": "donate", "es": "Donar", "en": "Give"}, {"href": "proyectos.html", "es": "Ver los proyectos", "en": "See the projects", "ghost": true}]};</script>
+<script>window.KIAF_INVITE={"id": "home-proyectos", "img": "assets/img/iniciativas/pom/sacos.jpg", "badgeEs": "Cuba · Descarga de arroz", "badgeEn": "Cuba · Rice unloading", "eyEs": "Nuestros proyectos", "eyEn": "Our projects", "titleEs": "Detrás de cada saco<br>hay una familia esperando", "titleEn": "Behind every sack<br>there is a family waiting", "textEs": "Pool of Mercy alimenta a 20.000 personas cada mes. Solar Hope Network está encendiendo 100 iglesias para que sostengan a sus comunidades cuando todo lo demás se apaga. Conoce cómo funcionan y dónde entra tu aporte.", "textEn": "Pool of Mercy feeds 20,000 people every month. Solar Hope Network is lighting 100 churches so they can sustain their communities when everything else goes dark. See how they work and where your giving fits in.", "actions": [{"href": "proyectos.html", "es": "Ver los proyectos", "en": "See the projects"}, {"href": "https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW", "blank": true, "es": "Donar ahora", "en": "Give now", "ghost": true}]};</script>
 <script src="shared.js?v=3"></script>
 <script>
 /* parche de inmersion: progreso, parallax compatible con iOS, reveals */
@@ -355,6 +483,17 @@ document.querySelectorAll('.yt-card').forEach(function(c){
     c.appendChild(f); c.classList.add('playing');
   });
 });
+</script>
+<script>
+/* las dos tarjetas de proyectos entran escalonadas */
+(function(){
+  var g=document.getElementById('hpGrid'); if(!g) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ g.classList.add('on'); return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.18,rootMargin:'0px 0px -8% 0px'});
+  io.observe(g);
+})();
 </script>
 </body>
 </html>
