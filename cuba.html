@@ -52,27 +52,63 @@
 .min-card{border-radius:16px;}.pillar{border-radius:16px;}.dream-card{border-radius:16px;}.cta-card{border-radius:16px;}
 @media(max-width:1024px){.hv-grid{grid-template-columns:1fr;}.hv-tabs{flex-direction:column;}}
 @media(max-width:768px){.hv-photo img{min-height:260px;}.hv-tab{padding:14px 18px;}.hv-tab-yr{font-size:1.5rem;}}
+
+/* ===== CUBA v2 — inmersion ===== */
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:200;background:linear-gradient(90deg,var(--accent-dk),var(--accent),var(--accent-lt));box-shadow:0 0 12px rgba(204,34,34,.6);}
+.rev-l{opacity:0;transform:translateX(-40px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);}
+.rev-l.on{opacity:1;transform:none;}
+.rev-r{opacity:0;transform:translateX(40px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);}
+.rev-r.on{opacity:1;transform:none;}
+/* revelado escalonado de lineas */
+.stag>*{opacity:0;transform:translateY(20px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+.stag.on>*{opacity:1;transform:none;}
+.stag.on>*:nth-child(1){transition-delay:.05s}.stag.on>*:nth-child(2){transition-delay:.13s}
+.stag.on>*:nth-child(3){transition-delay:.21s}.stag.on>*:nth-child(4){transition-delay:.29s}
+.stag.on>*:nth-child(5){transition-delay:.37s}.stag.on>*:nth-child(6){transition-delay:.45s}
+.stag.on>*:nth-child(7){transition-delay:.53s}.stag.on>*:nth-child(8){transition-delay:.61s}
+/* scroll cue */
+.cue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:9px;}
+.cue span{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(248,244,237,.5);}
+.cue i{display:block;width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);animation:cueA 2.1s var(--ease) infinite;}
+@keyframes cueA{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* cifras de impacto con subrayado que se dibuja */
+.impact-card,.impact-total,.dream-card{position:relative;overflow:hidden;}
+.impact-card::after,.dream-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease);}
+.impact-card.lit::after,.dream-card.lit::after{transform:scaleX(1);}
+/* borde luminoso que sigue el cursor */
+.min-card,.impact-card,.dream-card{position:relative;}
+.min-card::before,.impact-card::before,.dream-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .45s;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(204,34,34,.10),transparent 42%);}
+.min-card:hover::before,.impact-card:hover::before,.dream-card:hover::before{opacity:1;}
+/* grano en bandas */
+.fb-parallax::before{content:'';position:absolute;inset:0;z-index:1;opacity:.05;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
+.marquee:hover .marquee-inner{animation-play-state:paused;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-offset:3px;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;}.rev,.rev-l,.rev-r,.stag>*{opacity:1!important;transform:none!important;}}
+
 </style>
 </head>
 <body>
+<div id="prog"></div>
 
 <!-- NAV -->
 <nav class="nav" id="nav"><a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Misión Cuba</span><span data-en>Cuba Mission</span></a><ul class="nav-links"><li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li><li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html" class="active">Cuba</a></li><li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li><li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li></ul><div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div></nav>
 <div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()" class="active">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a></div>
 
 <!-- HERO -->
-<div class="page-hero" style="height:70vh;"><img src="assets/img/cuba/hero/hero.jpg" alt="Cuba"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Cuba</div><div class="ey" data-en>Mission · Cuba</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>Amor en Acción en Cuba</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>Love in Action in Cuba</h1></div></div>
+<div class="page-hero" style="height:70vh;"><img src="assets/img/cuba/web/hero.jpg" alt="Cuba"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Cuba</div><div class="ey" data-en>Mission · Cuba</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>Amor en Acción en Cuba</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>Love in Action in Cuba</h1></div></div>
+
+<div class="cue"><span data-es>Seguí bajando</span><span data-en>Keep scrolling</span><i></i></div>
 
 <!-- MARQUEE -->
 <div class="marquee marquee-accent"><div class="marquee-inner"><span>SERVIMOS CON EL AMOR DE JESÚS</span><span class="sep">✦</span><span>16,000 COMIDAS CADA MES</span><span class="sep">✦</span><span>300+ IGLESIAS EN CUBA</span><span class="sep">✦</span><span>PRAY · COME · GIVE</span><span class="sep">✦</span><span>SERVIMOS CON EL AMOR DE JESÚS</span><span class="sep">✦</span><span>16,000 COMIDAS CADA MES</span><span class="sep">✦</span><span>300+ IGLESIAS EN CUBA</span><span class="sep">✦</span><span>PRAY · COME · GIVE</span><span class="sep">✦</span></div></div>
 
 <!-- QUIÉNES SOMOS -->
-<div style="background:var(--dark);"><div class="split rev"><div class="split-img photo-hover" style="border-radius:16px;"><img src="assets/img/cuba/split/quienes.jpg" alt="Cuba" style="border-radius:16px;"></div><div class="split-text"><div class="ey" data-es>Kingdom in Action Family</div><div class="ey" data-en>Kingdom in Action Family</div><h2 class="stitle" data-es>Quiénes Somos</h2><h2 class="stitle" data-en>Who We Are</h2><span class="rule"></span><p data-es>Reino en Acción es un ministerio con una asignación: establecer el Reino de Dios. Somos el Cuerpo de Cristo funcionando a través de congregaciones y ministerios unidos para expresar a Cristo como el centro.</p><p data-en>Kingdom in Action is a ministry with one assignment: to establish the Kingdom of God. We are the Body of Christ functioning through congregations and ministries united to express Christ as the center.</p></div></div></div>
+<div style="background:var(--dark);"><div class="split rev"><div class="split-img photo-hover" style="border-radius:16px;"><img src="assets/img/cuba/web/quienes.jpg" alt="Cuba" style="border-radius:16px;"></div><div class="split-text stag"><div class="ey" data-es>Kingdom in Action Family</div><div class="ey" data-en>Kingdom in Action Family</div><h2 class="stitle" data-es>Quiénes Somos</h2><h2 class="stitle" data-en>Who We Are</h2><span class="rule"></span><p data-es>Reino en Acción es un ministerio con una asignación: establecer el Reino de Dios. Somos el Cuerpo de Cristo funcionando a través de congregaciones y ministerios unidos para expresar a Cristo como el centro.</p><p data-en>Kingdom in Action is a ministry with one assignment: to establish the Kingdom of God. We are the Body of Christ functioning through congregations and ministries united to express Christ as the center.</p></div></div></div>
 
 <!-- LO QUE HACEMOS — cream -->
 <div class="sec-warm"><div class="sec"><div class="rev"><div class="ey" data-es>Servimos con el Amor de Jesús</div><div class="ey" data-en>We Serve With the Love of Jesus</div><h2 class="stitle" data-es>Lo Que Hacemos en Cuba</h2><h2 class="stitle" data-en>What We Do in Cuba</h2><p class="slead" data-es>Hacer lo que Jesús hizo, cuidar a la gente que Jesús cuidó, y hacer discípulos.</p><p class="slead" data-en>Do what Jesus did, care for the people Jesus cared for, and make disciples.</p></div>
 <div class="min-grid rev d1">
-<div class="min-card"><div class="min-ico"><svg viewBox="0 0 24 24"><path d="M6 2h12v2H6zM4 6v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6H4zm4 12H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V8h2v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V8h4v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2z"/></svg></div><div class="min-t" data-es>Apoyo a Pastores</div><div class="min-t" data-en>Pastors Support</div><div class="min-d" data-es>Apoyamos a pastores que sirven fielmente sin salario ni ingreso seguro.</div><div class="min-d" data-en>We support pastors faithfully serving with no salary or income.</div><div class="min-dream" data-es><strong>Sueño 2026:</strong> fortalecer a 100 pastores.</div><div class="min-dream" data-en><strong>2026 dream:</strong> strengthen 100 pastors.</div></div>
+<div class="min-card"><div class="min-ico"><svg viewBox="0 0 24 24"><path d="M6 2h12v2H6zM4 6v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6H4zm4 12H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V8h2v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V8h4v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2z"/></svg></div><div class="min-t" data-es>Junto a los Pastores</div><div class="min-t" data-en>Alongside Pastors</div><div class="min-d" data-es>Acompañamos a pastores en su llamado: formación, cobertura espiritual y todo lo que necesiten para seguir sirviendo a su comunidad.</div><div class="min-d" data-en>We walk alongside pastors in their calling: training, spiritual covering and whatever they need to keep serving their community.</div><div class="min-dream" data-es><strong>Sueño 2026:</strong> fortalecer a 100 pastores.</div><div class="min-dream" data-en><strong>2026 dream:</strong> strengthen 100 pastors.</div></div>
 <div class="min-card"><div class="min-ico"><svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg></div><div class="min-t" data-es>Iglesias y Construcción</div><div class="min-t" data-en>Churches & Construction</div><div class="min-d" data-es>Lugares de adoración, comedores y espacios comunitarios dignos.</div><div class="min-d" data-en>Places of worship, dining facilities and dignified community spaces.</div></div>
 <div class="min-card"><div class="min-ico"><svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 000 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg></div><div class="min-t" data-es>Centros de Alimentos</div><div class="min-t" data-en>Feeding Centers</div><div class="min-d" data-es>Alimentos, apoyo a mujeres vulnerables, niños, familias y alcance hospitalario.</div><div class="min-d" data-en>Food, support for vulnerable women, children, families and hospital outreach.</div><div class="min-dream" data-es><strong>Sueño:</strong> 44,000 libras de arroz.</div><div class="min-dream" data-en><strong>Dream:</strong> 44,000 lbs of rice.</div></div>
 <div class="min-card"><div class="min-ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="min-t" data-es>Orfanatos y Granja</div><div class="min-t" data-en>Orphanages & Farm</div><div class="min-d" data-es>Ningún niño olvidado. Nuestra granja produce frutas y vegetales.</div><div class="min-d" data-en>No child forgotten. Our farm produces fruit and vegetables.</div></div>
@@ -81,7 +117,7 @@
 </div></div></div>
 
 <!-- FULLBLEED COMPASIÓN — parallax -->
-<div class="fb fb-parallax rev" style="background-image:url('assets/img/cuba/fullbleed/compasion.jpg');"><div class="fb-ov"></div><div class="fb-cnt"><div class="fb-txt"><div class="ey" data-es>Compasión · Cuba</div><div class="ey" data-en>Compassion · Cuba</div><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-es>Cada Comida. Cada Vida. Cada Alma.</h2><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-en>Every Meal. Every Life. Every Soul.</h2><span class="rule"></span><p data-es>Dios está usando este ministerio para llevar esperanza, alimento y el amor de Cristo a miles de personas en toda Cuba.</p><p data-en>God is using this ministry to bring hope, food, and the love of Christ to thousands across Cuba.</p></div></div></div>
+<div class="fb fb-parallax rev" style="background-image:url('assets/img/cuba/web/fb-compasion.jpg');"><div class="fb-ov"></div><div class="fb-cnt"><div class="fb-txt"><div class="ey" data-es>Compasión · Cuba</div><div class="ey" data-en>Compassion · Cuba</div><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-es>Cada Comida. Cada Vida. Cada Alma.</h2><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-en>Every Meal. Every Life. Every Soul.</h2><span class="rule"></span><p data-es>Dios está usando este ministerio para llevar esperanza, alimento y el amor de Cristo a miles de personas en toda Cuba.</p><p data-en>God is using this ministry to bring hope, food, and the love of Christ to thousands across Cuba.</p></div></div></div>
 
 <!-- IMPACTO — sand -->
 <div class="sec-warm-alt"><div class="sec"><div class="rev"><div class="ey" data-es>El Impacto Cada Mes</div><div class="ey" data-en>Monthly Impact</div><h2 class="stitle" data-es>Alimentamos Esperanza</h2><h2 class="stitle" data-en>We Feed Hope</h2></div>
@@ -94,10 +130,10 @@
 </div></div></div>
 
 <!-- ADULTOS MAYORES -->
-<div class="elder-section"><div class="elder-bg"><img src="assets/img/cuba/elder/ancianos.jpg" alt="Ancianos"></div><div class="elder-cnt rev"><div class="elder-text"><div class="ey" style="justify-content:center;" data-es>Nuestros Ancianos</div><div class="ey" style="justify-content:center;" data-en>Our Elderly</div><h2 class="stitle" style="text-align:center;" data-es>Honrar a Quienes Tanto Han Dado</h2><h2 class="stitle" style="text-align:center;" data-en>Honoring Those Who Gave So Much</h2><span class="rule" style="margin:18px auto;"></span><p data-es>Hay una generación que trabajó, sacrificó y entregó sus mejores años para construir el mundo que hoy disfrutamos.</p><p data-en>There is a generation that worked, sacrificed and gave their best years to build the world we enjoy today.</p><p data-es>Nuestros adultos mayores merecen más que un lugar donde vivir; merecen <span class="highlight">amor, dignidad, cuidado</span> y la certeza de que no han sido olvidados.</p><p data-en>Our elderly deserve more than a place to live; they deserve <span class="highlight">love, dignity, care</span> and the certainty that they have not been forgotten.</p><p data-es>Creemos que cuidar de nuestros ancianos no es solo una responsabilidad, sino <span class="highlight">un privilegio</span>.</p><p data-en>We believe that caring for our elderly is not just a responsibility, but <span class="highlight">a privilege</span>.</p></div></div></div>
+<div class="elder-section"><div class="elder-bg"><img src="assets/img/cuba/web/ancianos.jpg" alt="Ancianos"></div><div class="elder-cnt rev"><div class="elder-text"><div class="ey" style="justify-content:center;" data-es>Nuestros Ancianos</div><div class="ey" style="justify-content:center;" data-en>Our Elderly</div><h2 class="stitle" style="text-align:center;" data-es>Honrar a Quienes Tanto Han Dado</h2><h2 class="stitle" style="text-align:center;" data-en>Honoring Those Who Gave So Much</h2><span class="rule" style="margin:18px auto;"></span><p data-es>Hay una generación que trabajó, sacrificó y entregó sus mejores años para construir el mundo que hoy disfrutamos.</p><p data-en>There is a generation that worked, sacrificed and gave their best years to build the world we enjoy today.</p><p data-es>Nuestros adultos mayores merecen más que un lugar donde vivir; merecen <span class="highlight">amor, dignidad, cuidado</span> y la certeza de que no han sido olvidados.</p><p data-en>Our elderly deserve more than a place to live; they deserve <span class="highlight">love, dignity, care</span> and the certainty that they have not been forgotten.</p><p data-es>Creemos que cuidar de nuestros ancianos no es solo una responsabilidad, sino <span class="highlight">un privilegio</span>.</p><p data-en>We believe that caring for our elderly is not just a responsibility, but <span class="highlight">a privilege</span>.</p></div></div></div>
 
 <!-- NUESTRO SUEÑO -->
-<div style="background:var(--dark);"><div class="sec"><div class="rev"><div class="ey" data-es>El Sueño es Más Grande</div><div class="ey" data-en>The Dream is Bigger</div><h2 class="stitle" data-es>Nuestra Visión para Cuba</h2><h2 class="stitle" data-en>Our Vision for Cuba</h2></div><div class="dream-grid rev d1"><div class="dream-card"><div class="dream-big">300+</div><div class="dream-t" data-es>Iglesias en toda Cuba</div><div class="dream-t" data-en>Churches across Cuba</div><div class="dream-d" data-es>Solo 35 cuentan con recursos. Nuestro deseo es equipar a cada iglesia.</div><div class="dream-d" data-en>Only 35 have resources. Our desire is to equip every church.</div></div><div class="dream-card"><div class="dream-big">$20K</div><div class="dream-t" data-es>Necesidad Mensual</div><div class="dream-t" data-en>Monthly Need</div><div class="dream-d" data-es>Cada dólar alimenta familias, sostiene pastores y transforma comunidades.</div><div class="dream-d" data-en>Every dollar feeds families, sustains pastors and transforms communities.</div></div></div></div></div>
+<div style="background:var(--dark);"><div class="sec"><div class="rev"><div class="ey" data-es>El Sueño es Más Grande</div><div class="ey" data-en>The Dream is Bigger</div><h2 class="stitle" data-es>Nuestra Visión para Cuba</h2><h2 class="stitle" data-en>Our Vision for Cuba</h2></div><div class="dream-grid rev d1"><div class="dream-card"><div class="dream-big">300+</div><div class="dream-t" data-es>Iglesias en toda Cuba</div><div class="dream-t" data-en>Churches across Cuba</div><div class="dream-d" data-es>Hoy acompañamos a 35. Queremos caminar junto a todas.</div><div class="dream-d" data-en>Today we walk with 35. We want to walk with them all.</div></div><div class="dream-card"><div class="dream-big">100</div><div class="dream-t" data-es>Pastores Acompañados</div><div class="dream-t" data-en>Pastors Walking With Us</div><div class="dream-d" data-es>Formación, cobertura y una familia detrás de cada líder que sostiene a su comunidad.</div><div class="dream-d" data-en>Training, covering and a family behind every leader who sustains their community.</div></div></div></div></div>
 
 <!-- HISTORIA VIVA — interactive redesign -->
 <div style="background:var(--night);"><div class="sec"><div class="rev"><div class="ey" data-es>Historia de Impacto</div><div class="ey" data-en>Impact Story</div><h2 class="stitle" data-es>Historia Viva</h2><h2 class="stitle" data-en>Living History</h2></div>
@@ -109,7 +145,7 @@
 <!-- 2024 Panel -->
 <div class="hv-panel on" id="hv-2024">
   <div class="hv-grid">
-    <div class="hv-photo photo-hover"><img src="assets/img/cuba/historia/2024.jpg" alt="2024"><div class="hv-photo-bar"><div class="hv-photo-yr">2024</div><div class="hv-photo-sub" data-es>Cuba · Un año de fe</div><div class="hv-photo-sub" data-en>Cuba · A year of faith</div></div></div>
+    <div class="hv-photo photo-hover"><img src="assets/img/cuba/web/hist-2024.jpg" alt="2024"><div class="hv-photo-bar"><div class="hv-photo-yr">2024</div><div class="hv-photo-sub" data-es>Cuba · Un año de fe</div><div class="hv-photo-sub" data-en>Cuba · A year of faith</div></div></div>
     <div class="hv-right">
       <div class="hv-counters">
         <div class="hv-counter"><div class="hv-counter-n">80</div><div class="hv-counter-l" data-es>Pastores</div><div class="hv-counter-l" data-en>Pastors</div></div>
@@ -130,7 +166,7 @@
 <!-- 2025 Panel -->
 <div class="hv-panel" id="hv-2025">
   <div class="hv-grid">
-    <div class="hv-photo photo-hover"><img src="assets/img/cuba/historia/2025.jpg" alt="2025"><div class="hv-photo-bar"><div class="hv-photo-yr">2025</div><div class="hv-photo-sub" data-es>Cuba · Resiliencia</div><div class="hv-photo-sub" data-en>Cuba · Resilience</div></div></div>
+    <div class="hv-photo photo-hover"><img src="assets/img/cuba/web/hist-2025.jpg" alt="2025"><div class="hv-photo-bar"><div class="hv-photo-yr">2025</div><div class="hv-photo-sub" data-es>Cuba · Resiliencia</div><div class="hv-photo-sub" data-en>Cuba · Resilience</div></div></div>
     <div class="hv-right">
       <div class="hv-counters">
         <div class="hv-counter"><div class="hv-counter-n">50K+</div><div class="hv-counter-l" data-es>Alimentados</div><div class="hv-counter-l" data-en>Fed</div></div>
@@ -169,6 +205,47 @@
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
 
 <script src="shared.js"></script>
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var prog=document.getElementById('prog');
+  var bands=[].slice.call(document.querySelectorAll('.fb-parallax'));
+  var tick=false;
+  function frame(){
+    var st=pageYOffset,H=document.documentElement.scrollHeight-innerHeight;
+    if(prog)prog.style.width=(H>0?(st/H)*100:0)+'%';
+    if(!rm)bands.forEach(function(b){
+      var r=b.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight){
+        var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+        b.style.backgroundPosition='center calc(50% + '+(p*-45).toFixed(1)+'px)';
+      }});
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var t=e.target; t.classList.add('on');
+      [].slice.call(t.querySelectorAll('.impact-card,.dream-card')).forEach(function(c,x){
+        setTimeout(function(){c.classList.add('lit');},x*130);
+      });
+      io.unobserve(t);
+    });
+  },{threshold:.14,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.rev,.rev-l,.rev-r,.stag').forEach(function(el){io.observe(el);});
+
+  document.querySelectorAll('.min-card,.impact-card,.dream-card').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(ev.clientX-r.left)+'px');
+      c.style.setProperty('--my',(ev.clientY-r.top)+'px');
+    });
+  });
+  frame();
+})();
+</script>
 <script>
 function hvSwitch(yr){
   document.querySelectorAll('.hv-tab').forEach(function(t,i){t.classList.toggle('on',i===(yr==='2024'?0:1));});
