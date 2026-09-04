@@ -255,15 +255,25 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   letter-spacing:.2em;text-transform:uppercase;color:var(--text-dk);
   border:1px solid var(--sand-border);background:#fff;border-radius:40px;padding:9px 16px;}
 .ph-hero-tag i{width:8px;height:8px;border-radius:50%;flex-shrink:0;font-style:normal;}
+.ph-hero-tag svg{width:20px;height:20px;flex-shrink:0;overflow:visible;}
+.ph-hero-tag{padding:8px 18px 8px 12px;transition:border-color .4s,transform .4s var(--ease),box-shadow .4s;}
+.ph-hero-tag:hover{transform:translateY(-2px);box-shadow:0 10px 26px -12px rgba(44,42,37,.35);}
+.ph-hero-tag.pom:hover{border-color:#17788A;}
+.ph-hero-tag.shn:hover{border-color:#E9A825;}
 .ph-hero-tag.pom i{background:#17788A;}
 .ph-hero-tag.shn i{background:#E9A825;}
 /* triptico vertical: respeta el 3:4 nativo de las fotos */
 .ph-hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:var(--sand-border);}
 .ph-hero-grid figure{position:relative;overflow:hidden;background:var(--sand);}
-.ph-hero-grid img{width:100%;height:100%;object-fit:cover;
+.ph-hero-grid img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;
   filter:grayscale(72%) contrast(1.03) brightness(1.02);
-  transition:filter .8s var(--ease),transform 2.4s var(--ease);}
-.ph-hero-grid figure:hover img{filter:grayscale(0%) contrast(1.02) brightness(1.04);transform:scale(1.04);}
+  transition:filter .8s var(--ease);will-change:transform;}
+.ph-hero-grid figure:hover img{filter:grayscale(0%) contrast(1.02) brightness(1.06) saturate(1.05);}
+/* el zoom del hover vive en la figura, para no pelear con el parallax del <img> */
+.ph-hero-grid figure{transition:flex .5s var(--ease);}
+.ph-hero-grid figure::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:rgba(23,120,138,0);transition:background .5s;}
+.ph-hero-grid figure:hover::before{background:rgba(23,120,138,.10);}
 .ph-hero-grid figure::after{content:'';position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(to top,rgba(44,42,37,.30),transparent 40%);}
 .ph-hero-grid figure:nth-child(2){transform:translateY(-2.5%);}
@@ -373,6 +383,139 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 /* en táctil no hay hover: siempre visibles */
 @media(hover:none){.ph-hero-grid figcaption{opacity:1;transform:none;}}
 
+
+/* ================== DINAMISMO / INMERSIÓN ================== */
+/* --- 1. Entrada del hero: escalonada, con la tipografía revelándose tras una máscara --- */
+.ph-hero-txt>*{opacity:0;transform:translateY(22px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.ph-hero.lit .ph-hero-txt>*{opacity:1;transform:none;}
+.ph-hero.lit .ph-hero-ey{transition-delay:.15s}
+.ph-hero.lit .ph-hero-h{transition-delay:.28s}
+.ph-hero.lit .ph-hero-p{transition-delay:.46s}
+.ph-hero.lit .ph-hero-tags{transition-delay:.60s}
+/* el título se descubre desde abajo, como una cortina */
+.ph-hero-h{overflow:hidden;}
+.ph-hero-h>span{display:block;transform:translateY(102%);
+  transition:transform 1.05s cubic-bezier(.16,.84,.32,1);}
+.ph-hero.lit .ph-hero-h>span{transform:none;transition-delay:.30s;}
+/* las fotos entran una a una con un barrido */
+.ph-hero-grid figure{clip-path:inset(0 0 100% 0);
+  transition:clip-path 1.15s cubic-bezier(.16,.84,.32,1);}
+.ph-hero.lit .ph-hero-grid figure{clip-path:inset(0 0 0 0);}
+.ph-hero.lit .ph-hero-grid figure:nth-child(1){transition-delay:.30s}
+.ph-hero.lit .ph-hero-grid figure:nth-child(2){transition-delay:.44s}
+.ph-hero.lit .ph-hero-grid figure:nth-child(3){transition-delay:.58s}
+.ph-hero.lit .ph-hero-grid figure:nth-child(4){transition-delay:.72s}
+/* cada columna se desplaza a distinta velocidad al scrollear */
+.ph-hero-grid figure img{will-change:transform;}
+
+/* --- 2. Indicador de scroll --- */
+.ph-cue{position:absolute;left:clamp(22px,5vw,66px);bottom:26px;z-index:4;
+  display:flex;align-items:center;gap:12px;opacity:0;transition:opacity .8s var(--ease) 1.1s;}
+.ph-hero.lit .ph-cue{opacity:1;}
+.ph-cue span{font-size:9px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--muted-dk);}
+.ph-cue i{display:block;width:46px;height:1px;background:linear-gradient(90deg,#17788A,transparent);
+  animation:phCue 2.2s var(--ease) infinite;transform-origin:left;}
+@keyframes phCue{0%{transform:scaleX(0);opacity:0}35%{transform:scaleX(1);opacity:1}
+  70%{transform:scaleX(1);opacity:1}100%{transform:scaleX(0) translateX(46px);opacity:0}}
+
+/* --- 3. Revelado granular: cada tarjeta entra por separado --- */
+.r-i{opacity:0;transform:translateY(26px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.on>.r-i,.r-i.on{opacity:1;transform:none;}
+.on .r-i:nth-child(1){transition-delay:.04s} .on .r-i:nth-child(2){transition-delay:.12s}
+.on .r-i:nth-child(3){transition-delay:.20s} .on .r-i:nth-child(4){transition-delay:.28s}
+.on .r-i:nth-child(5){transition-delay:.36s} .on .r-i:nth-child(6){transition-delay:.44s}
+
+/* --- 4. Títulos de sección con cortina --- */
+.ini-h,.ini-name{overflow:hidden;}
+.ini-h>span,.ini-name>span{display:block;transform:translateY(104%);
+  transition:transform 1s cubic-bezier(.16,.84,.32,1);}
+.on .ini-h>span,.on .ini-name>span,.ini-card.on .ini-name>span{transform:none;}
+
+/* --- 5. Resplandor que sigue al cursor --- */
+.ini-way,.ini-tier,.ini-phase,.ini-mv>div{position:relative;overflow:hidden;}
+.ini-way::before,.ini-tier::before,.ini-mv>div::before{content:'';position:absolute;inset:0;opacity:0;
+  pointer-events:none;transition:opacity .45s;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(23,120,138,.13),transparent 45%);}
+.ini-phase::before{content:'';position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(233,168,37,.18),transparent 45%);}
+.ini-way:hover::before,.ini-tier:hover::before,.ini-phase:hover::before,.ini-mv>div:hover::before{opacity:1;}
+.ini-phase{transition:transform .5s var(--ease);}
+.ini-phase:hover{transform:translateY(-4px);}
+
+/* --- 6. Las bandas fotográficas se abren al entrar --- */
+.ini-band{clip-path:inset(0 6% 0 6%);transition:clip-path 1.2s cubic-bezier(.16,.84,.32,1);}
+.ini-band.on{clip-path:inset(0 0 0 0);}
+.ini-band-cnt>*{opacity:0;transform:translateY(18px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.ini-band.on .ini-band-cnt>*{opacity:1;transform:none;}
+.ini-band.on .ini-band-cnt>*:nth-child(2){transition-delay:.12s}
+.ini-band.on .ini-band-cnt>*:nth-child(3){transition-delay:.20s}
+.ini-band.on .ini-band-cnt>*:nth-child(4){transition-delay:.28s}
+.ini-band.on .ini-band-cnt>*:nth-child(5){transition-delay:.36s}
+
+/* --- 7. La galería entra en cascada --- */
+.ini-gal figure{opacity:0;transform:translateY(30px) scale(.98);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.on .ini-gal figure{opacity:1;transform:none;}
+.on .ini-gal figure:nth-child(2){transition-delay:.14s}
+.on .ini-gal figure:nth-child(3){transition-delay:.28s}
+
+/* --- 8. La figura de la intro entra con barrido --- */
+.intro-fig-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.32,1) .1s;}
+.intro-fig.on .intro-fig-img{clip-path:inset(0 0 0 0);}
+.intro-fig-stat{opacity:0;transform:translateY(16px) translateX(10px);
+  transition:opacity .8s var(--ease) .7s,transform .8s var(--ease) .7s;}
+.intro-fig.on .intro-fig-stat{opacity:1;transform:none;}
+
+@media(prefers-reduced-motion:reduce){
+  .ph-hero-txt>*,.ph-hero-h>span,.ph-hero-grid figure,.r-i,.ini-h>span,.ini-name>span,
+  .ini-band,.ini-band-cnt>*,.ini-gal figure,.intro-fig-img,.intro-fig-stat,.ph-cue{
+    opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important;}
+}
+
+
+/* ===== ISOTIPO SOLAR HOPE NETWORK (logo original) ===== */
+.ini-mark img.shn-mark{width:74%;height:74%;object-fit:contain;
+  transition:transform .7s var(--ease),filter .5s;}
+.ini-mark:hover img.shn-mark{transform:scale(1.06) rotate(-2deg);}
+/* el halo late alrededor del logo, como una luz encendida */
+.ini-card .ini-mark{position:relative;overflow:visible;}
+@keyframes shnHalo{
+  0%,100%{box-shadow:0 0 0 0 rgba(233,168,37,.34),0 0 16px 0 rgba(233,168,37,.22);}
+  50%    {box-shadow:0 0 0 9px rgba(233,168,37,0),0 0 34px 4px rgba(233,168,37,.45);}
+}
+.ini-card.on .ini-mark:has(img.shn-mark){animation:shnHalo 4.6s var(--ease) infinite;}
+/* respaldo para navegadores sin :has() */
+.ini-card.on .ini-mark.is-shn{animation:shnHalo 4.6s var(--ease) infinite;}
+.ph-hero-tag.shn img{width:22px;height:22px;object-fit:contain;flex-shrink:0;}
+@media(prefers-reduced-motion:reduce){.ini-card.on .ini-mark:has(img.shn-mark),.ini-card.on .ini-mark.is-shn{animation:none;}}
+
+/* ===== ISOTIPO POOL OF MERCY ===== */
+.ini-mark .pom-mark{width:66%;height:66%;fill:none;}
+.pom-mark .pom-w1,.pom-mark .pom-w2{transition:transform .9s var(--ease);}
+.ini-mark:hover .pom-mark .pom-w1{transform:translateX(2px);}
+.ini-mark:hover .pom-mark .pom-w2{transform:translateX(-2px);}
+@media(prefers-reduced-motion:reduce){.pom-mark .pom-w1,.pom-mark .pom-w2{transition:none;}}
+
+
+/* enlace al proyecto completo dentro de cada tarjeta */
+.ini-more{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:30px;
+  padding-top:26px;border-top:1px solid var(--line);}
+.btn-ini-go{display:inline-flex;align-items:center;gap:11px;font-size:11px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;padding:16px 28px;border-radius:3px;
+  background:var(--deep,var(--pm-navy));color:#fff;border:1px solid var(--deep,var(--pm-navy));
+  transition:background .35s,color .35s,transform .35s var(--ease),gap .35s;}
+.btn-ini-go:hover{background:var(--bar,var(--pm-teal));border-color:var(--bar,var(--pm-teal));
+  transform:translateY(-2px);gap:16px;}
+.btn-ini-go svg{width:14px;height:14px;fill:currentColor;}
+.ini-dl{display:inline-flex;align-items:center;gap:9px;font-size:10.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+  border-bottom:1px solid transparent;padding:6px 0;transition:color .3s,border-color .3s;}
+.ini-dl:hover{color:var(--bar,var(--pm-teal));border-color:currentColor;}
+.ini-dl svg{width:13px;height:13px;fill:currentColor;}
+
 </style>
 </head>
 <body>
@@ -395,15 +538,21 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   <div class="ph-hero-txt">
     <div class="ph-hero-ey" data-es>Iniciativas · Kingdom in Action Family</div>
     <div class="ph-hero-ey" data-en>Initiatives · Kingdom in Action Family</div>
-    <h1 class="ph-hero-h" data-es>Proyectos</h1>
-    <h1 class="ph-hero-h" data-en>Projects</h1>
+    <h1 class="ph-hero-h" data-es><span>Proyectos</span></h1>
+    <h1 class="ph-hero-h" data-en><span>Projects</span></h1>
     <p class="ph-hero-p" data-es>Dios nos llamó a ser instrumentos de transformación. Tu generosidad se convierte en alimento donde hay hambre y en luz donde hay oscuridad.</p>
     <p class="ph-hero-p" data-en>God called us to be instruments of transformation. Your generosity becomes food where there is hunger and light where there is darkness.</p>
     <div class="ph-hero-tags">
-      <span class="ph-hero-tag pom"><i></i>Pool of Mercy</span>
-      <span class="ph-hero-tag shn"><i></i>Solar Hope Network</span>
+      <span class="ph-hero-tag pom"><svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 6.5s16 18.4 16 28.6A16 16 0 0 1 16 35.1C16 24.9 32 6.5 32 6.5z"
+              fill="none" stroke="#0E2A47" stroke-width="3.4" stroke-linejoin="round"/>
+        <path d="M18.6 34.6c4.4-3.2 8.8-3.2 13.2 0s8.8 3.2 13.2 0" fill="none" stroke="#17788A" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M20.4 42.6c3.9-2.8 7.8-2.8 11.7 0s7.8 2.8 11.7 0" fill="none" stroke="#2FA0B4" stroke-width="3.2" stroke-linecap="round"/>
+      </svg>Pool of Mercy</span>
+      <span class="ph-hero-tag shn"><img src="assets/img/logo/shn-mark.png" alt="" loading="lazy" decoding="async">Solar Hope Network</span>
     </div>
   </div>
+  <div class="ph-cue"><span data-es>Desliza</span><span data-en>Scroll</span><i></i></div>
   <div class="ph-hero-grid">
     <figure><img fetchpriority="high" src="assets/img/iniciativas/pom/contenedor.jpg" alt="">
       <figcaption><b>01</b><span data-es>Se carga</span><span data-en>It is loaded</span></figcaption></figure>
@@ -460,8 +609,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   <div class="rev">
     <div class="ini-ey" data-es>Iniciativas · Kingdom in Action Family</div>
     <div class="ini-ey" data-en>Initiatives · Kingdom in Action Family</div>
-    <h2 class="ini-h" data-es>Dos Frentes,<br>Una Sola Misión</h2>
-    <h2 class="ini-h" data-en>Two Fronts,<br>One Single Mission</h2>
+    <h2 class="ini-h" data-es><span>Dos Frentes,<br>Una Sola Misión</span></h2>
+    <h2 class="ini-h" data-en><span>Two Fronts,<br>One Single Mission</span></h2>
     <p class="ini-lead" data-es>Dos iniciativas que llevan el Reino más allá del púlpito: una lleva ayuda donde hay necesidad, la otra lleva luz donde hay oscuridad. Las dos nacen del mismo corazón.</p>
     <p class="ini-lead" data-en>Two initiatives that carry the Kingdom beyond the pulpit: one brings aid where there is need, the other brings light where there is darkness. Both are born from the same heart.</p>
   </div>
@@ -470,10 +619,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   <div class="ini-card rev" style="--bar:var(--pm-teal);--deep:var(--pm-navy);--wash:rgba(23,120,138,.05);--wash2:rgba(23,120,138,.10);">
     <div class="ini-head">
       <div class="ini-mark">
-        <svg viewBox="0 0 24 24"><path d="M12 2.2s6.6 7.2 6.6 11.6A6.6 6.6 0 0 1 12 20.4a6.6 6.6 0 0 1-6.6-6.6C5.4 9.4 12 2.2 12 2.2z"/></svg>
+        <svg class="pom-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 6.5s16 18.4 16 28.6A16 16 0 0 1 16 35.1C16 24.9 32 6.5 32 6.5z"
+                fill="none" stroke="#0E2A47" stroke-width="2.8" stroke-linejoin="round"/>
+          <path class="pom-w1" d="M18.6 34.6c4.4-3.2 8.8-3.2 13.2 0s8.8 3.2 13.2 0" fill="none" stroke="#17788A" stroke-width="2.8" stroke-linecap="round"/>
+          <path class="pom-w2" d="M20.4 42.6c3.9-2.8 7.8-2.8 11.7 0s7.8 2.8 11.7 0" fill="none" stroke="#2FA0B4" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
       </div>
       <div>
-        <div class="ini-name">Pool of Mercy</div>
+        <div class="ini-name"><span>Pool of Mercy</span></div>
         <div class="ini-kicker" data-es>Ayuda Humanitaria · Ayuda en Desastres</div>
         <div class="ini-kicker" data-en>Humanitarian Aid · Disaster Relief</div>
         <div class="ini-tag" data-es>Misericordia que se mueve. Esperanza que alcanza.</div>
@@ -485,7 +639,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       <p class="ini-p" data-en>The humanitarian aid ministry of Kingdom in Action Family. It mobilizes generosity to meet real needs, both locally and around the world.</p>
 
       <div class="ini-mv">
-        <div>
+        <div class="r-i">
           <div class="ini-mv-k" data-es>Nuestra Misión</div><div class="ini-mv-k" data-en>Our Mission</div>
           <div class="ini-mv-t" data-es>Recolectar, organizar y movilizar recursos que brinden ayuda práctica y esperanza a personas y familias en tiempos de necesidad, por medio del alcance local, la ayuda en desastres y la ayuda internacional.</div>
           <div class="ini-mv-t" data-en>To collect, organize and mobilize resources that provide practical help and hope to individuals and families in times of need, through local outreach, disaster relief and international aid.</div>
@@ -498,31 +652,31 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       </div>
 
       <div class="ini-nums">
-        <div class="ini-num"><div class="ini-num-n" data-ini="20000">0</div><div class="ini-num-l" data-es>Personas alimentadas<br>cada mes</div><div class="ini-num-l" data-en>People fed<br>each month</div></div>
-        <div class="ini-num"><div class="ini-num-n" data-ini="240000">0</div><div class="ini-num-l" data-es>Personas alimentadas<br>cada año</div><div class="ini-num-l" data-en>People fed<br>each year</div></div>
-        <div class="ini-num"><div class="ini-num-n" data-es>Miles</div><div class="ini-num-n" data-en>Thousands</div><div class="ini-num-l" data-es>De suministros médicos,<br>alimentos y necesidades</div><div class="ini-num-l" data-en>Of medical supplies,<br>food and necessities</div></div>
+        <div class="ini-num r-i"><div class="ini-num-n" data-ini="20000">0</div><div class="ini-num-l" data-es>Personas alimentadas<br>cada mes</div><div class="ini-num-l" data-en>People fed<br>each month</div></div>
+        <div class="ini-num r-i"><div class="ini-num-n" data-ini="240000">0</div><div class="ini-num-l" data-es>Personas alimentadas<br>cada año</div><div class="ini-num-l" data-en>People fed<br>each year</div></div>
+        <div class="ini-num r-i"><div class="ini-num-n" data-es>Miles</div><div class="ini-num-n" data-en>Thousands</div><div class="ini-num-l" data-es>De suministros médicos,<br>alimentos y necesidades</div><div class="ini-num-l" data-en>Of medical supplies,<br>food and necessities</div></div>
       </div>
 
       <div class="ini-ways">
-        <div class="ini-way">
+        <div class="ini-way r-i">
           <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8zm-9 2.8L5.6 7.2 12 3.6l6.4 3.6L12 10.8z"/></svg></div>
           <div class="ini-way-t" data-es>Dona Suministros</div><div class="ini-way-t" data-en>Give Supplies</div>
           <div class="ini-way-d" data-es>Artículos básicos y bienes prácticos que llegan directo a quien los necesita.</div>
           <div class="ini-way-d" data-en>Basic necessities and practical goods that reach those who need them.</div>
         </div>
-        <div class="ini-way">
+        <div class="ini-way r-i">
           <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M20 7h-2.2A3 3 0 0 0 12 4.6 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3h9V8h-.6a1 1 0 1 1 1-1H20zM3 12v7a1 1 0 0 0 1 1h8v-8H3zm10 8h8a1 1 0 0 0 1-1v-7h-9v8zm8-13h-6.4a1 1 0 1 1 1-1H21z"/></svg></div>
           <div class="ini-way-t" data-es>Apoya Económicamente</div><div class="ini-way-t" data-en>Give Financially</div>
           <div class="ini-way-d" data-es>Costos de envío, transporte, emergencias y alcance comunitario.</div>
           <div class="ini-way-d" data-en>Shipping, transportation, emergency needs and outreach costs.</div>
         </div>
-        <div class="ini-way">
+        <div class="ini-way r-i">
           <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm-8 0A3 3 0 1 0 5 8a3 3 0 0 0 3 3zm0 2c-2.3 0-6 1.2-6 3.4V19h9v-2.6C11 14.2 10.3 13 8 13zm8 0c-.6 0-1.3.1-2 .2 1.2.9 2 2 2 3.2V19h6v-2.6c0-2.2-3.7-3.4-6-3.4z"/></svg></div>
           <div class="ini-way-t" data-es>Sé Voluntario</div><div class="ini-way-t" data-en>Volunteer</div>
           <div class="ini-way-d" data-es>Sirve detrás de escena, en la distribución y en eventos especiales.</div>
           <div class="ini-way-d" data-en>Serve behind the scenes, at distribution and during special events.</div>
         </div>
-        <div class="ini-way">
+        <div class="ini-way r-i">
           <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.4C1.3 7.9 3.6 4.6 7 4.6c2 0 3.7 1.1 5 2.9 1.3-1.8 3-2.9 5-2.9 3.4 0 5.7 3.3 4.3 7C19.5 16.4 12 21 12 21z"/></svg></div>
           <div class="ini-way-t" data-es>Oración</div><div class="ini-way-t" data-en>Prayer</div>
           <div class="ini-way-d" data-es>Por las personas a quienes servimos y por los recursos para continuar.</div>
@@ -538,10 +692,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       </div>
 
       <div class="ini-tiers">
-        <div class="ini-tier"><div class="ini-tier-n">$25</div><div class="ini-tier-d" data-es>Comidas y artículos esenciales diarios</div><div class="ini-tier-d" data-en>Meals and daily essentials</div></div>
-        <div class="ini-tier"><div class="ini-tier-n">$50</div><div class="ini-tier-d" data-es>Suministros médicos y cuidado</div><div class="ini-tier-d" data-en>Medical supplies and care</div></div>
-        <div class="ini-tier"><div class="ini-tier-n">$100</div><div class="ini-tier-d" data-es>Alcance y compasión en acción</div><div class="ini-tier-d" data-en>Outreach and compassion in action</div></div>
-        <div class="ini-tier"><div class="ini-tier-n">$250</div><div class="ini-tier-d" data-es>Sostiene la esperanza y amplía el impacto</div><div class="ini-tier-d" data-en>Sustains hope and expands impact</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$25</div><div class="ini-tier-d" data-es>Comidas y artículos esenciales diarios</div><div class="ini-tier-d" data-en>Meals and daily essentials</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$50</div><div class="ini-tier-d" data-es>Suministros médicos y cuidado</div><div class="ini-tier-d" data-en>Medical supplies and care</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$100</div><div class="ini-tier-d" data-es>Alcance y compasión en acción</div><div class="ini-tier-d" data-en>Outreach and compassion in action</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$250</div><div class="ini-tier-d" data-es>Sostiene la esperanza y amplía el impacto</div><div class="ini-tier-d" data-en>Sustains hope and expands impact</div></div>
       </div>
 
       <div class="ini-needs" id="needs">
@@ -564,6 +718,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
           <li data-es>Sistemas de filtración de agua</li><li data-en>Water filtration systems</li>
         </ul></div>
       </div>
+      <div class="ini-more">
+        <a href="pool-of-mercy.html" class="btn-ini-go" data-es>Ver el proyecto completo<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></a>
+        <a href="pool-of-mercy.html" class="btn-ini-go" data-en>See the full project<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></a>
+        <a href="assets/docs/pool-of-mercy.pdf" download class="ini-dl"><svg viewBox="0 0 24 24"><path d="M12 16.6 6.4 11l1.6-1.6 2.9 2.9V3h2.2v9.3l2.9-2.9 1.6 1.6L12 16.6zM5 20v-2.2h14V20H5z"/></svg><span data-es>Descargar PDF</span><span data-en>Download PDF</span></a>
+      </div>
     </div>
   </div>
 
@@ -584,11 +743,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   <!-- ============ SOLAR HOPE NETWORK ============ -->
   <div class="ini-card rev" style="--bar:var(--sh-amber);--deep:var(--sh-navy);--wash:rgba(233,168,37,.07);--wash2:rgba(233,168,37,.14);">
     <div class="ini-head">
-      <div class="ini-mark">
-        <svg viewBox="0 0 24 24"><path d="M12 2a6.5 6.5 0 0 0-3.7 11.8c.5.4.8 1 .8 1.6v.6h5.8v-.6c0-.6.3-1.2.8-1.6A6.5 6.5 0 0 0 12 2zM9.1 17.4h5.8v1.2H9.1zm.6 2.6h4.6a2.3 2.3 0 0 1-4.6 0z"/></svg>
+      <div class="ini-mark is-shn">
+        <img class="shn-mark" src="assets/img/logo/shn-mark.png" alt="Solar Hope Network" loading="lazy" decoding="async">
       </div>
       <div>
-        <div class="ini-name">Solar Hope Network</div>
+        <div class="ini-name"><span>Solar Hope Network</span></div>
         <div class="ini-kicker" data-es>Faros de Esperanza</div>
         <div class="ini-kicker" data-en>Lighthouses of Hope</div>
         <div class="ini-tag" data-es>Transformando iglesias en centros sostenibles de compasión, servicio y esperanza.</div>
@@ -608,27 +767,27 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       </div>
 
       <div class="ini-nums">
-        <div class="ini-num"><div class="ini-num-n" data-ini="100">0</div><div class="ini-num-l" data-es>Faros de esperanza<br>a establecer</div><div class="ini-num-l" data-en>Lighthouses of hope<br>to establish</div></div>
-        <div class="ini-num"><div class="ini-num-n" data-ini="10000">0</div><div class="ini-num-l" data-es>Familias impactadas<br>directamente</div><div class="ini-num-l" data-en>Families impacted<br>directly</div></div>
-        <div class="ini-num"><div class="ini-num-n">$75</div><div class="ini-num-l" data-es>Por familia<br>alcanzada</div><div class="ini-num-l" data-en>Per family<br>reached</div></div>
+        <div class="ini-num r-i"><div class="ini-num-n" data-ini="100">0</div><div class="ini-num-l" data-es>Faros de esperanza<br>a establecer</div><div class="ini-num-l" data-en>Lighthouses of hope<br>to establish</div></div>
+        <div class="ini-num r-i"><div class="ini-num-n" data-ini="10000">0</div><div class="ini-num-l" data-es>Familias impactadas<br>directamente</div><div class="ini-num-l" data-en>Families impacted<br>directly</div></div>
+        <div class="ini-num r-i"><div class="ini-num-n">$75</div><div class="ini-num-l" data-es>Por familia<br>alcanzada</div><div class="ini-num-l" data-en>Per family<br>reached</div></div>
       </div>
 
       <div class="ini-phases">
-        <div class="ini-phase">
+        <div class="ini-phase r-i">
           <div class="ini-phase-k" data-es>Fase 1</div><div class="ini-phase-k" data-en>Phase 1</div>
           <div class="ini-phase-t" data-es>Los primeros 40 faros</div><div class="ini-phase-t" data-en>The first 40 lighthouses</div>
           <div class="ini-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>40</b></div>
           <div class="ini-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$300.000</b></div>
           <div class="ini-phase-r"><span data-es>Familias</span><span data-en>Families</span><b>4.000</b></div>
         </div>
-        <div class="ini-phase">
+        <div class="ini-phase r-i">
           <div class="ini-phase-k" data-es>Fase 2</div><div class="ini-phase-k" data-en>Phase 2</div>
           <div class="ini-phase-t" data-es>Expandiendo la red</div><div class="ini-phase-t" data-en>Expanding the network</div>
           <div class="ini-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>+40</b></div>
           <div class="ini-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$300.000</b></div>
           <div class="ini-phase-r"><span data-es>Acumulado</span><span data-en>Cumulative</span><b>8.000</b></div>
         </div>
-        <div class="ini-phase">
+        <div class="ini-phase r-i">
           <div class="ini-phase-k" data-es>Fase 3</div><div class="ini-phase-k" data-en>Phase 3</div>
           <div class="ini-phase-t" data-es>Completando la visión</div><div class="ini-phase-t" data-en>Completing the vision</div>
           <div class="ini-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>+20</b></div>
@@ -645,10 +804,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       </div>
 
       <div class="ini-tiers">
-        <div class="ini-tier"><div class="ini-tier-n">$75</div><div class="ini-tier-d" data-es>Colaborador Solar · patrocina 1 familia</div><div class="ini-tier-d" data-en>Solar Partner · sponsors 1 family</div></div>
-        <div class="ini-tier"><div class="ini-tier-n">$1.500</div><div class="ini-tier-d" data-es>Constructor de Energía · 20 familias</div><div class="ini-tier-d" data-en>Energy Builder · 20 families</div></div>
-        <div class="ini-tier"><div class="ini-tier-n">$7.500</div><div class="ini-tier-d" data-es>Constructor de Faros · equipa 1 iglesia</div><div class="ini-tier-d" data-en>Lighthouse Builder · equips 1 church</div></div>
-        <div class="ini-tier"><div class="ini-tier-n">$37.500</div><div class="ini-tier-d" data-es>Socio Faro · equipa 5 iglesias</div><div class="ini-tier-d" data-en>Lighthouse Partner · equips 5 churches</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$75</div><div class="ini-tier-d" data-es>Colaborador Solar · patrocina 1 familia</div><div class="ini-tier-d" data-en>Solar Partner · sponsors 1 family</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$1.500</div><div class="ini-tier-d" data-es>Constructor de Energía · 20 familias</div><div class="ini-tier-d" data-en>Energy Builder · 20 families</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$7.500</div><div class="ini-tier-d" data-es>Constructor de Faros · equipa 1 iglesia</div><div class="ini-tier-d" data-en>Lighthouse Builder · equips 1 church</div></div>
+        <div class="ini-tier r-i"><div class="ini-tier-n">$37.500</div><div class="ini-tier-d" data-es>Socio Faro · equipa 5 iglesias</div><div class="ini-tier-d" data-en>Lighthouse Partner · equips 5 churches</div></div>
+      </div>
+      <div class="ini-more">
+        <a href="solar-hope.html" class="btn-ini-go" data-es>Ver el proyecto completo<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></a>
+        <a href="solar-hope.html" class="btn-ini-go" data-en>See the full project<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></a>
+        <a href="assets/docs/solar-hope-network.pdf" download class="ini-dl"><svg viewBox="0 0 24 24"><path d="M12 16.6 6.4 11l1.6-1.6 2.9 2.9V3h2.2v9.3l2.9-2.9 1.6 1.6L12 16.6zM5 20v-2.2h14V20H5z"/></svg><span data-es>Descargar PDF</span><span data-en>Download PDF</span></a>
       </div>
     </div>
   </div>
@@ -739,11 +903,18 @@ document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
 <script>
 (function(){
   var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- entrada del hero apenas carga ---- */
+  var hero=document.querySelector('.ph-hero');
+  if(hero) requestAnimationFrame(function(){ setTimeout(function(){ hero.classList.add('lit'); },80); });
+
+  /* ---- revelado por secciones + contadores ---- */
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(!e.isIntersecting) return;
-      e.target.classList.add('on');
-      e.target.querySelectorAll('[data-ini]').forEach(function(el){
+      var t=e.target;
+      t.classList.add('on');
+      t.querySelectorAll('[data-ini]').forEach(function(el){
         var end=+el.dataset.ini,t0=null;
         if(rm){el.textContent=end.toLocaleString('es');return;}
         requestAnimationFrame(function s(ts){
@@ -752,24 +923,149 @@ document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
           if(k<1)requestAnimationFrame(s);
         });
       });
-      io.unobserve(e.target);
+      io.unobserve(t);
     });
-  },{threshold:.18});
-  document.querySelectorAll('.ini-card,.ini-band,.ini-quote,.intro-fig').forEach(function(c){io.observe(c);});
-  /* parallax suave de las bandas fotograficas */
+  },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.ini-card,.ini-band,.ini-quote,.intro-fig,.rev,.ini-in>.rev,.ini-ways,.ini-tiers,.ini-phases,.ini-nums,.ini-mv,.beliefs-grid')
+    .forEach(function(c){io.observe(c);});
+
+  /* ---- parallax: hero por columnas + bandas fotograficas ---- */
+  var cols=[].slice.call(document.querySelectorAll('.ph-hero-grid figure img'));
   var pics=[].slice.call(document.querySelectorAll('.ini-band img,.ini-quote>img'));
+  var intro=document.querySelector('.intro-fig-img img');
   var tick=false;
   function frame(){
-    if(!rm) pics.forEach(function(im){
-      var host=im.parentNode, r=host.getBoundingClientRect();
+    if(rm){ tick=false; return; }
+    var y=pageYOffset;
+    /* cada columna del hero se mueve a distinta velocidad */
+    if(hero){
+      var hr=hero.getBoundingClientRect();
+      if(hr.bottom>0 && hr.top<innerHeight){
+        /* progreso 0..1 del hero pasando por el viewport, no el scroll absoluto */
+        var prog=Math.max(-1,Math.min(1,-hr.top/Math.max(hr.height,1)));
+        cols.forEach(function(im,i){
+          var amp=[26,46,34,56][i%4];
+          im.style.transform='translate3d(0,'+(prog*amp).toFixed(1)+'px,0)';
+        });
+      }
+    }
+    pics.forEach(function(im){
+      var r=im.parentNode.getBoundingClientRect();
       if(r.bottom<0||r.top>innerHeight) return;
       var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
       im.style.transform='translate3d(0,'+(-p*r.height*0.055).toFixed(1)+'px,0)';
     });
+    if(intro){
+      var r2=intro.parentNode.getBoundingClientRect();
+      if(r2.bottom>0&&r2.top<innerHeight){
+        var p2=(r2.top+r2.height/2-innerHeight/2)/(innerHeight/2+r2.height/2);
+        intro.style.transform='translate3d(0,'+(-p2*26).toFixed(1)+'px,0) scale(1.06)';
+      }
+    }
     tick=false;
   }
   addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+  addEventListener('resize',frame,{passive:true});
   frame();
+
+  /* ---- resplandor siguiendo al cursor ---- */
+  document.querySelectorAll('.ini-way,.ini-tier,.ini-phase,.ini-mv>div').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(ev.clientX-r.left)+'px');
+      c.style.setProperty('--my',(ev.clientY-r.top)+'px');
+    });
+  });
+})();</script>
+<script>window.KIAF_INVITE={"id": "proyectos", "img": "assets/img/iniciativas/pom/abuela.jpg", "badgeEs": "Cuba · Día de distribución", "badgeEn": "Cuba · Distribution day", "eyEs": "Tu aporte", "eyEn": "Your giving", "titleEs": "Un plato de comida<br>cuesta menos de lo que imaginas", "titleEn": "A plate of food<br>costs less than you think", "textEs": "Cada mes alimentamos a 20.000 personas. Detrás de ese número hay abuelas, niños y familias que esperan que alguien golpee la puerta. Con $25 provees comidas y artículos esenciales por un mes.", "textEn": "Every month we feed 20,000 people. Behind that number are grandmothers, children and families waiting for someone to knock on the door. With $25 you provide meals and essentials for a month.", "actions": [{"action": "donate", "es": "Donar ahora", "en": "Give now"}, {"href": "index.html#contacto", "es": "Quiero colaborar", "en": "I want to partner", "ghost": true}]};</script>
+<script>
+/* ============ INVITACIÓN CONTEXTUAL ============
+   Cada página define window.KIAF_INVITE antes de cargar este script.
+   Se muestra al 55% de scroll o a los 35s, lo que ocurra primero.
+   Al cerrarse no vuelve a aparecer durante 7 días. */
+(function(){
+  var cfg = window.KIAF_INVITE;
+  if(!cfg) return;
+  var KEY = 'kiaf_inv_' + (cfg.id || 'x');
+  /* localStorage puede fallar en modo privado: nunca romper la página por eso */
+  function seen(){
+    try{
+      var v = localStorage.getItem(KEY);
+      return v && (Date.now() - (+v) < 7*24*60*60*1000);
+    }catch(e){ return false; }
+  }
+  function remember(){ try{ localStorage.setItem(KEY, Date.now()); }catch(e){} }
+  if(seen()) return;
+
+  var el = document.createElement('div');
+  el.className = 'inv-bg';
+  el.setAttribute('role','dialog');
+  el.setAttribute('aria-modal','true');
+  el.setAttribute('aria-label', cfg.titleEs || 'Invitación');
+  var acts = (cfg.actions||[]).map(function(a){
+    var cls = 'inv-btn' + (a.ghost ? ' inv-btn--ghost' : '');
+    if(a.action === 'donate')
+      return '<button class="'+cls+'" data-act="donate" data-es>'+a.es+'</button>'+
+             '<button class="'+cls+'" data-act="donate" data-en>'+a.en+'</button>';
+    return '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-es>'+a.es+'</a>'+
+           '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-en>'+a.en+'</a>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="inv">'+
+      '<button class="inv-x" aria-label="Cerrar">&#10005;</button>'+
+      '<div class="inv-img"><img src="'+cfg.img+'" alt="" loading="lazy" decoding="async">'+
+        '<div class="inv-badge" data-es>'+cfg.badgeEs+'</div>'+
+        '<div class="inv-badge" data-en>'+cfg.badgeEn+'</div></div>'+
+      '<div class="inv-body">'+
+        '<div class="inv-ey" data-es>'+cfg.eyEs+'</div><div class="inv-ey" data-en>'+cfg.eyEn+'</div>'+
+        '<div class="inv-t" data-es>'+cfg.titleEs+'</div><div class="inv-t" data-en>'+cfg.titleEn+'</div>'+
+        '<p class="inv-p" data-es>'+cfg.textEs+'</p><p class="inv-p" data-en>'+cfg.textEn+'</p>'+
+        '<div class="inv-acts">'+acts+'</div>'+
+        '<button class="inv-later" data-es>Ahora no</button>'+
+        '<button class="inv-later" data-en>Not now</button>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(el);
+
+  var open = false, lastFocus = null;
+  function show(){
+    if(open || seen()) return;
+    var dm = document.getElementById('dmodal');
+    if(dm && dm.classList.contains('open')) return;   /* no pisar el modal de donación */
+    var nv = document.getElementById('navOv');
+    if(nv && nv.classList.contains('open')) return;   /* ni el menú móvil */
+    open = true; lastFocus = document.activeElement;
+    el.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var f = el.querySelector('.inv-x'); if(f) f.focus();
+  }
+  function hide(){
+    open = false; remember();
+    el.classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  el.querySelector('.inv-x').addEventListener('click', hide);
+  [].forEach.call(el.querySelectorAll('.inv-later'), function(b){ b.addEventListener('click', hide); });
+  el.addEventListener('click', function(e){ if(e.target === el) hide(); });
+  document.addEventListener('keydown', function(e){ if(open && e.key === 'Escape') hide(); });
+  [].forEach.call(el.querySelectorAll('[data-act="donate"]'), function(b){
+    b.addEventListener('click', function(){ hide(); if(window.openDonate) openDonate(); });
+  });
+  [].forEach.call(el.querySelectorAll('.inv-acts a'), function(a){ a.addEventListener('click', remember); });
+
+  var timer = setTimeout(show, 35000);
+  function onScroll(){
+    var H = document.documentElement.scrollHeight - innerHeight;
+    if(H > 0 && pageYOffset / H > 0.55){
+      clearTimeout(timer);
+      removeEventListener('scroll', onScroll);
+      setTimeout(show, 700);
+    }
+  }
+  addEventListener('scroll', onScroll, {passive:true});
 })();
+
 </script>
 </body></html>

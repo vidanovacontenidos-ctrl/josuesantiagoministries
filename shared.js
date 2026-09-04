@@ -131,3 +131,91 @@ function doSubmit(btn){
     btn.disabled=false;
   });
 }
+
+/* ============ INVITACIÓN CONTEXTUAL ============
+   Cada página define window.KIAF_INVITE antes de cargar este script.
+   Se muestra al 55% de scroll o a los 35s, lo que ocurra primero.
+   Al cerrarse no vuelve a aparecer durante 7 días. */
+(function(){
+  var cfg = window.KIAF_INVITE;
+  if(!cfg) return;
+  var KEY = 'kiaf_inv_' + (cfg.id || 'x');
+  /* localStorage puede fallar en modo privado: nunca romper la página por eso */
+  function seen(){
+    try{
+      var v = localStorage.getItem(KEY);
+      return v && (Date.now() - (+v) < 7*24*60*60*1000);
+    }catch(e){ return false; }
+  }
+  function remember(){ try{ localStorage.setItem(KEY, Date.now()); }catch(e){} }
+  if(seen()) return;
+
+  var el = document.createElement('div');
+  el.className = 'inv-bg';
+  el.setAttribute('role','dialog');
+  el.setAttribute('aria-modal','true');
+  el.setAttribute('aria-label', cfg.titleEs || 'Invitación');
+  var acts = (cfg.actions||[]).map(function(a){
+    var cls = 'inv-btn' + (a.ghost ? ' inv-btn--ghost' : '');
+    if(a.action === 'donate')
+      return '<button class="'+cls+'" data-act="donate" data-es>'+a.es+'</button>'+
+             '<button class="'+cls+'" data-act="donate" data-en>'+a.en+'</button>';
+    return '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-es>'+a.es+'</a>'+
+           '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-en>'+a.en+'</a>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="inv">'+
+      '<button class="inv-x" aria-label="Cerrar">&#10005;</button>'+
+      '<div class="inv-img"><img src="'+cfg.img+'" alt="" loading="lazy" decoding="async">'+
+        '<div class="inv-badge" data-es>'+cfg.badgeEs+'</div>'+
+        '<div class="inv-badge" data-en>'+cfg.badgeEn+'</div></div>'+
+      '<div class="inv-body">'+
+        '<div class="inv-ey" data-es>'+cfg.eyEs+'</div><div class="inv-ey" data-en>'+cfg.eyEn+'</div>'+
+        '<div class="inv-t" data-es>'+cfg.titleEs+'</div><div class="inv-t" data-en>'+cfg.titleEn+'</div>'+
+        '<p class="inv-p" data-es>'+cfg.textEs+'</p><p class="inv-p" data-en>'+cfg.textEn+'</p>'+
+        '<div class="inv-acts">'+acts+'</div>'+
+        '<button class="inv-later" data-es>Ahora no</button>'+
+        '<button class="inv-later" data-en>Not now</button>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(el);
+
+  var open = false, lastFocus = null;
+  function show(){
+    if(open || seen()) return;
+    var dm = document.getElementById('dmodal');
+    if(dm && dm.classList.contains('open')) return;   /* no pisar el modal de donación */
+    var nv = document.getElementById('navOv');
+    if(nv && nv.classList.contains('open')) return;   /* ni el menú móvil */
+    open = true; lastFocus = document.activeElement;
+    el.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var f = el.querySelector('.inv-x'); if(f) f.focus();
+  }
+  function hide(){
+    open = false; remember();
+    el.classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  el.querySelector('.inv-x').addEventListener('click', hide);
+  [].forEach.call(el.querySelectorAll('.inv-later'), function(b){ b.addEventListener('click', hide); });
+  el.addEventListener('click', function(e){ if(e.target === el) hide(); });
+  document.addEventListener('keydown', function(e){ if(open && e.key === 'Escape') hide(); });
+  [].forEach.call(el.querySelectorAll('[data-act="donate"]'), function(b){
+    b.addEventListener('click', function(){ hide(); if(window.openDonate) openDonate(); });
+  });
+  [].forEach.call(el.querySelectorAll('.inv-acts a'), function(a){ a.addEventListener('click', remember); });
+
+  var timer = setTimeout(show, 35000);
+  function onScroll(){
+    var H = document.documentElement.scrollHeight - innerHeight;
+    if(H > 0 && pageYOffset / H > 0.55){
+      clearTimeout(timer);
+      removeEventListener('scroll', onScroll);
+      setTimeout(show, 700);
+    }
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+})();

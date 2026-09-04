@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solar Hope Network | Kingdom in Action</title>
+<meta name="description" content="Solar Hope Network: equipar 100 iglesias con energía solar y transformarlas en Faros de Esperanza para sus comunidades.">
+<link rel="icon" href="assets/favicon/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png?v=2">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png?v=2">
+<link rel="manifest" href="site.webmanifest?v=2">
+<meta name="theme-color" content="#0D0F11">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+:root{--white:#FFFFFF;--muted:#6B6560;--teal:#17788A;}
+.pj{--brand:var(--pj-brand);--deep:var(--pj-deep);--wash:var(--pj-wash);
+  --ink:#1B2B3A;--ink-soft:#5A6B7A;--paper:#FBF9F5;--paper-2:#F2EEE7;--line:#E3DDD3;
+  background:var(--paper);color:var(--ink);}
+/* HERO */
+.pj-hero{margin-top:var(--nav-h);position:relative;min-height:clamp(460px,72vh,720px);
+  display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:var(--paper);overflow:hidden;
+  border-bottom:1px solid var(--line);}
+.pj-hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(70% 56% at 6% 44%,var(--wash),transparent 62%);}
+.pj-hero-txt{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(44px,6vw,80px) clamp(22px,5vw,64px);}
+.pj-crumb{display:flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px;}
+.pj-crumb a{color:var(--brand);}
+.pj-crumb a:hover{text-decoration:underline;text-underline-offset:3px;}
+.pj-mark{width:clamp(72px,9vw,104px);height:clamp(72px,9vw,104px);border-radius:50%;
+  background:var(--wash);border:1px solid var(--brand);display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;}
+.pj-mark img,.pj-mark svg{width:72%;height:72%;object-fit:contain;}
+.pj-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;
+  text-transform:uppercase;line-height:.94;letter-spacing:.01em;color:var(--deep);}
+.pj-kick{font-size:9.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--brand);margin-top:14px;}
+.pj-tag{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.05rem,2vw,1.4rem);font-style:italic;
+  font-weight:500;color:var(--ink-soft);margin-top:16px;max-width:34ch;}
+.pj-hero-img{position:relative;overflow:hidden;background:var(--paper-2);}
+.pj-hero-img img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform;}
+.pj-hero-img::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,var(--paper),transparent 26%);}
+/* BLOQUES */
+.pj-sec{max-width:1120px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,60px);}
+.pj-sec--tight{padding-top:clamp(28px,4vw,44px);}
+.pj-ey{display:flex;align-items:center;gap:11px;font-size:9.5px;font-weight:700;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:14px;}
+.pj-ey::before{content:'';width:30px;height:1px;background:currentColor;}
+.pj-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;
+  text-transform:uppercase;line-height:1.06;color:var(--deep);}
+.pj-p{font-size:16px;line-height:1.88;color:var(--ink-soft);max-width:70ch;margin-top:16px;}
+.pj-p strong{color:var(--deep);font-weight:700;}
+.pj-lead{font-size:clamp(1.05rem,1.9vw,1.24rem);line-height:1.75;color:var(--deep);max-width:60ch;
+  margin-top:18px;font-weight:400;}
+/* franja oscura */
+.pj-dark{background:var(--deep);color:#fff;position:relative;overflow:hidden;}
+.pj-dark .pj-t{color:#fff;}
+.pj-dark .pj-p{color:rgba(255,255,255,.74);}
+.pj-dark .pj-ey{color:var(--brand);}
+/* listas */
+.pj-ul{margin-top:20px;display:flex;flex-direction:column;gap:2px;max-width:72ch;}
+.pj-ul li{list-style:none;display:flex;gap:14px;align-items:flex-start;padding:12px 0;
+  border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.78;color:var(--ink-soft);}
+.pj-ul li:last-child{border-bottom:none;}
+.pj-ul li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);
+  flex-shrink:0;margin-top:9px;}
+.pj-dark .pj-ul li{border-bottom-color:rgba(255,255,255,.10);color:rgba(255,255,255,.76);}
+/* tarjetas "imagina" */
+.pj-imagine{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;}
+.pj-imagine div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:4px;
+  padding:24px 24px;font-size:15px;line-height:1.8;color:rgba(255,255,255,.78);
+  transition:border-color .4s,background .4s,transform .4s var(--ease);}
+.pj-imagine div:hover{border-color:var(--brand);background:rgba(255,255,255,.08);transform:translateY(-3px);}
+/* grilla de tarjetas claras */
+.pj-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px;}
+.pj-cards--3{grid-template-columns:repeat(3,1fr);}
+.pj-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px 24px;position:relative;
+  overflow:hidden;transition:border-color .4s,transform .4s var(--ease),box-shadow .4s;}
+.pj-card:hover{border-color:var(--brand);transform:translateY(-3px);
+  box-shadow:0 18px 44px -22px rgba(27,43,58,.30);}
+.pj-card::before{content:'';position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),var(--wash),transparent 46%);}
+.pj-card:hover::before{opacity:1;}
+.pj-card-i{width:40px;height:40px;border-radius:50%;background:var(--wash);display:flex;align-items:center;
+  justify-content:center;margin-bottom:14px;}
+.pj-card-i svg{width:19px;height:19px;fill:var(--brand);}
+.pj-card-t{font-family:'Barlow Condensed',sans-serif;font-size:1.08rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--deep);margin-bottom:8px;}
+.pj-card-d{font-size:14.5px;line-height:1.75;color:var(--ink-soft);}
+/* cifras */
+.pj-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:30px;}
+.pj-num{background:#fff;padding:30px 20px;text-align:center;position:relative;overflow:hidden;}
+.pj-num::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--brand);
+  transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease);}
+.pj-num.on::after{transform:scaleX(1);}
+.pj-num-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;
+  line-height:1;color:var(--brand);}
+.pj-num-l{font-size:9.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);
+  margin-top:10px;line-height:1.6;}
+/* niveles */
+.pj-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px;}
+.pj-tier{background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px 18px;text-align:center;
+  position:relative;overflow:hidden;transition:border-color .4s,transform .4s var(--ease);}
+.pj-tier:hover{border-color:var(--brand);transform:translateY(-3px);}
+.pj-tier-n{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:800;color:var(--deep);line-height:1;}
+.pj-tier-t{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);margin-top:9px;}
+.pj-tier-d{font-size:13px;line-height:1.65;color:var(--ink-soft);margin-top:9px;}
+/* fases */
+.pj-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px;}
+.pj-phase{background:var(--deep);border-radius:4px;padding:28px 24px;color:#fff;position:relative;overflow:hidden;
+  transition:transform .5s var(--ease);}
+.pj-phase:hover{transform:translateY(-4px);}
+.pj-phase::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand);}
+.pj-phase-k{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:12px;}
+.pj-phase-t{font-family:'Barlow Condensed',sans-serif;font-size:1.16rem;font-weight:700;text-transform:uppercase;
+  line-height:1.2;margin-bottom:14px;}
+.pj-phase-r{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.70);}
+.pj-phase-r:last-child{border-bottom:none;}
+.pj-phase-r b{color:var(--brand);font-weight:700;}
+/* cita */
+.pj-quote{border-left:3px solid var(--brand);padding:26px 30px;margin-top:30px;
+  background:linear-gradient(90deg,var(--wash),transparent 72%);}
+.pj-quote p{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.25rem,2.6vw,1.85rem);font-weight:600;
+  line-height:1.34;color:var(--deep);}
+.pj-dark .pj-quote{background:linear-gradient(90deg,rgba(255,255,255,.07),transparent 72%);}
+.pj-dark .pj-quote p{color:#fff;}
+/* banda foto */
+.pj-band{position:relative;min-height:clamp(260px,38vh,420px);overflow:hidden;display:flex;align-items:flex-end;}
+.pj-band img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform;}
+.pj-band::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,26,40,.88),rgba(11,26,40,.30) 45%,transparent 78%);}
+.pj-band-cnt{position:relative;z-index:2;padding:clamp(24px,4vw,44px) clamp(20px,5vw,60px);max-width:60ch;}
+.pj-band-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.3rem,3vw,2.1rem);font-weight:700;
+  text-transform:uppercase;line-height:1.16;color:#fff;}
+.pj-band-p{font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.76);margin-top:10px;}
+/* galeria */
+.pj-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px;}
+.pj-gal figure{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:4px;background:var(--paper-2);}
+.pj-gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .5s;}
+.pj-gal figure:hover img{transform:scale(1.05);}
+.pj-gal:hover figure:not(:hover) img{filter:grayscale(1);opacity:.5;}
+.pj-gal figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px;
+  background:linear-gradient(to top,rgba(11,26,40,.86),transparent);
+  font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;}
+/* DESCARGA */
+.pj-dl{background:var(--paper-2);border-top:1px solid var(--line);}
+.pj-dl-in{max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,84px) clamp(20px,5vw,60px);
+  display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,4vw,44px);align-items:center;}
+.pj-dl-ico{width:66px;height:80px;flex-shrink:0;border:2px solid var(--brand);border-radius:4px;
+  position:relative;background:#fff;display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;}
+.pj-dl-ico::before{content:'';position:absolute;top:0;right:0;width:20px;height:20px;
+  background:var(--wash);border-left:2px solid var(--brand);border-bottom:2px solid var(--brand);}
+.pj-dl-ico span{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:800;letter-spacing:.1em;
+  color:var(--brand);}
+.pj-dl-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:800;
+  text-transform:uppercase;line-height:1.1;color:var(--deep);}
+.pj-dl-d{font-size:14.5px;line-height:1.75;color:var(--ink-soft);margin-top:8px;max-width:52ch;}
+.pj-dl-meta{font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:12px;}
+.btn-pj{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;padding:17px 30px;border-radius:3px;background:var(--deep);color:#fff;
+  border:1px solid var(--deep);white-space:nowrap;
+  transition:background .35s,color .35s,transform .35s var(--ease);}
+.btn-pj:hover{background:var(--brand);border-color:var(--brand);transform:translateY(-2px);}
+.btn-pj svg{width:15px;height:15px;fill:currentColor;}
+.btn-pj--ghost{background:transparent;color:var(--deep);}
+.btn-pj--ghost:hover{background:var(--deep);border-color:var(--deep);color:#fff;}
+.pj-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+/* reveals */
+.pj-r{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+.pj-r.on{opacity:1;transform:none;}
+.pj-s>*{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.pj-s.on>*{opacity:1;transform:none;}
+.pj-s.on>*:nth-child(2){transition-delay:.09s}.pj-s.on>*:nth-child(3){transition-delay:.18s}
+.pj-s.on>*:nth-child(4){transition-delay:.27s}.pj-s.on>*:nth-child(5){transition-delay:.36s}
+.pj-s.on>*:nth-child(6){transition-delay:.45s}.pj-s.on>*:nth-child(7){transition-delay:.54s}
+.pj-h{overflow:hidden;}.pj-h>span{display:block;transform:translateY(104%);
+  transition:transform 1.05s cubic-bezier(.16,.84,.32,1) .2s;}
+.pj-hero.lit .pj-h>span{transform:none;}
+.pj-hero-txt>*{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.pj-hero.lit .pj-hero-txt>*{opacity:1;transform:none;}
+.pj-hero.lit .pj-crumb{transition-delay:.10s}.pj-hero.lit .pj-mark{transition-delay:.20s}
+.pj-hero.lit .pj-h{transition-delay:.28s}.pj-hero.lit .pj-kick{transition-delay:.44s}
+.pj-hero.lit .pj-tag{transition-delay:.54s}
+.pj-hero-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.32,1) .25s;}
+.pj-hero.lit .pj-hero-img{clip-path:inset(0 0 0 0);}
+@media(max-width:1024px){
+  .pj-hero{grid-template-columns:1fr;min-height:auto;}
+  .pj-hero-img{height:40vh;min-height:260px;}
+  .pj-hero-img::after{background:linear-gradient(to top,rgba(251,249,245,.9),transparent 40%);}
+  .pj-cards,.pj-cards--3,.pj-imagine,.pj-phases{grid-template-columns:1fr;}
+  .pj-tiers{grid-template-columns:1fr 1fr;}
+  .pj-dl-in{grid-template-columns:1fr;text-align:left;}
+  .pj-gal{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .pj-nums{grid-template-columns:1fr;}.pj-tiers{grid-template-columns:1fr;}
+  .pj-gal{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+  .pj-r,.pj-s>*,.pj-hero-txt>*,.pj-h>span,.pj-hero-img{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important;}
+}
+
+.pj{--pj-brand:#E9A825;--pj-deep:#0B2545;--pj-wash:rgba(233,168,37,.13);}
+.pj-mark{background:rgba(233,168,37,.13);border-color:#E9A825;}
+@keyframes shnHalo2{0%,100%{box-shadow:0 0 0 0 rgba(233,168,37,.32),0 0 16px 0 rgba(233,168,37,.20)}
+  50%{box-shadow:0 0 0 10px rgba(233,168,37,0),0 0 38px 5px rgba(233,168,37,.46)}}
+.pj-hero.lit .pj-mark{animation:shnHalo2 4.6s var(--ease) infinite 1.2s;}
+/* indice del documento */
+.pj-toc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:30px;}
+.pj-toc a{background:#fff;padding:20px 22px;display:flex;align-items:center;gap:13px;
+  font-family:'Barlow Condensed',sans-serif;font-size:1.02rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.03em;color:var(--pj-deep);transition:background .35s,color .35s;}
+.pj-toc a:hover{background:var(--pj-wash);color:var(--pj-brand);}
+.pj-toc a b{font-size:.86rem;color:var(--pj-brand);min-width:22px;}
+@media(max-width:900px){.pj-toc{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.pj-toc{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Solar Hope Network</span><span data-en>Solar Hope Network</span></a>
+  <ul class="nav-links">
+    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li>
+    <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
+    <li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>Úneted States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li>
+    <li><a href="proyectos.html"  data-es>Proyectos</a><a href="proyectos.html"  data-en>Projects</a></li>
+    <li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div>
+</nav>
+<div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()">EEUU</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()"  data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()"  data-en>Projects</a></div>
+
+
+
+<div class="pj">
+
+<!-- HERO -->
+<div class="pj-hero" id="pjHero">
+  <div class="pj-hero-txt">
+    <div class="pj-crumb"><a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a><span>·</span><span>Solar Hope Network</span></div>
+    <div class="pj-mark"><img src="assets/img/logo/shn-mark.png" alt="Solar Hope Network"></div>
+    <h1 class="pj-h"><span>Solar Hope<br>Network</span></h1>
+    <div class="pj-kick" data-es>Faros de Esperanza</div>
+    <div class="pj-kick" data-en>Lighthouses of Hope</div>
+    <div class="pj-tag" data-es>Transformando iglesias en centros sostenibles de compasión, servicio y esperanza.</div>
+    <div class="pj-tag" data-en>Transforming churches into sustainable centers of compassion, service and hope.</div>
+  </div>
+  <div class="pj-hero-img"><img src="assets/img/iniciativas/shn/paneles.jpg" alt="Paneles solares instalados" fetchpriority="high"></div>
+</div>
+
+<!-- INDICE -->
+<div class="pj-sec pj-sec--tight pj-r">
+  <div class="pj-ey" data-es>Contenido</div><div class="pj-ey" data-en>Contents</div>
+  <div class="pj-toc">
+    <a href="#vision"><b>01</b><span data-es>Visión</span><span data-en>Vision</span></a>
+    <a href="#importa"><b>02</b><span data-es>Por Qué Importa</span><span data-en>Why It Matters</span></a>
+    <a href="#iglesia"><b>03</b><span data-es>La Iglesia: Ya es un Faro</span><span data-en>The Church: Already a Lighthouse</span></a>
+    <a href="#solucion"><b>04</b><span data-es>La Solución</span><span data-en>The Solution</span></a>
+    <a href="#faros"><b>05</b><span data-es>100 Faros de Esperanza</span><span data-en>100 Lighthouses of Hope</span></a>
+    <a href="#proyecto"><b>06</b><span data-es>Visión Completa del Proyecto</span><span data-en>Full Project Vision</span></a>
+    <a href="#equipada"><b>07</b><span data-es>Una Iglesia Equipada</span><span data-en>An Equipped Church</span></a>
+    <a href="#colaborar"><b>08</b><span data-es>Oportunidades de Colaboración</span><span data-en>Partnership Opportunities</span></a>
+    <a href="#contacto"><b>09</b><span data-es>Contáctenos</span><span data-en>Contact Us</span></a>
+  </div>
+</div>
+
+<!-- 01 VISION -->
+<div class="pj-sec pj-r" id="vision">
+  <div class="pj-ey" data-es>01 · Visión</div><div class="pj-ey" data-en>01 · Vision</div>
+  <h2 class="pj-t" data-es>Cien iglesias.<br>Cien faros encendidos.</h2>
+  <h2 class="pj-t" data-en>One hundred churches.<br>One hundred lighthouses.</h2>
+  <p class="pj-lead" data-es>Solar Hope Network es una iniciativa a largo plazo diseñada para equipar a 100 iglesias ubicadas estratégicamente con sistemas de energía solar, transformándolas en centros sostenibles de compasión, servicio y esperanza para sus comunidades.</p>
+  <p class="pj-lead" data-en>The Solar Hope Network is a long-term initiative designed to equip 100 strategically located churches with solar energy systems, transforming them into sustainable centers of compassion, service and hope for their communities.</p>
+  <p class="pj-p" data-es>Este proyecto no se trata simplemente de instalar paneles solares. Se trata de fortalecer iglesias que ya están sirviendo a familias vulnerables y capacitarlas para convertirse en fuentes confiables de apoyo durante uno de los mayores desafíos que enfrentan las comunidades hoy: la crisis energética.</p>
+  <p class="pj-p" data-en>This project is not simply about installing solar panels. It is about strengthening churches that are already serving vulnerable families and enabling them to become reliable sources of support during one of the greatest challenges communities face today: the energy crisis.</p>
+  <div class="pj-quote">
+    <p data-es>Porque una iglesia puede impactar una comunidad. Pero 100 iglesias pueden impactar un movimiento.</p>
+    <p data-en>Because one church can impact a community. But 100 churches can impact a movement.</p>
+  </div>
+</div>
+
+<!-- 02 POR QUE IMPORTA -->
+<div class="pj-dark" id="importa">
+ <div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>02 · Por Qué Importa</div><div class="pj-ey" data-en>02 · Why It Matters</div>
+  <h2 class="pj-t" data-es>Cuando la oscuridad<br>se convierte en una crisis humanitaria</h2>
+  <h2 class="pj-t" data-en>When darkness<br>becomes a humanitarian crisis</h2>
+  <p class="pj-p" data-es>En comunidades vulnerables de hoy, millones de personas enfrentan uno de los desafíos energéticos más difíciles de la historia reciente.</p>
+  <p class="pj-p" data-en>In vulnerable communities today, millions of people face one of the most difficult energy challenges in recent history.</p>
+  <p class="pj-p" data-es>Los apagones prolongados se han convertido en una realidad diaria. Muchas comunidades pasan tres o más días consecutivos sin electricidad. Cuando finalmente vuelve la energía, las familias pueden tener acceso a electricidad solo por unas pocas horas antes de que comiencen nuevamente los apagones.</p>
+  <p class="pj-p" data-en>Prolonged blackouts have become a daily reality. Many communities go three or more consecutive days without electricity. When power finally returns, families may have access to electricity for only a few hours before the outages begin again.</p>
+  <p class="pj-p" data-es><strong>Detrás de estas realidades hay historias verdaderas:</strong></p>
+  <p class="pj-p" data-en><strong>Behind these realities are true stories:</strong></p>
+  <div class="pj-imagine pj-s">
+    <div data-es>Imagina llegar a casa cada noche y encontrar oscuridad total. Sin luces. Sin saber cuándo volverá la electricidad. A veces, las familias pueden pasar días con poca o ninguna energía.</div>
+    <div data-en>Imagine coming home every night to total darkness. No lights. No knowing when the electricity will return. Sometimes families can go days with little or no power.</div>
+    <div data-es>Imagina no tener electricidad para cocinar una comida para tu familia. Algo tan sencillo como preparar la cena se convierte en una lucha diaria.</div>
+    <div data-en>Imagine not having electricity to cook a meal for your family. Something as simple as preparing dinner becomes a daily struggle.</div>
+    <div data-es>Imagina ser una madre soltera con un bebé recién nacido en medio de un calor extremo y no tener ventilador ni aire acondicionado. Sin alivio. Solo horas de calor intenso mientras intentas cuidar a tu bebé.</div>
+    <div data-en>Imagine being a single mother with a newborn baby in extreme heat with no fan or air conditioning. No relief. Only hours of intense heat while trying to care for your baby.</div>
+    <div data-es>Imagina estar enfermo y depender de la electricidad para mantenerte saludable, o incluso para mantenerte con vida. Imagina depender de una bomba médica eléctrica. Imagina tener insulina u otro medicamento que debe mantenerse refrigerado, pero no tener electricidad para mantenerlo frío. Para alguien en esta situación, un apagón no es simplemente una molestia: puede convertirse en una crisis médica.</div>
+    <div data-en>Imagine being sick and depending on electricity to stay healthy, or even to stay alive. Imagine depending on an electric medical pump. Imagine having insulin or another medication that must be refrigerated, but having no electricity to keep it cold. For someone in this situation, a blackout is not simply an inconvenience: it can become a medical crisis.</div>
+    <div data-es>Imagina ser una persona mayor y vivir durante días en la oscuridad y el calor extremo. Sin ventilador. Sin refrigeración confiable para los alimentos o medicamentos. Comunicación limitada. Para las personas mayores y vulnerables, perder la electricidad hace que una situación ya difícil sea aún más difícil.</div>
+    <div data-en>Imagine being an older person living for days in darkness and extreme heat. No fan. No reliable refrigeration for food or medication. Limited communication. For the elderly and vulnerable, losing electricity makes an already difficult situation even harder.</div>
+  </div>
+ </div>
+</div>
+
+<!-- 03 LA IGLESIA -->
+<div class="pj-sec pj-r" id="iglesia">
+  <div class="pj-ey" data-es>03 · La Iglesia</div><div class="pj-ey" data-en>03 · The Church</div>
+  <h2 class="pj-t" data-es>Ya es un<br>faro de esperanza</h2>
+  <h2 class="pj-t" data-en>Already a<br>lighthouse of hope</h2>
+  <p class="pj-p" data-es>En medio de estos desafíos, la iglesia local continúa siendo una de las fuentes de apoyo más sólidas dentro de las comunidades.</p>
+  <p class="pj-p" data-en>In the midst of these challenges, the local church continues to be one of the strongest sources of support within communities.</p>
+  <p class="pj-p" data-es>A través de <strong>Kingdom in Action Family</strong>, 35 iglesias ya están sirviendo a sus comunidades proporcionando asistencia alimentaria a familias necesitadas. Estas iglesias son más que edificios. Son lugares donde:</p>
+  <p class="pj-p" data-en>Through <strong>Kingdom in Action Family</strong>, 35 churches are already serving their communities by providing food assistance to families in need. These churches are more than buildings. They are places where:</p>
+  <ul class="pj-ul pj-s">
+    <li><span data-es>Las familias reciben apoyo.</span><span data-en>Families receive support.</span></li>
+    <li><span data-es>Los líderes son capacitados.</span><span data-en>Leaders are trained.</span></li>
+    <li><span data-es>Las personas experimentan compasión.</span><span data-en>People experience compassion.</span></li>
+    <li><span data-es>Las comunidades encuentran esperanza.</span><span data-en>Communities find hope.</span></li>
+  </ul>
+  <div class="pj-quote">
+    <p data-es>Imagina si la iglesia que ya provee alimentos también pudiera proveer luz.</p>
+    <p data-en>Imagine if the church that already provides food could also provide light.</p>
+  </div>
+</div>
+
+<!-- BANDA -->
+<div class="pj-band pj-r">
+  <img src="assets/img/iniciativas/shn/tecnico.jpg" alt="" loading="lazy" decoding="async">
+  <div class="pj-band-cnt">
+    <div class="pj-band-t" data-es>La iglesia equipada con energía solar de pronto se convierte en un faro de esperanza.</div>
+    <div class="pj-band-t" data-en>The church equipped with solar energy suddenly becomes a lighthouse of hope.</div>
+  </div>
+</div>
+
+<!-- lo que cambia -->
+<div class="pj-sec pj-r">
+  <h2 class="pj-t" data-es>Lo que cambia<br>cuando hay energía</h2>
+  <h2 class="pj-t" data-en>What changes<br>when there is power</h2>
+  <ul class="pj-ul pj-s">
+    <li><span data-es>Hay electricidad para mantener refrigerados los alimentos y medicamentos.</span><span data-en>There is electricity to keep food and medicine refrigerated.</span></li>
+    <li><span data-es>Hay energía para cargar teléfonos.</span><span data-en>There is power to charge phones.</span></li>
+    <li><span data-es>Hay ventiladores para las familias que sufren el calor extremo.</span><span data-en>There are fans for families suffering extreme heat.</span></li>
+    <li><span data-es>Hay electricidad para preparar y conservar comidas para las personas necesitadas.</span><span data-en>There is electricity to prepare and preserve meals for those in need.</span></li>
+    <li><span data-es>Hay un lugar donde las personas mayores y vulnerables pueden encontrar ayuda.</span><span data-en>There is a place where the elderly and vulnerable can find help.</span></li>
+  </ul>
+  <p class="pj-p" style="margin-top:30px;" data-es><strong>No estamos simplemente dando paneles solares a las iglesias.</strong></p>
+  <p class="pj-p" style="margin-top:30px;" data-en><strong>We are not simply giving solar panels to churches.</strong></p>
+  <ul class="pj-ul pj-s">
+    <li><span data-es>Estamos dando luz a las comunidades.</span><span data-en>We are giving light to communities.</span></li>
+    <li><span data-es>Estamos ayudando a conservar alimentos.</span><span data-en>We are helping preserve food.</span></li>
+    <li><span data-es>Estamos ayudando a proteger medicamentos.</span><span data-en>We are helping protect medications.</span></li>
+    <li><span data-es>Estamos ayudando a las familias a comunicarse.</span><span data-en>We are helping families communicate.</span></li>
+    <li><span data-es>Estamos ayudando a las iglesias a alimentar a las personas.</span><span data-en>We are helping churches feed people.</span></li>
+    <li><span data-es>Estamos convirtiendo iglesias locales en centros de esperanza en comunidades que viven en oscuridad.</span><span data-en>We are turning local churches into centers of hope in communities living in darkness.</span></li>
+  </ul>
+  <div class="pj-quote">
+    <p data-es>La oportunidad no es simplemente proporcionar electricidad. La oportunidad es multiplicar el impacto que ya está ocurriendo a través de la iglesia local.</p>
+    <p data-en>The opportunity is not simply to provide electricity. The opportunity is to multiply the impact already happening through the local church.</p>
+  </div>
+</div>
+
+<!-- 04 LA SOLUCION -->
+<div class="pj-dark" id="solucion">
+ <div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>04 · La Solución</div><div class="pj-ey" data-en>04 · The Solution</div>
+  <h2 class="pj-t" data-es>Cada iglesia equipada<br>se convierte en un recurso</h2>
+  <h2 class="pj-t" data-en>Every equipped church<br>becomes a resource</h2>
+  <p class="pj-p" data-es>Solar Hope Network equipará iglesias con sistemas de energía solar, transformándolas en Faros de Esperanza. Cada iglesia equipada se convertirá en un recurso para la comunidad que proporcionará:</p>
+  <p class="pj-p" data-en>Solar Hope Network will equip churches with solar energy systems, transforming them into Lighthouses of Hope. Each equipped church will become a community resource providing:</p>
+  <ul class="pj-ul pj-s">
+    <li><span data-es>Estaciones para cargar teléfonos celulares.</span><span data-en>Charging stations for mobile phones.</span></li>
+    <li><span data-es>Apoyo para madres con bebés y familias vulnerables.</span><span data-en>Support for mothers with babies and vulnerable families.</span></li>
+    <li><span data-es>Iluminación durante apagones prolongados.</span><span data-en>Lighting during prolonged blackouts.</span></li>
+    <li><span data-es>Espacios seguros durante tiempos de crisis.</span><span data-en>Safe spaces during times of crisis.</span></li>
+    <li><span data-es>Continuidad de programas humanitarios.</span><span data-en>Continuity of humanitarian programs.</span></li>
+    <li><span data-es>Capacitación de líderes y educación.</span><span data-en>Leader training and education.</span></li>
+    <li><span data-es>Servicios de adoración y discipulado sin interrupciones.</span><span data-en>Uninterrupted worship services and discipleship.</span></li>
+    <li><span data-es>Un lugar confiable de apoyo cuando las comunidades más lo necesiten.</span><span data-en>A reliable place of support when communities need it most.</span></li>
+  </ul>
+  <div class="pj-quote">
+    <p data-es>Este proyecto no se trata solo de energía. Se trata de dignidad, conexión, seguridad y esperanza.</p>
+    <p data-en>This project is not only about energy. It is about dignity, connection, safety and hope.</p>
+  </div>
+ </div>
+</div>
+
+<!-- 05 100 FAROS -->
+<div class="pj-sec pj-r" id="faros">
+  <div class="pj-ey" data-es>05 · 100 Faros de Esperanza</div><div class="pj-ey" data-en>05 · 100 Lighthouses of Hope</div>
+  <h2 class="pj-t" data-es>Un enfoque estratégico<br>de tres fases</h2>
+  <h2 class="pj-t" data-en>A strategic<br>three-phase approach</h2>
+  <p class="pj-p" data-es>El objetivo es establecer 100 Faros de Esperanza mediante un enfoque estratégico de tres fases. Esta iniciativa a largo plazo crecerá de manera responsable, permitiendo excelencia en la implementación, la rendición de cuentas y la sostenibilidad.</p>
+  <p class="pj-p" data-en>The goal is to establish 100 Lighthouses of Hope through a strategic three-phase approach. This long-term initiative will grow responsibly, allowing for excellence in implementation, accountability and sustainability.</p>
+  <div class="pj-phases pj-s">
+    <div class="pj-phase">
+      <div class="pj-phase-k" data-es>Fase 1</div><div class="pj-phase-k" data-en>Phase 1</div>
+      <div class="pj-phase-t" data-es>Estableciendo los primeros 40 faros</div>
+      <div class="pj-phase-t" data-en>Establishing the first 40 lighthouses</div>
+      <div class="pj-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>40 × $7.500</b></div>
+      <div class="pj-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$300.000</b></div>
+      <div class="pj-phase-r"><span data-es>Impacto</span><span data-en>Impact</span><b>4.000 familias</b></div>
+      <div class="pj-phase-r"><span data-es>Costo por familia</span><span data-en>Cost per family</span><b>$75</b></div>
+    </div>
+    <div class="pj-phase">
+      <div class="pj-phase-k" data-es>Fase 2</div><div class="pj-phase-k" data-en>Phase 2</div>
+      <div class="pj-phase-t" data-es>Expandiendo la red (+40 iglesias)</div>
+      <div class="pj-phase-t" data-en>Expanding the network (+40 churches)</div>
+      <div class="pj-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>40 × $7.500</b></div>
+      <div class="pj-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$300.000</b></div>
+      <div class="pj-phase-r"><span data-es>Impacto</span><span data-en>Impact</span><b>+4.000 familias</b></div>
+      <div class="pj-phase-r"><span data-es>Acumulado</span><span data-en>Cumulative</span><b>8.000 familias</b></div>
+    </div>
+    <div class="pj-phase">
+      <div class="pj-phase-k" data-es>Fase 3</div><div class="pj-phase-k" data-en>Phase 3</div>
+      <div class="pj-phase-t" data-es>Completando la visión (+20 iglesias)</div>
+      <div class="pj-phase-t" data-en>Completing the vision (+20 churches)</div>
+      <div class="pj-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>20 × $7.500</b></div>
+      <div class="pj-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$150.000</b></div>
+      <div class="pj-phase-r"><span data-es>Impacto</span><span data-en>Impact</span><b>+2.000 familias</b></div>
+      <div class="pj-phase-r"><span data-es>Acumulado</span><span data-en>Cumulative</span><b>10.000 familias</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 VISION COMPLETA -->
+<div class="pj-dark" id="proyecto">
+ <div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>06 · Visión Completa del Proyecto</div><div class="pj-ey" data-en>06 · Full Project Vision</div>
+  <h2 class="pj-t" data-es>Inversión total<br>e impacto total</h2>
+  <h2 class="pj-t" data-en>Total investment<br>and total impact</h2>
+  <div class="pj-nums">
+    <div class="pj-num"><div class="pj-num-n">$750.000</div><div class="pj-num-l" data-es>Inversión total del proyecto</div><div class="pj-num-l" data-en>Total project investment</div></div>
+    <div class="pj-num"><div class="pj-num-n" data-n="100">0</div><div class="pj-num-l" data-es>Iglesias equipadas</div><div class="pj-num-l" data-en>Churches equipped</div></div>
+    <div class="pj-num"><div class="pj-num-n" data-n="10000">0</div><div class="pj-num-l" data-es>Familias impactadas directamente</div><div class="pj-num-l" data-en>Families directly impacted</div></div>
+  </div>
+  <p class="pj-p" style="margin-top:30px;" data-es>Solar Hope Network crea un impacto medible. Cada Faro representa <strong>una iglesia equipada</strong>: una inversión de $7.500 que atiende a 100 familias, es decir $75 por familia.</p>
+  <p class="pj-p" style="margin-top:30px;" data-en>Solar Hope Network creates measurable impact. Each Lighthouse represents <strong>one equipped church</strong>: a $7,500 investment serving 100 families, that is $75 per family.</p>
+  <div class="pj-quote">
+    <p data-es>Cada $75 invertidos representan una familia que obtiene acceso a una fuente sostenible de apoyo, conexión y esperanza durante tiempos de crisis.</p>
+    <p data-en>Every $75 invested represents one family that gains access to a sustainable source of support, connection and hope during times of crisis.</p>
+  </div>
+ </div>
+</div>
+
+<!-- 07 UNA IGLESIA EQUIPADA -->
+<div class="pj-sec pj-r" id="equipada">
+  <div class="pj-ey" data-es>07 · Una Iglesia Equipada</div><div class="pj-ey" data-en>07 · An Equipped Church</div>
+  <h2 class="pj-t" data-es>Una inversión sostenible<br>a largo plazo</h2>
+  <h2 class="pj-t" data-en>A sustainable<br>long-term investment</h2>
+  <div class="pj-cards pj-cards--3 pj-s">
+    <div class="pj-card"><div class="pj-card-t">$7.500</div><div class="pj-card-d" data-es>Invertidos por iglesia.</div><div class="pj-card-d" data-en>Invested per church.</div></div>
+    <div class="pj-card"><div class="pj-card-t">100</div><div class="pj-card-d" data-es>Familias atendidas diariamente.</div><div class="pj-card-d" data-en>Families served daily.</div></div>
+    <div class="pj-card"><div class="pj-card-t">$75</div><div class="pj-card-d" data-es>Costo total por familia.</div><div class="pj-card-d" data-en>Total cost per family.</div></div>
+  </div>
+  <p class="pj-p" data-es>Solar Hope Network no es un proyecto de ayuda temporal. Es una inversión a largo plazo. Cada sistema solar continuará produciendo energía durante años, reduciendo la dependencia de sistemas eléctricos inestables y permitiendo que las iglesias amplíen su capacidad de servir.</p>
+  <p class="pj-p" data-en>Solar Hope Network is not a temporary relief project. It is a long-term investment. Each solar system will continue producing energy for years, reducing dependence on unstable electrical systems and allowing churches to expand their capacity to serve.</p>
+  <p class="pj-p" data-es>En lugar de responder continuamente a emergencias, estamos creando centros permanentes de compasión, servicio y transformación.</p>
+  <p class="pj-p" data-en>Instead of continually responding to emergencies, we are creating permanent centers of compassion, service and transformation.</p>
+  <div class="pj-quote">
+    <p data-es>Cada iglesia equipada se convierte en un recurso duradero para toda su comunidad.</p>
+    <p data-en>Each equipped church becomes a lasting resource for its entire community.</p>
+  </div>
+  <div class="pj-gal pj-s">
+    <figure><img src="assets/img/iniciativas/shn/paneles.jpg" alt="" loading="lazy" decoding="async"><figcaption data-es>Paneles instalados</figcaption><figcaption data-en>Panels installed</figcaption></figure>
+    <figure><img src="assets/img/iniciativas/shn/tecnico.jpg" alt="" loading="lazy" decoding="async"><figcaption data-es>Puesta en marcha</figcaption><figcaption data-en>Commissioning</figcaption></figure>
+    <figure><img src="assets/img/iniciativas/shn/inversor.jpg" alt="" loading="lazy" decoding="async"><figcaption data-es>Inversor y baterías</figcaption><figcaption data-en>Inverter and batteries</figcaption></figure>
+  </div>
+</div>
+
+<!-- 08 COLABORACION -->
+<div class="pj-dark" id="colaborar">
+ <div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>08 · Oportunidades de Colaboración</div><div class="pj-ey" data-en>08 · Partnership Opportunities</div>
+  <h2 class="pj-t" data-es>Elige el nivel<br>que puedas sostener</h2>
+  <h2 class="pj-t" data-en>Choose the level<br>you can sustain</h2>
+  <div class="pj-tiers pj-s">
+    <div class="pj-tier"><div class="pj-tier-n">$75</div><div class="pj-tier-t" data-es>Colaborador Solar</div><div class="pj-tier-t" data-en>Solar Partner</div><div class="pj-tier-d" data-es>Patrocina 1 familia. Ayuda a equipar 1 iglesia.</div><div class="pj-tier-d" data-en>Sponsors 1 family. Helps equip 1 church.</div></div>
+    <div class="pj-tier"><div class="pj-tier-n">$1.500</div><div class="pj-tier-t" data-es>Constructor de Energía</div><div class="pj-tier-t" data-en>Energy Builder</div><div class="pj-tier-d" data-es>Patrocina 20 familias. Ayuda a equipar 1 iglesia.</div><div class="pj-tier-d" data-en>Sponsors 20 families. Helps equip 1 church.</div></div>
+    <div class="pj-tier"><div class="pj-tier-n">$7.500</div><div class="pj-tier-t" data-es>Constructor de Faros</div><div class="pj-tier-t" data-en>Lighthouse Builder</div><div class="pj-tier-d" data-es>Equipa 1 Faro de Esperanza. Atiende a 100 familias. Fortalece una comunidad.</div><div class="pj-tier-d" data-en>Equips 1 Lighthouse of Hope. Serves 100 families. Strengthens a community.</div></div>
+    <div class="pj-tier"><div class="pj-tier-n">$37.500</div><div class="pj-tier-t" data-es>Socio Faro de Esperanza</div><div class="pj-tier-t" data-en>Lighthouse of Hope Partner</div><div class="pj-tier-d" data-es>Equipa 5 Faros. Atiende a 500 familias. Amplio impacto comunitario.</div><div class="pj-tier-d" data-en>Equips 5 Lighthouses. Serves 500 families. Broad community impact.</div></div>
+  </div>
+  <div class="pj-tiers pj-s" style="grid-template-columns:1fr;margin-top:10px;">
+    <div class="pj-tier" style="text-align:left;padding:26px 24px;">
+      <div class="pj-tier-n">$150.000</div>
+      <div class="pj-tier-t" data-es>Transformador Regional</div><div class="pj-tier-t" data-en>Regional Transformer</div>
+      <div class="pj-tier-d" data-es>Equipa 20 Faros de Esperanza. Atiende a 2.000 familias. Transforma regiones enteras.</div>
+      <div class="pj-tier-d" data-en>Equips 20 Lighthouses of Hope. Serves 2,000 families. Transforms entire regions.</div>
+    </div>
+  </div>
+ </div>
+</div>
+
+<!-- OPORTUNIDAD HISTORICA -->
+<div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>Una oportunidad histórica</div><div class="pj-ey" data-en>A historic opportunity</div>
+  <h2 class="pj-t" data-es>Una invitación<br>a dejar un legado</h2>
+  <h2 class="pj-t" data-en>An invitation<br>to leave a legacy</h2>
+  <p class="pj-p" data-es>Los tiempos de crisis revelan las mayores necesidades de las comunidades. Hoy existe una oportunidad extraordinaria para capacitar a las iglesias a convertirse en centros de servicio, compasión y transformación.</p>
+  <p class="pj-p" data-en>Times of crisis reveal the greatest needs of communities. Today there is an extraordinary opportunity to enable churches to become centers of service, compassion and transformation.</p>
+  <p class="pj-p" data-es><strong>Dentro de algunos años, las comunidades recordarán:</strong></p>
+  <p class="pj-p" data-en><strong>Years from now, communities will remember:</strong></p>
+  <ul class="pj-ul pj-s">
+    <li><span data-es>Las iglesias que siguieron sirviendo.</span><span data-en>The churches that kept serving.</span></li>
+    <li><span data-es>Los lugares donde las familias encontraron apoyo.</span><span data-en>The places where families found support.</span></li>
+    <li><span data-es>Los momentos en que la esperanza permaneció viva en medio de la oscuridad.</span><span data-en>The moments when hope stayed alive in the midst of darkness.</span></li>
+  </ul>
+  <p class="pj-p" data-es>Solar Hope Network es más que un proyecto de energía solar. Es un movimiento para fortalecer iglesias, empoderar comunidades y llevar esperanza sostenible donde más se necesita.</p>
+  <p class="pj-p" data-en>Solar Hope Network is more than a solar energy project. It is a movement to strengthen churches, empower communities and bring sustainable hope where it is needed most.</p>
+  <div class="pj-quote">
+    <p data-es>No estamos simplemente instalando paneles solares. Estamos iluminando comunidades. Estamos fortaleciendo iglesias. Estamos construyendo una red de 100 Faros de Esperanza que impactará a generaciones.</p>
+    <p data-en>We are not simply installing solar panels. We are lighting up communities. We are strengthening churches. We are building a network of 100 Lighthouses of Hope that will impact generations.</p>
+  </div>
+</div>
+
+<!-- 09 CONTACTO -->
+<div class="pj-sec pj-sec--tight pj-r" id="contacto">
+  <div class="pj-ey" data-es>09 · Contáctenos</div><div class="pj-ey" data-en>09 · Contact Us</div>
+  <h2 class="pj-t" data-es>Hablemos<br>del proyecto</h2>
+  <h2 class="pj-t" data-en>Let's talk<br>about the project</h2>
+  <div class="pj-cards pj-cards--3 pj-s">
+    <div class="pj-card"><div class="pj-card-t" data-es>Teléfono</div><div class="pj-card-t" data-en>Phone</div><div class="pj-card-d"><a href="tel:+17409756112" style="color:var(--pj-brand)">+1 (740) 975-6112</a></div></div>
+    <div class="pj-card"><div class="pj-card-t">Email</div><div class="pj-card-d"><a href="mailto:kingdominactionministry@gmail.com" style="color:var(--pj-brand)">kingdominactionministry@gmail.com</a></div></div>
+    <div class="pj-card"><div class="pj-card-t">Web</div><div class="pj-card-d"><a href="index.html" style="color:var(--pj-brand)">kingdominactionfamily.org</a></div></div>
+  </div>
+  <p class="pj-p" style="font-style:italic;" data-es>Solar Hope Network es una misión de Kingdom in Action Family.</p>
+  <p class="pj-p" style="font-style:italic;" data-en>Solar Hope Network is a mission of Kingdom in Action Family.</p>
+  <div class="pj-cta">
+    <button class="btn-pj" onclick="openDonate()" data-es>Quiero colaborar</button>
+    <button class="btn-pj" onclick="openDonate()" data-en>I want to partner</button>
+    <a href="index.html#contacto" class="btn-pj btn-pj--ghost" data-es>Escríbenos</a>
+    <a href="index.html#contacto" class="btn-pj btn-pj--ghost" data-en>Contact us</a>
+  </div>
+</div>
+
+<!-- DESCARGA -->
+<div class="pj-dl">
+  <div class="pj-dl-in pj-r">
+    <div class="pj-dl-ico"><span>PDF</span></div>
+    <div>
+      <div class="pj-dl-t" data-es>Llévate el documento completo</div>
+      <div class="pj-dl-t" data-en>Take the full document with you</div>
+      <div class="pj-dl-d" data-es>La guía completa de Solar Hope Network: la visión, las tres fases, los números del proyecto y las oportunidades de colaboración. Para leer con calma o presentar a tu congregación.</div>
+      <div class="pj-dl-d" data-en>The complete Solar Hope Network guide: the vision, the three phases, the project numbers and the partnership opportunities. To read at your own pace or present to your congregation.</div>
+      <div class="pj-dl-meta">PDF · 14 <span data-es>páginas</span><span data-en>pages</span> · Kingdom in Action Family</div>
+    </div>
+    <a class="btn-pj" href="assets/docs/solar-hope-network.pdf" download>
+      <svg viewBox="0 0 24 24"><path d="M12 16.6 6.4 11l1.6-1.6 2.9 2.9V3h2.2v9.3l2.9-2.9 1.6 1.6L12 16.6zM5 20v-2.2h14V20H5z"/></svg>
+      <span data-es>Descargar</span><span data-en>Download</span></a>
+  </div>
+</div>
+
+</div>
+
+<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
+
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en tres naciones.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions across three nations.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
+    <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-es>100% de tu donación va al campo misionero.</p><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-en>100% of your donation goes to the mission field.</p></div></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
+
+<script>
+function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}
+function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+(function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
+function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
+
+setInterval(chNext,4500);
+let lbSet=[],lbI=0;
+function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
+document.addEventListener('keydown',e=>{if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.08});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+
+<script>
+/* parche de inmersion: progreso, parallax compatible con iOS, reveals */
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var prog=document.getElementById('prog');
+  var bands=[].slice.call(document.querySelectorAll('.fb-parallax'));
+  var tick=false;
+  function frame(){
+    var st=pageYOffset,H=document.documentElement.scrollHeight-innerHeight;
+    if(prog)prog.style.width=(H>0?(st/H)*100:0)+'%';
+    if(!rm)bands.forEach(function(b){
+      var r=b.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight){
+        var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+        b.style.backgroundPosition='center calc(50% + '+(p*-45).toFixed(1)+'px)';
+      }});
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.rev,.rev-l,.rev-r,.stag').forEach(function(el){io.observe(el);});
+  frame();
+})();
+</script>
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- entrada del hero apenas carga ---- */
+  var hero=document.querySelector('.ph-hero');
+  if(hero) requestAnimationFrame(function(){ setTimeout(function(){ hero.classList.add('lit'); },80); });
+
+  /* ---- revelado por secciones + contadores ---- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var t=e.target;
+      t.classList.add('on');
+      t.querySelectorAll('[data-ini]').forEach(function(el){
+        var end=+el.dataset.ini,t0=null;
+        if(rm){el.textContent=end.toLocaleString('es');return;}
+        requestAnimationFrame(function s(ts){
+          if(!t0)t0=ts; var k=Math.min((ts-t0)/1600,1);
+          el.textContent=Math.round(end*(1-Math.pow(1-k,3))).toLocaleString('es');
+          if(k<1)requestAnimationFrame(s);
+        });
+      });
+      io.unobserve(t);
+    });
+  },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.ini-card,.ini-band,.ini-quote,.intro-fig,.rev,.ini-in>.rev,.ini-ways,.ini-tiers,.ini-phases,.ini-nums,.ini-mv,.beliefs-grid')
+    .forEach(function(c){io.observe(c);});
+
+  /* ---- parallax: hero por columnas + bandas fotograficas ---- */
+  var cols=[].slice.call(document.querySelectorAll('.ph-hero-grid figure img'));
+  var pics=[].slice.call(document.querySelectorAll('.ini-band img,.ini-quote>img'));
+  var intro=document.querySelector('.intro-fig-img img');
+  var tick=false;
+  function frame(){
+    if(rm){ tick=false; return; }
+    var y=pageYOffset;
+    /* cada columna del hero se mueve a distinta velocidad */
+    if(hero){
+      var hr=hero.getBoundingClientRect();
+      if(hr.bottom>0 && hr.top<innerHeight){
+        /* progreso 0..1 del hero pasando por el viewport, no el scroll absoluto */
+        var prog=Math.max(-1,Math.min(1,-hr.top/Math.max(hr.height,1)));
+        cols.forEach(function(im,i){
+          var amp=[26,46,34,56][i%4];
+          im.style.transform='translate3d(0,'+(prog*amp).toFixed(1)+'px,0)';
+        });
+      }
+    }
+    pics.forEach(function(im){
+      var r=im.parentNode.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight) return;
+      var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
+      im.style.transform='translate3d(0,'+(-p*r.height*0.055).toFixed(1)+'px,0)';
+    });
+    if(intro){
+      var r2=intro.parentNode.getBoundingClientRect();
+      if(r2.bottom>0&&r2.top<innerHeight){
+        var p2=(r2.top+r2.height/2-innerHeight/2)/(innerHeight/2+r2.height/2);
+        intro.style.transform='translate3d(0,'+(-p2*26).toFixed(1)+'px,0) scale(1.06)';
+      }
+    }
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+  addEventListener('resize',frame,{passive:true});
+  frame();
+
+  /* ---- resplandor siguiendo al cursor ---- */
+  document.querySelectorAll('.ini-way,.ini-tier,.ini-phase,.ini-mv>div').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(ev.clientX-r.left)+'px');
+      c.style.setProperty('--my',(ev.clientY-r.top)+'px');
+    });
+  });
+})();</script>
+<script>window.KIAF_INVITE={"id": "proyectos", "img": "assets/img/iniciativas/pom/abuela.jpg", "badgeEs": "Cuba · Día de distribución", "badgeEn": "Cuba · Distribution day", "eyEs": "Tu aporte", "eyEn": "Your giving", "titleEs": "Un plato de comida<br>cuesta menos de lo que imaginas", "titleEn": "A plate of food<br>costs less than you think", "textEs": "Cada mes alimentamos a 20.000 personas. Detrás de ese número hay abuelas, niños y familias que esperan que alguien golpee la puerta. Con $25 provees comidas y artículos esenciales por un mes.", "textEn": "Every month we feed 20,000 people. Behind that number are grandmothers, children and families waiting for someone to knock on the door. With $25 you provide meals and essentials for a month.", "actions": [{"action": "donate", "es": "Donar ahora", "en": "Give now"}, {"href": "index.html#contacto", "es": "Quiero colaborar", "en": "I want to partner", "ghost": true}]};</script>
+<script>
+/* ============ INVITACIÓN CONTEXTUAL ============
+   Cada página define window.KIAF_INVITE antes de cargar este script.
+   Se muestra al 55% de scroll o a los 35s, lo que ocurra primero.
+   Al cerrarse no vuelve a aparecer durante 7 días. */
+(function(){
+  var cfg = window.KIAF_INVITE;
+  if(!cfg) return;
+  var KEY = 'kiaf_inv_' + (cfg.id || 'x');
+  /* localStorage puede fallar en modo privado: nunca romper la página por eso */
+  function seen(){
+    try{
+      var v = localStorage.getItem(KEY);
+      return v && (Date.now() - (+v) < 7*24*60*60*1000);
+    }catch(e){ return false; }
+  }
+  function remember(){ try{ localStorage.setItem(KEY, Date.now()); }catch(e){} }
+  if(seen()) return;
+
+  var el = document.createElement('div');
+  el.className = 'inv-bg';
+  el.setAttribute('role','dialog');
+  el.setAttribute('aria-modal','true');
+  el.setAttribute('aria-label', cfg.titleEs || 'Invitación');
+  var acts = (cfg.actions||[]).map(function(a){
+    var cls = 'inv-btn' + (a.ghost ? ' inv-btn--ghost' : '');
+    if(a.action === 'donate')
+      return '<button class="'+cls+'" data-act="donate" data-es>'+a.es+'</button>'+
+             '<button class="'+cls+'" data-act="donate" data-en>'+a.en+'</button>';
+    return '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-es>'+a.es+'</a>'+
+           '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-en>'+a.en+'</a>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="inv">'+
+      '<button class="inv-x" aria-label="Cerrar">&#10005;</button>'+
+      '<div class="inv-img"><img src="'+cfg.img+'" alt="" loading="lazy" decoding="async">'+
+        '<div class="inv-badge" data-es>'+cfg.badgeEs+'</div>'+
+        '<div class="inv-badge" data-en>'+cfg.badgeEn+'</div></div>'+
+      '<div class="inv-body">'+
+        '<div class="inv-ey" data-es>'+cfg.eyEs+'</div><div class="inv-ey" data-en>'+cfg.eyEn+'</div>'+
+        '<div class="inv-t" data-es>'+cfg.titleEs+'</div><div class="inv-t" data-en>'+cfg.titleEn+'</div>'+
+        '<p class="inv-p" data-es>'+cfg.textEs+'</p><p class="inv-p" data-en>'+cfg.textEn+'</p>'+
+        '<div class="inv-acts">'+acts+'</div>'+
+        '<button class="inv-later" data-es>Ahora no</button>'+
+        '<button class="inv-later" data-en>Not now</button>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(el);
+
+  var open = false, lastFocus = null;
+  function show(){
+    if(open || seen()) return;
+    var dm = document.getElementById('dmodal');
+    if(dm && dm.classList.contains('open')) return;   /* no pisar el modal de donación */
+    var nv = document.getElementById('navOv');
+    if(nv && nv.classList.contains('open')) return;   /* ni el menú móvil */
+    open = true; lastFocus = document.activeElement;
+    el.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var f = el.querySelector('.inv-x'); if(f) f.focus();
+  }
+  function hide(){
+    open = false; remember();
+    el.classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  el.querySelector('.inv-x').addEventListener('click', hide);
+  [].forEach.call(el.querySelectorAll('.inv-later'), function(b){ b.addEventListener('click', hide); });
+  el.addEventListener('click', function(e){ if(e.target === el) hide(); });
+  document.addEventListener('keydown', function(e){ if(open && e.key === 'Escape') hide(); });
+  [].forEach.call(el.querySelectorAll('[data-act="donate"]'), function(b){
+    b.addEventListener('click', function(){ hide(); if(window.openDonate) openDonate(); });
+  });
+  [].forEach.call(el.querySelectorAll('.inv-acts a'), function(a){ a.addEventListener('click', remember); });
+
+  var timer = setTimeout(show, 35000);
+  function onScroll(){
+    var H = document.documentElement.scrollHeight - innerHeight;
+    if(H > 0 && pageYOffset / H > 0.55){
+      clearTimeout(timer);
+      removeEventListener('scroll', onScroll);
+      setTimeout(show, 700);
+    }
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+})();
+
+</script>
+
+<script>window.KIAF_INVITE={"id":"shn","img":"assets/img/iniciativas/shn/paneles.jpg","badgeEs":"Instalación en curso","badgeEn":"Installation in progress","eyEs":"Faros de Esperanza","eyEn":"Lighthouses of Hope","titleEs":"Con $75 una familia<br>deja de vivir a oscuras","titleEn":"With $75 one family<br>stops living in darkness","textEs":"Cada iglesia equipada atiende a 100 familias. La inversión es de $7.500 por iglesia, o $75 por familia, y el sistema sigue produciendo energía durante años.","textEn":"Each equipped church serves 100 families. The investment is $7,500 per church, or $75 per family, and the system keeps producing energy for years.","actions":[{"action":"donate","es":"Quiero colaborar","en":"I want to partner"},{"href":"assets/docs/solar-hope-network.pdf","es":"Descargar el proyecto","en":"Download the project","ghost":true}]};</script>
+<script src="shared.js"></script>
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hero=document.getElementById('pjHero');
+  if(hero) requestAnimationFrame(function(){ setTimeout(function(){hero.classList.add('lit');},80); });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.pj-num').forEach(function(n,i){ setTimeout(function(){n.classList.add('on');}, i*140); });
+      e.target.querySelectorAll('[data-n]').forEach(function(el){
+        var end=+el.dataset.n,t0=null;
+        if(rm){el.textContent=end.toLocaleString('es');return;}
+        requestAnimationFrame(function s(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/1600,1);
+          el.textContent=Math.round(end*(1-Math.pow(1-k,3))).toLocaleString('es');
+          if(k<1)requestAnimationFrame(s); });
+      });
+      io.unobserve(e.target);
+    });
+  },{threshold:.13,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.pj-r,.pj-s').forEach(function(el){io.observe(el);});
+  var prog=document.getElementById('prog');
+  var pics=[].slice.call(document.querySelectorAll('.pj-band img,.pj-hero-img img'));
+  var tick=false;
+  function frame(){
+    var st=pageYOffset,H=document.documentElement.scrollHeight-innerHeight;
+    if(prog)prog.style.width=(H>0?(st/H)*100:0)+'%';
+    if(!rm)pics.forEach(function(im){
+      var r=im.parentNode.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight)return;
+      var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
+      im.style.transform='translate3d(0,'+(-p*r.height*0.05).toFixed(1)+'px,0)';
+    });
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+  document.querySelectorAll('.pj-card').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(ev.clientX-r.left)+'px');c.style.setProperty('--my',(ev.clientY-r.top)+'px');});
+  });
+  frame();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pool of Mercy | Kingdom in Action</title>
+<meta name="description" content="Pool of Mercy es el ministerio de ayuda humanitaria de Kingdom in Action Family: alimentos, suministros médicos y ayuda en desastres.">
+<link rel="icon" href="assets/favicon/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png?v=2">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png?v=2">
+<link rel="manifest" href="site.webmanifest?v=2">
+<meta name="theme-color" content="#0D0F11">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+:root{--white:#FFFFFF;--muted:#6B6560;--teal:#17788A;}
+.pj{--brand:var(--pj-brand);--deep:var(--pj-deep);--wash:var(--pj-wash);
+  --ink:#1B2B3A;--ink-soft:#5A6B7A;--paper:#FBF9F5;--paper-2:#F2EEE7;--line:#E3DDD3;
+  background:var(--paper);color:var(--ink);}
+/* HERO */
+.pj-hero{margin-top:var(--nav-h);position:relative;min-height:clamp(460px,72vh,720px);
+  display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:var(--paper);overflow:hidden;
+  border-bottom:1px solid var(--line);}
+.pj-hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(70% 56% at 6% 44%,var(--wash),transparent 62%);}
+.pj-hero-txt{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(44px,6vw,80px) clamp(22px,5vw,64px);}
+.pj-crumb{display:flex;align-items:center;gap:9px;font-size:9.5px;font-weight:700;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px;}
+.pj-crumb a{color:var(--brand);}
+.pj-crumb a:hover{text-decoration:underline;text-underline-offset:3px;}
+.pj-mark{width:clamp(72px,9vw,104px);height:clamp(72px,9vw,104px);border-radius:50%;
+  background:var(--wash);border:1px solid var(--brand);display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;}
+.pj-mark img,.pj-mark svg{width:72%;height:72%;object-fit:contain;}
+.pj-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;
+  text-transform:uppercase;line-height:.94;letter-spacing:.01em;color:var(--deep);}
+.pj-kick{font-size:9.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--brand);margin-top:14px;}
+.pj-tag{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.05rem,2vw,1.4rem);font-style:italic;
+  font-weight:500;color:var(--ink-soft);margin-top:16px;max-width:34ch;}
+.pj-hero-img{position:relative;overflow:hidden;background:var(--paper-2);}
+.pj-hero-img img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform;}
+.pj-hero-img::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,var(--paper),transparent 26%);}
+/* BLOQUES */
+.pj-sec{max-width:1120px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,60px);}
+.pj-sec--tight{padding-top:clamp(28px,4vw,44px);}
+.pj-ey{display:flex;align-items:center;gap:11px;font-size:9.5px;font-weight:700;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:14px;}
+.pj-ey::before{content:'';width:30px;height:1px;background:currentColor;}
+.pj-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;
+  text-transform:uppercase;line-height:1.06;color:var(--deep);}
+.pj-p{font-size:16px;line-height:1.88;color:var(--ink-soft);max-width:70ch;margin-top:16px;}
+.pj-p strong{color:var(--deep);font-weight:700;}
+.pj-lead{font-size:clamp(1.05rem,1.9vw,1.24rem);line-height:1.75;color:var(--deep);max-width:60ch;
+  margin-top:18px;font-weight:400;}
+/* franja oscura */
+.pj-dark{background:var(--deep);color:#fff;position:relative;overflow:hidden;}
+.pj-dark .pj-t{color:#fff;}
+.pj-dark .pj-p{color:rgba(255,255,255,.74);}
+.pj-dark .pj-ey{color:var(--brand);}
+/* listas */
+.pj-ul{margin-top:20px;display:flex;flex-direction:column;gap:2px;max-width:72ch;}
+.pj-ul li{list-style:none;display:flex;gap:14px;align-items:flex-start;padding:12px 0;
+  border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.78;color:var(--ink-soft);}
+.pj-ul li:last-child{border-bottom:none;}
+.pj-ul li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand);
+  flex-shrink:0;margin-top:9px;}
+.pj-dark .pj-ul li{border-bottom-color:rgba(255,255,255,.10);color:rgba(255,255,255,.76);}
+/* tarjetas "imagina" */
+.pj-imagine{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;}
+.pj-imagine div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:4px;
+  padding:24px 24px;font-size:15px;line-height:1.8;color:rgba(255,255,255,.78);
+  transition:border-color .4s,background .4s,transform .4s var(--ease);}
+.pj-imagine div:hover{border-color:var(--brand);background:rgba(255,255,255,.08);transform:translateY(-3px);}
+/* grilla de tarjetas claras */
+.pj-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px;}
+.pj-cards--3{grid-template-columns:repeat(3,1fr);}
+.pj-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px 24px;position:relative;
+  overflow:hidden;transition:border-color .4s,transform .4s var(--ease),box-shadow .4s;}
+.pj-card:hover{border-color:var(--brand);transform:translateY(-3px);
+  box-shadow:0 18px 44px -22px rgba(27,43,58,.30);}
+.pj-card::before{content:'';position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),var(--wash),transparent 46%);}
+.pj-card:hover::before{opacity:1;}
+.pj-card-i{width:40px;height:40px;border-radius:50%;background:var(--wash);display:flex;align-items:center;
+  justify-content:center;margin-bottom:14px;}
+.pj-card-i svg{width:19px;height:19px;fill:var(--brand);}
+.pj-card-t{font-family:'Barlow Condensed',sans-serif;font-size:1.08rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--deep);margin-bottom:8px;}
+.pj-card-d{font-size:14.5px;line-height:1.75;color:var(--ink-soft);}
+/* cifras */
+.pj-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:30px;}
+.pj-num{background:#fff;padding:30px 20px;text-align:center;position:relative;overflow:hidden;}
+.pj-num::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--brand);
+  transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease);}
+.pj-num.on::after{transform:scaleX(1);}
+.pj-num-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;
+  line-height:1;color:var(--brand);}
+.pj-num-l{font-size:9.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);
+  margin-top:10px;line-height:1.6;}
+/* niveles */
+.pj-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px;}
+.pj-tier{background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px 18px;text-align:center;
+  position:relative;overflow:hidden;transition:border-color .4s,transform .4s var(--ease);}
+.pj-tier:hover{border-color:var(--brand);transform:translateY(-3px);}
+.pj-tier-n{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:800;color:var(--deep);line-height:1;}
+.pj-tier-t{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);margin-top:9px;}
+.pj-tier-d{font-size:13px;line-height:1.65;color:var(--ink-soft);margin-top:9px;}
+/* fases */
+.pj-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px;}
+.pj-phase{background:var(--deep);border-radius:4px;padding:28px 24px;color:#fff;position:relative;overflow:hidden;
+  transition:transform .5s var(--ease);}
+.pj-phase:hover{transform:translateY(-4px);}
+.pj-phase::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand);}
+.pj-phase-k{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:12px;}
+.pj-phase-t{font-family:'Barlow Condensed',sans-serif;font-size:1.16rem;font-weight:700;text-transform:uppercase;
+  line-height:1.2;margin-bottom:14px;}
+.pj-phase-r{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.70);}
+.pj-phase-r:last-child{border-bottom:none;}
+.pj-phase-r b{color:var(--brand);font-weight:700;}
+/* cita */
+.pj-quote{border-left:3px solid var(--brand);padding:26px 30px;margin-top:30px;
+  background:linear-gradient(90deg,var(--wash),transparent 72%);}
+.pj-quote p{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.25rem,2.6vw,1.85rem);font-weight:600;
+  line-height:1.34;color:var(--deep);}
+.pj-dark .pj-quote{background:linear-gradient(90deg,rgba(255,255,255,.07),transparent 72%);}
+.pj-dark .pj-quote p{color:#fff;}
+/* banda foto */
+.pj-band{position:relative;min-height:clamp(260px,38vh,420px);overflow:hidden;display:flex;align-items:flex-end;}
+.pj-band img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform;}
+.pj-band::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,26,40,.88),rgba(11,26,40,.30) 45%,transparent 78%);}
+.pj-band-cnt{position:relative;z-index:2;padding:clamp(24px,4vw,44px) clamp(20px,5vw,60px);max-width:60ch;}
+.pj-band-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.3rem,3vw,2.1rem);font-weight:700;
+  text-transform:uppercase;line-height:1.16;color:#fff;}
+.pj-band-p{font-size:14.5px;line-height:1.8;color:rgba(255,255,255,.76);margin-top:10px;}
+/* galeria */
+.pj-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px;}
+.pj-gal figure{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:4px;background:var(--paper-2);}
+.pj-gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .5s;}
+.pj-gal figure:hover img{transform:scale(1.05);}
+.pj-gal:hover figure:not(:hover) img{filter:grayscale(1);opacity:.5;}
+.pj-gal figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px;
+  background:linear-gradient(to top,rgba(11,26,40,.86),transparent);
+  font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#fff;}
+/* DESCARGA */
+.pj-dl{background:var(--paper-2);border-top:1px solid var(--line);}
+.pj-dl-in{max-width:1120px;margin:0 auto;padding:clamp(48px,7vw,84px) clamp(20px,5vw,60px);
+  display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,4vw,44px);align-items:center;}
+.pj-dl-ico{width:66px;height:80px;flex-shrink:0;border:2px solid var(--brand);border-radius:4px;
+  position:relative;background:#fff;display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;}
+.pj-dl-ico::before{content:'';position:absolute;top:0;right:0;width:20px;height:20px;
+  background:var(--wash);border-left:2px solid var(--brand);border-bottom:2px solid var(--brand);}
+.pj-dl-ico span{font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:800;letter-spacing:.1em;
+  color:var(--brand);}
+.pj-dl-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:800;
+  text-transform:uppercase;line-height:1.1;color:var(--deep);}
+.pj-dl-d{font-size:14.5px;line-height:1.75;color:var(--ink-soft);margin-top:8px;max-width:52ch;}
+.pj-dl-meta{font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:12px;}
+.btn-pj{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;padding:17px 30px;border-radius:3px;background:var(--deep);color:#fff;
+  border:1px solid var(--deep);white-space:nowrap;
+  transition:background .35s,color .35s,transform .35s var(--ease);}
+.btn-pj:hover{background:var(--brand);border-color:var(--brand);transform:translateY(-2px);}
+.btn-pj svg{width:15px;height:15px;fill:currentColor;}
+.btn-pj--ghost{background:transparent;color:var(--deep);}
+.btn-pj--ghost:hover{background:var(--deep);border-color:var(--deep);color:#fff;}
+.pj-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+/* reveals */
+.pj-r{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease);}
+.pj-r.on{opacity:1;transform:none;}
+.pj-s>*{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.pj-s.on>*{opacity:1;transform:none;}
+.pj-s.on>*:nth-child(2){transition-delay:.09s}.pj-s.on>*:nth-child(3){transition-delay:.18s}
+.pj-s.on>*:nth-child(4){transition-delay:.27s}.pj-s.on>*:nth-child(5){transition-delay:.36s}
+.pj-s.on>*:nth-child(6){transition-delay:.45s}.pj-s.on>*:nth-child(7){transition-delay:.54s}
+.pj-h{overflow:hidden;}.pj-h>span{display:block;transform:translateY(104%);
+  transition:transform 1.05s cubic-bezier(.16,.84,.32,1) .2s;}
+.pj-hero.lit .pj-h>span{transform:none;}
+.pj-hero-txt>*{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.pj-hero.lit .pj-hero-txt>*{opacity:1;transform:none;}
+.pj-hero.lit .pj-crumb{transition-delay:.10s}.pj-hero.lit .pj-mark{transition-delay:.20s}
+.pj-hero.lit .pj-h{transition-delay:.28s}.pj-hero.lit .pj-kick{transition-delay:.44s}
+.pj-hero.lit .pj-tag{transition-delay:.54s}
+.pj-hero-img{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.16,.84,.32,1) .25s;}
+.pj-hero.lit .pj-hero-img{clip-path:inset(0 0 0 0);}
+@media(max-width:1024px){
+  .pj-hero{grid-template-columns:1fr;min-height:auto;}
+  .pj-hero-img{height:40vh;min-height:260px;}
+  .pj-hero-img::after{background:linear-gradient(to top,rgba(251,249,245,.9),transparent 40%);}
+  .pj-cards,.pj-cards--3,.pj-imagine,.pj-phases{grid-template-columns:1fr;}
+  .pj-tiers{grid-template-columns:1fr 1fr;}
+  .pj-dl-in{grid-template-columns:1fr;text-align:left;}
+  .pj-gal{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .pj-nums{grid-template-columns:1fr;}.pj-tiers{grid-template-columns:1fr;}
+  .pj-gal{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+  .pj-r,.pj-s>*,.pj-hero-txt>*,.pj-h>span,.pj-hero-img{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important;}
+}
+
+.pj{--pj-brand:#17788A;--pj-deep:#0E2A47;--pj-wash:rgba(23,120,138,.09);}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Pool of Mercy</span><span data-en>Pool of Mercy</span></a>
+  <ul class="nav-links">
+    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li>
+    <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
+    <li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>Úneted States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li>
+    <li><a href="proyectos.html"  data-es>Proyectos</a><a href="proyectos.html"  data-en>Projects</a></li>
+    <li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div>
+</nav>
+<div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()">EEUU</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()"  data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()"  data-en>Projects</a></div>
+
+
+
+<div class="pj">
+
+<!-- HERO -->
+<div class="pj-hero" id="pjHero">
+  <div class="pj-hero-txt">
+    <div class="pj-crumb"><a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a><span>·</span><span data-es>Pool of Mercy</span><span data-en>Pool of Mercy</span></div>
+    <div class="pj-mark"><svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 6.5s16 18.4 16 28.6A16 16 0 0 1 16 35.1C16 24.9 32 6.5 32 6.5z" fill="none" stroke="#0E2A47" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M18.6 34.6c4.4-3.2 8.8-3.2 13.2 0s8.8 3.2 13.2 0" fill="none" stroke="#17788A" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M20.4 42.6c3.9-2.8 7.8-2.8 11.7 0s7.8 2.8 11.7 0" fill="none" stroke="#2FA0B4" stroke-width="2.6" stroke-linecap="round"/>
+      </svg></div>
+    <h1 class="pj-h"><span>Pool of Mercy</span></h1>
+    <div class="pj-kick" data-es>Ayuda Humanitaria · Ayuda en Desastres</div>
+    <div class="pj-kick" data-en>Humanitarian Aid · Disaster Relief</div>
+    <div class="pj-tag" data-es>Misericordia que se mueve. Esperanza que alcanza.</div>
+    <div class="pj-tag" data-en>Mercy that moves. Hope that reaches.</div>
+  </div>
+  <div class="pj-hero-img"><img src="assets/img/iniciativas/pom/entrega.jpg" alt="Entrega de alimentos" fetchpriority="high"></div>
+</div>
+
+<!-- QUE ES -->
+<div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>El ministerio</div><div class="pj-ey" data-en>The ministry</div>
+  <h2 class="pj-t" data-es>Movilizando generosidad<br>hacia necesidades reales</h2>
+  <h2 class="pj-t" data-en>Mobilizing generosity<br>toward real needs</h2>
+  <p class="pj-lead" data-es>Pool of Mercy es el ministerio de ayuda humanitaria de Kingdom in Action Family, movilizando la generosidad para suplir necesidades reales, tanto a nivel local como alrededor del mundo.</p>
+  <p class="pj-lead" data-en>Pool of Mercy is the humanitarian aid ministry of Kingdom in Action Family, mobilizing generosity to meet real needs, both locally and around the world.</p>
+  <div class="pj-cards pj-s">
+    <div class="pj-card">
+      <div class="pj-card-t" data-es>Nuestra Misión</div><div class="pj-card-t" data-en>Our Mission</div>
+      <div class="pj-card-d" data-es>Recolectar, organizar y movilizar recursos que brinden ayuda práctica y esperanza a personas y familias en tiempos de necesidad, por medio del alcance local, la ayuda en desastres y la ayuda internacional.</div>
+      <div class="pj-card-d" data-en>To collect, organize and mobilize resources that provide practical help and hope to individuals and families in times of need, through local outreach, disaster relief and international aid.</div>
+    </div>
+    <div class="pj-card">
+      <div class="pj-card-t" data-es>Nuestra Visión</div><div class="pj-card-t" data-en>Our Vision</div>
+      <div class="pj-card-d" data-es>Un mundo donde nadie enfrente las dificultades solo, y donde el amor de Jesús se exprese a través de personas compasivas que dan, sirven y marcan la diferencia.</div>
+      <div class="pj-card-d" data-en>A world where no one faces hardship alone, and where the love of Jesus is expressed through compassionate people who give, serve and make a difference.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BANDA -->
+<div class="pj-band pj-r">
+  <img src="assets/img/iniciativas/pom/contenedor.jpg" alt="" loading="lazy" decoding="async">
+  <div class="pj-band-cnt">
+    <div class="pj-band-t" data-es>Juntos, podemos ser un manantial de misericordia que lleve esperanza y sanidad a muchos.</div>
+    <div class="pj-band-t" data-en>Together, we can be a pool of mercy that brings hope and healing to many.</div>
+  </div>
+</div>
+
+<!-- HISTORIAS -->
+<div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>Historias de Misericordia</div><div class="pj-ey" data-en>Stories of Mercy</div>
+  <h2 class="pj-t" data-es>Necesidades reales.<br>Impacto real. Esperanza real.</h2>
+  <h2 class="pj-t" data-en>Real needs.<br>Real impact. Real hope.</h2>
+  <div class="pj-cards pj-s">
+    <div class="pj-card">
+      <div class="pj-card-t" data-es>Nuestro Primer Contenedor</div><div class="pj-card-t" data-en>Our First Container</div>
+      <div class="pj-card-d" data-es>En el verano de 2026, nuestro primer contenedor de envío lleno de suministros llegó a Cuba y fue procesado en tiempo récord. ¡El favor de Dios estuvo sobre nuestro contenedor!</div>
+      <div class="pj-card-d" data-en>In the summer of 2026, our first shipping container full of supplies arrived in Cuba and was processed in record time. God's favor was upon our container!</div>
+    </div>
+    <div class="pj-card">
+      <div class="pj-card-t" data-es>Día de Distribución</div><div class="pj-card-t" data-en>Distribution Day</div>
+      <div class="pj-card-d" data-es>Inmediatamente comenzamos a distribuir los suministros tan necesarios. Las familias fueron bendecidas al recibir alimentos, medicinas y mucho más.</div>
+      <div class="pj-card-d" data-en>We immediately began distributing the much needed supplies. Families were blessed to receive food, medicine, and much more!</div>
+    </div>
+  </div>
+  <div class="pj-gal pj-s">
+    <figure><img src="assets/img/iniciativas/pom/pallet.jpg" alt="" loading="lazy" decoding="async"><figcaption data-es>Logística en la calle</figcaption><figcaption data-en>Street logistics</figcaption></figure>
+    <figure><img src="assets/img/iniciativas/pom/sacos.jpg" alt="" loading="lazy" decoding="async"><figcaption data-es>Arroz que llega</figcaption><figcaption data-en>Rice that arrives</figcaption></figure>
+    <figure><img src="assets/img/iniciativas/pom/abuela.jpg" alt="" loading="lazy" decoding="async"><figcaption data-es>Día de distribución</figcaption><figcaption data-en>Distribution day</figcaption></figure>
+  </div>
+</div>
+
+<!-- IMPACTO -->
+<div class="pj-dark">
+ <div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>Tu compasión genera un impacto eterno</div><div class="pj-ey" data-en>Your compassion makes an eternal impact</div>
+  <h2 class="pj-t" data-es>Los números<br>detrás de la misericordia</h2>
+  <h2 class="pj-t" data-en>The numbers<br>behind the mercy</h2>
+  <div class="pj-nums">
+    <div class="pj-num"><div class="pj-num-n" data-n="20000">0</div><div class="pj-num-l" data-es>Personas alimentadas cada mes</div><div class="pj-num-l" data-en>People fed each month</div></div>
+    <div class="pj-num"><div class="pj-num-n" data-n="240000">0</div><div class="pj-num-l" data-es>Personas alimentadas cada año</div><div class="pj-num-l" data-en>People fed each year</div></div>
+    <div class="pj-num"><div class="pj-num-n" data-es>Miles</div><div class="pj-num-n" data-en>Thousands</div><div class="pj-num-l" data-es>De suministros médicos, alimentos y otras necesidades entregados</div><div class="pj-num-l" data-en>Of medical supplies, food and other necessities given</div></div>
+  </div>
+ </div>
+</div>
+
+<!-- COMO PARTICIPAR -->
+<div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>Tú puedes marcar la diferencia</div><div class="pj-ey" data-en>You can make a difference</div>
+  <h2 class="pj-t" data-es>Cuatro formas<br>de participar</h2>
+  <h2 class="pj-t" data-en>Four ways<br>to take part</h2>
+  <div class="pj-cards pj-s">
+    <div class="pj-card">
+      <div class="pj-card-i"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8zm-9 2.8L5.6 7.2 12 3.6l6.4 3.6L12 10.8z"/></svg></div>
+      <div class="pj-card-t" data-es>Dona Suministros</div><div class="pj-card-t" data-en>Give Supplies</div>
+      <div class="pj-card-d" data-es>Dona artículos básicos y bienes prácticos.</div>
+      <div class="pj-card-d" data-en>Donate basic necessities and practical goods.</div>
+    </div>
+    <div class="pj-card">
+      <div class="pj-card-i"><svg viewBox="0 0 24 24"><path d="M20 7h-2.2A3 3 0 0 0 12 4.6 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3h9V8h-.6a1 1 0 1 1 1-1H20zM3 12v7a1 1 0 0 0 1 1h8v-8H3zm10 8h8a1 1 0 0 0 1-1v-7h-9v8z"/></svg></div>
+      <div class="pj-card-t" data-es>Apoya Económicamente</div><div class="pj-card-t" data-en>Give Financially</div>
+      <div class="pj-card-d" data-es>Ayuda a cubrir costos de envío, transporte, necesidades de emergencia y alcance.</div>
+      <div class="pj-card-d" data-en>Help cover shipping, transportation, emergency needs, and outreach costs.</div>
+    </div>
+    <div class="pj-card">
+      <div class="pj-card-i"><svg viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm-8 0A3 3 0 1 0 5 8a3 3 0 0 0 3 3zm0 2c-2.3 0-6 1.2-6 3.4V19h9v-2.6C11 14.2 10.3 13 8 13zm8 0c-.6 0-1.3.1-2 .2 1.2.9 2 2 2 3.2V19h6v-2.6c0-2.2-3.7-3.4-6-3.4z"/></svg></div>
+      <div class="pj-card-t" data-es>Sé Voluntario</div><div class="pj-card-t" data-en>Volunteer</div>
+      <div class="pj-card-d" data-es>Sirve detrás de escena, en la distribución y durante eventos especiales.</div>
+      <div class="pj-card-d" data-en>Serve behind the scenes, at distribution, and during special events.</div>
+    </div>
+    <div class="pj-card">
+      <div class="pj-card-i"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.4C1.3 7.9 3.6 4.6 7 4.6c2 0 3.7 1.1 5 2.9 1.3-1.8 3-2.9 5-2.9 3.4 0 5.7 3.3 4.3 7C19.5 16.4 12 21 12 21z"/></svg></div>
+      <div class="pj-card-t" data-es>Oración</div><div class="pj-card-t" data-en>Prayer</div>
+      <div class="pj-card-d" data-es>Ora por las personas a quienes servimos y por los recursos para continuar esta misión.</div>
+      <div class="pj-card-d" data-en>Pray for the people we serve and for the resources to continue this mission.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ASOCIATE -->
+<div class="pj-sec pj-sec--tight pj-r">
+  <div class="pj-ey" data-es>Asóciate con nosotros</div><div class="pj-ey" data-en>Partner with us</div>
+  <h2 class="pj-t" data-es>Cada regalo,<br>grande o pequeño, cambia vidas</h2>
+  <h2 class="pj-t" data-en>Every gift,<br>big or small, changes lives</h2>
+  <p class="pj-p" data-es>Tu colaboración trae esperanza y sanidad. Dona económicamente, conviértete en un socio mensual o da la cantidad que sientas en tu corazón.</p>
+  <p class="pj-p" data-en>Your partnership brings hope and healing. Give financially, become a monthly partner, or give whatever amount you are led to give.</p>
+  <div class="pj-tiers pj-s">
+    <div class="pj-tier"><div class="pj-tier-n">$25</div><div class="pj-tier-d" data-es>Provee comidas y artículos esenciales diarios para quienes lo necesitan.</div><div class="pj-tier-d" data-en>Provides meals and daily essentials for those in need.</div></div>
+    <div class="pj-tier"><div class="pj-tier-n">$50</div><div class="pj-tier-d" data-es>Ayuda a proveer suministros médicos y cuidado.</div><div class="pj-tier-d" data-en>Helps provide medical supplies and care.</div></div>
+    <div class="pj-tier"><div class="pj-tier-n">$100</div><div class="pj-tier-d" data-es>Apoya el alcance y la compasión en acción.</div><div class="pj-tier-d" data-en>Supports outreach and compassion in action.</div></div>
+    <div class="pj-tier"><div class="pj-tier-n">$250</div><div class="pj-tier-d" data-es>Ayuda a sostener la esperanza y expandir nuestro impacto.</div><div class="pj-tier-d" data-en>Helps sustain hope and expand our impact.</div></div>
+  </div>
+</div>
+
+<!-- ARTICULOS -->
+<div class="pj-dark">
+ <div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>Artículos necesarios actualmente</div><div class="pj-ey" data-en>Items currently needed</div>
+  <h2 class="pj-t" data-es>Qué estamos<br>recolectando hoy</h2>
+  <h2 class="pj-t" data-en>What we are<br>collecting today</h2>
+  <p class="pj-p" data-es>Tu generosidad nos ayuda a suplir necesidades reales, tanto localmente como alrededor del mundo.</p>
+  <p class="pj-p" data-en>Your generosity helps us meet real needs—locally and around the world.</p>
+  <ul class="pj-ul pj-s">
+    <li><span><strong data-es>Medicamentos de venta libre y suministros médicos.</strong><strong data-en>OTC medications and medical supplies.</strong> <em data-es>Ibuprofeno, Tylenol, medicina para fiebre y dolor infantil, etc.</em><em data-en>Ibuprofen, Tylenol, children's fever/pain reliever, etc.</em></span></li>
+    <li><span><strong data-es>Alimentos no perecederos.</strong><strong data-en>Non-perishable foods.</strong> <em data-es>Carnes y proteínas enlatadas, leche enlatada, arroz, frijoles, etc.</em><em data-en>Canned meats/proteins, canned milk, rice, beans, etc.</em></span></li>
+    <li><span><strong data-es>Artículos para bebés.</strong><strong data-en>Baby supplies.</strong> <em data-es>Fórmula, pañales, toallitas, biberones, ropa, etc.</em><em data-en>Formula, diapers, wipes, bottles, clothing, etc.</em></span></li>
+    <li><span><strong data-es>Higiene personal.</strong><strong data-en>Personal hygiene.</strong> <em data-es>Desodorante, champú, jabón, productos de higiene femenina, pasta dental y cepillos, etc.</em><em data-en>Deodorant, shampoo, soap, feminine hygiene products, toothpaste and brushes, etc.</em></span></li>
+    <li><span data-es>Paneles solares, generadores solares, luces solares, baterías externas solares para cargar dispositivos y sistemas de almacenamiento de energía.</span><span data-en>Solar panels, solar generators, solar-powered lights, solar power banks for charging devices, and energy storage systems.</span></li>
+    <li><span data-es>Bicicletas y accesorios para bicicletas; bicicletas y motocicletas eléctricas.</span><span data-en>Bicycles and bicycle accessories; electric bicycles and motorcycles.</span></li>
+    <li><span data-es>Sillas de ruedas, camas de hospital, nebulizadores de compresor, andadores y bastones.</span><span data-en>Wheelchairs, hospital beds, compressor nebulizers, walkers and canes.</span></li>
+    <li><span data-es>Pintura látex y suministros de pintura; mezcla de cemento, equipo de soldadura, herramientas de taller.</span><span data-en>Latex paint and painting supplies; cement mix, welding equipment, workshop tools.</span></li>
+    <li><span data-es>Mesas y sillas plegables; ventanas y puertas; utensilios de cocina y otros artículos del hogar.</span><span data-en>Folding tables and chairs; windows and doors; cookware and other household items.</span></li>
+    <li><span data-es>Ropa, zapatos y accesorios; equipo deportivo; juguetes.</span><span data-en>Clothing, shoes, and accessories; sports equipment; toys.</span></li>
+    <li><span data-es>Tiendas de campaña, lonas resistentes, cuerda y paracord; linternas de baterías, lámparas frontales; repelente de insectos (DEET).</span><span data-en>Tents, heavy-duty tarps, rope/paracord; battery-powered flashlights, headlamps; insect repellent (DEET).</span></li>
+    <li><span data-es>Sistemas de filtración y purificación de agua.</span><span data-en>Water filtration and purification systems.</span></li>
+  </ul>
+  <div class="pj-quote">
+    <p data-es>Siéntete en libertad de donar otros artículos no mencionados aquí. ¡Aceptamos casi cualquier cosa!</p>
+    <p data-en>Feel free to donate other items not listed here. We accept almost anything!</p>
+  </div>
+ </div>
+</div>
+
+<!-- CONTACTO / ENTREGA -->
+<div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>Información de entrega</div><div class="pj-ey" data-en>Drop-off information</div>
+  <h2 class="pj-t" data-es>Dónde llevar<br>tu donación</h2>
+  <h2 class="pj-t" data-en>Where to bring<br>your donation</h2>
+  <p class="pj-p" data-es>Contáctanos para conocer los lugares actuales de entrega de donaciones.</p>
+  <p class="pj-p" data-en>Contact us for current donation drop-off locations.</p>
+  <div class="pj-cards pj-cards--3 pj-s">
+    <div class="pj-card"><div class="pj-card-t" data-es>Teléfono</div><div class="pj-card-t" data-en>Phone</div><div class="pj-card-d"><a href="tel:+17409756112" style="color:var(--pj-brand)">+1 (740) 975-6112</a></div></div>
+    <div class="pj-card"><div class="pj-card-t">Email</div><div class="pj-card-d"><a href="mailto:kingdominactionministry@gmail.com" style="color:var(--pj-brand)">kingdominactionministry@gmail.com</a></div></div>
+    <div class="pj-card"><div class="pj-card-t">Instagram</div><div class="pj-card-d"><a href="https://instagram.com/Pool.of.Mercy" target="_blank" rel="noopener" style="color:var(--pj-brand)">@Pool.of.Mercy</a></div></div>
+  </div>
+  <div class="pj-cta">
+    <button class="btn-pj" onclick="openDonate()" data-es>Donar ahora</button>
+    <button class="btn-pj" onclick="openDonate()" data-en>Give now</button>
+    <a href="index.html#contacto" class="btn-pj btn-pj--ghost" data-es>Quiero ser voluntario</a>
+    <a href="index.html#contacto" class="btn-pj btn-pj--ghost" data-en>I want to volunteer</a>
+  </div>
+</div>
+
+<!-- DESCARGA -->
+<div class="pj-dl">
+  <div class="pj-dl-in pj-r">
+    <div class="pj-dl-ico"><span>PDF</span></div>
+    <div>
+      <div class="pj-dl-t" data-es>Llévate el documento completo</div>
+      <div class="pj-dl-t" data-en>Take the full document with you</div>
+      <div class="pj-dl-d" data-es>El folleto oficial de Pool of Mercy, con la misión, las historias, los artículos necesarios y la información de contacto. Ideal para compartir en tu iglesia o con quien quiera colaborar.</div>
+      <div class="pj-dl-d" data-en>The official Pool of Mercy booklet, with the mission, the stories, the needed items and contact information. Ideal to share at your church or with anyone who wants to help.</div>
+      <div class="pj-dl-meta">PDF · Kingdom in Action Family</div>
+    </div>
+    <a class="btn-pj" href="assets/docs/pool-of-mercy.pdf" download>
+      <svg viewBox="0 0 24 24"><path d="M12 16.6 6.4 11l1.6-1.6 2.9 2.9V3h2.2v9.3l2.9-2.9 1.6 1.6L12 16.6zM5 20v-2.2h14V20H5z"/></svg>
+      <span data-es>Descargar</span><span data-en>Download</span></a>
+  </div>
+</div>
+
+</div>
+
+<footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
+
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en tres naciones.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions across three nations.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
+    <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-es>100% de tu donación va al campo misionero.</p><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-en>100% of your donation goes to the mission field.</p></div></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
+
+<script>
+function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}
+function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
+(function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
+function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
+
+setInterval(chNext,4500);
+let lbSet=[],lbI=0;
+function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
+document.addEventListener('keydown',e=>{if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.08});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+</script>
+
+<script>
+/* parche de inmersion: progreso, parallax compatible con iOS, reveals */
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var prog=document.getElementById('prog');
+  var bands=[].slice.call(document.querySelectorAll('.fb-parallax'));
+  var tick=false;
+  function frame(){
+    var st=pageYOffset,H=document.documentElement.scrollHeight-innerHeight;
+    if(prog)prog.style.width=(H>0?(st/H)*100:0)+'%';
+    if(!rm)bands.forEach(function(b){
+      var r=b.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight){
+        var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+        b.style.backgroundPosition='center calc(50% + '+(p*-45).toFixed(1)+'px)';
+      }});
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.rev,.rev-l,.rev-r,.stag').forEach(function(el){io.observe(el);});
+  frame();
+})();
+</script>
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- entrada del hero apenas carga ---- */
+  var hero=document.querySelector('.ph-hero');
+  if(hero) requestAnimationFrame(function(){ setTimeout(function(){ hero.classList.add('lit'); },80); });
+
+  /* ---- revelado por secciones + contadores ---- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var t=e.target;
+      t.classList.add('on');
+      t.querySelectorAll('[data-ini]').forEach(function(el){
+        var end=+el.dataset.ini,t0=null;
+        if(rm){el.textContent=end.toLocaleString('es');return;}
+        requestAnimationFrame(function s(ts){
+          if(!t0)t0=ts; var k=Math.min((ts-t0)/1600,1);
+          el.textContent=Math.round(end*(1-Math.pow(1-k,3))).toLocaleString('es');
+          if(k<1)requestAnimationFrame(s);
+        });
+      });
+      io.unobserve(t);
+    });
+  },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.ini-card,.ini-band,.ini-quote,.intro-fig,.rev,.ini-in>.rev,.ini-ways,.ini-tiers,.ini-phases,.ini-nums,.ini-mv,.beliefs-grid')
+    .forEach(function(c){io.observe(c);});
+
+  /* ---- parallax: hero por columnas + bandas fotograficas ---- */
+  var cols=[].slice.call(document.querySelectorAll('.ph-hero-grid figure img'));
+  var pics=[].slice.call(document.querySelectorAll('.ini-band img,.ini-quote>img'));
+  var intro=document.querySelector('.intro-fig-img img');
+  var tick=false;
+  function frame(){
+    if(rm){ tick=false; return; }
+    var y=pageYOffset;
+    /* cada columna del hero se mueve a distinta velocidad */
+    if(hero){
+      var hr=hero.getBoundingClientRect();
+      if(hr.bottom>0 && hr.top<innerHeight){
+        /* progreso 0..1 del hero pasando por el viewport, no el scroll absoluto */
+        var prog=Math.max(-1,Math.min(1,-hr.top/Math.max(hr.height,1)));
+        cols.forEach(function(im,i){
+          var amp=[26,46,34,56][i%4];
+          im.style.transform='translate3d(0,'+(prog*amp).toFixed(1)+'px,0)';
+        });
+      }
+    }
+    pics.forEach(function(im){
+      var r=im.parentNode.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight) return;
+      var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
+      im.style.transform='translate3d(0,'+(-p*r.height*0.055).toFixed(1)+'px,0)';
+    });
+    if(intro){
+      var r2=intro.parentNode.getBoundingClientRect();
+      if(r2.bottom>0&&r2.top<innerHeight){
+        var p2=(r2.top+r2.height/2-innerHeight/2)/(innerHeight/2+r2.height/2);
+        intro.style.transform='translate3d(0,'+(-p2*26).toFixed(1)+'px,0) scale(1.06)';
+      }
+    }
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+  addEventListener('resize',frame,{passive:true});
+  frame();
+
+  /* ---- resplandor siguiendo al cursor ---- */
+  document.querySelectorAll('.ini-way,.ini-tier,.ini-phase,.ini-mv>div').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(ev.clientX-r.left)+'px');
+      c.style.setProperty('--my',(ev.clientY-r.top)+'px');
+    });
+  });
+})();</script>
+<script>window.KIAF_INVITE={"id": "proyectos", "img": "assets/img/iniciativas/pom/abuela.jpg", "badgeEs": "Cuba · Día de distribución", "badgeEn": "Cuba · Distribution day", "eyEs": "Tu aporte", "eyEn": "Your giving", "titleEs": "Un plato de comida<br>cuesta menos de lo que imaginas", "titleEn": "A plate of food<br>costs less than you think", "textEs": "Cada mes alimentamos a 20.000 personas. Detrás de ese número hay abuelas, niños y familias que esperan que alguien golpee la puerta. Con $25 provees comidas y artículos esenciales por un mes.", "textEn": "Every month we feed 20,000 people. Behind that number are grandmothers, children and families waiting for someone to knock on the door. With $25 you provide meals and essentials for a month.", "actions": [{"action": "donate", "es": "Donar ahora", "en": "Give now"}, {"href": "index.html#contacto", "es": "Quiero colaborar", "en": "I want to partner", "ghost": true}]};</script>
+<script>
+/* ============ INVITACIÓN CONTEXTUAL ============
+   Cada página define window.KIAF_INVITE antes de cargar este script.
+   Se muestra al 55% de scroll o a los 35s, lo que ocurra primero.
+   Al cerrarse no vuelve a aparecer durante 7 días. */
+(function(){
+  var cfg = window.KIAF_INVITE;
+  if(!cfg) return;
+  var KEY = 'kiaf_inv_' + (cfg.id || 'x');
+  /* localStorage puede fallar en modo privado: nunca romper la página por eso */
+  function seen(){
+    try{
+      var v = localStorage.getItem(KEY);
+      return v && (Date.now() - (+v) < 7*24*60*60*1000);
+    }catch(e){ return false; }
+  }
+  function remember(){ try{ localStorage.setItem(KEY, Date.now()); }catch(e){} }
+  if(seen()) return;
+
+  var el = document.createElement('div');
+  el.className = 'inv-bg';
+  el.setAttribute('role','dialog');
+  el.setAttribute('aria-modal','true');
+  el.setAttribute('aria-label', cfg.titleEs || 'Invitación');
+  var acts = (cfg.actions||[]).map(function(a){
+    var cls = 'inv-btn' + (a.ghost ? ' inv-btn--ghost' : '');
+    if(a.action === 'donate')
+      return '<button class="'+cls+'" data-act="donate" data-es>'+a.es+'</button>'+
+             '<button class="'+cls+'" data-act="donate" data-en>'+a.en+'</button>';
+    return '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-es>'+a.es+'</a>'+
+           '<a class="'+cls+'" href="'+a.href+'"'+(a.blank?' target="_blank" rel="noopener"':'')+' data-en>'+a.en+'</a>';
+  }).join('');
+
+  el.innerHTML =
+    '<div class="inv">'+
+      '<button class="inv-x" aria-label="Cerrar">&#10005;</button>'+
+      '<div class="inv-img"><img src="'+cfg.img+'" alt="" loading="lazy" decoding="async">'+
+        '<div class="inv-badge" data-es>'+cfg.badgeEs+'</div>'+
+        '<div class="inv-badge" data-en>'+cfg.badgeEn+'</div></div>'+
+      '<div class="inv-body">'+
+        '<div class="inv-ey" data-es>'+cfg.eyEs+'</div><div class="inv-ey" data-en>'+cfg.eyEn+'</div>'+
+        '<div class="inv-t" data-es>'+cfg.titleEs+'</div><div class="inv-t" data-en>'+cfg.titleEn+'</div>'+
+        '<p class="inv-p" data-es>'+cfg.textEs+'</p><p class="inv-p" data-en>'+cfg.textEn+'</p>'+
+        '<div class="inv-acts">'+acts+'</div>'+
+        '<button class="inv-later" data-es>Ahora no</button>'+
+        '<button class="inv-later" data-en>Not now</button>'+
+      '</div>'+
+    '</div>';
+  document.body.appendChild(el);
+
+  var open = false, lastFocus = null;
+  function show(){
+    if(open || seen()) return;
+    var dm = document.getElementById('dmodal');
+    if(dm && dm.classList.contains('open')) return;   /* no pisar el modal de donación */
+    var nv = document.getElementById('navOv');
+    if(nv && nv.classList.contains('open')) return;   /* ni el menú móvil */
+    open = true; lastFocus = document.activeElement;
+    el.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var f = el.querySelector('.inv-x'); if(f) f.focus();
+  }
+  function hide(){
+    open = false; remember();
+    el.classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  el.querySelector('.inv-x').addEventListener('click', hide);
+  [].forEach.call(el.querySelectorAll('.inv-later'), function(b){ b.addEventListener('click', hide); });
+  el.addEventListener('click', function(e){ if(e.target === el) hide(); });
+  document.addEventListener('keydown', function(e){ if(open && e.key === 'Escape') hide(); });
+  [].forEach.call(el.querySelectorAll('[data-act="donate"]'), function(b){
+    b.addEventListener('click', function(){ hide(); if(window.openDonate) openDonate(); });
+  });
+  [].forEach.call(el.querySelectorAll('.inv-acts a'), function(a){ a.addEventListener('click', remember); });
+
+  var timer = setTimeout(show, 35000);
+  function onScroll(){
+    var H = document.documentElement.scrollHeight - innerHeight;
+    if(H > 0 && pageYOffset / H > 0.55){
+      clearTimeout(timer);
+      removeEventListener('scroll', onScroll);
+      setTimeout(show, 700);
+    }
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+})();
+
+</script>
+
+<script>window.KIAF_INVITE={"id":"pom","img":"assets/img/iniciativas/pom/abuela.jpg","badgeEs":"Cuba · Día de distribución","badgeEn":"Cuba · Distribution day","eyEs":"Tu aporte","eyEn":"Your giving","titleEs":"Un plato de comida<br>cuesta menos de lo que imaginas","titleEn":"A plate of food<br>costs less than you think","textEs":"Cada mes alimentamos a 20.000 personas. Con $25 provees comidas y artículos esenciales por un mes.","textEn":"Every month we feed 20,000 people. With $25 you provide meals and essentials for a month.","actions":[{"action":"donate","es":"Donar ahora","en":"Give now"},{"href":"index.html#contacto","es":"Quiero colaborar","en":"I want to partner","ghost":true}]};</script>
+<script src="shared.js"></script>
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hero=document.getElementById('pjHero');
+  if(hero) requestAnimationFrame(function(){ setTimeout(function(){hero.classList.add('lit');},80); });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.pj-num').forEach(function(n,i){ setTimeout(function(){n.classList.add('on');}, i*140); });
+      e.target.querySelectorAll('[data-n]').forEach(function(el){
+        var end=+el.dataset.n,t0=null;
+        if(rm){el.textContent=end.toLocaleString('es');return;}
+        requestAnimationFrame(function s(ts){ if(!t0)t0=ts; var k=Math.min((ts-t0)/1600,1);
+          el.textContent=Math.round(end*(1-Math.pow(1-k,3))).toLocaleString('es');
+          if(k<1)requestAnimationFrame(s); });
+      });
+      io.unobserve(e.target);
+    });
+  },{threshold:.13,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.pj-r,.pj-s').forEach(function(el){io.observe(el);});
+  var prog=document.getElementById('prog');
+  var pics=[].slice.call(document.querySelectorAll('.pj-band img,.pj-hero-img img'));
+  var tick=false;
+  function frame(){
+    var st=pageYOffset,H=document.documentElement.scrollHeight-innerHeight;
+    if(prog)prog.style.width=(H>0?(st/H)*100:0)+'%';
+    if(!rm)pics.forEach(function(im){
+      var r=im.parentNode.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight)return;
+      var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
+      im.style.transform='translate3d(0,'+(-p*r.height*0.05).toFixed(1)+'px,0)';
+    });
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
+  document.querySelectorAll('.pj-card').forEach(function(c){
+    c.addEventListener('mousemove',function(ev){var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(ev.clientX-r.left)+'px');c.style.setProperty('--my',(ev.clientY-r.top)+'px');});
+  });
+  frame();
+})();
+</script>
+</body>
+</html>
