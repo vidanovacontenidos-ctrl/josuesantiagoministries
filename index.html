@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kingdom in Action | Josué Santiago</title>
+<link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0D0F11">
 <link rel="stylesheet" href="shared.css">
 <style>
 /* Hero slideshow */
@@ -79,6 +85,34 @@
 
 @media(max-width:1024px){.ms-slider{height:auto;margin:0 20px;border-radius:12px;}.ms-slide{position:relative;opacity:1;pointer-events:auto;grid-template-columns:1fr;display:none;}.ms-slide.on{display:grid;}.ms-photo{height:240px;border-radius:12px 12px 0 0;}.ms-photo-ov{background:linear-gradient(to top,var(--dark),transparent);}.ms-content{border-radius:0 0 12px 12px;}.imp-grid{grid-template-columns:1fr 1fr;}.ct-in{grid-template-columns:1fr;}}
 @media(max-width:768px){.hero-cnt{padding:0 20px 80px;}.hero-dots{right:20px;bottom:24px;}.ms-slider{margin:0 20px;}.ms-content{padding:28px 20px;}.imp-grid{gap:10px;}.ct-in{padding:60px 20px;}.cf-row{grid-template-columns:1fr;}.cf{padding:28px 20px;}}
+
+/* ===== NUESTRO MINISTERIO — YouTube ===== */
+.yt-wrap{max-width:1360px;margin:0 auto;padding:0 60px;}
+.yt-main{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;margin-top:36px;}
+.yt-card{position:relative;border-radius:2px;overflow:hidden;background:var(--slate);cursor:pointer;border:1px solid rgba(248,244,237,.07);transition:border-color .4s,transform .5s var(--ease);}
+.yt-card:hover{border-color:rgba(204,34,34,.45);transform:translateY(-3px);}
+.yt-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .5s;filter:saturate(.9)brightness(.82);}
+.yt-card:hover .yt-thumb img{transform:scale(1.05);filter:saturate(1)brightness(.95);}
+.yt-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,15,17,.85),transparent 55%);pointer-events:none;}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;border-radius:50%;background:rgba(204,34,34,.92);display:flex;align-items:center;justify-content:center;transition:transform .35s var(--ease),background .3s;box-shadow:0 10px 34px rgba(204,34,34,.35);}
+.yt-play svg{width:24px;height:24px;fill:#fff;margin-left:3px;}
+.yt-card:hover .yt-play{transform:translate(-50%,-50%)scale(1.12);background:var(--accent-lt);}
+.yt-side .yt-play{width:46px;height:46px;}.yt-side .yt-play svg{width:17px;height:17px;}
+.yt-meta{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 22px;pointer-events:none;}
+.yt-side .yt-meta{padding:16px 16px;}
+.yt-tag{font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.yt-t{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--text-lt);line-height:1.12;}
+.yt-side .yt-t{font-size:1rem;}
+.yt-side{display:grid;grid-template-rows:1fr 1fr;gap:16px;}
+.yt-card.playing{cursor:default;}
+.yt-card iframe{position:absolute;inset:0;width:100%;height:100%;border:none;z-index:5;}
+.yt-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:32px;flex-wrap:wrap;}
+.yt-chan{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted-lt);}
+.yt-chan svg{width:26px;height:26px;fill:var(--accent);flex-shrink:0;}
+@media(max-width:1024px){.yt-wrap{padding:0 20px;}.yt-main{grid-template-columns:1fr;}.yt-side{grid-template-rows:auto;grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.yt-side{grid-template-columns:1fr;}.yt-foot{flex-direction:column;align-items:flex-start;}}
+
 </style>
 </head>
 <body>
@@ -130,6 +164,46 @@
 <!-- FULLBLEED parallax -->
 <div class="fb fb-parallax rev" style="background-image:url('assets/img/argentina/fullbleed/delviso.jpg');"><div class="fb-ov"></div><div class="fb-cnt"><div class="fb-txt"><div class="ey" data-es>El Fuego en las Naciones</div><div class="ey" data-en>The Fire in the Nations</div><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-es>Lo Que Está Pasando</h2><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-en>What's Happening</h2><span class="rule"></span><p data-es>Argentina, Cuba y Estados Unidos vivieron noches de avivamiento que transformaron comunidades enteras.</p><p data-en>Argentina, Cuba and the United States witnessed revival nights that transformed entire communities.</p></div></div></div>
 
+
+<!-- NUESTRO MINISTERIO — YouTube -->
+<div style="background:var(--dark);"><div class="sec">
+  <div class="yt-wrap">
+    <div class="rev" style="text-align:center;">
+      <div class="ey" style="justify-content:center;" data-es>En Video</div><div class="ey" style="justify-content:center;" data-en>On Video</div>
+      <h2 class="stitle" data-es>Nuestro Ministerio</h2><h2 class="stitle" data-en>Our Ministry</h2>
+      <p class="slead" style="color:var(--muted-lt);max-width:66ch;margin:14px auto 0;" data-es>Cruzadas, conferencias y momentos de avivamiento en tres naciones. Mirá lo que Dios está haciendo.</p>
+      <p class="slead" style="color:var(--muted-lt);max-width:66ch;margin:14px auto 0;" data-en>Crusades, conferences and revival moments across three nations. See what God is doing.</p>
+    </div>
+    <div class="yt-main rev d1">
+      <div class="yt-card" data-yt="SIOHioQSwdo">
+        <div class="yt-thumb"><img src="https://i.ytimg.com/vi/SIOHioQSwdo/maxresdefault.jpg" alt="" loading="lazy"></div>
+        <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="yt-meta"><div class="yt-tag" data-es>Destacado</div><div class="yt-tag" data-en>Featured</div><div class="yt-t" data-es>Kingdom in Action · Resumen</div><div class="yt-t" data-en>Kingdom in Action · Highlights</div></div>
+      </div>
+      <div class="yt-side">
+        <div class="yt-card" data-yt="I1xKoxNKNc4">
+          <div class="yt-thumb"><img src="https://i.ytimg.com/vi/I1xKoxNKNc4/hqdefault.jpg" alt="" loading="lazy"></div>
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="yt-meta"><div class="yt-tag" data-es>Impacto</div><div class="yt-tag" data-en>Impact</div><div class="yt-t" data-es>Kingdom in Action · Impacto</div><div class="yt-t" data-en>Kingdom in Action · Impact</div></div>
+        </div>
+        <div class="yt-card" data-yt="SIOHioQSwdo">
+          <div class="yt-thumb"><img src="https://i.ytimg.com/vi/SIOHioQSwdo/hqdefault.jpg" alt="" loading="lazy"></div>
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="yt-meta"><div class="yt-tag" data-es>Naciones</div><div class="yt-tag" data-en>Nations</div><div class="yt-t" data-es>El Fuego en las Naciones</div><div class="yt-t" data-en>The Fire in the Nations</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="yt-foot rev d2">
+      <div class="yt-chan">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        <span data-es>Suscribite al canal para no perderte nada</span><span data-en>Subscribe to the channel so you don't miss anything</span>
+      </div>
+      <a href="https://www.youtube.com/@Pastorjosuesantiago" target="_blank" rel="noopener" class="btn-accent" data-es>Ver el Canal</a>
+      <a href="https://www.youtube.com/@Pastorjosuesantiago" target="_blank" rel="noopener" class="btn-accent" data-en>Watch the Channel</a>
+    </div>
+  </div>
+</div></div>
+
 <!-- SÉ PARTE — cream, morph rounded -->
 <div class="sec-warm"><div class="sec"><div class="rev" style="text-align:center;"><div class="ey" style="justify-content:center;" data-es>Sé Parte</div><div class="ey" style="justify-content:center;" data-en>Be Part</div><h2 class="stitle" data-es>Cómo Participar</h2><h2 class="stitle" data-en>How to Get Involved</h2></div>
 <div class="cta-grid rev d1">
@@ -176,6 +250,19 @@ setInterval(function(){msNav(1);},6000);
 var impDone=false;
 var impObs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting&&!impDone){impDone=true;document.querySelectorAll('.imp-card [data-anim]').forEach(function(el){var t=parseInt(el.dataset.anim),c=0,inc=t/50;var bar=el.closest('.imp-card');if(bar){var b=bar.querySelector('.imp-bar');if(b)b.style.width='100%';}var timer=setInterval(function(){c=Math.min(c+inc,t);if(t>=10000)el.textContent=Math.round(c/1000)+'K+';else if(t>=100)el.textContent=Math.round(c)+'+';else el.textContent=Math.round(c)+'+';if(c>=t)clearInterval(timer);},30);});}});},{threshold:.2});
 var impS=document.querySelector('.imp-grid');if(impS)impObs.observe(impS);
+</script>
+<script>
+document.querySelectorAll('.yt-card').forEach(function(c){
+  c.addEventListener('click', function(){
+    if(c.classList.contains('playing')) return;
+    var id=c.dataset.yt; if(!id) return;
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';
+    f.allow='accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture';
+    f.allowFullscreen=true; f.title='Kingdom in Action';
+    c.appendChild(f); c.classList.add('playing');
+  });
+});
 </script>
 </body>
 </html>
