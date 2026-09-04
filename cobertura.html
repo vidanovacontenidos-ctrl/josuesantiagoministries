@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cobertura Apostólica | Kingdom in Action</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* Statement bands */
+.cv-stmt{background:var(--dark);padding:80px 60px;}
+.cv-stmt-in{max-width:900px;margin:0 auto;}
+.cv-stmt-big{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:1.05;}
+.cv-stmt-big em{color:var(--accent);font-style:normal;}
+/* Convictions */
+.cv-conv{display:flex;gap:26px;padding:30px 0;border-bottom:1px solid rgba(204,34,34,.12);}
+.cv-conv:last-child{border-bottom:none;}
+.cv-conv-n{font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:800;color:var(--accent);line-height:1;flex-shrink:0;width:60px;}
+.cv-conv-t{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dk);margin-bottom:4px;}
+.cv-conv-v{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.cv-conv-d{font-size:15px;line-height:1.8;color:var(--muted-dk);margin-bottom:8px;}
+.cv-conv-tags{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-dk);opacity:.7;}
+/* Stat strip */
+.cv-stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--night);margin-top:40px;border-radius:2px;overflow:hidden;}
+.cv-stat{padding:34px 20px;text-align:center;border-right:1px solid rgba(248,244,237,.08);}
+.cv-stat:last-child{border-right:none;}
+.cv-stat-n{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:800;color:var(--accent);line-height:1;}
+.cv-stat-l{font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--muted-lt);margin-top:8px;}
+/* Not-list */
+.cv-not{margin-top:34px;}
+.cv-not-item{display:flex;gap:14px;align-items:baseline;padding:15px 0;border-bottom:1px solid rgba(248,244,237,.07);font-size:15px;line-height:1.7;}
+.cv-not-item:last-child{border-bottom:none;}
+.cv-not-item strong{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-lt);font-size:1rem;}
+.cv-not-item span{color:var(--muted-lt);}
+.cv-not-item::before{content:'▲';color:var(--accent);font-size:9px;flex-shrink:0;}
+/* Purpose block */
+.cv-purpose{background:var(--night);border-left:3px solid var(--accent);padding:36px 34px;margin-top:36px;border-radius:2px;}
+.cv-purpose-row{display:flex;gap:16px;align-items:baseline;padding:11px 0;}
+.cv-purpose-row b{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);min-width:130px;}
+.cv-purpose-row span{font-size:15px;color:var(--muted-lt);}
+/* Benefit cards */
+.cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:38px;}
+.cv-card{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:26px 24px;transition:border-color .3s,transform .3s;}
+.cv-card:hover{border-color:rgba(204,34,34,.3);transform:translateY(-3px);}
+.cv-card-t{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dk);margin-bottom:9px;display:flex;align-items:center;gap:9px;}
+.cv-card-t::before{content:'▲';color:var(--accent);font-size:9px;}
+.cv-card-d{font-size:14px;line-height:1.75;color:var(--muted-dk);}
+/* Ways to walk */
+.cv-way{display:flex;gap:24px;padding:28px 0;border-bottom:1px solid rgba(248,244,237,.08);}
+.cv-way:last-child{border-bottom:none;}
+.cv-way-l{width:46px;height:46px;flex-shrink:0;background:var(--accent);color:var(--night);font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;display:flex;align-items:center;justify-content:center;border-radius:2px;}
+.cv-way-t{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-lt);margin-bottom:8px;}
+.cv-way-d{font-size:15px;line-height:1.8;color:var(--muted-lt);margin-bottom:8px;}
+.cv-way-note{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);opacity:.8;}
+/* Callout */
+.cv-callout{background:var(--night);border:1px solid rgba(204,34,34,.2);border-radius:2px;padding:32px 30px;margin-top:36px;}
+.cv-callout-l{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.cv-callout p{font-size:15px;line-height:1.85;color:var(--muted-lt);}
+.cv-callout-warm{background:var(--sand);border-left:3px solid var(--accent-dk);border-radius:2px;padding:28px 28px;margin-top:32px;}
+.cv-callout-warm .cv-callout-l{color:var(--accent-dk);}
+.cv-callout-warm p{color:var(--muted-dk);font-size:15px;line-height:1.85;}
+/* Bullet lists */
+.cv-bul{margin-top:22px;}
+.cv-bul div{display:flex;gap:13px;align-items:baseline;padding:11px 0;font-size:15px;line-height:1.75;color:var(--muted-lt);}
+.cv-bul div::before{content:'▲';color:var(--accent);font-size:9px;flex-shrink:0;}
+/* Steps */
+.cv-step{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid rgba(0,0,0,.07);}
+.cv-step:last-child{border-bottom:none;}
+.cv-step-n{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1;width:44px;flex-shrink:0;}
+.cv-step-t{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dk);margin-bottom:6px;}
+.cv-step-d{font-size:15px;line-height:1.78;color:var(--muted-dk);}
+@media(max-width:1024px){.cv-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  .cv-stmt{padding:56px 20px;}
+  .cv-stats{grid-template-columns:1fr;}
+  .cv-stat{border-right:none;border-bottom:1px solid rgba(248,244,237,.08);}
+  .cv-conv,.cv-way,.cv-step{flex-direction:column;gap:12px;}
+  .cv-purpose-row{flex-direction:column;gap:4px;}
+  .cv-purpose{padding:26px 20px;}
+}
+
+/* ===== PHOTO MODULES ===== */
+/* Editorial split with offset accent frame */
+.cv-ed{max-width:1360px;margin:0 auto;padding:0 60px;display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center;}
+.cv-ed.flip{direction:rtl;}.cv-ed.flip>*{direction:ltr;}
+.cv-ed-fig{position:relative;}
+.cv-ed-fig::after{content:'';position:absolute;inset:18px -18px -18px 18px;border:1px solid rgba(204,34,34,.45);border-radius:2px;z-index:0;pointer-events:none;}
+.cv-ed-fig img{position:relative;z-index:1;width:100%;height:540px;object-fit:cover;border-radius:2px;filter:saturate(.92)contrast(1.05);transition:transform 1.2s var(--ease),filter .6s;}
+.cv-ed-fig:hover img{transform:scale(1.03);filter:saturate(1)contrast(1.08);}
+.cv-ed-cap{position:absolute;z-index:2;left:0;bottom:0;right:0;padding:22px 22px;background:linear-gradient(to top,rgba(13,15,17,.9),transparent);font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);}
+/* Triptych */
+.cv-tri{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+.cv-tri figure{position:relative;overflow:hidden;height:440px;}
+.cv-tri img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35)contrast(1.06);transition:transform 1.4s var(--ease),filter .6s;}
+.cv-tri figure:hover img{transform:scale(1.05);filter:grayscale(0)contrast(1.06);}
+.cv-tri figure::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(13,15,17,.92)0%,rgba(13,15,17,.15)55%,transparent 100%);}
+.cv-tri figcaption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:26px 24px;}
+.cv-tri-n{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:800;color:var(--accent);line-height:1;}
+.cv-tri-t{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-lt);margin-top:2px;}
+.cv-tri-d{font-size:12px;line-height:1.6;color:rgba(248,244,237,.6);margin-top:6px;}
+/* Quote over photo */
+.cv-hero-quote{position:relative;min-height:70vh;display:flex;align-items:center;overflow:hidden;}
+.cv-hero-quote img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.cv-hero-quote::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(13,15,17,.94)0%,rgba(13,15,17,.75)45%,rgba(13,15,17,.35)100%);}
+.cv-hero-quote-in{position:relative;z-index:2;max-width:820px;padding:80px 60px;}
+@media(max-width:1024px){.cv-ed{grid-template-columns:1fr;gap:34px;padding:0 20px;}.cv-ed.flip{direction:ltr;}.cv-ed-fig img{height:380px;}.cv-ed-fig::after{inset:12px -12px -12px 12px;}.cv-tri{grid-template-columns:1fr;}.cv-tri figure{height:300px;}}
+@media(max-width:768px){.cv-hero-quote-in{padding:56px 20px;}.cv-hero-quote{min-height:auto;}}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav"><a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Cobertura Apostólica</span><span data-en>Apostolic Covering</span></a><ul class="nav-links"><li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" class="active" data-es>Cobertura</a><a href="cobertura.html" class="active" data-en>Covering</a></li><li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li><li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li><li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li></ul><div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div></nav>
+<div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" class="active" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a></div>
+
+<!-- HERO -->
+<div class="page-hero" style="height:75vh;"><img src="assets/img/cobertura/hero/hero.jpg" alt="Cobertura Apostólica"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Hay un lugar para vos en esta familia</div><div class="ey" data-en>There is a place for you in this family</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-es>Cobertura<br><span style="color:var(--accent);">Apostólica</span></h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.92;" data-en>Apostolic<br><span style="color:var(--accent);">Covering</span></h1></div></div>
+
+<!-- MARQUEE -->
+<div class="marquee marquee-accent"><div class="marquee-inner"><span>UNIDAD</span><span class="sep">✦</span><span>PROPÓSITO</span><span class="sep">✦</span><span>RELACIÓN</span><span class="sep">✦</span><span>MISIÓN</span><span class="sep">✦</span><span>UNIDAD</span><span class="sep">✦</span><span>PROPÓSITO</span><span class="sep">✦</span><span>RELACIÓN</span><span class="sep">✦</span><span>MISIÓN</span><span class="sep">✦</span></div></div>
+
+<!-- STATEMENT -->
+<div class="cv-hero-quote rev"><img src="assets/img/cobertura/split/oracion.jpg" alt=""><div class="cv-hero-quote-in">
+  <div class="cv-stmt-big" data-es>Nadie fue llamado a cumplir su asignación <em>en aislamiento.</em></div>
+  <div class="cv-stmt-big" data-en>No one was called to fulfill their assignment <em>in isolation.</em></div>
+  <span class="rule"></span>
+  <p style="font-size:15px;line-height:1.85;color:rgba(248,244,237,.6);max-width:520px;" data-es>Dios diseñó el llamado para que se camine acompañado. La cobertura no es una estructura de poder: es la relación que sostiene lo que Él ya puso en vos.</p>
+  <p style="font-size:15px;line-height:1.85;color:rgba(248,244,237,.6);max-width:520px;" data-en>God designed the calling to be walked out in company. Covering is not a power structure: it is the relationship that sustains what He already placed in you.</p>
+</div></div>
+
+<!-- QUERIDO PASTOR -->
+<div class="sec-warm"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Querido Pastor</div><div class="ey" data-en>Dear Pastor</div>
+    <h2 class="stitle" data-es>Una Familia<br>del Reino</h2><h2 class="stitle" data-en>A Kingdom<br>Family</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="cv-ed rev d1" style="padding:0;margin-top:34px;">
+   <div class="cv-ed-fig"><img src="assets/img/cobertura/split/impartacion.jpg" alt="Imposición de manos"><div class="cv-ed-cap" data-es>Caminar juntos</div><div class="cv-ed-cap" data-en>Walking together</div></div>
+   <div>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-es>Muchos pastores cargan solos un peso que Dios nunca quiso que llevaran sin compañía: las decisiones difíciles, las temporadas de presión, las preguntas que no se pueden hacer en voz alta frente a la congregación.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-en>Many pastors carry alone a weight God never intended them to carry without company: the hard decisions, the seasons of pressure, the questions that cannot be asked out loud in front of the congregation.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-es>Kingdom in Action Family es una familia del Reino donde los títulos no determinan el valor de una persona. Reconocemos dones, funciones y llamados, pero nuestra identidad más alta es ser hijos e hijas de Dios.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-en>Kingdom in Action Family is a Kingdom family where titles do not determine a person's worth. We recognize gifts, functions and callings, but our highest identity is being sons and daughters of God.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);" data-es>Somos iglesias, ministerios, pastores, líderes y empresarios unidos por relación, propósito y misión. No buscamos control, posiciones ni jerarquías. Buscamos caminar juntos.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);" data-en>We are churches, ministries, pastors, leaders and business owners united by relationship, purpose and mission. We are not seeking control, positions or hierarchies. We are seeking to walk together.</p>
+   </div>
+  </div>
+  <div class="cv-callout rev d2">
+    <div class="cv-callout-l" data-es>Nuestro Centro Fundacional</div><div class="cv-callout-l" data-en>Our Foundational Center</div>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:600;color:var(--text-lt);line-height:1.35;margin-bottom:14px;" data-es>No estamos construyendo nuestro propio reino. Estamos trabajando juntos para la expansión del Reino de Dios.</p>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:600;color:var(--text-lt);line-height:1.35;margin-bottom:14px;" data-en>We are not building our own kingdom. We are working together for the expansion of the Kingdom of God.</p>
+    <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);">Unidad · Propósito · Relación · Misión</div>
+    <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted-lt);margin-top:12px;">Efesios 4:11-13</div>
+  </div>
+</div></div>
+
+<!-- TRES CONVICCIONES -->
+<div class="sec-warm-alt"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Nuestro ADN</div><div class="ey" data-en>Our DNA</div>
+    <h2 class="stitle" data-es>Tres<br>Convicciones</h2><h2 class="stitle" data-en>Three<br>Convictions</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="rev d1">
+    <div class="cv-conv">
+      <div class="cv-conv-n">01</div>
+      <div>
+        <div class="cv-conv-t" data-es>Hacer lo que Jesús hizo</div><div class="cv-conv-t" data-en>Do What Jesus Did</div>
+        <div class="cv-conv-v">Juan 20:21</div>
+        <div class="cv-conv-d" data-es>Jesús predicó el Reino, sanó enfermos, liberó a los oprimidos y restauró vidas. Creemos en una Iglesia que no solo habla de Jesús, sino que demuestra Su Reino con poder, verdad y compasión.</div>
+        <div class="cv-conv-d" data-en>Jesus preached the Kingdom, healed the sick, set the oppressed free and restored lives. We believe in a Church that does not merely speak about Jesus, but demonstrates His Kingdom with power, truth and compassion.</div>
+        <div class="cv-conv-tags" data-es>Cruzadas · Evangelismo · Sanidad · Misiones</div>
+        <div class="cv-conv-tags" data-en>Crusades · Evangelism · Healing · Missions</div>
+      </div>
+    </div>
+    <div class="cv-conv">
+      <div class="cv-conv-n">02</div>
+      <div>
+        <div class="cv-conv-t" data-es>Cuidar a quienes Jesús cuidó</div><div class="cv-conv-t" data-en>Care for the People Jesus Cared For</div>
+        <div class="cv-conv-v">Mateo 25:40</div>
+        <div class="cv-conv-d" data-es>Jesús vio a los pobres, los hambrientos, los niños, los ancianos y los quebrantados. Para nosotros la compasión no es un programa secundario: es una expresión visible del corazón de Cristo.</div>
+        <div class="cv-conv-d" data-en>Jesus saw the poor, the hungry, the children, the elderly and the broken. For us compassion is not a secondary program: it is a visible expression of the heart of Christ.</div>
+        <div class="cv-conv-tags" data-es>Ayuda humanitaria · Niños · Ancianos · Familias</div>
+        <div class="cv-conv-tags" data-en>Humanitarian Aid · Children · Elderly · Families</div>
+      </div>
+    </div>
+    <div class="cv-conv">
+      <div class="cv-conv-n">03</div>
+      <div>
+        <div class="cv-conv-t" data-es>Hacer discípulos</div><div class="cv-conv-t" data-en>Make Disciples</div>
+        <div class="cv-conv-v">Mateo 28:19</div>
+        <div class="cv-conv-d" data-es>Jesús no nos llamó solamente a reunir multitudes, sino a formar discípulos. La meta no es la dependencia: la meta es madurez, envío y multiplicación.</div>
+        <div class="cv-conv-d" data-en>Jesus did not call us merely to gather crowds, but to form disciples. The goal is not dependency: the goal is maturity, sending and multiplication.</div>
+        <div class="cv-conv-tags" data-es>Formación · Mentoría · Plantación de iglesias · Envío</div>
+        <div class="cv-conv-tags" data-en>Training · Mentorship · Church Planting · Sending</div>
+      </div>
+    </div>
+  </div>
+  <div class="cv-stats rev d2">
+    <div class="cv-stat"><div class="cv-stat-n">20.000+</div><div class="cv-stat-l" data-es>Alimentados cada mes</div><div class="cv-stat-l" data-en>Fed every month</div></div>
+    <div class="cv-stat"><div class="cv-stat-n" data-es>CRUZADAS</div><div class="cv-stat-n" data-en>CRUSADES</div><div class="cv-stat-l" data-es>Milagros y evangelismo</div><div class="cv-stat-l" data-en>Miracles and evangelism</div></div>
+    <div class="cv-stat"><div class="cv-stat-n" data-es>LÍDERES</div><div class="cv-stat-n" data-en>LEADERS</div><div class="cv-stat-l" data-es>Equipados y enviados</div><div class="cv-stat-l" data-en>Equipped and sent</div></div>
+  </div>
+</div></div>
+
+
+<!-- TRIPTICO -->
+<div class="cv-tri rev">
+  <figure><img src="assets/img/cobertura/grid/g1.jpg" alt=""><figcaption><div class="cv-tri-n">01</div><div class="cv-tri-t" data-es>Poder</div><div class="cv-tri-t" data-en>Power</div><div class="cv-tri-d" data-es>Sanidad, liberación y restauración.</div><div class="cv-tri-d" data-en>Healing, freedom and restoration.</div></figcaption></figure>
+  <figure><img src="assets/img/cobertura/grid/g3.jpg" alt=""><figcaption><div class="cv-tri-n">02</div><div class="cv-tri-t" data-es>Compasión</div><div class="cv-tri-t" data-en>Compassion</div><div class="cv-tri-d" data-es>El corazón de Cristo hecho visible.</div><div class="cv-tri-d" data-en>The heart of Christ made visible.</div></figcaption></figure>
+  <figure><img src="assets/img/cobertura/grid/g2.jpg" alt=""><figcaption><div class="cv-tri-n">03</div><div class="cv-tri-t" data-es>Multiplicación</div><div class="cv-tri-t" data-en>Multiplication</div><div class="cv-tri-d" data-es>Discípulos formados y enviados.</div><div class="cv-tri-d" data-en>Disciples formed and sent.</div></figcaption></figure>
+</div>
+
+<!-- COMPASIÓN — fullbleed -->
+<div class="fb fb-parallax rev" style="background-image:url('assets/img/cobertura/band/compasion.jpg');"><div class="fb-ov"></div><div class="fb-cnt"><div class="fb-txt">
+  <h2 class="stitle" style="font-size:clamp(1.9rem,4vw,3rem);" data-es>La compasión no es un programa.<br><span style="color:var(--accent);">Es el corazón de Cristo.</span></h2>
+  <h2 class="stitle" style="font-size:clamp(1.9rem,4vw,3rem);" data-en>Compassion is not a program.<br><span style="color:var(--accent);">It is the heart of Christ.</span></h2>
+  <span class="rule"></span>
+  <p data-es>A través de nuestra red alcanzamos y alimentamos a más de 20.000 personas cada mes en comunidades vulnerables de tres naciones.</p>
+  <p data-en>Through our network we reach and feed more than 20,000 people every month in vulnerable communities across three nations.</p>
+</div></div></div>
+
+<!-- DECLARACIÓN DE COBERTURA -->
+<div style="background:var(--dark);"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Declaración</div><div class="ey" data-en>Declaration</div>
+    <h2 class="stitle" data-es>Declaración<br>de Cobertura</h2><h2 class="stitle" data-en>Declaration<br>of Covering</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="cv-ed flip rev d1" style="padding:0;margin-top:34px;">
+   <div class="cv-ed-fig"><img src="assets/img/cobertura/split/relacion.jpg" alt="Relación"><div class="cv-ed-cap" data-es>Relación, no jerarquía</div><div class="cv-ed-cap" data-en>Relationship, not hierarchy</div></div>
+   <div>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);margin-bottom:16px;" data-es>En Kingdom in Action Family no entendemos la cobertura como una estructura diseñada para colocar a una persona por debajo de otra, sino como una relación de alineación espiritual que conecta, fortalece, corrige, equipa y empodera.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);margin-bottom:16px;" data-en>At Kingdom in Action Family we do not understand covering as a structure designed to place one person beneath another, but as a relationship of spiritual alignment that connects, strengthens, corrects, equips and empowers.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);" data-es>Nuestra cobertura no existe para controlar el llamado de un pastor, apropiarse de su visión o gobernar su iglesia local. Existe para caminar a su lado, ayudarlo a discernir lo que Dios está haciendo, fortalecer su identidad, brindar relación, consejo y rendición de cuentas, y acompañarlo mientras madura y avanza hacia la asignación que Dios puso sobre su vida.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-lt);" data-en>Our covering does not exist to control a pastor's calling, take ownership of his vision or govern his local church. It exists to walk alongside him, help him discern what God is doing, strengthen his identity, provide relationship, counsel and accountability, and accompany him as he matures and moves toward the assignment God has placed on his life.</p>
+   </div>
+  </div>
+  <div class="rev d2">
+    <div class="ey" style="margin-top:44px;" data-es>Una cobertura sana</div><div class="ey" style="margin-top:44px;" data-en>A healthy covering</div>
+    <div class="cv-not">
+      <div class="cv-not-item"><div><strong data-es>No crea dependencia</strong><strong data-en>Does not create dependency</strong> <span data-es>— produce madurez.</span><span data-en>— it produces maturity.</span></div></div>
+      <div class="cv-not-item"><div><strong data-es>No disminuye tu voz</strong><strong data-en>Does not diminish your voice</strong> <span data-es>— te ayuda a desarrollarla.</span><span data-en>— it helps you develop it.</span></div></div>
+      <div class="cv-not-item"><div><strong data-es>No controla tu visión</strong><strong data-en>Does not control your vision</strong> <span data-es>— te ayuda a fortalecerla.</span><span data-en>— it helps you strengthen it.</span></div></div>
+      <div class="cv-not-item"><div><strong data-es>No limita tu llamado</strong><strong data-en>Does not limit your calling</strong> <span data-es>— lo impulsa.</span><span data-en>— it propels it.</span></div></div>
+      <div class="cv-not-item"><div><strong data-es>No te mantiene debajo</strong><strong data-en>Does not keep you under</strong> <span data-es>— te prepara para ser enviado.</span><span data-en>— it prepares you to be sent.</span></div></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- QUOTE -->
+<div class="qband"><blockquote data-es>"La cobertura no viene a reemplazar tu llamado; viene a caminar con vos y ayudarte a cumplirlo."</blockquote><blockquote data-en>"Covering does not come to replace your calling; it comes to walk with you and help you fulfill it."</blockquote><cite>Kingdom in Action Family</cite></div>
+
+<!-- ALINEACIÓN -->
+<div class="sec-warm"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Declaración</div><div class="ey" data-en>Declaration</div>
+    <h2 class="stitle" data-es>Alineación, Conexión<br>y Transmisión</h2><h2 class="stitle" data-en>Alignment, Connection<br>and Transmission</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="rev d1" style="max-width:840px;">
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-es>Reconocemos que la imagen de un paraguas puede comunicar correctamente protección, cuidado y acompañamiento espiritual. Sin embargo, también usamos la imagen de una antena espiritual para expresar otra dimensión importante de la cobertura.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-en>We recognize that the image of an umbrella can rightly communicate protection, care and spiritual accompaniment. However, we also use the image of a spiritual antenna to express another important dimension of covering.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-es>Una antena correctamente alineada puede recibir con claridad y transmitir con fidelidad. De la misma manera, creemos que las relaciones espirituales correctas nos ayudan a escuchar con mayor claridad, permanecer conectados, recibir sabiduría y dirección, y desarrollar fielmente lo que Dios ha depositado en nosotros.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);margin-bottom:16px;" data-en>A properly aligned antenna can receive with clarity and transmit with fidelity. In the same way, we believe the right spiritual relationships help us hear more clearly, remain connected, receive wisdom and direction, and faithfully develop what God has deposited within us.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);" data-es>Por esta razón nuestro propósito no es que una persona dependa de nosotros permanentemente, sino ayudarla a crecer hacia la madurez necesaria para discernir, desarrollar y cumplir su propia asignación en Dios.</p>
+    <p style="font-size:16px;line-height:1.85;color:var(--muted-dk);" data-en>For this reason our purpose is not that a person depend on us permanently, but that we help them grow into the maturity needed to discern, develop and fulfill their own assignment in God.</p>
+  </div>
+  <div class="cv-purpose rev d2">
+    <div class="cv-callout-l" data-es>Nuestro Propósito</div><div class="cv-callout-l" data-en>Our Purpose</div>
+    <div class="cv-purpose-row"><b data-es>Alinear</b><b data-en>Align</b><span data-es>en el Espíritu</span><span data-en>in the Spirit</span></div>
+    <div class="cv-purpose-row"><b data-es>Fortalecer</b><b data-en>Strengthen</b><span data-es>a través de la relación</span><span data-en>through relationship</span></div>
+    <div class="cv-purpose-row"><b data-es>Equipar</b><b data-en>Equip</b><span data-es>para la madurez</span><span data-en>for maturity</span></div>
+    <div class="cv-purpose-row"><b data-es>Activar</b><b data-en>Activate</b><span data-es>para el propósito</span><span data-en>for purpose</span></div>
+    <div class="cv-purpose-row"><b data-es>Enviar</b><b data-en>Send</b><span data-es>a cumplir la asignación</span><span data-en>to fulfill the assignment</span></div>
+    <div style="font-size:13px;font-style:italic;color:var(--accent);margin-top:20px;padding-top:18px;border-top:1px solid rgba(204,34,34,.15);" data-es>"Hasta que todos lleguemos... a la medida de la estatura de la plenitud de Cristo." — Efesios 4:13</div>
+    <div style="font-size:13px;font-style:italic;color:var(--accent);margin-top:20px;padding-top:18px;border-top:1px solid rgba(204,34,34,.15);" data-en>"Until we all reach... the measure of the stature of the fullness of Christ." — Ephesians 4:13</div>
+  </div>
+</div></div>
+
+<!-- QUÉ RECIBÍS -->
+<div class="sec-warm-alt"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Por qué caminar juntos</div><div class="ey" data-en>Why walk together</div>
+    <h2 class="stitle" data-es>Una Cobertura que<br>Empodera tu Llamado</h2><h2 class="stitle" data-en>A Covering that<br>Empowers Your Calling</h2>
+    <span class="rule"></span>
+    <p class="slead" style="color:var(--muted-dk);max-width:780px;" data-es>Una cobertura sana no reduce tu identidad ni reemplaza tu voz: crea una relación de alineación espiritual que trae claridad, apoyo, corrección, conexión y activación para ayudarte a llegar más lejos.</p>
+    <p class="slead" style="color:var(--muted-dk);max-width:780px;" data-en>A healthy covering does not reduce your identity or replace your voice: it creates a relationship of spiritual alignment that brings clarity, support, correction, connection and activation to help you go further.</p>
+  </div>
+  <div class="cv-grid rev d1">
+    <div class="cv-card"><div class="cv-card-t" data-es>Alineación</div><div class="cv-card-t" data-en>Alignment</div><div class="cv-card-d" data-es>Claridad espiritual, dirección y confirmación sobre lo que Dios ya está haciendo en tu vida.</div><div class="cv-card-d" data-en>Spiritual clarity, direction and confirmation around what God is already doing in your life.</div></div>
+    <div class="cv-card"><div class="cv-card-t" data-es>Relación</div><div class="cv-card-t" data-en>Relationship</div><div class="cv-card-d" data-es>Una familia donde podés ser conocido, escuchado, celebrado y acompañado.</div><div class="cv-card-d" data-en>A family where you can be known, heard, celebrated and accompanied.</div></div>
+    <div class="cv-card"><div class="cv-card-t" data-es>Apoyo</div><div class="cv-card-t" data-en>Support</div><div class="cv-card-d" data-es>Oración, consejo, mentoría y ayuda real en temporadas de transición, presión o crisis.</div><div class="cv-card-d" data-en>Prayer, counsel, mentorship and real help in seasons of transition, pressure or crisis.</div></div>
+    <div class="cv-card"><div class="cv-card-t" data-es>Equipamiento</div><div class="cv-card-t" data-en>Equipping</div><div class="cv-card-d" data-es>Herramientas, enseñanza, impartición y conexiones que fortalecen tu ministerio.</div><div class="cv-card-d" data-en>Tools, teaching, impartation and connections that strengthen your ministry.</div></div>
+    <div class="cv-card"><div class="cv-card-t" data-es>Activación</div><div class="cv-card-t" data-en>Activation</div><div class="cv-card-d" data-es>Ser afirmado y enviado hacia tu asignación, sin crear dependencia de una estructura.</div><div class="cv-card-d" data-en>Being affirmed and sent toward your assignment, without creating dependency on a structure.</div></div>
+    <div class="cv-card"><div class="cv-card-t" data-es>Conexión</div><div class="cv-card-t" data-en>Connection</div><div class="cv-card-d" data-es>Pastores, líderes, iglesias y empresarios con quienes aprender, colaborar y multiplicar.</div><div class="cv-card-d" data-en>Pastors, leaders, churches and business owners to learn with, collaborate with and multiply with.</div></div>
+  </div>
+  <div class="cv-callout-warm rev d2">
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:600;color:var(--text-dk);line-height:1.4;" data-es>Una cobertura sana no crea dependencia. Produce madurez, fortalece la identidad y empodera el destino.</p>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:600;color:var(--text-dk);line-height:1.4;" data-en>Healthy covering does not create dependency. It produces maturity, strengthens identity and empowers destiny.</p>
+  </div>
+</div></div>
+
+
+<!-- ENVIO — fullbleed -->
+<div class="fb fb-parallax rev" style="background-image:url('assets/img/cobertura/band/envio.jpg');"><div class="fb-ov fb-ov--right"></div><div class="fb-cnt fb-cnt--right"><div class="fb-txt fb-txt--right">
+  <div class="ey" style="justify-content:flex-end;" data-es>Activación</div><div class="ey" style="justify-content:flex-end;" data-en>Activation</div>
+  <h2 class="stitle" style="font-size:clamp(1.9rem,4vw,3rem);" data-es>La meta no es<br>la dependencia.<br><span style="color:var(--accent);">Es el envío.</span></h2>
+  <h2 class="stitle" style="font-size:clamp(1.9rem,4vw,3rem);" data-en>The goal is not<br>dependency.<br><span style="color:var(--accent);">It is being sent.</span></h2>
+  <span class="rule" style="margin-left:auto;"></span>
+  <p data-es>Te acompañamos hasta que tengas la madurez para discernir, desarrollar y cumplir tu propia asignación en Dios.</p>
+  <p data-en>We walk with you until you have the maturity to discern, develop and fulfill your own assignment in God.</p>
+</div></div></div>
+
+<!-- TRES FORMAS DE CAMINAR JUNTOS -->
+<div style="background:var(--dark);"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Cómo nos relacionamos</div><div class="ey" data-en>How we relate</div>
+    <h2 class="stitle" data-es>Tres Formas<br>de Caminar Juntos</h2><h2 class="stitle" data-en>Three Ways<br>to Walk Together</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="rev d1">
+    <div class="cv-way">
+      <div class="cv-way-l">A</div>
+      <div>
+        <div class="cv-way-t" data-es>Iglesia adoptada — bajo cobertura</div><div class="cv-way-t" data-en>Adopted Church — Under Covering</div>
+        <div class="cv-way-d" data-es>Una iglesia establecida solicita que su pastor entre voluntariamente bajo nuestra cobertura espiritual. Nosotros cubrimos al pastor; el pastor y el liderazgo local pastorean y dirigen la congregación.</div>
+        <div class="cv-way-d" data-en>An established church requests that its pastor voluntarily come under our spiritual covering. We cover the pastor; the pastor and the local leadership shepherd and lead the congregation.</div>
+        <div class="cv-way-note" data-es>Conserva su gobierno, estatutos y autonomía legal</div>
+        <div class="cv-way-note" data-en>Retains its governance, bylaws and legal autonomy</div>
+      </div>
+    </div>
+    <div class="cv-way">
+      <div class="cv-way-l">B</div>
+      <div>
+        <div class="cv-way-t" data-es>Iglesia plantada</div><div class="cv-way-t" data-en>Planted Church</div>
+        <div class="cv-way-d" data-es>Plantamos nuevas iglesias nacidas de la visión, el liderazgo o el envío de Kingdom in Action Family, con acompañamiento desde su inicio.</div>
+        <div class="cv-way-d" data-en>We plant new churches born out of the vision, leadership or sending of Kingdom in Action Family, with accompaniment from their beginning.</div>
+        <div class="cv-way-note" data-es>Acompañamiento desde la fundación</div>
+        <div class="cv-way-note" data-en>Accompaniment from the founding</div>
+      </div>
+    </div>
+    <div class="cv-way">
+      <div class="cv-way-l">C</div>
+      <div>
+        <div class="cv-way-t" data-es>Alianza</div><div class="cv-way-t" data-en>Partnership</div>
+        <div class="cv-way-d" data-es>Colaboramos en misiones, formación, evangelismo y ayuda humanitaria. La alianza no significa cobertura: cada organización conserva su propia identidad y liderazgo.</div>
+        <div class="cv-way-d" data-en>We collaborate in missions, training, evangelism and humanitarian aid. Partnership does not mean covering: each organization retains its own identity and leadership.</div>
+        <div class="cv-way-note" data-es>Sin relación de cobertura espiritual</div>
+        <div class="cv-way-note" data-en>No spiritual covering relationship</div>
+      </div>
+    </div>
+  </div>
+  <div class="cv-callout rev d2">
+    <div class="cv-callout-l" data-es>Autoridad espiritual, no autoridad legal</div><div class="cv-callout-l" data-en>Spiritual authority, not legal authority</div>
+    <p data-es>Kingdom in Action Family no adquiere autoridad legal, propiedad ni control corporativo sobre ninguna iglesia. No controlamos propiedades, cuentas bancarias, contratos, empleados ni la junta directiva. Nuestra autoridad nace de una relación espiritual voluntaria con el pastor.</p>
+    <p data-en>Kingdom in Action Family does not acquire legal authority, ownership or corporate control over any church. We do not control property, bank accounts, contracts, employees or the board of directors. Our authority is born of a voluntary spiritual relationship with the pastor.</p>
+  </div>
+</div></div>
+
+<!-- QUÉ SIGNIFICA -->
+<div class="sec-warm"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Qué significa nuestra cobertura</div><div class="ey" data-en>What our covering means</div>
+    <h2 class="stitle" data-es>Espiritual, Pastoral<br>y Relacional</h2><h2 class="stitle" data-en>Spiritual, Pastoral<br>and Relational</h2>
+    <span class="rule"></span>
+    <p class="slead" style="color:var(--muted-dk);max-width:800px;" data-es>Cubrimos espiritualmente al pastor. El pastor y el liderazgo establecido de la iglesia local son responsables de pastorear y gobernar la congregación. A través de esta relación buscamos ofrecer:</p>
+    <p class="slead" style="color:var(--muted-dk);max-width:800px;" data-en>We spiritually cover the pastor. The pastor and the established leadership of the local church are responsible for shepherding and governing the congregation. Through this relationship we seek to offer:</p>
+  </div>
+  <div class="cv-bul rev d1">
+    <div style="color:var(--muted-dk);" data-es>Oración, acompañamiento y cuidado espiritual para el pastor.</div>
+    <div style="color:var(--muted-dk);" data-en>Prayer, accompaniment and spiritual care for the pastor.</div>
+    <div style="color:var(--muted-dk);" data-es>Consejo y discernimiento en decisiones y transiciones importantes.</div>
+    <div style="color:var(--muted-dk);" data-en>Counsel and discernment in major decisions and transitions.</div>
+    <div style="color:var(--muted-dk);" data-es>Mentoría, afirmación del llamado y desarrollo del liderazgo.</div>
+    <div style="color:var(--muted-dk);" data-en>Mentorship, affirmation of calling and leadership development.</div>
+    <div style="color:var(--muted-dk);" data-es>Corrección bíblica y dirección pastoral cuando sea necesario.</div>
+    <div style="color:var(--muted-dk);" data-en>Biblical correction and pastoral direction when needed.</div>
+    <div style="color:var(--muted-dk);" data-es>Apoyo real en crisis personales, familiares o ministeriales.</div>
+    <div style="color:var(--muted-dk);" data-en>Real support in personal, family or ministry crises.</div>
+    <div style="color:var(--muted-dk);" data-es>Una familia de pastores y líderes con quienes aprender y multiplicar.</div>
+    <div style="color:var(--muted-dk);" data-en>A family of pastors and leaders to learn with and multiply with.</div>
+  </div>
+  <div class="rev d2">
+    <div class="ey" style="margin-top:44px;" data-es>Qué esperamos</div><div class="ey" style="margin-top:44px;" data-en>What we expect</div>
+    <div class="cv-bul">
+      <div style="color:var(--muted-dk);" data-es>Relación genuina, no solamente el uso de un nombre.</div>
+      <div style="color:var(--muted-dk);" data-en>Genuine relationship, not merely the use of a name.</div>
+      <div style="color:var(--muted-dk);" data-es>Alineación con nuestra fe, valores y cultura del Reino.</div>
+      <div style="color:var(--muted-dk);" data-en>Alignment with our faith, values and Kingdom culture.</div>
+      <div style="color:var(--muted-dk);" data-es>Integridad personal, familiar, moral, financiera y ministerial.</div>
+      <div style="color:var(--muted-dk);" data-en>Personal, family, moral, financial and ministry integrity.</div>
+      <div style="color:var(--muted-dk);" data-es>Un corazón enseñable, dispuesto a recibir consejo y corrección.</div>
+      <div style="color:var(--muted-dk);" data-en>A teachable heart, willing to receive counsel and correction.</div>
+      <div style="color:var(--muted-dk);" data-es>Comunicación abierta en crisis o decisiones significativas.</div>
+      <div style="color:var(--muted-dk);" data-en>Open communication in crises or significant decisions.</div>
+    </div>
+  </div>
+  <div class="cv-callout-warm rev d3">
+    <div class="cv-callout-l" data-es>Finanzas y honra</div><div class="cv-callout-l" data-en>Finances and honor</div>
+    <p data-es>No existe una cuota, diezmo obligatorio ni evaluación monetaria como condición para recibir cobertura. Muchos eligen honrar con su ofrenda o diezmo, pero la contribución financiera nunca determinará la relación.</p>
+    <p data-en>There is no fee, mandatory tithe or monetary assessment as a condition for receiving covering. Many choose to honor with their offering or tithe, but financial contribution will never determine the relationship.</p>
+  </div>
+</div></div>
+
+<!-- CÓMO EMPEZAR -->
+<div class="sec-warm-alt"><div class="sec">
+  <div class="rev">
+    <div class="ey" data-es>Primeros pasos</div><div class="ey" data-en>First steps</div>
+    <h2 class="stitle" data-es>Cómo<br>Empezar</h2><h2 class="stitle" data-en>How to<br>Begin</h2>
+    <span class="rule"></span>
+    <p style="font-size:16px;font-style:italic;color:var(--muted-dk);margin-bottom:8px;" data-es>Sin apuro y sin presión. Todo empieza con una conversación.</p>
+    <p style="font-size:16px;font-style:italic;color:var(--muted-dk);margin-bottom:8px;" data-en>No rush and no pressure. It all begins with a conversation.</p>
+  </div>
+  <div class="rev d1" style="margin-top:24px;">
+    <div class="cv-step">
+      <div class="cv-step-n">1</div>
+      <div>
+        <div class="cv-step-t" data-es>Conversación y relación</div><div class="cv-step-t" data-en>Conversation and relationship</div>
+        <div class="cv-step-d" data-es>Nos conocemos: tu historia, tu iglesia, tu llamado y por qué estás buscando cobertura.</div>
+        <div class="cv-step-d" data-en>We get to know each other: your story, your church, your calling and why you are seeking covering.</div>
+      </div>
+    </div>
+    <div class="cv-step">
+      <div class="cv-step-n">2</div>
+      <div>
+        <div class="cv-step-t" data-es>Alineación</div><div class="cv-step-t" data-en>Alignment</div>
+        <div class="cv-step-d" data-es>Juntos confirmamos la doctrina fundamental, los valores, el propósito y las expectativas de ambas partes.</div>
+        <div class="cv-step-d" data-en>Together we confirm foundational doctrine, values, purpose and the expectations of both parties.</div>
+      </div>
+    </div>
+    <div class="cv-step">
+      <div class="cv-step-n">3</div>
+      <div>
+        <div class="cv-step-t" data-es>Definir la relación</div><div class="cv-step-t" data-en>Define the relationship</div>
+        <div class="cv-step-d" data-es>Determinamos si corresponde una cobertura de iglesia adoptada, una plantación de iglesia o una alianza.</div>
+        <div class="cv-step-d" data-en>We determine whether an adopted church covering, a church plant or a partnership is the right fit.</div>
+      </div>
+    </div>
+    <div class="cv-step">
+      <div class="cv-step-n">4</div>
+      <div>
+        <div class="cv-step-t" data-es>Acuerdo y bienvenida</div><div class="cv-step-t" data-en>Agreement and welcome</div>
+        <div class="cv-step-d" data-es>Cuando corresponde, formalizamos la relación y te damos la bienvenida a la familia.</div>
+        <div class="cv-step-d" data-en>When appropriate, we formalize the relationship and welcome you into the family.</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- INVITACIÓN FINAL — fullbleed -->
+<div class="fb fb-parallax rev" style="background-image:url('assets/img/cobertura/band/adoracion.jpg');"><div class="fb-ov"></div><div class="fb-cnt"><div class="fb-txt">
+  <div class="ey" data-es>Nuestra invitación</div><div class="ey" data-en>Our invitation</div>
+  <h2 class="stitle" style="font-size:clamp(1.9rem,4.2vw,3.2rem);" data-es>Quizás no necesitás otra organización.<br><span style="color:var(--accent);">Quizás necesitás familia.</span></h2>
+  <h2 class="stitle" style="font-size:clamp(1.9rem,4.2vw,3.2rem);" data-en>Maybe you don't need another organization.<br><span style="color:var(--accent);">Maybe you need family.</span></h2>
+  <span class="rule"></span>
+  <p style="font-style:italic;" data-es>No queremos que cumplas nuestra visión. Queremos ayudarte a cumplir aquello a lo que Dios te llamó.</p>
+  <p style="font-style:italic;" data-en>We do not want you to fulfill our vision. We want to help you fulfill what God called you to.</p>
+  <div style="margin-top:24px;"><a href="index.html#contacto" class="btn-accent" data-es>Iniciar una conversación</a><a href="index.html#contacto" class="btn-accent" data-en>Start a conversation</a></div>
+</div></div></div>
+
+<!-- FOOTER -->
+<footer class="footer"><img src="assets/img/logo/kiaf-dark.jpg" alt="KIAF" class="f-logo-img"><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="vision.html" data-es>Visión</a><a href="vision.html" data-en>Vision</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></div></footer>
+
+<!-- DONATE + LB -->
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><button class="dmodal-x" onclick="closeDonate()">&#10005;</button><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sostiene misiones en 3 naciones.</p><p class="dmodal-sub" data-en>Your donation supports missions in 3 nations.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div><div class="dblock" style="border:none;padding-top:4px;"><div class="dblock-label">PayPal</div><div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;"><input type="text" id="dnNombre" placeholder="Nombre / First Name" required style="padding:10px 12px;border:1px solid rgba(248,244,237,.12);background:rgba(248,244,237,.05);color:var(--text-lt);border-radius:4px;font-size:14px;outline:none;"><input type="text" id="dnApellido" placeholder="Apellido / Last Name" required style="padding:10px 12px;border:1px solid rgba(248,244,237,.12);background:rgba(248,244,237,.05);color:var(--text-lt);border-radius:4px;font-size:14px;outline:none;"><input type="email" id="dnEmail" placeholder="Email" required style="padding:10px 12px;border:1px solid rgba(248,244,237,.12);background:rgba(248,244,237,.05);color:var(--text-lt);border-radius:4px;font-size:14px;outline:none;"><button onclick="submitDonation()" class="btn-accent" style="font-size:14px;cursor:pointer;margin-top:4px;" data-es>Donar con PayPal</button><button onclick="submitDonation()" class="btn-accent" style="font-size:14px;cursor:pointer;margin-top:4px;" data-en>Donate with PayPal</button></div></div><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p><p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p></div></div>
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
+
+<script src="shared.js"></script>
+</body>
+</html>
