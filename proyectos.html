@@ -2,7 +2,7 @@
 <html lang="es" data-lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Proyectos Cuba | Kingdom in Action</title>
+<title>Iniciativas | Kingdom in Action</title>
 <link rel="icon" href="assets/favicon/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png?v=2">
@@ -11,21 +11,25 @@
 <meta name="theme-color" content="#0D0F11">
 <link rel="stylesheet" href="shared.css">
 <style>
-/* Photo slider for hero — multiple Cuba images cycling */
-.cuba-hero{position:relative;height:70vh;min-height:460px;overflow:hidden;margin-top:var(--nav-h);}
-.cuba-hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s var(--ease);}
-.cuba-hero-slide.on{opacity:1;}
-.cuba-hero-slide img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(.45);}
-.cuba-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.92)0%,rgba(6,6,6,.35)55%,rgba(6,6,6,.05)100%);}
-.cuba-hero-cnt{position:absolute;bottom:0;left:0;right:0;padding:44px 60px;}
+/* variables locales que faltaban (se usaban sin declarar) */
+:root{
+  --white:#FFFFFF;
+  --black:#141414;
+  --char:#EDE7DC;     /* antes oscuro: ahora arena, para sostener el tono claro */
+  --mid:#FFFFFF;      /* fondo de las tarjetas de creencias */
+  --muted:#6B6560;
+  --teal:#17788A;     /* acento de Pool of Mercy */
+}
+
 /* INTRO SPLIT */
 .intro-split{max-width:1360px;margin:0 auto;padding:88px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.intro-img{position:relative;overflow:hidden;border-radius:2px;}
-.intro-img img{width:100%;height:460px;object-fit:cover;filter:grayscale(15%);}
-.intro-text p{font-size:15px;line-height:1.85;color:rgba(238,235,230,.62);margin-bottom:14px;}
+.intro-text .stitle{color:var(--text-dk);}
+.intro-text .ey{color:#17788A;}
+.intro-text .rule{background:#17788A;}
+.intro-text p{font-size:15px;line-height:1.85;color:var(--muted-dk);margin-bottom:14px;}
 .intro-text ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px;}
-.intro-text li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(238,235,230,.6);line-height:1.6;}
-.intro-text li::before{content:'';width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:7px;}
+.intro-text li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted-dk);line-height:1.6;}
+.intro-text li::before{content:'';width:5px;height:5px;background:#17788A;border-radius:50%;flex-shrink:0;margin-top:7px;}
 /* PROJECTS — photo left/right alternating, full width section cards */
 .proj-section{width:100%;}
 .proj-section:nth-child(odd){background:var(--dark);}
@@ -44,11 +48,13 @@
 .proj-dream strong{color:var(--white);}
 /* BELIEFS */
 .beliefs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:40px;}
-.belief{background:var(--mid);border:1px solid rgba(255,255,255,.06);border-radius:2px;padding:20px 22px;display:flex;gap:12px;}
-.belief-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:6px;}
+.belief{background:var(--mid);border:1px solid var(--sand-border);border-radius:4px;padding:22px 24px;display:flex;gap:12px;transition:border-color .4s,transform .4s var(--ease);}
+.belief:hover{border-color:var(--teal);transform:translateY(-2px);}
+.belief-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:7px;}
+.belief p{font-size:15px;line-height:1.75;color:var(--muted-dk);}
 .belief p{font-size:14px;line-height:1.7;color:rgba(238,235,230,.62);}
 @media(max-width:1024px){.intro-split{grid-template-columns:1fr;gap:40px;}.proj-inner{grid-template-columns:1fr;}.proj-inner.rev-order{direction:ltr;}.beliefs-grid{grid-template-columns:1fr;}}
-@media(max-width:768px){.intro-split{padding:60px 20px;}.proj-inner{padding:60px 20px;}.cuba-hero-cnt{padding:24px 20px;}.proj-photo img{height:260px;}}
+@media(max-width:768px){.intro-split{padding:60px 20px;}.proj-inner{padding:60px 20px;}.proj-photo img{height:260px;}}
 
 /* ===== TOUCH TARGETS — WCAG 2.5.5 / Apple HIG (min 44px) ===== */
 /* El punto sigue viendose igual; el area tactil se agranda con un pseudo invisible */
@@ -84,12 +90,295 @@
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent-lt);outline-offset:3px;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important;}.rev,.rev-l,.rev-r,.stag>*{opacity:1!important;transform:none!important;}}
 
+
+/* ================= INICIATIVAS — paleta clara, tono ONG ================= */
+.ini{
+  --pm-teal:#17788A; --pm-teal-lt:#2FA0B4; --pm-navy:#0E2A47;
+  --sh-amber:#E9A825; --sh-amber-lt:#F5C356; --sh-navy:#0B2545;
+  --ink:#1B2B3A; --ink-soft:#5A6B7A; --paper:#FBF9F5; --paper-2:#F2EEE7; --line:#E3DDD3;
+  background:var(--paper);color:var(--ink);position:relative;overflow:hidden;
+}
+.ini::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(70% 46% at 12% 0%,rgba(23,120,138,.07),transparent 60%),
+             radial-gradient(66% 44% at 92% 30%,rgba(233,168,37,.10),transparent 62%);}
+.ini-in{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:clamp(76px,10vw,124px) clamp(20px,5vw,60px);}
+.ini-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:700;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--pm-teal);margin-bottom:16px;}
+.ini-ey::before{content:'';width:34px;height:1px;background:currentColor;}
+.ini-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.2rem,5vw,3.7rem);font-weight:800;
+  text-transform:uppercase;letter-spacing:.01em;line-height:1.04;color:var(--ink);}
+.ini-lead{font-size:clamp(1rem,1.6vw,1.12rem);line-height:1.85;color:var(--ink-soft);max-width:64ch;margin-top:18px;}
+
+/* --- tarjeta de proyecto --- */
+.ini-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  margin-top:clamp(40px,6vw,64px);box-shadow:0 1px 2px rgba(27,43,58,.04),0 12px 40px -18px rgba(27,43,58,.14);
+  transition:box-shadow .6s var(--ease),transform .6s var(--ease);}
+.ini-card:hover{box-shadow:0 1px 2px rgba(27,43,58,.05),0 26px 66px -22px rgba(27,43,58,.22);transform:translateY(-3px);}
+.ini-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--bar,var(--pm-teal));}
+.ini-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,34px);align-items:center;
+  padding:clamp(30px,4vw,46px) clamp(24px,4vw,50px);border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,0),var(--wash,rgba(23,120,138,.045)));}
+.ini-mark{width:clamp(62px,8vw,84px);height:clamp(62px,8vw,84px);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+  background:var(--wash2,rgba(23,120,138,.10));border:1px solid var(--bar,var(--pm-teal));}
+.ini-mark svg{width:52%;height:52%;fill:var(--bar,var(--pm-teal));}
+.ini-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;
+  text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--deep,var(--pm-navy));}
+.ini-kicker{font-size:9.5px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--bar,var(--pm-teal));margin-top:9px;}
+.ini-tag{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1rem,1.9vw,1.25rem);font-style:italic;
+  font-weight:500;color:var(--ink-soft);margin-top:10px;}
+.ini-body{padding:clamp(28px,4vw,46px) clamp(24px,4vw,50px);}
+.ini-p{font-size:16px;line-height:1.85;color:var(--ink-soft);max-width:70ch;}
+
+/* misión / visión */
+.ini-mv{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:30px;}
+.ini-mv>div{background:#fff;padding:26px 26px;}
+.ini-mv-k{font-size:9.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--bar,var(--pm-teal));margin-bottom:10px;}
+.ini-mv-t{font-size:15px;line-height:1.8;color:var(--ink-soft);}
+
+/* formas de participar */
+.ini-ways{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px;}
+.ini-way{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:22px 20px;
+  transition:border-color .4s,background .4s,transform .4s var(--ease);}
+.ini-way:hover{border-color:var(--bar,var(--pm-teal));background:#fff;transform:translateY(-3px);}
+.ini-way-i{width:38px;height:38px;border-radius:50%;background:var(--wash2,rgba(23,120,138,.10));
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.ini-way-i svg{width:18px;height:18px;fill:var(--bar,var(--pm-teal));}
+.ini-way-t{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--deep,var(--pm-navy));margin-bottom:7px;}
+.ini-way-d{font-size:13.5px;line-height:1.7;color:var(--ink-soft);}
+
+/* franja de cifras */
+.ini-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:30px;}
+.ini-num{background:#fff;padding:28px 20px;text-align:center;position:relative;overflow:hidden;}
+.ini-num::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--bar,var(--pm-teal));
+  transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease);}
+.ini-card.on .ini-num::after{transform:scaleX(1);}
+.ini-card.on .ini-num:nth-child(2)::after{transition-delay:.14s}
+.ini-card.on .ini-num:nth-child(3)::after{transition-delay:.28s}
+.ini-num-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;
+  line-height:1;color:var(--bar,var(--pm-teal));}
+.ini-num-l{font-size:9.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:10px;line-height:1.6;}
+
+/* niveles de aporte */
+.ini-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px;}
+.ini-tier{border:1px solid var(--line);border-radius:4px;padding:20px 16px;text-align:center;background:#fff;
+  transition:border-color .4s,transform .4s var(--ease),background .4s;}
+.ini-tier:hover{border-color:var(--bar,var(--pm-teal));transform:translateY(-3px);background:var(--paper-2);}
+.ini-tier-n{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;
+  color:var(--deep,var(--pm-navy));line-height:1;}
+.ini-tier-d{font-size:12.5px;line-height:1.65;color:var(--ink-soft);margin-top:9px;}
+
+/* fases */
+.ini-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px;}
+.ini-phase{position:relative;background:var(--sh-navy);border-radius:4px;padding:26px 24px;color:#fff;overflow:hidden;}
+.ini-phase::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--sh-amber);}
+.ini-phase-k{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--sh-amber);margin-bottom:12px;}
+.ini-phase-t{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.03em;line-height:1.2;margin-bottom:12px;}
+.ini-phase-r{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.72);}
+.ini-phase-r:last-child{border-bottom:none;}
+.ini-phase-r b{color:var(--sh-amber-lt);font-weight:700;}
+
+/* lista de artículos */
+.ini-needs{margin-top:26px;border:1px solid var(--line);border-radius:4px;background:#fff;overflow:hidden;}
+.ini-needs-h{width:100%;text-align:left;background:var(--paper-2);border:none;cursor:pointer;
+  padding:18px 24px;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--deep,var(--pm-navy));
+  display:flex;align-items:center;justify-content:space-between;gap:12px;transition:background .3s;}
+.ini-needs-h:hover{background:var(--line);}
+.ini-needs-h span.chev{font-size:1.2rem;color:var(--bar,var(--pm-teal));transition:transform .4s var(--ease);}
+.ini-needs.open .chev{transform:rotate(180deg);}
+.ini-needs-b{max-height:0;overflow:hidden;transition:max-height .6s var(--ease);}
+.ini-needs.open .ini-needs-b{max-height:900px;}
+.ini-needs-b ul{list-style:none;padding:20px 24px 24px;columns:2;column-gap:34px;}
+.ini-needs-b li{font-size:14px;line-height:1.75;color:var(--ink-soft);padding:6px 0 6px 20px;
+  position:relative;break-inside:avoid;}
+.ini-needs-b li::before{content:'';position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:50%;
+  background:var(--bar,var(--pm-teal));opacity:.55;}
+
+/* cita de cierre */
+.ini-quote{margin-top:clamp(44px,6vw,72px);text-align:center;padding:clamp(30px,4vw,44px) clamp(20px,4vw,40px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.ini-quote p{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.3rem,2.9vw,2rem);font-weight:600;
+  line-height:1.32;color:var(--ink);max-width:30ch;margin:0 auto;}
+.ini-quote p em{font-style:normal;color:var(--pm-teal);}
+.ini-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px;}
+.btn-ini{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  padding:15px 30px;border-radius:3px;background:var(--pm-navy);color:#fff;border:1px solid var(--pm-navy);
+  transition:background .35s,color .35s,transform .35s var(--ease);}
+.btn-ini:hover{background:transparent;color:var(--pm-navy);transform:translateY(-2px);}
+.btn-ini--ghost{background:transparent;color:var(--pm-navy);}
+.btn-ini--ghost:hover{background:var(--pm-navy);color:#fff;}
+
+@media(max-width:1024px){
+  .ini-ways{grid-template-columns:1fr 1fr;}
+  .ini-tiers{grid-template-columns:1fr 1fr;}
+  .ini-phases{grid-template-columns:1fr;}
+  .ini-needs-b ul{columns:1;}
+}
+@media(max-width:640px){
+  .ini-head{grid-template-columns:1fr;text-align:left;}
+  .ini-mv{grid-template-columns:1fr;}
+  .ini-ways{grid-template-columns:1fr;}
+  .ini-nums{grid-template-columns:1fr;}
+  .ini-tiers{grid-template-columns:1fr 1fr;}
+}
+
+
+/* ===== HERO PROYECTOS — split editorial, tono crema ===== */
+.ph-hero{margin-top:var(--nav-h);background:var(--cream);display:grid;
+  grid-template-columns:1fr 1.15fr;align-items:stretch;min-height:clamp(520px,80vh,820px);
+  position:relative;overflow:hidden;border-bottom:1px solid var(--sand-border);}
+.ph-hero::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:radial-gradient(72% 58% at 4% 44%,rgba(23,120,138,.09),transparent 62%),
+             radial-gradient(58% 50% at 30% 100%,rgba(233,168,37,.10),transparent 66%);}
+.ph-hero-txt{display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(48px,7vw,90px) clamp(22px,5vw,66px);position:relative;z-index:3;}
+.ph-hero-ey{display:flex;align-items:center;gap:12px;font-size:9.5px;font-weight:700;letter-spacing:.4em;
+  text-transform:uppercase;color:#17788A;margin-bottom:18px;}
+.ph-hero-ey::before{content:'';width:34px;height:1px;background:currentColor;}
+.ph-hero-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,8vw,6.4rem);font-weight:800;
+  text-transform:uppercase;line-height:.9;letter-spacing:.01em;color:var(--text-dk);}
+.ph-hero-p{font-size:clamp(.95rem,1.5vw,1.08rem);line-height:1.85;color:var(--muted-dk);
+  max-width:46ch;margin-top:22px;padding-top:22px;border-top:1px solid var(--sand-border);}
+/* dos apuntes de marca bajo la bajada */
+.ph-hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.ph-hero-tag{display:inline-flex;align-items:center;gap:9px;font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--text-dk);
+  border:1px solid var(--sand-border);background:#fff;border-radius:40px;padding:9px 16px;}
+.ph-hero-tag i{width:8px;height:8px;border-radius:50%;flex-shrink:0;font-style:normal;}
+.ph-hero-tag.pom i{background:#17788A;}
+.ph-hero-tag.shn i{background:#E9A825;}
+/* triptico vertical: respeta el 3:4 nativo de las fotos */
+.ph-hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:var(--sand-border);}
+.ph-hero-grid figure{position:relative;overflow:hidden;background:var(--sand);}
+.ph-hero-grid img{width:100%;height:100%;object-fit:cover;
+  filter:grayscale(72%) contrast(1.03) brightness(1.02);
+  transition:filter .8s var(--ease),transform 2.4s var(--ease);}
+.ph-hero-grid figure:hover img{filter:grayscale(0%) contrast(1.02) brightness(1.04);transform:scale(1.04);}
+.ph-hero-grid figure::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(44,42,37,.30),transparent 40%);}
+.ph-hero-grid figure:nth-child(2){transform:translateY(-2.5%);}
+@media(max-width:1400px){.ph-hero-grid{grid-template-columns:repeat(3,1fr);}.ph-4th{display:none;}}
+@media(max-width:1024px){
+  .ph-hero{grid-template-columns:1fr;min-height:auto;}
+  .ph-hero-grid{height:44vh;min-height:280px;}
+  .ph-hero-grid figure:nth-child(2){transform:none;}
+}
+@media(max-width:600px){.ph-hero-grid{grid-template-columns:1fr 1fr;height:36vh;}
+  .ph-hero-grid figure:nth-child(3){display:none;}}
+
+/* ===== GALERIA DENTRO DE CADA INICIATIVA ===== */
+.ini-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px;}
+.ini-gal figure{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:4px;background:var(--paper-2);}
+.ini-gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .6s;}
+.ini-gal figure:hover img{transform:scale(1.05);}
+.ini-gal figure::after{content:'';position:absolute;inset:0;border:1px solid transparent;
+  border-radius:4px;transition:border-color .45s;pointer-events:none;}
+.ini-gal figure:hover::after{border-color:var(--bar,var(--pm-teal));}
+.ini-gal figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 14px;
+  background:linear-gradient(to top,rgba(11,26,40,.86),transparent);
+  font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#fff;}
+/* foco cinematografico: al pasar sobre una, las hermanas se atenuan */
+.ini-gal:hover figure:not(:hover) img{filter:grayscale(1);opacity:.5;}
+@media(max-width:640px){.ini-gal{grid-template-columns:1fr 1fr;}
+  .ini-gal figure:nth-child(3){display:none;}}
+
+
+/* ===== BANDAS FOTOGRAFICAS DE LA SECCION INICIATIVAS ===== */
+.ini-band{position:relative;margin:clamp(40px,6vw,64px) 0;border-radius:6px;overflow:hidden;
+  min-height:clamp(280px,40vh,420px);display:flex;align-items:flex-end;isolation:isolate;}
+.ini-band img{position:absolute;inset:0;width:100%;height:112%;top:-6%;object-fit:cover;
+  will-change:transform;transform:translate3d(0,0,0);}
+.ini-band::after{content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(11,26,40,.90)0%,rgba(11,26,40,.55)38%,rgba(11,26,40,.10)72%,transparent 100%);}
+.ini-band-cnt{position:relative;z-index:2;padding:clamp(26px,4vw,44px) clamp(22px,4vw,46px);max-width:60ch;}
+.ini-band-k{font-size:9.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--sh-amber-lt);margin-bottom:12px;}
+.ini-band-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,3.2vw,2.3rem);font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;line-height:1.14;color:#fff;}
+.ini-band-p{font-size:15px;line-height:1.8;color:rgba(255,255,255,.76);margin-top:12px;max-width:52ch;}
+/* cita de cierre sobre foto */
+.ini-quote{position:relative;overflow:hidden;border-radius:6px;border:none!important;isolation:isolate;
+  min-height:clamp(300px,42vh,440px);display:flex;align-items:center;justify-content:center;}
+.ini-quote>img{position:absolute;inset:0;width:100%;height:112%;top:-6%;object-fit:cover;object-position:center 38%;}
+.ini-quote::after{content:'';position:absolute;inset:0;z-index:1;background:rgba(11,26,40,.80);}
+.ini-quote-in{position:relative;z-index:2;padding:clamp(30px,4vw,48px) clamp(20px,4vw,40px);text-align:center;}
+.ini-quote-in p{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:600;
+  line-height:1.3;color:#fff;max-width:28ch;margin:0 auto;}
+.ini-quote-in p em{font-style:normal;color:var(--sh-amber-lt);}
+.ini-quote .btn-ini{background:#fff;color:var(--pm-navy);border-color:#fff;}
+.ini-quote .btn-ini:hover{background:transparent;color:#fff;}
+.ini-quote .btn-ini--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5);}
+.ini-quote .btn-ini--ghost:hover{background:#fff;color:var(--pm-navy);}
+
+.sec-lite .stitle{color:var(--text-dk);}
+.sec-lite .ey{color:var(--teal);}
+.sec-lite .belief p,.sec-lite .belief div{color:var(--muted-dk);}
+.sec-lite .belief span,.sec-lite .belief li{color:var(--muted-dk);}
+
+/* ===== FIGURA DE LA INTRO — la foto deja de flotar ===== */
+.intro-fig{position:relative;}
+/* respeta el formato vertical real del archivo (0.56) en vez de recortarlo a apaisado */
+.intro-fig-img{position:relative;overflow:hidden;border-radius:4px;background:var(--sand-border);
+  box-shadow:0 1px 2px rgba(44,42,37,.06),0 22px 50px -24px rgba(44,42,37,.30);}
+.intro-fig-img::before{content:'';display:block;padding-top:118%;}
+.intro-fig-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+  filter:saturate(.96);transition:transform 1.6s var(--ease);}
+.intro-fig:hover .intro-fig-img img{transform:scale(1.035);}
+/* marco desplazado: ancla la imagen al fondo crema */
+.intro-fig::before{content:'';position:absolute;inset:20px -20px -20px 20px;z-index:-1;
+  border:1px solid rgba(23,120,138,.45);border-radius:4px;transition:inset .8s var(--ease);}
+.intro-fig:hover::before{inset:28px -28px -28px 28px;}
+/* pie: dice qué es la foto */
+.intro-fig-cap{display:block;margin-top:18px;padding-left:2px;}
+.intro-fig-k{display:block;font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+  color:#17788A;margin-bottom:7px;}
+.intro-fig-t{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:600;
+  color:var(--text-dk);line-height:1.3;}
+/* dato flotante: convierte la imagen en evidencia */
+.intro-fig-stat{position:absolute;right:-16px;bottom:82px;z-index:2;background:#fff;border-radius:4px;
+  padding:18px 22px;text-align:right;min-width:190px;
+  border:1px solid var(--sand-border);border-left:3px solid #17788A;
+  box-shadow:0 1px 2px rgba(44,42,37,.05),0 18px 44px -18px rgba(44,42,37,.30);}
+.intro-fig-stat b{display:block;font-family:'Barlow Condensed',sans-serif;font-size:2.1rem;font-weight:800;
+  line-height:1;color:#17788A;}
+.intro-fig-stat i{display:block;font-style:normal;font-size:9.5px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted-dk);margin-top:8px;line-height:1.5;}
+@media(max-width:1024px){
+  .intro-fig-img::before{padding-top:78%;}
+  .intro-fig-stat{right:0;bottom:96px;min-width:0;padding:14px 18px;}
+  .intro-fig-stat b{font-size:1.6rem;}
+}
+@media(max-width:600px){.intro-fig::before{inset:12px -12px -12px 12px;}
+  .intro-fig-stat{position:static;margin-top:14px;text-align:left;border-left-width:3px;}}
+
+/* ===== PIE DE LA SECUENCIA DEL HERO ===== */
+.ph-hero-grid figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:18px 16px 16px;display:flex;flex-direction:column;gap:5px;
+  transform:translateY(6px);opacity:0;transition:transform .6s var(--ease),opacity .6s;}
+.ph-hero-grid figure:hover figcaption{transform:none;opacity:1;}
+.ph-hero-grid figcaption b{font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:800;
+  line-height:1;color:#E9A825;}
+.ph-hero-grid figcaption span{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;line-height:1.4;}
+/* en táctil no hay hover: siempre visibles */
+@media(hover:none){.ph-hero-grid figcaption{opacity:1;transform:none;}}
+
 </style>
 </head>
 <body>
 <div id="prog"></div>
 <nav class="nav" id="nav">
-  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Cuba · Proyectos</span><span data-en>Cuba · Projects</span></a>
+  <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Iniciativas</span><span data-en>Initiatives</span></a>
   <ul class="nav-links">
     <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li>
     <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
@@ -101,29 +390,53 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 </nav>
 <div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()">EEUU</a><a href="proyectos.html" onclick="toggleNav()" class="active" data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()" class="active" data-en>Projects</a></div>
 
-<!-- HERO — cuba_banner as main (B&N), cycling through Cuba photos -->
-<div class="cuba-hero" id="cubaHero">
-  <div class="cuba-hero-slide on"><img fetchpriority="high" src="assets/img/cuba/web/fb-compasion.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img loading="lazy" decoding="async" src="assets/img/cuba/web/rice.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img loading="lazy" decoding="async" src="assets/img/cuba/cub3.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-slide"><img loading="lazy" decoding="async" src="assets/img/cuba/cub1.jpg" alt="Cuba"><div class="cuba-hero-ov"></div></div>
-  <div class="cuba-hero-cnt">
-    <div class="ey" data-es>Cuba · Reino en Acción</div><div class="ey" data-en>Cuba · Kingdom in Action</div>
-    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-es>Proyectos</h1>
-    <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;text-transform:uppercase;color:var(--white);line-height:1;" data-en>Projects</h1>
-    <p style="font-size:14px;color:rgba(238,235,230,.55);margin-top:10px;max-width:580px;" data-es>Dios nos llamó a ser instrumentos de transformación. Tu generosidad se convierte en alimento, oportunidad y un futuro lleno de esperanza para el pueblo cubano.</p>
-    <p style="font-size:14px;color:rgba(238,235,230,.55);margin-top:10px;max-width:580px;" data-en>God called us to be instruments of transformation. Your generosity becomes food, opportunity and a future filled with hope for the Cuban people.</p>
+<!-- HERO — split editorial: titulo + triptico vertical -->
+<div class="ph-hero">
+  <div class="ph-hero-txt">
+    <div class="ph-hero-ey" data-es>Iniciativas · Kingdom in Action Family</div>
+    <div class="ph-hero-ey" data-en>Initiatives · Kingdom in Action Family</div>
+    <h1 class="ph-hero-h" data-es>Proyectos</h1>
+    <h1 class="ph-hero-h" data-en>Projects</h1>
+    <p class="ph-hero-p" data-es>Dios nos llamó a ser instrumentos de transformación. Tu generosidad se convierte en alimento donde hay hambre y en luz donde hay oscuridad.</p>
+    <p class="ph-hero-p" data-en>God called us to be instruments of transformation. Your generosity becomes food where there is hunger and light where there is darkness.</p>
+    <div class="ph-hero-tags">
+      <span class="ph-hero-tag pom"><i></i>Pool of Mercy</span>
+      <span class="ph-hero-tag shn"><i></i>Solar Hope Network</span>
+    </div>
+  </div>
+  <div class="ph-hero-grid">
+    <figure><img fetchpriority="high" src="assets/img/iniciativas/pom/contenedor.jpg" alt="">
+      <figcaption><b>01</b><span data-es>Se carga</span><span data-en>It is loaded</span></figcaption></figure>
+    <figure class="ph-4th"><img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/camion.jpg" alt="">
+      <figcaption><b>02</b><span data-es>Cruza el mar</span><span data-en>It crosses the sea</span></figcaption></figure>
+    <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/entrega.jpg" alt="">
+      <figcaption><b>03</b><span data-es>Llega a la puerta</span><span data-en>It reaches the door</span></figcaption></figure>
+    <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/shn/paneles.jpg" alt="">
+      <figcaption><b>04</b><span data-es>Queda encendido</span><span data-en>It stays lit</span></figcaption></figure>
   </div>
 </div>
 
-<!-- INTRO — who we are, cuba_banner photo as main image -->
-<div style="background:var(--dark);">
+<!-- INTRO — quienes somos -->
+<div style="background:var(--sand);border-bottom:1px solid var(--sand-border);">
   <div class="intro-split rev">
-    <div class="intro-img">
-      <img loading="lazy" decoding="async" src="assets/img/cuba/web/fb-compasion.jpg" alt="Cuba misión">
-    </div>
+    <figure class="intro-fig">
+      <div class="intro-fig-img">
+        <img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/deposito.jpg" alt="Suministros listos para ser enviados">
+      </div>
+      <figcaption class="intro-fig-cap">
+        <span class="intro-fig-k" data-es>Nuestro primer contenedor · 2026</span>
+        <span class="intro-fig-k" data-en>Our first container · 2026</span>
+        <span class="intro-fig-t" data-es>Todo esto salió de una sola iglesia.</span>
+        <span class="intro-fig-t" data-en>All of this came from a single church.</span>
+      </figcaption>
+      <div class="intro-fig-stat">
+        <b data-ini="240000">0</b>
+        <i data-es>personas alimentadas al año</i>
+        <i data-en>people fed each year</i>
+      </div>
+    </figure>
     <div class="intro-text">
-      <div class="ey" data-es>Reino en Acción · Cuba</div><div class="ey" data-en>Kingdom in Action · Cuba</div>
+      <div class="ey" data-es>Quiénes Somos</div><div class="ey" data-en>Who We Are</div>
       <h2 class="stitle" data-es>Quiénes Somos</h2><h2 class="stitle" data-en>Who We Are</h2>
       <span class="rule"></span>
       <p data-es>Reino en Acción es un ministerio con una asignación: establecer el Reino de Dios. Somos el Cuerpo de Cristo funcionando a través de congregaciones y ministerios que se han unido para edificarse mutuamente y expresar a Cristo como el centro.</p>
@@ -139,86 +452,227 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   </div>
 </div>
 
-<!-- PROJECT 01 — PASTORES -->
-<div class="proj-section">
-  <div class="proj-inner rev">
-    <div class="proj-photo">
-      <img loading="lazy" decoding="async" src="assets/img/cuba/cub1.jpg" alt="Pastores">
-      <div class="proj-photo-tag" data-es>Proyecto 01</div><div class="proj-photo-tag" data-en>Project 01</div>
-    </div>
-    <div>
-      <div class="proj-num">01</div>
-      <div class="proj-t" data-es>Apoyo a Pastores</div><div class="proj-t" data-en>Pastors Help</div>
-      <span class="rule"></span>
-      <p class="proj-d" data-es>Apoyamos a pastores que sirven fielmente a sus comunidades en condiciones muy difíciles. Estos líderes no reciben salario ni tienen una fuente segura de ingresos. Tu generosidad les brinda alivio, aliento y ayuda práctica para que puedan continuar ministrando a su pueblo.</p>
-      <p class="proj-d" data-en>We support pastors who faithfully serve their communities in very difficult conditions. These leaders receive no salary and have no secure source of income. Your generosity provides relief, encouragement, and practical help so they can continue ministering to their people.</p>
-      <div class="proj-dream" data-es><strong>Nuestro sueño:</strong> fortalecer y equipar a 100 pastores en 2026 con cobertura espiritual, mentoría y recursos prácticos.</div>
-      <div class="proj-dream" data-en><strong>Our dream:</strong> strengthen and resource 100 pastors in 2026 with spiritual covering, mentorship and practical resources.</div>
-      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
-    </div>
-  </div>
-</div>
 
-<!-- PROJECT 02 — CONSTRUCCION -->
-<div class="proj-section">
-  <div class="proj-inner rev-order rev">
-    <div class="proj-photo">
-      <img loading="lazy" decoding="async" src="assets/img/cuba/cub2.jpg" alt="Construcción">
-      <div class="proj-photo-tag" data-es>Proyecto 02</div><div class="proj-photo-tag" data-en>Project 02</div>
-    </div>
-    <div>
-      <div class="proj-num">02</div>
-      <div class="proj-t" data-es>Construcción</div><div class="proj-t" data-en>Construction</div>
-      <span class="rule"></span>
-      <p class="proj-d" data-es>Apoyamos lugares de adoración, comedores para adultos mayores y espacios de servicio comunitario, mejorando sus condiciones para que puedan servir mejor a la comunidad. Nuestro deseo es que sean espacios dignos y acogedores preparados para impactar vidas.</p>
-      <p class="proj-d" data-en>We support places of worship, dining facilities for the elderly and community service spaces by improving their conditions so they can better serve the community. Our desire is that they become dignified, welcoming spaces prepared to impact lives.</p>
-      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
-    </div>
-  </div>
-</div>
+<!-- ================= INICIATIVAS KIAF ================= -->
+<div class="ini">
+ <div class="ini-in">
 
-<!-- PROJECT 03 — COMPASION — rice photo -->
-<div class="proj-section">
-  <div class="proj-inner rev">
-    <div class="proj-photo">
-      <img loading="lazy" decoding="async" src="assets/img/cuba/web/rice.jpg" alt="Compasión">
-      <div class="proj-photo-tag" data-es>Proyecto 03</div><div class="proj-photo-tag" data-en>Project 03</div>
-    </div>
-    <div>
-      <div class="proj-num">03</div>
-      <div class="proj-t" data-es>Compasión</div><div class="proj-t" data-en>Compassion</div>
-      <span class="rule"></span>
-      <p class="proj-d" data-es>Un gran porcentaje del presupuesto anual va a ayudar a los que más lo necesitan: alimentos, apoyo a mujeres en situación vulnerable, niños y familias con discapacidades, y centros de asistencia alimentaria.</p>
-      <p class="proj-d" data-en>A large percentage of the annual budget goes to help those most in need: food, support for vulnerable women, children and families with disabilities, and food assistance centers.</p>
-      <div class="proj-dream" data-es><strong>Nuestro sueño:</strong> donar 44,000 libras de arroz en 2025.</div>
-      <div class="proj-dream" data-en><strong>Our dream:</strong> donate 44,000 lbs of rice in 2025.</div>
-      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
-    </div>
+  <div class="rev">
+    <div class="ini-ey" data-es>Iniciativas · Kingdom in Action Family</div>
+    <div class="ini-ey" data-en>Initiatives · Kingdom in Action Family</div>
+    <h2 class="ini-h" data-es>Dos Frentes,<br>Una Sola Misión</h2>
+    <h2 class="ini-h" data-en>Two Fronts,<br>One Single Mission</h2>
+    <p class="ini-lead" data-es>Dos iniciativas que llevan el Reino más allá del púlpito: una lleva ayuda donde hay necesidad, la otra lleva luz donde hay oscuridad. Las dos nacen del mismo corazón.</p>
+    <p class="ini-lead" data-en>Two initiatives that carry the Kingdom beyond the pulpit: one brings aid where there is need, the other brings light where there is darkness. Both are born from the same heart.</p>
   </div>
-</div>
 
-<!-- PROJECT 04 — HUERFANOS -->
-<div class="proj-section">
-  <div class="proj-inner rev-order rev">
-    <div class="proj-photo">
-      <img loading="lazy" decoding="async" src="assets/img/cuba/cub5.jpg" alt="Huérfanos">
-      <div class="proj-photo-tag" data-es>Proyecto 04</div><div class="proj-photo-tag" data-en>Project 04</div>
+  <!-- ============ POOL OF MERCY ============ -->
+  <div class="ini-card rev" style="--bar:var(--pm-teal);--deep:var(--pm-navy);--wash:rgba(23,120,138,.05);--wash2:rgba(23,120,138,.10);">
+    <div class="ini-head">
+      <div class="ini-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2s6.6 7.2 6.6 11.6A6.6 6.6 0 0 1 12 20.4a6.6 6.6 0 0 1-6.6-6.6C5.4 9.4 12 2.2 12 2.2z"/></svg>
+      </div>
+      <div>
+        <div class="ini-name">Pool of Mercy</div>
+        <div class="ini-kicker" data-es>Ayuda Humanitaria · Ayuda en Desastres</div>
+        <div class="ini-kicker" data-en>Humanitarian Aid · Disaster Relief</div>
+        <div class="ini-tag" data-es>Misericordia que se mueve. Esperanza que alcanza.</div>
+        <div class="ini-tag" data-en>Mercy that moves. Hope that reaches.</div>
+      </div>
     </div>
-    <div>
-      <div class="proj-num">04</div>
-      <div class="proj-t" data-es>Huérfanos</div><div class="proj-t" data-en>Orphans</div>
-      <span class="rule"></span>
-      <p class="proj-d" data-es>Cada niño merece amor, cuidado y un lugar seguro. Cuando das, traes alimento, refugio y esperanza a los niños que más lo necesitan.</p>
-      <p class="proj-d" data-en>Every child deserves love, care, and a safe place. When you give, you bring food, shelter and hope to the children who need it most.</p>
-      <div class="proj-dream" data-es><strong>El llamado:</strong> ser las manos de Jesús en nuestra ciudad.</div>
-      <div class="proj-dream" data-en><strong>The calling:</strong> being the hands of Jesus in our city.</div>
-      <div style="margin-top:24px;"><button onclick="openDonate()" class="btn-teal" data-es>Apoyar este proyecto</button><button onclick="openDonate()" class="btn-teal" data-en>Support this project</button></div>
+    <div class="ini-body">
+      <p class="ini-p" data-es>El ministerio de ayuda humanitaria de Kingdom in Action Family. Moviliza la generosidad para suplir necesidades reales, tanto a nivel local como alrededor del mundo.</p>
+      <p class="ini-p" data-en>The humanitarian aid ministry of Kingdom in Action Family. It mobilizes generosity to meet real needs, both locally and around the world.</p>
+
+      <div class="ini-mv">
+        <div>
+          <div class="ini-mv-k" data-es>Nuestra Misión</div><div class="ini-mv-k" data-en>Our Mission</div>
+          <div class="ini-mv-t" data-es>Recolectar, organizar y movilizar recursos que brinden ayuda práctica y esperanza a personas y familias en tiempos de necesidad, por medio del alcance local, la ayuda en desastres y la ayuda internacional.</div>
+          <div class="ini-mv-t" data-en>To collect, organize and mobilize resources that provide practical help and hope to individuals and families in times of need, through local outreach, disaster relief and international aid.</div>
+        </div>
+        <div>
+          <div class="ini-mv-k" data-es>Nuestra Visión</div><div class="ini-mv-k" data-en>Our Vision</div>
+          <div class="ini-mv-t" data-es>Un mundo donde nadie enfrente las dificultades solo, y donde el amor de Jesús se exprese a través de personas compasivas que dan, sirven y marcan la diferencia.</div>
+          <div class="ini-mv-t" data-en>A world where no one faces hardship alone, and where the love of Jesus is expressed through compassionate people who give, serve and make a difference.</div>
+        </div>
+      </div>
+
+      <div class="ini-nums">
+        <div class="ini-num"><div class="ini-num-n" data-ini="20000">0</div><div class="ini-num-l" data-es>Personas alimentadas<br>cada mes</div><div class="ini-num-l" data-en>People fed<br>each month</div></div>
+        <div class="ini-num"><div class="ini-num-n" data-ini="240000">0</div><div class="ini-num-l" data-es>Personas alimentadas<br>cada año</div><div class="ini-num-l" data-en>People fed<br>each year</div></div>
+        <div class="ini-num"><div class="ini-num-n" data-es>Miles</div><div class="ini-num-n" data-en>Thousands</div><div class="ini-num-l" data-es>De suministros médicos,<br>alimentos y necesidades</div><div class="ini-num-l" data-en>Of medical supplies,<br>food and necessities</div></div>
+      </div>
+
+      <div class="ini-ways">
+        <div class="ini-way">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8zm-9 2.8L5.6 7.2 12 3.6l6.4 3.6L12 10.8z"/></svg></div>
+          <div class="ini-way-t" data-es>Dona Suministros</div><div class="ini-way-t" data-en>Give Supplies</div>
+          <div class="ini-way-d" data-es>Artículos básicos y bienes prácticos que llegan directo a quien los necesita.</div>
+          <div class="ini-way-d" data-en>Basic necessities and practical goods that reach those who need them.</div>
+        </div>
+        <div class="ini-way">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M20 7h-2.2A3 3 0 0 0 12 4.6 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3h9V8h-.6a1 1 0 1 1 1-1H20zM3 12v7a1 1 0 0 0 1 1h8v-8H3zm10 8h8a1 1 0 0 0 1-1v-7h-9v8zm8-13h-6.4a1 1 0 1 1 1-1H21z"/></svg></div>
+          <div class="ini-way-t" data-es>Apoya Económicamente</div><div class="ini-way-t" data-en>Give Financially</div>
+          <div class="ini-way-d" data-es>Costos de envío, transporte, emergencias y alcance comunitario.</div>
+          <div class="ini-way-d" data-en>Shipping, transportation, emergency needs and outreach costs.</div>
+        </div>
+        <div class="ini-way">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm-8 0A3 3 0 1 0 5 8a3 3 0 0 0 3 3zm0 2c-2.3 0-6 1.2-6 3.4V19h9v-2.6C11 14.2 10.3 13 8 13zm8 0c-.6 0-1.3.1-2 .2 1.2.9 2 2 2 3.2V19h6v-2.6c0-2.2-3.7-3.4-6-3.4z"/></svg></div>
+          <div class="ini-way-t" data-es>Sé Voluntario</div><div class="ini-way-t" data-en>Volunteer</div>
+          <div class="ini-way-d" data-es>Sirve detrás de escena, en la distribución y en eventos especiales.</div>
+          <div class="ini-way-d" data-en>Serve behind the scenes, at distribution and during special events.</div>
+        </div>
+        <div class="ini-way">
+          <div class="ini-way-i"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.3-9.4C1.3 7.9 3.6 4.6 7 4.6c2 0 3.7 1.1 5 2.9 1.3-1.8 3-2.9 5-2.9 3.4 0 5.7 3.3 4.3 7C19.5 16.4 12 21 12 21z"/></svg></div>
+          <div class="ini-way-t" data-es>Oración</div><div class="ini-way-t" data-en>Prayer</div>
+          <div class="ini-way-d" data-es>Por las personas a quienes servimos y por los recursos para continuar.</div>
+          <div class="ini-way-d" data-en>For the people we serve and the resources to continue this mission.</div>
+        </div>
+      </div>
+
+
+      <div class="ini-gal">
+        <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/abuela.jpg" alt=""><figcaption data-es>Día de distribución</figcaption><figcaption data-en>Distribution day</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/pallet.jpg" alt=""><figcaption data-es>Logística en la calle</figcaption><figcaption data-en>Street logistics</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/sacos.jpg" alt=""><figcaption data-es>Arroz que llega</figcaption><figcaption data-en>Rice that arrives</figcaption></figure>
+      </div>
+
+      <div class="ini-tiers">
+        <div class="ini-tier"><div class="ini-tier-n">$25</div><div class="ini-tier-d" data-es>Comidas y artículos esenciales diarios</div><div class="ini-tier-d" data-en>Meals and daily essentials</div></div>
+        <div class="ini-tier"><div class="ini-tier-n">$50</div><div class="ini-tier-d" data-es>Suministros médicos y cuidado</div><div class="ini-tier-d" data-en>Medical supplies and care</div></div>
+        <div class="ini-tier"><div class="ini-tier-n">$100</div><div class="ini-tier-d" data-es>Alcance y compasión en acción</div><div class="ini-tier-d" data-en>Outreach and compassion in action</div></div>
+        <div class="ini-tier"><div class="ini-tier-n">$250</div><div class="ini-tier-d" data-es>Sostiene la esperanza y amplía el impacto</div><div class="ini-tier-d" data-en>Sustains hope and expands impact</div></div>
+      </div>
+
+      <div class="ini-needs" id="needs">
+        <button class="ini-needs-h" onclick="this.parentNode.classList.toggle('open')">
+          <span data-es>Artículos necesarios actualmente</span><span data-en>Items currently needed</span>
+          <span class="chev">&#8964;</span>
+        </button>
+        <div class="ini-needs-b"><ul>
+          <li data-es>Medicamentos de venta libre y suministros médicos</li><li data-en>OTC medications and medical supplies</li>
+          <li data-es>Alimentos no perecederos</li><li data-en>Non-perishable foods</li>
+          <li data-es>Artículos para bebés</li><li data-en>Baby supplies</li>
+          <li data-es>Higiene personal</li><li data-en>Personal hygiene</li>
+          <li data-es>Paneles y generadores solares</li><li data-en>Solar panels and generators</li>
+          <li data-es>Bicicletas y accesorios</li><li data-en>Bicycles and accessories</li>
+          <li data-es>Sillas de ruedas, camas de hospital, andadores</li><li data-en>Wheelchairs, hospital beds, walkers</li>
+          <li data-es>Pintura, cemento y herramientas de taller</li><li data-en>Paint, cement mix and workshop tools</li>
+          <li data-es>Mesas, sillas, ventanas y utensilios del hogar</li><li data-en>Tables, chairs, windows and household items</li>
+          <li data-es>Ropa, calzado y equipo deportivo</li><li data-en>Clothing, footwear and sports equipment</li>
+          <li data-es>Tiendas de campaña, lonas y linternas</li><li data-en>Tents, tarps and flashlights</li>
+          <li data-es>Sistemas de filtración de agua</li><li data-en>Water filtration systems</li>
+        </ul></div>
+      </div>
     </div>
   </div>
+
+
+  <!-- banda de respiro -->
+  <div class="ini-band rev">
+    <img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/arroz.jpg" alt="">
+    <div class="ini-band-cnt">
+      <div class="ini-band-k" data-es>Del contenedor a la mesa</div>
+      <div class="ini-band-k" data-en>From container to table</div>
+      <div class="ini-band-t" data-es>Cada saco que baja de un camión termina siendo una comida.</div>
+      <div class="ini-band-t" data-en>Every sack unloaded from a truck ends up being a meal.</div>
+      <div class="ini-band-p" data-es>La cadena empieza con una donación y no se corta hasta que alguien se sienta a comer.</div>
+      <div class="ini-band-p" data-en>The chain starts with a donation and does not break until someone sits down to eat.</div>
+    </div>
+  </div>
+
+  <!-- ============ SOLAR HOPE NETWORK ============ -->
+  <div class="ini-card rev" style="--bar:var(--sh-amber);--deep:var(--sh-navy);--wash:rgba(233,168,37,.07);--wash2:rgba(233,168,37,.14);">
+    <div class="ini-head">
+      <div class="ini-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2a6.5 6.5 0 0 0-3.7 11.8c.5.4.8 1 .8 1.6v.6h5.8v-.6c0-.6.3-1.2.8-1.6A6.5 6.5 0 0 0 12 2zM9.1 17.4h5.8v1.2H9.1zm.6 2.6h4.6a2.3 2.3 0 0 1-4.6 0z"/></svg>
+      </div>
+      <div>
+        <div class="ini-name">Solar Hope Network</div>
+        <div class="ini-kicker" data-es>Faros de Esperanza</div>
+        <div class="ini-kicker" data-en>Lighthouses of Hope</div>
+        <div class="ini-tag" data-es>Transformando iglesias en centros sostenibles de compasión, servicio y esperanza.</div>
+        <div class="ini-tag" data-en>Transforming churches into sustainable centers of compassion, service and hope.</div>
+      </div>
+    </div>
+    <div class="ini-body">
+      <p class="ini-p" data-es>Una iniciativa a largo plazo para equipar 100 iglesias ubicadas estratégicamente con sistemas de energía solar. No se trata simplemente de instalar paneles: se trata de fortalecer iglesias que ya sirven a familias vulnerables para que sostengan a sus comunidades durante los apagones prolongados.</p>
+      <p class="ini-p" data-en>A long-term initiative to equip 100 strategically located churches with solar energy systems. This is not simply about installing panels: it is about strengthening churches already serving vulnerable families so they can sustain their communities through prolonged blackouts.</p>
+
+      <div class="ini-mv" style="grid-template-columns:1fr;">
+        <div>
+          <div class="ini-mv-k" data-es>Por qué importa</div><div class="ini-mv-k" data-en>Why it matters</div>
+          <div class="ini-mv-t" data-es>Muchas comunidades pasan tres o más días consecutivos sin electricidad. Sin refrigeración para alimentos ni medicamentos. Sin ventiladores en el calor extremo. Sin forma de cargar un teléfono. Una iglesia equipada se convierte en el lugar donde todo eso vuelve a ser posible.</div>
+          <div class="ini-mv-t" data-en>Many communities go three or more consecutive days without electricity. No refrigeration for food or medicine. No fans in extreme heat. No way to charge a phone. An equipped church becomes the place where all of that is possible again.</div>
+        </div>
+      </div>
+
+      <div class="ini-nums">
+        <div class="ini-num"><div class="ini-num-n" data-ini="100">0</div><div class="ini-num-l" data-es>Faros de esperanza<br>a establecer</div><div class="ini-num-l" data-en>Lighthouses of hope<br>to establish</div></div>
+        <div class="ini-num"><div class="ini-num-n" data-ini="10000">0</div><div class="ini-num-l" data-es>Familias impactadas<br>directamente</div><div class="ini-num-l" data-en>Families impacted<br>directly</div></div>
+        <div class="ini-num"><div class="ini-num-n">$75</div><div class="ini-num-l" data-es>Por familia<br>alcanzada</div><div class="ini-num-l" data-en>Per family<br>reached</div></div>
+      </div>
+
+      <div class="ini-phases">
+        <div class="ini-phase">
+          <div class="ini-phase-k" data-es>Fase 1</div><div class="ini-phase-k" data-en>Phase 1</div>
+          <div class="ini-phase-t" data-es>Los primeros 40 faros</div><div class="ini-phase-t" data-en>The first 40 lighthouses</div>
+          <div class="ini-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>40</b></div>
+          <div class="ini-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$300.000</b></div>
+          <div class="ini-phase-r"><span data-es>Familias</span><span data-en>Families</span><b>4.000</b></div>
+        </div>
+        <div class="ini-phase">
+          <div class="ini-phase-k" data-es>Fase 2</div><div class="ini-phase-k" data-en>Phase 2</div>
+          <div class="ini-phase-t" data-es>Expandiendo la red</div><div class="ini-phase-t" data-en>Expanding the network</div>
+          <div class="ini-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>+40</b></div>
+          <div class="ini-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$300.000</b></div>
+          <div class="ini-phase-r"><span data-es>Acumulado</span><span data-en>Cumulative</span><b>8.000</b></div>
+        </div>
+        <div class="ini-phase">
+          <div class="ini-phase-k" data-es>Fase 3</div><div class="ini-phase-k" data-en>Phase 3</div>
+          <div class="ini-phase-t" data-es>Completando la visión</div><div class="ini-phase-t" data-en>Completing the vision</div>
+          <div class="ini-phase-r"><span data-es>Iglesias</span><span data-en>Churches</span><b>+20</b></div>
+          <div class="ini-phase-r"><span data-es>Inversión</span><span data-en>Investment</span><b>$150.000</b></div>
+          <div class="ini-phase-r"><span data-es>Acumulado</span><span data-en>Cumulative</span><b>10.000</b></div>
+        </div>
+      </div>
+
+
+      <div class="ini-gal">
+        <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/shn/paneles.jpg" alt=""><figcaption data-es>Paneles instalados</figcaption><figcaption data-en>Panels installed</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/shn/tecnico.jpg" alt=""><figcaption data-es>Puesta en marcha</figcaption><figcaption data-en>Commissioning</figcaption></figure>
+        <figure><img loading="lazy" decoding="async" src="assets/img/iniciativas/shn/inversor.jpg" alt=""><figcaption data-es>Inversor y baterías</figcaption><figcaption data-en>Inverter and batteries</figcaption></figure>
+      </div>
+
+      <div class="ini-tiers">
+        <div class="ini-tier"><div class="ini-tier-n">$75</div><div class="ini-tier-d" data-es>Colaborador Solar · patrocina 1 familia</div><div class="ini-tier-d" data-en>Solar Partner · sponsors 1 family</div></div>
+        <div class="ini-tier"><div class="ini-tier-n">$1.500</div><div class="ini-tier-d" data-es>Constructor de Energía · 20 familias</div><div class="ini-tier-d" data-en>Energy Builder · 20 families</div></div>
+        <div class="ini-tier"><div class="ini-tier-n">$7.500</div><div class="ini-tier-d" data-es>Constructor de Faros · equipa 1 iglesia</div><div class="ini-tier-d" data-en>Lighthouse Builder · equips 1 church</div></div>
+        <div class="ini-tier"><div class="ini-tier-n">$37.500</div><div class="ini-tier-d" data-es>Socio Faro · equipa 5 iglesias</div><div class="ini-tier-d" data-en>Lighthouse Partner · equips 5 churches</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cierre -->
+  <div class="ini-quote rev">
+    <img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/plato.jpg" alt="">
+    <div class="ini-quote-in">
+      <p data-es>No estamos simplemente entregando cajas ni instalando paneles. Estamos <em>iluminando comunidades enteras.</em></p>
+      <p data-en>We are not simply delivering boxes or installing panels. We are <em>lighting up entire communities.</em></p>
+      <div class="ini-cta">
+        <a href="index.html#contacto" class="btn-ini" data-es>Quiero Colaborar</a>
+        <a href="index.html#contacto" class="btn-ini" data-en>I Want to Partner</a>
+        <a href="mailto:kingdominactionministry@gmail.com" class="btn-ini btn-ini--ghost" data-es>Escríbenos</a>
+        <a href="mailto:kingdominactionministry@gmail.com" class="btn-ini btn-ini--ghost" data-en>Email Us</a>
+      </div>
+    </div>
+  </div>
+
+ </div>
 </div>
 
 <!-- EN QUE CREEMOS -->
-<div style="background:var(--char);"><div class="sec">
+<div style="background:var(--char);border-top:1px solid var(--sand-border);"><div class="sec sec-lite">
   <div class="rev"><div class="ey" data-es>Nuestro Fundamento</div><div class="ey" data-en>Our Foundation</div><h2 class="stitle" data-es>En Qué Creemos</h2><h2 class="stitle" data-en>What We Believe</h2></div>
   <div class="beliefs-grid rev d1">
     <div class="belief"><div class="belief-dot"></div><p data-es>Reino en Acción no es una denominación. Es una red familiar donde la Iglesia intercambia talentos, dones y recursos.</p><p data-en>Kingdom in Action is not a denomination. It is a family network where the Church exchanges talents, gifts and resources.</p></div>
@@ -229,12 +683,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 </div></div>
 
 <div class="qband"><blockquote data-es>"Porque tuve hambre, y me dieron de comer; tuve sed, y me dieron de beber; fui forastero, y me recibieron."</blockquote><blockquote data-en>"For I was hungry and you gave me food, I was thirsty and you gave me drink, I was a stranger and you welcomed me."</blockquote><cite>Mateo 25:35</cite></div>
-<div style="text-align:center;padding:50px 20px;background:var(--dark);" class="rev"><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-es>¿Quieres apoyar los proyectos en Cuba?</p><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-en>Want to support the projects in Cuba?</p><button onclick="openDonate()" class="btn-teal" data-es>Cómo Donar</button><button onclick="openDonate()" class="btn-teal" data-en>How to Give</button></div>
+<div style="text-align:center;padding:50px 20px;background:var(--dark);" class="rev"><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-es>¿Quieres ser parte de estas iniciativas?</p><p style="font-size:15px;color:var(--muted);margin-bottom:24px;" data-en>Do you want to be part of these initiatives?</p><button onclick="openDonate()" class="btn-teal" data-es>Cómo Donar</button><button onclick="openDonate()" class="btn-teal" data-en>How to Give</button></div>
 
 <footer class="footer"><div class="f-logo">Kingdom in Action</div><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="cuba.html">Cuba</a><a href="eeuu.html">EEUU</a></div></footer>
 
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
-<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en Cuba.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions in Cuba.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal"><span class="dmodal-x" onclick="closeDonate()">&#10005;</span><h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2><p class="dmodal-sub" data-es>Tu donación sustenta pastores, huérfanos, compasión y misiones en tres naciones.</p><p class="dmodal-sub" data-en>Your donation sustains pastors, orphans, compassion and missions across three nations.</p><div class="dblock"><div class="dblock-label">Zelle</div><div class="dblock-val">Kingdominactionministry@gmail.com</div><div class="dblock-note" data-es>Enviá desde tu banco a este email</div><div class="dblock-note" data-en>Send from your bank app to this email</div></div><div class="dblock"><div class="dblock-label">Email / Info</div><div class="dblock-val"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--teal)">Kingdominactionministry@gmail.com</a></div></div>
     <div class="dblock"><div class="dblock-label">Address</div><div class="dblock-val" style="font-size:13px;">975 Mount Vernon Rd<br>Newark, Ohio 43055</div></div><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-es>100% de tu donación va al campo misionero.</p><p style="font-size:12px;color:var(--muted);margin-top:14px;line-height:1.6;" data-en>100% of your donation goes to the mission field.</p></div></div>
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
 
@@ -245,9 +699,7 @@ window.addEventListener('scroll',()=>document.getElementById('nav').classList.to
 (function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
 function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
 function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
-// Cuba hero slider
-let chI=0;const chS=document.querySelectorAll('.cuba-hero-slide');
-function chNext(){chS[chI].classList.remove('on');chI=(chI+1)%chS.length;chS[chI].classList.add('on');}
+
 setInterval(chNext,4500);
 let lbSet=[],lbI=0;
 function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
@@ -281,6 +733,42 @@ document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
   },{threshold:.12,rootMargin:'0px 0px -5% 0px'});
   document.querySelectorAll('.rev,.rev-l,.rev-r,.stag').forEach(function(el){io.observe(el);});
+  frame();
+})();
+</script>
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('on');
+      e.target.querySelectorAll('[data-ini]').forEach(function(el){
+        var end=+el.dataset.ini,t0=null;
+        if(rm){el.textContent=end.toLocaleString('es');return;}
+        requestAnimationFrame(function s(ts){
+          if(!t0)t0=ts; var k=Math.min((ts-t0)/1600,1);
+          el.textContent=Math.round(end*(1-Math.pow(1-k,3))).toLocaleString('es');
+          if(k<1)requestAnimationFrame(s);
+        });
+      });
+      io.unobserve(e.target);
+    });
+  },{threshold:.18});
+  document.querySelectorAll('.ini-card,.ini-band,.ini-quote,.intro-fig').forEach(function(c){io.observe(c);});
+  /* parallax suave de las bandas fotograficas */
+  var pics=[].slice.call(document.querySelectorAll('.ini-band img,.ini-quote>img'));
+  var tick=false;
+  function frame(){
+    if(!rm) pics.forEach(function(im){
+      var host=im.parentNode, r=host.getBoundingClientRect();
+      if(r.bottom<0||r.top>innerHeight) return;
+      var p=(r.top+r.height/2-innerHeight/2)/(innerHeight/2+r.height/2);
+      im.style.transform='translate3d(0,'+(-p*r.height*0.055).toFixed(1)+'px,0)';
+    });
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame);}},{passive:true});
   frame();
 })();
 </script>
