@@ -461,3 +461,10 @@ html[data-lang=en] [data-es]{display:none!important;}
 .dpay-msg{font-size:12px;line-height:1.6;margin-top:10px;color:var(--muted-lt);}
 .dpay-msg.ok{color:#5FBF7A;}
 .dpay-msg.err{color:var(--accent-lt);}
+
+
+/* ===== FOCO VISIBLE PARA NAVEGACION POR TECLADO ===== */
+a:focus-visible,button:focus-visible,input:focus-visible,
+textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+.hp-tile:focus-visible{outline-offset:-3px;}
