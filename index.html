@@ -282,6 +282,59 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 }
 @media(prefers-reduced-motion:reduce){.hp-cap-d{transition:none;}}
 
+
+/* ===================== HERO CON MOVIMIENTO =====================
+   Las fotos solo se fundían: estáticas durante los 5 s que dura cada una.
+   Ahora la activa hace un Ken Burns lento y la entrada del texto es
+   escalonada, con el título descubriéndose tras una máscara. */
+.hero-slide{transform:scale(1.0);will-change:transform,opacity;
+  transition:opacity 1.8s ease;}
+.hero-slide.on{animation:heroKB 9s cubic-bezier(.22,.61,.36,1) forwards;}
+@keyframes heroKB{
+  from{transform:scale(1.085) translate3d(0,0,0);}
+  to  {transform:scale(1.0)   translate3d(0,-1.2%,0);}
+}
+/* el velo respira muy despacio: evita que la imagen quede "pegada" */
+.hero-ov{animation:heroVeil 14s ease-in-out infinite alternate;}
+@keyframes heroVeil{from{opacity:1;}to{opacity:.88;}}
+
+/* ---- entrada escalonada del contenido ---- */
+.hero-cnt>*{opacity:0;transform:translateY(22px);
+  transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1);}
+.hero.lit .hero-cnt>*{opacity:1;transform:none;}
+.hero.lit .hero-ey{transition-delay:.18s}
+.hero.lit .hero-title{transition-delay:.30s}
+.hero.lit .hero-sub{transition-delay:.62s}
+.hero.lit .hero-cta{transition-delay:.76s}
+/* el título se descubre desde abajo, línea por línea */
+.hero-title{overflow:hidden;}
+.hero-title>span,.hero-title em{display:block;transform:translateY(104%);
+  transition:transform 1.1s cubic-bezier(.16,.84,.32,1);}
+.hero.lit .hero-title>span{transform:none;transition-delay:.34s}
+.hero.lit .hero-title em{transform:none;transition-delay:.46s}
+/* la línea del eyebrow crece */
+.hero-ey::before{transform-origin:left;}
+.hero.lit .hero-ey::before{animation:heroLine 1s cubic-bezier(.16,.84,.32,1) .26s both;}
+@keyframes heroLine{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+/* indicador de scroll al pie */
+.hero-cue{position:absolute;left:50%;bottom:26px;z-index:4;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  opacity:0;transition:opacity .9s ease 1.3s;}
+.hero.lit .hero-cue{opacity:1;}
+.hero-cue span{font-size:8.5px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;
+  color:rgba(248,244,237,.5);}
+.hero-cue i{display:block;width:1px;height:38px;background:linear-gradient(to bottom,rgba(248,244,237,.6),transparent);
+  animation:heroCue 2.4s ease-in-out infinite;transform-origin:top;}
+@keyframes heroCue{0%{transform:scaleY(0);opacity:0}
+  35%{transform:scaleY(1);opacity:1}75%{transform:scaleY(1);opacity:1}
+  100%{transform:scaleY(1) translateY(38px);opacity:0}}
+@media(max-width:768px){.hero-cue{display:none;}}
+@media(prefers-reduced-motion:reduce){
+  .hero-slide.on,.hero-ov,.hero-cue i,.hero.lit .hero-ey::before{animation:none!important;}
+  .hero-cnt>*,.hero-title>span,.hero-title em{opacity:1!important;transform:none!important;transition:none!important;}
+  .hero-cue{opacity:1!important;}
+}
+
 </style>
 </head>
 <body>
@@ -296,15 +349,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   <div class="hero-slide on" style="background-image:url('assets/img/hero/web/hero1.jpg')"></div>
   <div class="hero-slide" style="background-image:url('assets/img/hero/web/hero2.jpg')"></div>
   <div class="hero-slide" style="background-image:url('assets/img/hero/web/hero3.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/iniciativas/pom/contenedor.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/iniciativas/wagner/h-graduacion-grupo.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/hero/web/hero-auditorio.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/hero/web/hero-graduacion.jpg')"></div>
   <div class="hero-cnt">
     <div class="hero-ey"><span data-es>El Reino en Movimiento</span><span data-en>The Kingdom in Motion</span></div>
-    <h1 class="hero-title">Kingdom<em>in Action</em></h1>
-    <p class="hero-sub">Argentina · Cuba · Estados Unidos</p>
+    <h1 class="hero-title"><span>Kingdom</span><em>in Action</em></h1>
+    <p class="hero-sub">Cuba · Estados Unidos · Argentina</p>
     <div class="hero-cta"><a href="vision.html" class="btn-accent" data-es>Nuestra Visión</a><a href="vision.html" class="btn-accent" data-en>Our Vision</a><a href="#misiones" class="btn-ol" data-es>Ver Misiones</a><a href="#misiones" class="btn-ol" data-en>See Missions</a></div>
   </div>
   
+  <div class="hero-cue"><span data-es>Desliza</span><span data-en>Scroll</span><i></i></div>
   <div class="hero-dots"><div class="hero-dot on" onclick="heroGo(0)"></div><div class="hero-dot" onclick="heroGo(1)"></div><div class="hero-dot" onclick="heroGo(2)"></div><div class="hero-dot" onclick="heroGo(3)"></div><div class="hero-dot" onclick="heroGo(4)"></div></div>
 
 </section>
@@ -632,6 +686,26 @@ document.querySelectorAll('.yt-card').forEach(function(c){
     });
   },{threshold:.3});
   io.observe(g);
+})();
+</script>
+<script>
+/* entrada del hero y reinicio del Ken Burns en cada cambio de foto */
+(function(){
+  var hero=document.querySelector('.hero'); if(!hero) return;
+  requestAnimationFrame(function(){ setTimeout(function(){ hero.classList.add('lit'); },90); });
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* al activarse un slide se le reinicia la animacion para que no quede quieto */
+  var obs=new MutationObserver(function(ms){
+    ms.forEach(function(m){
+      var el=m.target;
+      if(el.classList && el.classList.contains('hero-slide') && el.classList.contains('on')){
+        el.style.animation='none'; void el.offsetWidth; el.style.animation='';
+      }
+    });
+  });
+  document.querySelectorAll('.hero-slide').forEach(function(s){
+    obs.observe(s,{attributes:true,attributeFilter:['class']});
+  });
 })();
 </script>
 </body>
