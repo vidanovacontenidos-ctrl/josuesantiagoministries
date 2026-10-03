@@ -166,7 +166,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
   text-transform:uppercase;line-height:1.05;color:var(--ink);}
 .hp-lead{font-size:clamp(.98rem,1.6vw,1.1rem);line-height:1.85;color:var(--soft);margin-top:16px;}
 /* dos tarjetas */
-.hp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(36px,5vw,56px);}
+.hp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(36px,5vw,56px);}
 .hp-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;
   display:flex;flex-direction:column;text-decoration:none;
   box-shadow:0 1px 2px rgba(27,43,58,.04),0 14px 40px -22px rgba(27,43,58,.20);
@@ -211,8 +211,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .hp-card{opacity:0;transform:translateY(30px);
   transition:opacity .9s var(--ease),transform .9s var(--ease),box-shadow .55s,border-color .45s;}
 .hp-grid.on .hp-card{opacity:1;transform:none;}
-.hp-grid.on .hp-card:nth-child(2){transition-delay:.14s;}
-@media(max-width:860px){.hp-grid{grid-template-columns:1fr;}}
+.hp-grid.on .hp-card:nth-child(2){transition-delay:.12s;}
+.hp-grid.on .hp-card:nth-child(3){transition-delay:.24s;}
+@media(max-width:1100px){.hp-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:760px){.hp-grid{grid-template-columns:1fr;}}
 @media(prefers-reduced-motion:reduce){.hp-card{opacity:1!important;transform:none!important;}}
 
 </style>
@@ -274,10 +276,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
  <div class="hp-in">
   <div class="hp-head rev">
     <div class="hp-ey" data-es>Nuestros Proyectos</div><div class="hp-ey" data-en>Our Projects</div>
-    <h2 class="hp-h" data-es>Alimento donde hay hambre.<br>Luz donde hay oscuridad.</h2>
-    <h2 class="hp-h" data-en>Food where there is hunger.<br>Light where there is darkness.</h2>
-    <p class="hp-lead" data-es>Dos iniciativas que llevan el Reino más allá del púlpito. Las dos nacen del mismo corazón y se sostienen con la misma generosidad.</p>
-    <p class="hp-lead" data-en>Two initiatives that carry the Kingdom beyond the pulpit. Both are born from the same heart and sustained by the same generosity.</p>
+    <h2 class="hp-h" data-es>Alimento, luz<br>y líderes preparados.</h2>
+    <h2 class="hp-h" data-en>Food, light<br>and leaders prepared.</h2>
+    <p class="hp-lead" data-es>Tres iniciativas que llevan el Reino más allá del púlpito. Las tres nacen del mismo corazón y se sostienen con la misma generosidad.</p>
+    <p class="hp-lead" data-en>Three initiatives that carry the Kingdom beyond the pulpit. All three are born from the same heart and sustained by the same generosity.</p>
   </div>
 
   <div class="hp-grid rev d1" id="hpGrid">
@@ -314,6 +316,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
         <div class="hp-d" data-es>Cien iglesias equipadas con energía solar para sostener a sus comunidades cuando todo lo demás se apaga.</div>
         <div class="hp-d" data-en>One hundred churches equipped with solar power to sustain their communities when everything else goes dark.</div>
         <div class="hp-stat"><b>10.000</b><span data-es>familias<br>impactadas</span><span data-en>families<br>impacted</span></div>
+        <div class="hp-go" data-es>Ver el proyecto<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
+        <div class="hp-go" data-en>See the project<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
+      </div>
+    </a>
+
+    <a href="wagner.html" class="hp-card" style="--c:#C89B3C;--d:#0B2A43;">
+      <div class="hp-photo">
+        <img loading="lazy" decoding="async" src="assets/img/iniciativas/wagner/h-graduacion-grupo.jpg" alt="Graduación de Wagner University Cuba">
+        <div class="hp-mark"><img src="assets/img/logo/wagner-mark.png" alt="Wagner University" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="hp-body">
+        <div class="hp-name">Wagner University<br>Cuba</div>
+        <div class="hp-kick" data-es>Formación de líderes · Maestría</div>
+        <div class="hp-kick" data-en>Leadership formation · Master's</div>
+        <div class="hp-d" data-es>Estudiaron sin electricidad, sin computadoras y sin teléfonos. Se graduaron igual. Y hay más de mil esperando su turno.</div>
+        <div class="hp-d" data-en>They studied with no electricity, no computers and no phones. They graduated anyway. And over a thousand are waiting their turn.</div>
+        <div class="hp-stat"><b>140</b><span data-es>líderes graduados<br>con maestría</span><span data-en>leaders graduated<br>with a master's</span></div>
         <div class="hp-go" data-es>Ver el proyecto<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
         <div class="hp-go" data-en>See the project<svg viewBox="0 0 24 24"><path d="M13.2 5.4 11.6 7l4 4H3v2.2h12.6l-4 4 1.6 1.6 6.8-6.8z"/></svg></div>
       </div>
