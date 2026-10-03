@@ -184,14 +184,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
    .hp-photo tiene overflow:hidden y recortaba el círculo por abajo.
    El margen negativo lo sube para que monte sobre el borde de la imagen. */
 .hp-mark{position:relative;z-index:2;width:68px;height:68px;border-radius:50%;
-  margin:-56px 0 14px;flex-shrink:0;align-self:flex-start;
+  margin:-56px 0 14px;flex-shrink:0;align-self:flex-end;
   background:#fff;border:1px solid var(--c);display:flex;align-items:center;justify-content:center;
   box-shadow:0 10px 26px -12px rgba(27,43,58,.4);transition:transform .55s var(--ease);}
 .hp-card:hover .hp-mark{transform:scale(1.06) rotate(-3deg);}
 .hp-mark img{width:74%;height:auto;max-height:70%;object-fit:contain;}
 .hp-mark svg{width:60%;height:60%;}
 .hp-body{padding:0 26px 26px;display:flex;flex-direction:column;flex:1;}
-.hp-name{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;
+.hp-name{margin-top:-10px;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;
   text-transform:uppercase;letter-spacing:.02em;line-height:1;color:var(--d);}
 .hp-kick{font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--c);margin-top:8px;}
 .hp-d{font-size:14.5px;line-height:1.78;color:var(--soft);margin-top:14px;flex:1;}
@@ -256,6 +256,31 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .pfig-in.on .pfig-c:nth-child(3){transition-delay:.24s}
 @media(max-width:860px){.pfig-in{grid-template-columns:1fr;}}
 @media(prefers-reduced-motion:reduce){.pfig-c{opacity:1!important;transform:none!important;}}
+
+
+/* ===== PIE DESCRIPTIVO SOBRE CADA FOTO =====
+   Dice qué se está viendo. En reposo solo el lugar y el momento;
+   la descripción completa aparece al pasar el cursor, para no
+   competir con el nombre del proyecto. */
+.hp-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;pointer-events:none;}
+.hp-cap-k{font-size:9px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(11,26,40,.7);padding-right:58px;}
+.hp-cap-d{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.85);
+  text-shadow:0 1px 8px rgba(11,26,40,.8);max-width:30ch;padding-right:58px;
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .55s var(--ease),opacity .45s var(--ease);}
+.hp-card:hover .hp-cap-d{max-height:4.5em;opacity:1;}
+/* el velo se refuerza al pasar, para que el texto largo se lea */
+.hp-photo::after{transition:background .5s var(--ease);}
+.hp-card:hover .hp-photo::after{
+  background:linear-gradient(to top,rgba(11,26,40,.85),rgba(11,26,40,.35) 42%,transparent 72%);}
+@media(max-width:760px){
+  /* en táctil no hay hover: la descripción va siempre visible */
+  .hp-cap-d{max-height:4.5em;opacity:1;}
+  .hp-photo::after{background:linear-gradient(to top,rgba(11,26,40,.82),rgba(11,26,40,.3) 45%,transparent 74%);}
+}
+@media(prefers-reduced-motion:reduce){.hp-cap-d{transition:none;}}
 
 </style>
 </head>
@@ -355,6 +380,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <a href="pool-of-mercy.html" class="hp-card" style="--c:#17788A;--d:#0E2A47;">
       <div class="hp-photo">
         <img loading="lazy" decoding="async" src="assets/img/iniciativas/pom/abuela.jpg" alt="Entrega de alimentos en Cuba">
+        <div class="hp-cap"><span class="hp-cap-k" data-es>Cuba · Día de distribución</span><span class="hp-cap-k" data-en>Cuba · Distribution day</span><span class="hp-cap-d" data-es>Una niña del barrio le acerca el plato a una vecina que no puede salir de su casa.</span><span class="hp-cap-d" data-en>A girl from the neighbourhood brings a plate to a woman who cannot leave her home.</span></div>
       </div>
       <div class="hp-body">
         <div class="hp-mark"><svg viewBox="0 0 64 64" aria-hidden="true">
@@ -376,6 +402,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <a href="solar-hope.html" class="hp-card" style="--c:#E9A825;--d:#0B2545;">
       <div class="hp-photo">
         <img loading="lazy" decoding="async" src="assets/img/iniciativas/shn/paneles.jpg" alt="Paneles solares en una iglesia">
+        <div class="hp-cap"><span class="hp-cap-k" data-es>Cuba · Instalación</span><span class="hp-cap-k" data-en>Cuba · Installation</span><span class="hp-cap-d" data-es>Dos técnicos terminan de montar el arreglo solar sobre el techo de una iglesia rural.</span><span class="hp-cap-d" data-en>Two technicians finish mounting the solar array on a rural church roof.</span></div>
       </div>
       <div class="hp-body">
         <div class="hp-mark"><img src="assets/img/logo/shn-mark.png" alt="Solar Hope Network" loading="lazy" decoding="async"></div>
@@ -393,6 +420,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
     <a href="wagner.html" class="hp-card" style="--c:#C89B3C;--d:#0B2A43;">
       <div class="hp-photo">
         <img loading="lazy" decoding="async" src="assets/img/iniciativas/wagner/h-graduacion-grupo.jpg" alt="Graduación de Wagner University Cuba">
+        <div class="hp-cap"><span class="hp-cap-k" data-es>Cuba · Graduación 2026</span><span class="hp-cap-k" data-en>Cuba · Graduation 2026</span><span class="hp-cap-d" data-es>La promoción completa, con sus diplomas, bajo el techo donde estudiaron.</span><span class="hp-cap-d" data-en>The full class, with their diplomas, under the roof where they studied.</span></div>
       </div>
       <div class="hp-body">
         <div class="hp-mark"><img src="assets/img/logo/wagner-mark.png" alt="Wagner University" loading="lazy" decoding="async"></div>
