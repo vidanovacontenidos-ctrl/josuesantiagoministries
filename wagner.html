@@ -377,6 +377,56 @@
   .wg-steps{grid-template-columns:repeat(2,1fr);}
 }
 
+
+/* ===== LOCKUP OFICIAL (marca · Wagner · filete · UNIVERSITY) ===== */
+.wg-crest{display:flex;align-items:center;gap:clamp(12px,1.6vw,18px);margin-bottom:26px;flex-wrap:wrap;}
+.wg-crest img{height:clamp(30px,4.2vw,46px);width:auto;}
+.wg-lockup{display:flex;flex-direction:column;align-items:flex-start;}
+.wg-lock-n{font-family:'Playfair Display',Georgia,serif;font-weight:700;
+  font-size:clamp(1.5rem,3vw,2.15rem);line-height:.95;color:var(--pj-deep);letter-spacing:-.01em;}
+.wg-lock-r{display:block;width:100%;height:1.5px;background:var(--pj-brand);margin:5px 0 4px;}
+.wg-lock-u{font-family:'Playfair Display',Georgia,serif;font-weight:600;
+  font-size:clamp(.62rem,1.1vw,.8rem);letter-spacing:.42em;text-transform:uppercase;color:var(--pj-deep);}
+.wg-crest-loc{align-self:flex-end;padding-bottom:4px;border-left:1px solid var(--line);padding-left:14px;
+  font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--pj-brand);}
+@media(max-width:520px){.wg-crest-loc{border-left:none;padding-left:0;align-self:flex-start;}}
+
+/* ===== PILARES DE FORMACION (formato Wagner University) ===== */
+.wg-pil{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:32px;}
+.wg-pil-c{background:#fff;padding:clamp(26px,3vw,34px) clamp(20px,2.4vw,28px);
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+  transition:background .45s var(--ease);}
+.wg-pil-c:hover{background:#FDFBF7;}
+.wg-pil-c::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--pj-brand);
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);}
+.wg-pil-c:hover::after{transform:scaleX(1);}
+.wg-pil-i{width:46px;height:46px;border-radius:50%;background:rgba(200,16,46,.08);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  transition:background .45s,transform .45s var(--ease);}
+.wg-pil-c:hover .wg-pil-i{background:rgba(200,16,46,.16);transform:scale(1.08);}
+.wg-pil-i svg{width:21px;height:21px;fill:none;stroke:var(--pj-brand);stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round;}
+.wg-pil-t{font-family:'Playfair Display',Georgia,serif;font-size:1.18rem;font-weight:700;
+  color:var(--pj-deep);line-height:1.15;}
+.wg-pil-s{font-size:9.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--pj-brand);margin:8px 0 12px;}
+.wg-pil-d{font-size:14px;line-height:1.75;color:var(--ink-soft);}
+@media(max-width:1024px){.wg-pil{grid-template-columns:1fr 1fr;}}
+@media(max-width:620px){.wg-pil{grid-template-columns:1fr;}}
+
+/* ===== PROGRAMAS ===== */
+.wg-prog{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;}
+.wg-prog-c{border:1px solid rgba(255,255,255,.16);border-radius:3px;padding:26px 26px;
+  background:rgba(255,255,255,.04);transition:border-color .4s,background .4s,transform .4s var(--ease);}
+.wg-prog-c:hover{border-color:var(--pj-brand);background:rgba(255,255,255,.08);transform:translateY(-3px);}
+.wg-prog-k{font-size:9px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--pj-gold);margin-bottom:10px;}
+.wg-prog-t{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;font-weight:700;
+  color:#fff;line-height:1.2;}
+.wg-prog-d{font-size:14px;line-height:1.72;color:rgba(255,255,255,.72);margin-top:10px;}
+@media(max-width:760px){.wg-prog{grid-template-columns:1fr;}}
+
 </style>
 </head>
 <body>
@@ -384,15 +434,15 @@
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Wagner University Cuba</span><span data-en>Wagner University Cuba</span></a>
   <ul class="nav-links">
-    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li>
-    <li><a href="argentina.html">Argentina</a></li><li><a href="cuba.html">Cuba</a></li>
-    <li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>Úneted States</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li>
+    <li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li><li><a href="cuba.html">Cuba</a></li><li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li><li><a href="argentina.html">Argentina</a></li>
+    
+    <li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li>
     <li><a href="proyectos.html"  data-es>Proyectos</a><a href="proyectos.html"  data-en>Projects</a></li>
     <li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li>
   </ul>
   <div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div>
 </nav>
-<div class="nav-ov" id="navOv"><span class="nav-ov-x" onclick="toggleNav()">&#10005;</span><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()">EEUU</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()"  data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()"  data-en>Projects</a></div>
+<div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a><a href="proyectos.html" onclick="toggleNav()" data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()" data-en>Projects</a></div>
 
 
 <div class="pj">
@@ -402,11 +452,13 @@
   <div class="pj-hero-txt">
     <div class="pj-crumb"><a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a><span>·</span><span>Wagner University Cuba</span></div>
     <div class="wg-crest">
-      <img src="assets/img/logo/wagner-mark.png" alt="Wagner University">
-      <div class="wg-crest-txt">
-        <div class="wg-crest-n">Wagner University</div>
-        <div class="wg-crest-s">Cuba · 2026</div>
+      <img src="assets/img/logo/wagner-mark.png" alt="">
+      <div class="wg-lockup">
+        <span class="wg-lock-n">Wagner</span>
+        <span class="wg-lock-r"></span>
+        <span class="wg-lock-u">University</span>
       </div>
+      <span class="wg-crest-loc">Cuba · 2026</span>
     </div>
     <h1 class="pj-h"><span data-es>Preparando líderes<br>para la nueva Cuba</span><span data-en>Preparing leaders<br>for the new Cuba</span></h1>
     <div class="pj-kick" data-es>Iniciativa de desarrollo de liderazgo</div>
@@ -477,6 +529,73 @@
     <figure><img src="assets/img/iniciativas/wagner/v-escribiendo.jpg" alt="" loading="lazy" decoding="async"><figcaption class="wg-cap" data-es>Apuntes a mano</figcaption><figcaption class="wg-cap" data-en>Handwritten notes</figcaption></figure>
     <figure><img src="assets/img/iniciativas/wagner/v-proyector-pared.jpg" alt="" loading="lazy" decoding="async"><figcaption class="wg-cap" data-es>Una sábana como pantalla</figcaption><figcaption class="wg-cap" data-en>A bedsheet as a screen</figcaption></figure>
   </div>
+</div>
+
+
+<!-- PILARES DE FORMACION -->
+<div class="pj-sec pj-r" id="formacion" style="padding-top:0;">
+  <div class="pj-ey" data-es>El modelo de formación</div><div class="pj-ey" data-en>The formation model</div>
+  <h2 class="pj-t" data-es>Cuatro pilares que<br>Wagner lleva a cada cohorte</h2>
+  <h2 class="pj-t" data-en>Four pillars Wagner<br>brings to every cohort</h2>
+  <p class="pj-p" data-es>Wagner University no replica un seminario tradicional: equipa a líderes que ya están sirviendo, con enseñanza práctica, impartición y activación. En Cuba ese modelo se adapta a casas, patios y salones de iglesia.</p>
+  <p class="pj-p" data-en>Wagner University does not replicate a traditional seminary: it equips leaders who are already serving, with practical teaching, impartation and activation. In Cuba that model adapts to homes, patios and church halls.</p>
+  <div class="wg-pil pj-s">
+    <div class="wg-pil-c">
+      <div class="wg-pil-i"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5z"/><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/><path d="M21 8.6v5.4"/></svg></div>
+      <div class="wg-pil-t" data-es>Liderazgo Apostólico</div><div class="wg-pil-t" data-en>Apostolic Leadership</div>
+      <div class="wg-pil-s" data-es>Transformación y aplicación</div><div class="wg-pil-s" data-en>Transformation &amp; Application</div>
+      <div class="wg-pil-d" data-es>Los estudiantes se integran a una familia apostólica global, con fundamento sano en autoridad y liderazgo.</div>
+      <div class="wg-pil-d" data-en>Students become part of a global apostolic family with a healthy foundation in authority and leadership.</div>
+    </div>
+    <div class="wg-pil-c">
+      <div class="wg-pil-i"><svg viewBox="0 0 24 24"><path d="M4 5h7a2.5 2.5 0 0 1 2.5 2.5V20A2 2 0 0 0 12 18.6H4z"/><path d="M20 5h-5a2.5 2.5 0 0 0-2.5 2.5V20a2 2 0 0 1 1.5-1.4h6z"/></svg></div>
+      <div class="wg-pil-t" data-es>Aprendizaje Aplicado</div><div class="wg-pil-t" data-en>Applied Learning</div>
+      <div class="wg-pil-s" data-es>Entrenamiento e impartición</div><div class="wg-pil-s" data-en>Training &amp; Impartation</div>
+      <div class="wg-pil-d" data-es>Lo aprendido se practica en el mismo lugar donde se vive: la iglesia, el barrio, la familia.</div>
+      <div class="wg-pil-d" data-en>What is learned is practiced in the very place where it is lived: the church, the neighbourhood, the family.</div>
+    </div>
+    <div class="wg-pil-c">
+      <div class="wg-pil-i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.3 2.4 3.4 5.4 3.4 8.5S14.3 18.1 12 20.5c-2.3-2.4-3.4-5.4-3.4-8.5S9.7 5.9 12 3.5z"/></svg></div>
+      <div class="wg-pil-t" data-es>Acceso sin Barreras</div><div class="wg-pil-t" data-en>Access Without Barriers</div>
+      <div class="wg-pil-s" data-es>Formación donde sea</div><div class="wg-pil-s" data-en>Formation anywhere</div>
+      <div class="wg-pil-d" data-es>Una memoria USB y un proyector solar llevan el programa completo a lugares sin electricidad ni internet.</div>
+      <div class="wg-pil-d" data-en>A flash drive and a solar projector carry the full program to places with no power and no internet.</div>
+    </div>
+    <div class="wg-pil-c">
+      <div class="wg-pil-i"><svg viewBox="0 0 24 24"><circle cx="8" cy="8.5" r="3"/><circle cx="17" cy="15.5" r="3"/><path d="M10.4 10.4 14.6 13.6"/><path d="M3.5 19c.6-2.4 2.4-3.6 4.5-3.6"/></svg></div>
+      <div class="wg-pil-t" data-es>Integración Relacional</div><div class="wg-pil-t" data-en>Relational Integration</div>
+      <div class="wg-pil-s" data-es>Vínculos que permanecen</div><div class="wg-pil-s" data-en>Connections that last</div>
+      <div class="wg-pil-d" data-es>Cada graduado queda conectado a mentores y a su cohorte: la formación no termina con el diploma.</div>
+      <div class="wg-pil-d" data-en>Every graduate stays connected to mentors and to their cohort: formation does not end with the diploma.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMAS -->
+<div class="pj-dark" id="programas" style="background:#16284A;">
+ <div class="pj-sec pj-r">
+  <div class="pj-ey" data-es>Los títulos</div><div class="pj-ey" data-en>The degrees</div>
+  <h2 class="pj-t" data-es>Qué estudiaron<br>los 140 graduados</h2>
+  <h2 class="pj-t" data-en>What the 140<br>graduates studied</h2>
+  <div class="wg-prog pj-s">
+    <div class="wg-prog-c">
+      <div class="wg-prog-k" data-es>Maestría</div><div class="wg-prog-k" data-en>Master's</div>
+      <div class="wg-prog-t" data-es>Máster en Estudios Bíblicos y Ministeriales</div>
+      <div class="wg-prog-t" data-en>Master in Biblical and Ministerial Studies</div>
+      <div class="wg-prog-d" data-es>Fundamento bíblico sólido aplicado al ministerio cotidiano: enseñanza, cuidado pastoral y servicio a la comunidad.</div>
+      <div class="wg-prog-d" data-en>A solid biblical foundation applied to everyday ministry: teaching, pastoral care and service to the community.</div>
+    </div>
+    <div class="wg-prog-c">
+      <div class="wg-prog-k" data-es>Maestría</div><div class="wg-prog-k" data-en>Master's</div>
+      <div class="wg-prog-t" data-es>Máster en Liderazgo Apostólico</div>
+      <div class="wg-prog-t" data-en>Master in Apostolic Leadership</div>
+      <div class="wg-prog-d" data-es>Formación en autoridad, carácter y estrategia para líderes que plantan, multiplican y sostienen comunidades.</div>
+      <div class="wg-prog-d" data-en>Formation in authority, character and strategy for leaders who plant, multiply and sustain communities.</div>
+    </div>
+  </div>
+  <p class="pj-p" style="margin-top:26px;font-style:italic;" data-es>Programas de Wagner University, dictados en Cuba a través de Kingdom in Action Family.</p>
+  <p class="pj-p" style="margin-top:26px;font-style:italic;" data-en>Wagner University programs, delivered in Cuba through Kingdom in Action Family.</p>
+ </div>
 </div>
 
 <!-- BANDA -->

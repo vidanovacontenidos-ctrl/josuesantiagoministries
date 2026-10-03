@@ -468,3 +468,27 @@ a:focus-visible,button:focus-visible,input:focus-visible,
 textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{
   outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
 .hp-tile:focus-visible{outline-offset:-3px;}
+
+/* ===================== CAPA INMERSIVA DE SCROLL =====================
+   Unifica la sensación de recorrido en las 11 páginas. */
+html{scroll-behavior:smooth;overscroll-behavior-y:none;}
+body{overscroll-behavior-y:none;}
+/* las anclas no quedan tapadas por el nav fijo */
+:target,[id]{scroll-margin-top:calc(var(--nav-h) + 16px);}
+/* las fotos entran con un velo que se disuelve: evita el salto brusco */
+img{background-color:rgba(248,244,237,.04);}
+/* el cursor sobre cualquier zona navegable usa la misma curva */
+a,button{-webkit-tap-highlight-color:transparent;}
+/* en táctil el scroll conserva inercia dentro de los carruseles */
+[class*="-strip"],[class*="-gal"],.hero-proof{-webkit-overflow-scrolling:touch;}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+}
+
+
+/* ===== GRANO DE PELICULA EN LAS BANDAS DE FOTO =====
+   Mismo tratamiento que usan las bandas .fb-parallax del resto del sitio,
+   para que las páginas de proyecto compartan la textura. */
+.pj-band::before,.pj-hero-img::before{content:'';position:absolute;inset:0;z-index:1;
+  opacity:.05;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
