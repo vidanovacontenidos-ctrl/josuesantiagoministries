@@ -469,22 +469,8 @@ textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{
   outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
 .hp-tile:focus-visible{outline-offset:-3px;}
 
-/* ===================== CAPA INMERSIVA DE SCROLL =====================
-   Unifica la sensación de recorrido en las 11 páginas. */
-html{scroll-behavior:smooth;overscroll-behavior-y:none;}
-body{overscroll-behavior-y:none;}
-/* las anclas no quedan tapadas por el nav fijo */
-:target,[id]{scroll-margin-top:calc(var(--nav-h) + 16px);}
-/* las fotos entran con un velo que se disuelve: evita el salto brusco */
-img{background-color:rgba(248,244,237,.04);}
-/* el cursor sobre cualquier zona navegable usa la misma curva */
-a,button{-webkit-tap-highlight-color:transparent;}
-/* en táctil el scroll conserva inercia dentro de los carruseles */
-[class*="-strip"],[class*="-gal"],.hero-proof{-webkit-overflow-scrolling:touch;}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto;}
-}
-
+/* Las anclas no quedan tapadas por el nav fijo */
+[id]{scroll-margin-top:calc(var(--nav-h) + 16px);}
 
 /* ===== GRANO DE PELICULA EN LAS BANDAS DE FOTO =====
    Mismo tratamiento que usan las bandas .fb-parallax del resto del sitio,
@@ -492,3 +478,38 @@ a,button{-webkit-tap-highlight-color:transparent;}
 .pj-band::before,.pj-hero-img::before{content:'';position:absolute;inset:0;z-index:1;
   opacity:.05;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+
+/* ===== UMBRAL DEL MENU HAMBURGUESA =====
+   Con 8 destinos en escritorio el menú necesita ~876px y a 1024px
+   solo hay ~760px disponibles entre el logo y el selector de idioma.
+   El hamburguesa pasa a activarse antes para que no se apriete. */
+@media(max-width:1180px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+}
+/* entre 1180 y 1340 el espaciado se ajusta para que entren holgados */
+@media(min-width:1181px) and (max-width:1340px){
+  .nav-links{gap:clamp(14px,1.6vw,26px);}
+  .nav-links a{font-size:10px;letter-spacing:.14em;}
+}
+
+
+/* ===================== RECORRIDO INMERSIVO — SOLO TACTIL =====================
+   En escritorio la página se comporta como una web: conserva el rebote del
+   final y el scroll del navegador. En teléfono y tablet táctil adopta los
+   gestos que el usuario ya espera de una app. */
+@media(hover:none) and (pointer:coarse){
+  /* el rebote no arrastra la página de atrás ni el refresco por tirón */
+  html,body{overscroll-behavior-y:contain;}
+  /* inercia dentro de los carruseles horizontales */
+  [class*="-gal"],[class*="-strip"],.ms-slider,.hp-grid,.ini-gal,.wg-m3,.wg-mv{
+    -webkit-overflow-scrolling:touch;}
+  /* el toque no deja el recuadro gris del navegador */
+  a,button,[role="button"]{-webkit-tap-highlight-color:transparent;}
+  /* las bandas de foto ocupan más alto: la imagen manda, como en un feed */
+  .fb img,.fb-parallax{height:340px;}
+  .pj-band{min-height:clamp(300px,52vh,460px);}
+  /* los títulos de sección entran con algo más de recorrido */
+  .rev,.pj-r{transform:translateY(32px);}
+}
