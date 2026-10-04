@@ -692,39 +692,68 @@ body.km-open{overflow:hidden;}
 [id]{scroll-margin-top:80px;}
 
 /* ==================================================================
-   MAPAS CON PESTAÑAS — el color sigue al país elegido
+   MAPAS — más chicos, con transición automática entre lugares
    ================================================================== */
-.kmap{background:var(--papel-2);padding:clamp(48px,8vw,var(--e7)) 0;--ac:var(--teal);}
+.kmap{background:var(--papel-2);padding:clamp(48px,8vw,var(--e7)) 0;--ac:var(--navy);}
 .kmap-h{font-size:clamp(1.9rem,7vw,2.7rem);font-weight:800;color:var(--navy);
   letter-spacing:-.03em;line-height:1.04;}
 .kmap-r{width:80px;height:3px;background:var(--ac);margin-top:var(--e2);
-  transition:background .5s var(--ease);}
+  transition:background .6s var(--ease);}
 .kmap-p{font-size:16.5px;line-height:1.75;color:var(--gris);margin-top:var(--e3);max-width:58ch;}
-.kmap-box{margin-top:var(--e5);}
-.kmap-tabs{display:flex;flex-wrap:wrap;gap:1px;background:var(--linea);border:1px solid var(--linea);}
-.kmap-tab{flex:1;min-width:88px;background:#fff;border:0;cursor:pointer;padding:15px 10px;
-  font-family:inherit;font-size:11.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--gris);transition:background .35s var(--ease),color .35s;}
+
+/* contenedor: dos columnas en escritorio, el mapa no manda sobre el texto */
+.kmap-box{margin-top:var(--e5);display:grid;grid-template-columns:1fr;gap:var(--e4);
+  align-items:center;border:1px solid var(--linea);background:#fff;
+  padding:clamp(20px,3vw,34px);}
+/* el escenario del mapa: alto acotado, las capas se funden */
+.kmap-stage{position:relative;width:100%;max-width:440px;margin:0 auto;
+  height:clamp(190px,34vw,250px);}
+.kmap-pane{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.97);pointer-events:none;
+  transition:opacity .9s var(--ease),transform 1.2s var(--ease);}
+.kmap-pane.on{opacity:1;transform:none;pointer-events:auto;}
+.kmap-pane svg{width:100%;height:100%;display:block;}
+.kmap-pane svg path{transition:fill .7s var(--ease);}
+
+/* panel de texto que acompaña */
+.kmap-info{position:relative;min-height:122px;}
+.kmap-it{position:absolute;inset:0;opacity:0;transform:translateY(10px);
+  transition:opacity .6s var(--ease),transform .6s var(--ease);pointer-events:none;}
+.kmap-it.on{opacity:1;transform:none;pointer-events:auto;}
+.kmap-it b{display:block;font-size:clamp(1.5rem,5vw,2rem);font-weight:800;letter-spacing:-.03em;
+  line-height:1.05;color:var(--ac);transition:color .6s var(--ease);}
+.kmap-it span{display:block;font-size:14.5px;line-height:1.65;color:var(--gris);margin-top:10px;max-width:38ch;}
+.kmap-it i{display:inline-block;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--navy);margin-bottom:10px;}
+
+/* pestañas con barra de avance */
+.kmap-tabs{display:flex;flex-wrap:wrap;gap:1px;background:var(--linea);
+  border:1px solid var(--linea);border-top:0;}
+.kmap-tab{flex:1;min-width:86px;background:#fff;border:0;cursor:pointer;padding:14px 8px;
+  position:relative;overflow:hidden;font-family:inherit;font-size:11px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gris);
+  transition:color .3s,background .3s;}
 .kmap-tab:hover{color:var(--navy);}
-.kmap-tab.on{background:var(--ac);color:#fff;}
-.kmap-pane-wrap{border:1px solid var(--linea);border-top:0;background:#fff;
-  padding:clamp(22px,4vw,40px) clamp(18px,3vw,32px) clamp(18px,3vw,28px);}
-.kmap-pane{display:none;}
-.kmap-pane.on{display:block;animation:kmapIn .55s var(--ease);}
-@keyframes kmapIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.kmap-pane svg{width:100%;height:auto;display:block;}
-/* los paises activos entran dibujandose */
-.kmap-pane.on svg path:last-of-type{animation:kmapFill .9s var(--ease) both;}
-@keyframes kmapFill{from{opacity:0;transform:scale(.98);transform-origin:center}to{opacity:1;transform:none}}
-.kmap-cap{margin-top:var(--e3);padding-top:var(--e3);border-top:1px solid var(--linea);
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;}
-.kmap-cap b{font-size:var(--t-lg);font-weight:800;letter-spacing:-.025em;color:var(--ac);
-  transition:color .5s var(--ease);}
-.kmap-cap span{font-size:14.5px;line-height:1.6;color:var(--gris);}
-.kmap-go{display:inline-block;margin-top:var(--e3);background:var(--navy);color:#fff;border:0;
+.kmap-tab.on{color:var(--ac);background:var(--papel-2);}
+.kmap-tab::after{content:'';position:absolute;left:0;bottom:0;height:3px;width:100%;
+  background:var(--ac);transform:scaleX(0);transform-origin:left;}
+.kmap-tab.on::after{animation:kmapBar var(--dur,5s) linear forwards;}
+.kmap-tab.on.pause::after{animation-play-state:paused;}
+@keyframes kmapBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.kmap-go{display:inline-block;margin-top:var(--e4);background:var(--navy);color:#fff;border:0;
   cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:17px 32px;
   transition:background .25s,transform .25s var(--ease);}
 .kmap-go:hover{background:var(--navy-dk);transform:translateX(5px);}
+
+@media(min-width:860px){
+  .kmap-box{grid-template-columns:1fr 1fr;gap:var(--e5);}
+  .kmap-stage{max-width:none;height:clamp(220px,20vw,280px);}
+}
+@media(prefers-reduced-motion:reduce){
+  .kmap-pane,.kmap-it{transition:none;}
+  .kmap-tab.on::after{animation:none;transform:scaleX(1);}
+}
 
 /* ==================================================================
    CIFRAS COMO PROTAGONISTAS
