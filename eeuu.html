@@ -64,6 +64,38 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 .hero-dot::after,.vdot::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;}.rev,.rev-l,.rev-r,.stag>*{opacity:1!important;transform:none!important;}}
 
+
+/* ===== CORRECCION DE COLOR (cierre) =====
+   Este bloque va al final de la hoja local de la pagina para ganarle a las
+   reglas locales heredadas del tema oscuro original. */
+body{background:#FFFFFF;color:#101215;}
+.stitle{color:#101215;}
+.slead{color:#64696F;}
+.ey{color:#C8102E;}
+.pj-t,.pj-h,.pj-lead,.pj-p,.wg-lock-n,.wg-lock-u,.kmap-h{color:#101215;}
+.pj-lead,.pj-p{color:#4A5159;}
+/* dentro de contenedores oscuros vuelve el blanco */
+.on-dark .stitle,.ms-wrap .stitle,.pj-dark .stitle,.knl .stitle,.qband .stitle,
+.page-hero-cnt .stitle,.fb-txt .stitle,.hero-cnt .stitle,.bg-dark .stitle,
+.elder-section .stitle,.hv-wrap .stitle,.yt-wrap .stitle,.ev-feat .stitle,
+.past-slider .stitle,.stmt .stitle,.cv-hero-quote .stitle,.pe .stitle,
+.ini-card .stitle,.sec-dark .stitle,
+.pj-dark .pj-t,.pj-dark .pj-p,.pj-dark .pj-lead,.pj-band-cnt .pj-band-t{color:#FFFFFF;}
+.on-dark .slead,.ms-wrap .slead,.pj-dark .slead,.knl .slead,.qband .slead,
+.page-hero-cnt .slead,.fb-txt .slead,.hero-cnt .slead,.bg-dark .slead,
+.elder-section .slead,.hv-wrap .slead,.yt-wrap .slead,.ev-feat .slead,
+.past-slider .slead,.stmt .slead,.cv-hero-quote .slead,.pe .slead{color:rgba(255,255,255,.74);}
+.on-dark .ey,.ms-wrap .ey,.pj-dark .ey,.knl .ey,.page-hero-cnt .ey,.fb-txt .ey,
+.hero-cnt .ey,.bg-dark .ey,.elder-section .ey,.hv-wrap .ey,.yt-wrap .ey,
+.ev-feat .ey,.past-slider .ey,.stmt .ey,.cv-hero-quote .ey,.pe .ey{color:#EF3951;}
+/* hero: siempre sobre foto oscura */
+.hero-cnt .hero-title,.hero-cnt .hero-title span,.hero-cnt .hero-title em,
+.page-hero-cnt h1,.pj-hero-txt .pj-h,.pj-hero-txt .pj-h span{color:#FFFFFF;}
+.hero-sub{color:rgba(255,255,255,.55);}
+/* botones de contorno sobre claro */
+.btn-ol{color:#101215;border-color:rgba(16,18,21,.28);}
+.on-dark .btn-ol,.hero-cnt .btn-ol,.ms-wrap .btn-ol,.page-hero-cnt .btn-ol{
+  color:#FFFFFF;border-color:rgba(255,255,255,.4);}
 </style>
 </head>
 <body>
@@ -147,7 +179,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="fb fb-parallax rev" style="background-image:url('assets/img/usa/verse2.jpg');background-position:center 37%;"><div class="fb-ov fb-ov--right"></div><div class="fb-cnt fb-cnt--right"><div class="fb-txt fb-txt--right"><div class="ey" style="justify-content:flex-end;" data-es>Liderazgo</div><div class="ey" style="justify-content:flex-end;" data-en>Leadership</div><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-es>Levantando la Próxima Generación</h2><h2 class="stitle" style="font-size:clamp(2.2rem,4.5vw,3.5rem);" data-en>Raising the Next Generation</h2><span class="rule" style="margin-left:auto;"></span><p data-es>La próxima generación de líderes está siendo levantada. No solo para el ministerio, sino para transformar cada esfera de la sociedad con los valores del Reino.</p><p data-en>The next generation of leaders is being raised up. Not just for ministry, but to transform every sphere of society with Kingdom values.</p></div></div></div>
 
 <!-- VIDEOS — dark -->
-<div style="background:var(--dark);"><div class="sec"><div class="rev"><div class="ey" data-es>Conferencias en Video</div><div class="ey" data-en>Conferences on Video</div><h2 class="stitle" data-es>Ver el Ministerio</h2><h2 class="stitle" data-en>Watch the Ministry</h2></div>
+<div style="background:var(--dark);" class="on-dark"><div class="sec"><div class="rev"><div class="ey" data-es>Conferencias en Video</div><div class="ey" data-en>Conferences on Video</div><h2 class="stitle" data-es>Ver el Ministerio</h2><h2 class="stitle" data-en>Watch the Ministry</h2></div>
 <div class="vid-grid rev d1">
   <div class="vid-card"><div class="vid-em"><iframe src="https://www.youtube.com/embed/SIOHioQSwdo" allowfullscreen loading="lazy"></iframe></div><div class="vid-lbl" data-es>Kingdom in Action · Resumen</div><div class="vid-lbl" data-en>Kingdom in Action · Highlights</div></div>
   <div class="vid-card"><div class="vid-em"><iframe src="https://www.youtube.com/embed/I1xKoxNKNc4" allowfullscreen loading="lazy"></iframe></div><div class="vid-lbl" data-es>Kingdom in Action · Impacto</div><div class="vid-lbl" data-en>Kingdom in Action · Impact</div></div>

@@ -427,6 +427,38 @@
 .wg-prog-d{font-size:14px;line-height:1.72;color:rgba(255,255,255,.72);margin-top:10px;}
 @media(max-width:760px){.wg-prog{grid-template-columns:1fr;}}
 
+
+/* ===== CORRECCION DE COLOR (cierre) =====
+   Este bloque va al final de la hoja local de la pagina para ganarle a las
+   reglas locales heredadas del tema oscuro original. */
+body{background:#FFFFFF;color:#101215;}
+.stitle{color:#101215;}
+.slead{color:#64696F;}
+.ey{color:#C8102E;}
+.pj-t,.pj-h,.pj-lead,.pj-p,.wg-lock-n,.wg-lock-u,.kmap-h{color:#101215;}
+.pj-lead,.pj-p{color:#4A5159;}
+/* dentro de contenedores oscuros vuelve el blanco */
+.on-dark .stitle,.ms-wrap .stitle,.pj-dark .stitle,.knl .stitle,.qband .stitle,
+.page-hero-cnt .stitle,.fb-txt .stitle,.hero-cnt .stitle,.bg-dark .stitle,
+.elder-section .stitle,.hv-wrap .stitle,.yt-wrap .stitle,.ev-feat .stitle,
+.past-slider .stitle,.stmt .stitle,.cv-hero-quote .stitle,.pe .stitle,
+.ini-card .stitle,.sec-dark .stitle,
+.pj-dark .pj-t,.pj-dark .pj-p,.pj-dark .pj-lead,.pj-band-cnt .pj-band-t{color:#FFFFFF;}
+.on-dark .slead,.ms-wrap .slead,.pj-dark .slead,.knl .slead,.qband .slead,
+.page-hero-cnt .slead,.fb-txt .slead,.hero-cnt .slead,.bg-dark .slead,
+.elder-section .slead,.hv-wrap .slead,.yt-wrap .slead,.ev-feat .slead,
+.past-slider .slead,.stmt .slead,.cv-hero-quote .slead,.pe .slead{color:rgba(255,255,255,.74);}
+.on-dark .ey,.ms-wrap .ey,.pj-dark .ey,.knl .ey,.page-hero-cnt .ey,.fb-txt .ey,
+.hero-cnt .ey,.bg-dark .ey,.elder-section .ey,.hv-wrap .ey,.yt-wrap .ey,
+.ev-feat .ey,.past-slider .ey,.stmt .ey,.cv-hero-quote .ey,.pe .ey{color:#EF3951;}
+/* hero: siempre sobre foto oscura */
+.hero-cnt .hero-title,.hero-cnt .hero-title span,.hero-cnt .hero-title em,
+.page-hero-cnt h1,.pj-hero-txt .pj-h,.pj-hero-txt .pj-h span{color:#FFFFFF;}
+.hero-sub{color:rgba(255,255,255,.55);}
+/* botones de contorno sobre claro */
+.btn-ol{color:#101215;border-color:rgba(16,18,21,.28);}
+.on-dark .btn-ol,.hero-cnt .btn-ol,.ms-wrap .btn-ol,.page-hero-cnt .btn-ol{
+  color:#FFFFFF;border-color:rgba(255,255,255,.4);}
 </style>
 </head>
 <body>

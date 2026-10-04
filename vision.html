@@ -64,6 +64,38 @@
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent-lt);outline-offset:3px;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important;}.rev,.rev-l,.rev-r,.stag>*{opacity:1!important;transform:none!important;}}
 
+
+/* ===== CORRECCION DE COLOR (cierre) =====
+   Este bloque va al final de la hoja local de la pagina para ganarle a las
+   reglas locales heredadas del tema oscuro original. */
+body{background:#FFFFFF;color:#101215;}
+.stitle{color:#101215;}
+.slead{color:#64696F;}
+.ey{color:#C8102E;}
+.pj-t,.pj-h,.pj-lead,.pj-p,.wg-lock-n,.wg-lock-u,.kmap-h{color:#101215;}
+.pj-lead,.pj-p{color:#4A5159;}
+/* dentro de contenedores oscuros vuelve el blanco */
+.on-dark .stitle,.ms-wrap .stitle,.pj-dark .stitle,.knl .stitle,.qband .stitle,
+.page-hero-cnt .stitle,.fb-txt .stitle,.hero-cnt .stitle,.bg-dark .stitle,
+.elder-section .stitle,.hv-wrap .stitle,.yt-wrap .stitle,.ev-feat .stitle,
+.past-slider .stitle,.stmt .stitle,.cv-hero-quote .stitle,.pe .stitle,
+.ini-card .stitle,.sec-dark .stitle,
+.pj-dark .pj-t,.pj-dark .pj-p,.pj-dark .pj-lead,.pj-band-cnt .pj-band-t{color:#FFFFFF;}
+.on-dark .slead,.ms-wrap .slead,.pj-dark .slead,.knl .slead,.qband .slead,
+.page-hero-cnt .slead,.fb-txt .slead,.hero-cnt .slead,.bg-dark .slead,
+.elder-section .slead,.hv-wrap .slead,.yt-wrap .slead,.ev-feat .slead,
+.past-slider .slead,.stmt .slead,.cv-hero-quote .slead,.pe .slead{color:rgba(255,255,255,.74);}
+.on-dark .ey,.ms-wrap .ey,.pj-dark .ey,.knl .ey,.page-hero-cnt .ey,.fb-txt .ey,
+.hero-cnt .ey,.bg-dark .ey,.elder-section .ey,.hv-wrap .ey,.yt-wrap .ey,
+.ev-feat .ey,.past-slider .ey,.stmt .ey,.cv-hero-quote .ey,.pe .ey{color:#EF3951;}
+/* hero: siempre sobre foto oscura */
+.hero-cnt .hero-title,.hero-cnt .hero-title span,.hero-cnt .hero-title em,
+.page-hero-cnt h1,.pj-hero-txt .pj-h,.pj-hero-txt .pj-h span{color:#FFFFFF;}
+.hero-sub{color:rgba(255,255,255,.55);}
+/* botones de contorno sobre claro */
+.btn-ol{color:#101215;border-color:rgba(16,18,21,.28);}
+.on-dark .btn-ol,.hero-cnt .btn-ol,.ms-wrap .btn-ol,.page-hero-cnt .btn-ol{
+  color:#FFFFFF;border-color:rgba(255,255,255,.4);}
 </style>
 </head>
 <body>
@@ -184,7 +216,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 </div>
 
 <!-- BELIEFS — minimal list -->
-<div style="background:var(--dark);">
+<div style="background:var(--dark);" class="on-dark">
   <div class="beliefs-min rev">
     <div style="text-align:center;margin-bottom:48px;">
       <div class="stmt-ey" data-es>Fundamento</div><div class="stmt-ey" data-en>Foundation</div>
@@ -211,7 +243,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <div class="qband"><blockquote data-es>"El Espíritu del Señor está sobre mí, porque me ha ungido para dar buenas nuevas a los pobres."</blockquote><blockquote data-en>"The Spirit of the Lord is upon me, because he has anointed me to proclaim good news to the poor."</blockquote><cite>Lucas 4:18</cite></div>
 
 <!-- CTA -->
-<div class="stmt" style="min-height:40vh;background:var(--dark);">
+<div class="on-dark stmt" style="min-height:40vh;background:var(--dark);">
   <div class="stmt-inner rev">
     <div class="stmt-body" style="margin-bottom:28px;" data-es>¿Quieres ser parte de lo que Dios está haciendo a través de Kingdom in Action?</div>
     <div class="stmt-body" style="margin-bottom:28px;" data-en>Want to be part of what God is doing through Kingdom in Action?</div>

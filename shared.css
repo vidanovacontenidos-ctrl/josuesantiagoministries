@@ -863,3 +863,51 @@ body.km-open{overflow:hidden;}
 .kf-row:hover,.kf-links a:hover,.kf-soc a:hover svg,
 .knl .kmap-r,.pj-dark .pj-ey,.ini-kicker{color:var(--rojo-lt);}
 .kf-soc a:hover{border-color:var(--rojo-lt);}
+
+/* ==================================================================
+   COLOR DE TEXTO POR DEFECTO — corrección de raíz
+   .stitle y .slead nacieron blancos porque el sitio era todo oscuro.
+   Ahora el blanco domina, así que el valor por defecto se invierte:
+   texto oscuro, y blanco solo dentro de contenedores oscuros.
+   ================================================================== */
+.stitle{color:var(--negro);}
+.slead{color:var(--gris);}
+.ey{color:var(--rojo);}
+
+/* contextos oscuros: ahí sí va blanco */
+.on-dark .stitle,.ms-wrap .stitle,.pj-dark .stitle,.knl .stitle,.qband .stitle,
+.page-hero-cnt .stitle,.fb-txt .stitle,.hero-cnt .stitle,
+.bg-dark .stitle,.elder-section .stitle,.hv-wrap .stitle,.yt-wrap .stitle,
+.ev-feat .stitle,.past-slider .stitle,.stmt .stitle,.cv-hero-quote .stitle,
+.pe .stitle,.ini-card .stitle{color:#fff;}
+.on-dark .slead,.ms-wrap .slead,.pj-dark .slead,.knl .slead,.qband .slead,
+.page-hero-cnt .slead,.fb-txt .slead,.hero-cnt .slead,.bg-dark .slead,
+.elder-section .slead,.hv-wrap .slead,.yt-wrap .slead,.ev-feat .slead,
+.past-slider .slead,.stmt .slead,.cv-hero-quote .slead,.pe .slead{color:rgba(255,255,255,.74);}
+.on-dark .ey,.ms-wrap .ey,.pj-dark .ey,.knl .ey,.page-hero-cnt .ey,.fb-txt .ey,
+.hero-cnt .ey,.bg-dark .ey,.elder-section .ey,.hv-wrap .ey,.yt-wrap .ey,
+.ev-feat .ey,.past-slider .ey,.stmt .ey,.cv-hero-quote .ey,.pe .ey{color:var(--rojo-lt);}
+
+/* ámbar: el blanco encima da 2,08:1. Sobre ámbar va tinta, no blanco. */
+.pj-phase[style*="E9A825"],.ini-phase[style*="E9A825"],
+.kiaf-franja .f2,.wg-orb--2{color:var(--negro)!important;}
+.pj-band-t,.ini-band-t{text-shadow:0 1px 12px rgba(0,0,0,.55);}
+
+
+/* ==================================================================
+   BASE DEL DOCUMENTO — corrección de raíz
+   El body seguía en negro con texto blanco, de cuando el sitio era
+   todo oscuro. Las secciones nuevas (.kst, .kmap, .kf) no declaran
+   fondo, así que heredaban negro y el texto oscuro desaparecía.
+   La base pasa a blanco; lo oscuro se declara por sección.
+   ================================================================== */
+body{background:var(--papel)!important;color:var(--negro)!important;font-weight:400;}
+/* las secciones que deben seguir oscuras lo dicen explícitamente */
+.kst,.kf-wrap{background:var(--papel);}
+.knl,.kf{background:var(--negro);}
+.ms-wrap,.yt-wrap,.qband,.pj-dark,.bg-dark,.elder-section,.hv-wrap,
+.ev-feat,.past-slider,.stmt,.pe,.on-dark{background:var(--negro);color:#fff;}
+.sec-warm{background:var(--papel);color:var(--negro);}
+.sec-warm-alt{background:var(--papel-2);color:var(--negro);}
+/* el hero conserva su foto y su velo */
+.hero,.page-hero,.pj-hero,.ph-hero,.cv-hero-quote{background:var(--negro);}

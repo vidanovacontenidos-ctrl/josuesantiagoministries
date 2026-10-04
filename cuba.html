@@ -131,6 +131,38 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
   .cuba-hero .kb-zoom{object-position:center 26%;}
   .cuba-hero .page-hero-ov{background:linear-gradient(to top,rgba(13,15,17,.96)0%,rgba(13,15,17,.80)26%,rgba(13,15,17,.30)55%,rgba(13,15,17,.16)100%);}
 }
+
+/* ===== CORRECCION DE COLOR (cierre) =====
+   Este bloque va al final de la hoja local de la pagina para ganarle a las
+   reglas locales heredadas del tema oscuro original. */
+body{background:#FFFFFF;color:#101215;}
+.stitle{color:#101215;}
+.slead{color:#64696F;}
+.ey{color:#C8102E;}
+.pj-t,.pj-h,.pj-lead,.pj-p,.wg-lock-n,.wg-lock-u,.kmap-h{color:#101215;}
+.pj-lead,.pj-p{color:#4A5159;}
+/* dentro de contenedores oscuros vuelve el blanco */
+.on-dark .stitle,.ms-wrap .stitle,.pj-dark .stitle,.knl .stitle,.qband .stitle,
+.page-hero-cnt .stitle,.fb-txt .stitle,.hero-cnt .stitle,.bg-dark .stitle,
+.elder-section .stitle,.hv-wrap .stitle,.yt-wrap .stitle,.ev-feat .stitle,
+.past-slider .stitle,.stmt .stitle,.cv-hero-quote .stitle,.pe .stitle,
+.ini-card .stitle,.sec-dark .stitle,
+.pj-dark .pj-t,.pj-dark .pj-p,.pj-dark .pj-lead,.pj-band-cnt .pj-band-t{color:#FFFFFF;}
+.on-dark .slead,.ms-wrap .slead,.pj-dark .slead,.knl .slead,.qband .slead,
+.page-hero-cnt .slead,.fb-txt .slead,.hero-cnt .slead,.bg-dark .slead,
+.elder-section .slead,.hv-wrap .slead,.yt-wrap .slead,.ev-feat .slead,
+.past-slider .slead,.stmt .slead,.cv-hero-quote .slead,.pe .slead{color:rgba(255,255,255,.74);}
+.on-dark .ey,.ms-wrap .ey,.pj-dark .ey,.knl .ey,.page-hero-cnt .ey,.fb-txt .ey,
+.hero-cnt .ey,.bg-dark .ey,.elder-section .ey,.hv-wrap .ey,.yt-wrap .ey,
+.ev-feat .ey,.past-slider .ey,.stmt .ey,.cv-hero-quote .ey,.pe .ey{color:#EF3951;}
+/* hero: siempre sobre foto oscura */
+.hero-cnt .hero-title,.hero-cnt .hero-title span,.hero-cnt .hero-title em,
+.page-hero-cnt h1,.pj-hero-txt .pj-h,.pj-hero-txt .pj-h span{color:#FFFFFF;}
+.hero-sub{color:rgba(255,255,255,.55);}
+/* botones de contorno sobre claro */
+.btn-ol{color:#101215;border-color:rgba(16,18,21,.28);}
+.on-dark .btn-ol,.hero-cnt .btn-ol,.ms-wrap .btn-ol,.page-hero-cnt .btn-ol{
+  color:#FFFFFF;border-color:rgba(255,255,255,.4);}
 </style>
 </head>
 <body>
@@ -196,7 +228,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="marquee marquee-accent"><div class="marquee-inner"><span>SERVIMOS CON EL AMOR DE JESÚS</span><span class="sep">✦</span><span>16,000 COMIDAS CADA MES</span><span class="sep">✦</span><span>300+ IGLESIAS EN CUBA</span><span class="sep">✦</span><span>PRAY · COME · GIVE</span><span class="sep">✦</span><span>SERVIMOS CON EL AMOR DE JESÚS</span><span class="sep">✦</span><span>16,000 COMIDAS CADA MES</span><span class="sep">✦</span><span>300+ IGLESIAS EN CUBA</span><span class="sep">✦</span><span>PRAY · COME · GIVE</span><span class="sep">✦</span></div></div>
 
 <!-- QUIÉNES SOMOS -->
-<div style="background:var(--dark);"><div class="split rev"><div class="split-img photo-hover" style="border-radius:16px;"><img loading="lazy" decoding="async" src="assets/img/cuba/web/quienes.jpg" alt="Cuba" style="border-radius:16px;"></div><div class="split-text stag"><div class="ey" data-es>Kingdom in Action Family</div><div class="ey" data-en>Kingdom in Action Family</div><h2 class="stitle" data-es>Quiénes Somos</h2><h2 class="stitle" data-en>Who We Are</h2><span class="rule"></span><p data-es>Reino en Acción es un ministerio con una asignación: establecer el Reino de Dios. Somos el Cuerpo de Cristo funcionando a través de congregaciones y ministerios unidos para expresar a Cristo como el centro.</p><p data-en>Kingdom in Action is a ministry with one assignment: to establish the Kingdom of God. We are the Body of Christ functioning through congregations and ministries united to express Christ as the center.</p></div></div></div>
+<div style="background:var(--dark);" class="on-dark"><div class="split rev"><div class="split-img photo-hover" style="border-radius:16px;"><img loading="lazy" decoding="async" src="assets/img/cuba/web/quienes.jpg" alt="Cuba" style="border-radius:16px;"></div><div class="split-text stag"><div class="ey" data-es>Kingdom in Action Family</div><div class="ey" data-en>Kingdom in Action Family</div><h2 class="stitle" data-es>Quiénes Somos</h2><h2 class="stitle" data-en>Who We Are</h2><span class="rule"></span><p data-es>Reino en Acción es un ministerio con una asignación: establecer el Reino de Dios. Somos el Cuerpo de Cristo funcionando a través de congregaciones y ministerios unidos para expresar a Cristo como el centro.</p><p data-en>Kingdom in Action is a ministry with one assignment: to establish the Kingdom of God. We are the Body of Christ functioning through congregations and ministries united to express Christ as the center.</p></div></div></div>
 
 <!-- LO QUE HACEMOS — cream -->
 <div class="sec-warm"><div class="sec"><div class="rev"><div class="ey" data-es>Servimos con el Amor de Jesús</div><div class="ey" data-en>We Serve With the Love of Jesus</div><h2 class="stitle" data-es>Lo Que Hacemos en Cuba</h2><h2 class="stitle" data-en>What We Do in Cuba</h2><p class="slead" data-es>Hacer lo que Jesús hizo, cuidar a la gente que Jesús cuidó, y hacer discípulos.</p><p class="slead" data-en>Do what Jesus did, care for the people Jesus cared for, and make disciples.</p></div>
@@ -226,10 +258,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="elder-section"><div class="elder-bg"><img loading="lazy" decoding="async" src="assets/img/cuba/web/ancianos.jpg" alt="Ancianos"></div><div class="elder-cnt rev"><div class="elder-text"><div class="ey" style="justify-content:center;" data-es>Nuestros Ancianos</div><div class="ey" style="justify-content:center;" data-en>Our Elderly</div><h2 class="stitle" style="text-align:center;" data-es>Honrar a Quienes Tanto Han Dado</h2><h2 class="stitle" style="text-align:center;" data-en>Honoring Those Who Gave So Much</h2><span class="rule" style="margin:18px auto;"></span><p data-es>Hay una generación que trabajó, sacrificó y entregó sus mejores años para construir el mundo que hoy disfrutamos.</p><p data-en>There is a generation that worked, sacrificed and gave their best years to build the world we enjoy today.</p><p data-es>Nuestros adultos mayores merecen más que un lugar donde vivir; merecen <span class="highlight">amor, dignidad, cuidado</span> y la certeza de que no han sido olvidados.</p><p data-en>Our elderly deserve more than a place to live; they deserve <span class="highlight">love, dignity, care</span> and the certainty that they have not been forgotten.</p><p data-es>Creemos que cuidar de nuestros ancianos no es solo una responsabilidad, sino <span class="highlight">un privilegio</span>.</p><p data-en>We believe that caring for our elderly is not just a responsibility, but <span class="highlight">a privilege</span>.</p></div></div></div>
 
 <!-- NUESTRO SUEÑO -->
-<div style="background:var(--dark);"><div class="sec"><div class="rev"><div class="ey" data-es>El Sueño es Más Grande</div><div class="ey" data-en>The Dream is Bigger</div><h2 class="stitle" data-es>Nuestra Visión para Cuba</h2><h2 class="stitle" data-en>Our Vision for Cuba</h2></div><div class="dream-grid rev d1"><div class="dream-card"><div class="dream-big">300+</div><div class="dream-t" data-es>Iglesias en toda Cuba</div><div class="dream-t" data-en>Churches across Cuba</div><div class="dream-d" data-es>Hoy acompañamos a 35. Queremos caminar junto a todas.</div><div class="dream-d" data-en>Today we walk with 35. We want to walk with them all.</div></div><div class="dream-card"><div class="dream-big">100</div><div class="dream-t" data-es>Pastores Acompañados</div><div class="dream-t" data-en>Pastors Walking With Us</div><div class="dream-d" data-es>Formación, cobertura y una familia detrás de cada líder que sostiene a su comunidad.</div><div class="dream-d" data-en>Training, covering and a family behind every leader who sustains their community.</div></div></div></div></div>
+<div style="background:var(--dark);" class="on-dark"><div class="sec"><div class="rev"><div class="ey" data-es>El Sueño es Más Grande</div><div class="ey" data-en>The Dream is Bigger</div><h2 class="stitle" data-es>Nuestra Visión para Cuba</h2><h2 class="stitle" data-en>Our Vision for Cuba</h2></div><div class="dream-grid rev d1"><div class="dream-card"><div class="dream-big">300+</div><div class="dream-t" data-es>Iglesias en toda Cuba</div><div class="dream-t" data-en>Churches across Cuba</div><div class="dream-d" data-es>Hoy acompañamos a 35. Queremos caminar junto a todas.</div><div class="dream-d" data-en>Today we walk with 35. We want to walk with them all.</div></div><div class="dream-card"><div class="dream-big">100</div><div class="dream-t" data-es>Pastores Acompañados</div><div class="dream-t" data-en>Pastors Walking With Us</div><div class="dream-d" data-es>Formación, cobertura y una familia detrás de cada líder que sostiene a su comunidad.</div><div class="dream-d" data-en>Training, covering and a family behind every leader who sustains their community.</div></div></div></div></div>
 
 <!-- HISTORIA VIVA — interactive redesign -->
-<div style="background:var(--night);"><div class="sec"><div class="rev"><div class="ey" data-es>Historia de Impacto</div><div class="ey" data-en>Impact Story</div><h2 class="stitle" data-es>Historia Viva</h2><h2 class="stitle" data-en>Living History</h2></div>
+<div style="background:var(--night);" class="on-dark"><div class="sec"><div class="rev"><div class="ey" data-es>Historia de Impacto</div><div class="ey" data-en>Impact Story</div><h2 class="stitle" data-es>Historia Viva</h2><h2 class="stitle" data-en>Living History</h2></div>
 <div class="hv-tabs rev">
   <div class="hv-tab on" onclick="hvSwitch('2024')"><div class="hv-tab-yr">2024</div><div class="hv-tab-info"><div class="hv-tab-title" data-es>Sembrando el Fuego</div><div class="hv-tab-title" data-en>Planting the Fire</div><div class="hv-tab-sub" data-es>80 pastores · 500+ familias · 30K lbs</div><div class="hv-tab-sub" data-en>80 pastors · 500+ families · 30K lbs</div></div></div>
   <div class="hv-tab" onclick="hvSwitch('2025')"><div class="hv-tab-yr">2025</div><div class="hv-tab-info"><div class="hv-tab-title" data-es>Resiliencia y Expansión</div><div class="hv-tab-title" data-en>Resilience & Expansion</div><div class="hv-tab-sub" data-es>50K+ alimentados · 33 iglesias nuevas</div><div class="hv-tab-sub" data-en>50K+ fed · 33 new churches</div></div></div>
