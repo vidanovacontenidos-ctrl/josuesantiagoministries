@@ -8,17 +8,23 @@
      Los nombres de token se conservan para no romper las páginas;
      cambian los valores. Navy institucional, blanco dominante,
      y teal/ámbar/rojo asignados a los tres proyectos. */
-  --navy:#16284A; --navy-dk:#0E1B33; --navy-lt:#24406F;
+  /* NEGRO como color institucional: devuelve la dureza del binomio
+     negro + rojo que identificaba al ministerio. El navy pasa a ser
+     un apoyo, no el protagonista. */
+  --negro:#101215; --negro-2:#1A1D21; --negro-3:#272B30;
+  --navy:#101215; --navy-dk:#000000; --navy-lt:#272B30;
+  --azul:#16284A;
+  --rojo-lt:#EF3951;   /* rojo para texto sobre negro */
   --teal:#17788A; --teal-tx:#126273;
   --ambar:#E9A825; --ambar-tx:#95680F;
   --rojo:#C8102E; --rojo-dk:#9B0C23;
-  --linea:#E4E1DC; --papel:#FFFFFF; --papel-2:#FAF9F7;
-  --gris:#5F6B7A;
+  --linea:#E2E0DC; --papel:#FFFFFF; --papel-2:#FAF9F7;
+  --gris:#64696F;
   /* ---- compatibilidad con los nombres viejos ---- */
-  --night:#16284A; --dark:#1D3356; --slate:#24406F; --slate-lt:#2E4D80;
+  --night:#101215; --dark:#1A1D21; --slate:#272B30; --slate-lt:#33383E;
   --cream:#FFFFFF; --sand:#FAF9F7; --sand-border:#E4E1DC;
   --accent:#C8102E; --accent-lt:#E0263F; --accent-dk:#9B0C23;
-  --text-lt:#FFFFFF; --text-dk:#16284A;
+  --text-lt:#FFFFFF; --text-dk:#101215;
   --muted-lt:rgba(255,255,255,.72); --muted-dk:#5F6B7A;
   --arg:#95680F; --cuba:#17788A; --usa:#C8102E;
   --ease:cubic-bezier(.22,1,.36,1);
@@ -698,7 +704,7 @@ body.km-open{overflow:hidden;}
 .kmap-h{font-size:clamp(1.9rem,7vw,2.7rem);font-weight:800;color:var(--navy);
   letter-spacing:-.03em;line-height:1.04;}
 .kmap-r{width:80px;height:3px;background:var(--ac);margin-top:var(--e2);
-  transition:background .6s var(--ease);}
+  transition:background .45s var(--ease);}
 .kmap-p{font-size:16.5px;line-height:1.75;color:var(--gris);margin-top:var(--e3);max-width:58ch;}
 
 /* contenedor: dos columnas en escritorio, el mapa no manda sobre el texto */
@@ -710,18 +716,18 @@ body.km-open{overflow:hidden;}
   height:clamp(190px,34vw,250px);}
 .kmap-pane{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   opacity:0;transform:scale(.97);pointer-events:none;
-  transition:opacity .9s var(--ease),transform 1.2s var(--ease);}
+  transition:opacity .55s var(--ease),transform .8s var(--ease);}
 .kmap-pane.on{opacity:1;transform:none;pointer-events:auto;}
 .kmap-pane svg{width:100%;height:100%;display:block;}
-.kmap-pane svg path{transition:fill .7s var(--ease);}
+.kmap-pane svg path{transition:fill .5s var(--ease);}
 
 /* panel de texto que acompaña */
 .kmap-info{position:relative;min-height:122px;}
 .kmap-it{position:absolute;inset:0;opacity:0;transform:translateY(10px);
-  transition:opacity .6s var(--ease),transform .6s var(--ease);pointer-events:none;}
+  transition:opacity .42s var(--ease),transform .42s var(--ease);pointer-events:none;}
 .kmap-it.on{opacity:1;transform:none;pointer-events:auto;}
 .kmap-it b{display:block;font-size:clamp(1.5rem,5vw,2rem);font-weight:800;letter-spacing:-.03em;
-  line-height:1.05;color:var(--ac);transition:color .6s var(--ease);}
+  line-height:1.05;color:var(--ac);transition:color .45s var(--ease);}
 .kmap-it span{display:block;font-size:14.5px;line-height:1.65;color:var(--gris);margin-top:10px;max-width:38ch;}
 .kmap-it i{display:inline-block;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.2em;
   text-transform:uppercase;color:var(--navy);margin-bottom:10px;}
@@ -818,3 +824,42 @@ body.km-open{overflow:hidden;}
 .kh-bt:hover .l1{transform:translateX(4px);}
 .kh-bt:hover .l2{transform:translateX(-2px);}
 .kh-bt:hover .l3{transform:translateX(4px);}
+
+
+/* ==================================================================
+   EQUILIBRIO NEGRO + ROJO
+   Lo oscuro vuelve a ser negro carbón, no navy. El rojo recupera
+   contraste y el conjunto gana la dureza que tenía el sitio original,
+   conservando el blanco dominante y la tipografía nueva.
+   ================================================================== */
+.kh-mk{background:var(--negro);}
+.kh-nav a.on{border-bottom-color:var(--rojo);}
+.knl{background:var(--negro);}
+.kmap-go{background:var(--negro);}
+.kmap-go:hover{background:#000;}
+/* el hero: velo negro, no azul */
+.hero::after{background:linear-gradient(95deg,rgba(16,18,21,.92) 0%,rgba(16,18,21,.7) 48%,rgba(16,18,21,.22) 100%)!important;}
+.page-hero-ov,.pj-hero-img::after{background:linear-gradient(95deg,rgba(16,18,21,.9),rgba(16,18,21,.25))!important;}
+/* el rojo gana presencia en los acentos de seccion */
+.kmap{--ac:var(--rojo);}
+.rule,.sec-rule,.kmap-r{background:var(--rojo);}
+/* un hilo rojo arriba del encabezado: firma de marca */
+.kh::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rojo);}
+.kh{position:sticky;}
+/* el pie cierra en negro antes de la franja tricolor */
+.kf{background:var(--negro);color:rgba(255,255,255,.82);}
+.kf-row{color:#fff;border-bottom-color:rgba(255,255,255,.12);}
+.kf-row:hover{color:var(--rojo);}
+.kf-row svg{fill:rgba(255,255,255,.5);}
+.kf-soc a{border-color:rgba(255,255,255,.2);}
+.kf-soc a:hover{border-color:var(--rojo);}
+.kf-soc svg{fill:#fff;}
+.kf-soc a:hover svg{fill:var(--rojo);}
+.kf-links a{color:rgba(255,255,255,.6);}
+.kf-links a:hover{color:var(--rojo);}
+.kf-legal{color:rgba(255,255,255,.45);}
+
+/* el rojo sobre fondo oscuro usa la variante clara: #EF3951 cumple AA */
+.kf-row:hover,.kf-links a:hover,.kf-soc a:hover svg,
+.knl .kmap-r,.pj-dark .pj-ey,.ini-kicker{color:var(--rojo-lt);}
+.kf-soc a:hover{border-color:var(--rojo-lt);}
