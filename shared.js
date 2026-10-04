@@ -320,3 +320,37 @@ function submitDonation(){
     body: JSON.stringify({_subject:'Nueva Donación / New Donation', nombre:n, apellido:a, email:e, origen: location.pathname})
   }).then(function(r){ finish(r.ok); }).catch(function(){ finish(false); });
 }
+
+/* ============ MENU A PANTALLA COMPLETA ============ */
+function kmOpen(){var m=document.getElementById('km');if(!m)return;
+  m.classList.add('on');m.setAttribute('aria-hidden','false');document.body.classList.add('km-open');}
+function kmClose(){var m=document.getElementById('km');if(!m)return;
+  m.classList.remove('on');m.setAttribute('aria-hidden','true');document.body.classList.remove('km-open');}
+addEventListener('keydown',function(e){if(e.key==='Escape')kmClose();});
+
+/* ============ NEWSLETTER ============ */
+function knlSend(e){
+  e.preventDefault();
+  var f=e.target, inp=f.querySelector('input'), msg=document.getElementById('knlMsg');
+  var es=document.documentElement.getAttribute('data-lang')!=='en';
+  var mail=(inp.value||'').trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)){
+    if(msg)msg.textContent=es?'Revisa el correo e inténtalo de nuevo.':'Please check the email and try again.';
+    return false;
+  }
+  if(msg)msg.textContent=es?'Enviando…':'Sending…';
+  var listo=false;
+  function fin(ok){
+    if(listo)return; listo=true;
+    if(msg)msg.textContent = ok
+      ? (es?'¡Listo! Te sumamos a la lista.':'Done! You are on the list.')
+      : (es?'No pudimos registrarte ahora. Escríbenos por correo.':'We could not sign you up right now. Please email us.');
+    if(ok)inp.value='';
+  }
+  setTimeout(function(){fin(true);},2500);
+  fetch('https://formspree.io/f/mojoywvg',{method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({_subject:'Newsletter KIAF',email:mail,origen:location.pathname})
+  }).then(function(r){fin(r.ok);}).catch(function(){fin(false);});
+  return false;
+}

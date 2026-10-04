@@ -9,17 +9,17 @@
 <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png?v=2">
 <link rel="manifest" href="site.webmanifest?v=2">
 <meta name="theme-color" content="#0D0F11">
-<link rel="stylesheet" href="shared.css?v=3">
+<link rel="stylesheet" href="shared.css?v=4">
 <style>
 /* Historia Viva — interactive redesign */
 .hv-tabs{display:flex;gap:12px;margin-top:44px;}
 .hv-tab{flex:1;padding:18px 24px;border-radius:16px;background:var(--slate);border:1px solid rgba(248,244,237,.06);cursor:pointer;transition:all .4s var(--ease);display:flex;align-items:center;gap:14px;}
 .hv-tab:hover{border-color:rgba(204,34,34,.2);transform:translateY(-2px);}
 .hv-tab.on{background:var(--accent);border-color:var(--accent);transform:translateY(-2px);}
-.hv-tab-yr{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;color:var(--muted-lt);transition:color .3s;}
+.hv-tab-yr{font-family:'Figtree',system-ui,sans-serif;font-size:2rem;font-weight:800;color:var(--muted-lt);transition:color .3s;}
 .hv-tab.on .hv-tab-yr{color:#fff;}
 .hv-tab-info{flex:1;}
-.hv-tab-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted-lt);transition:color .3s;}
+.hv-tab-title{font-family:'Figtree',system-ui,sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted-lt);transition:color .3s;}
 .hv-tab.on .hv-tab-title{color:#fff;}
 .hv-tab-sub{font-size:11px;color:rgba(248,244,237,.3);margin-top:2px;transition:color .3s;}
 .hv-tab.on .hv-tab-sub{color:rgba(255,255,255,.7);}
@@ -30,13 +30,13 @@
 .hv-photo{border-radius:16px;overflow:hidden;position:relative;height:100%;}
 .hv-photo img{width:100%;height:100%;min-height:400px;object-fit:cover;}
 .hv-photo-bar{position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(to top,rgba(13,15,17,.9),transparent);border-radius:0 0 16px 16px;}
-.hv-photo-yr{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.7rem,3.4vw,2.2rem);font-weight:800;color:var(--text-lt);}
+.hv-photo-yr{font-family:'Figtree',system-ui,sans-serif;font-size:clamp(1.7rem,3.4vw,2.2rem);font-weight:800;color:var(--text-lt);}
 .hv-photo-sub{font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-top:2px;}
 .hv-right{display:flex;flex-direction:column;gap:16px;}
 .hv-counters{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .hv-counter{background:var(--slate);border:1px solid rgba(204,34,34,.08);border-radius:12px;padding:18px 16px;text-align:center;transition:border-color .3s,transform .3s;}
 .hv-counter:hover{border-color:rgba(204,34,34,.3);transform:translateY(-3px);}
-.hv-counter-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.7rem,3.4vw,2.2rem);font-weight:700;color:var(--accent);line-height:1;}
+.hv-counter-n{font-family:'Figtree',system-ui,sans-serif;font-size:clamp(1.7rem,3.4vw,2.2rem);font-weight:700;color:var(--accent);line-height:1;}
 .hv-counter-l{font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-lt);margin-top:6px;}
 .hv-tl{display:flex;flex-direction:column;gap:0;background:var(--slate);border-radius:12px;overflow:hidden;}
 .hv-tl-item{padding:14px 18px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid rgba(248,244,237,.04);transition:padding-left .3s,background .3s;cursor:default;}
@@ -137,11 +137,58 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div id="prog"></div>
 
 <!-- NAV -->
-<nav class="nav" id="nav"><a href="index.html" class="nav-logo">Kingdom in Action<span data-es>Misión Cuba</span><span data-en>Cuba Mission</span></a><ul class="nav-links"><li><a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a></li><li><a href="cuba.html">Cuba</a></li><li><a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a></li><li><a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a></li><li><a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a></li><li><a href="argentina.html">Argentina</a></li><li><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></li><li><a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a></li></ul><div class="nav-right"><div class="nav-lang"><button class="lang-btn" onclick="setLang('es')">ES</button><div class="lang-div"></div><button class="lang-btn" onclick="setLang('en')">EN</button></div><button class="burger" onclick="toggleNav()"><span></span><span></span><span></span></button></div></nav>
-<div class="nav-ov" id="navOv"><button class="nav-ov-x" onclick="toggleNav()">&#10005;</button><a href="index.html" onclick="toggleNav()" data-es>Inicio</a><a href="index.html" onclick="toggleNav()" data-en>Home</a><a href="vision.html" onclick="toggleNav()" data-es>Nuestra Visión</a><a href="vision.html" onclick="toggleNav()" data-en>Our Vision</a><a href="cuba.html" onclick="toggleNav()">Cuba</a><a href="cobertura.html" onclick="toggleNav()" data-es>Cobertura</a><a href="cobertura.html" onclick="toggleNav()" data-en>Covering</a><a href="proyectos.html" onclick="toggleNav()" data-es>Proyectos</a><a href="proyectos.html" onclick="toggleNav()" data-en>Projects</a><a href="eeuu.html" onclick="toggleNav()" data-es>Estados Unidos</a><a href="eeuu.html" onclick="toggleNav()" data-en>United States</a><a href="argentina.html" onclick="toggleNav()">Argentina</a><a href="eventos.html" onclick="toggleNav()" data-es>Eventos</a><a href="eventos.html" onclick="toggleNav()" data-en>Events</a></div>
+<header class="kh" id="kh">
+  <a class="kh-l" href="index.html">
+    <span class="kh-mk">K</span>
+    <span class="kh-nm">Kingdom<br>in Action<i>Family</i></span>
+  </a>
+  <nav class="kh-nav">
+    <a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a>
+    <a href="cuba.html" class="on">Cuba</a>
+    <a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a>
+    <a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a>
+    <a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a>
+    <a href="argentina.html">Argentina</a>
+    <a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a>
+  </nav>
+  <div class="kh-r">
+    <button class="kh-cta" onclick="openDonate()"><span data-es>Donar</span><span data-en>Give</span></button>
+    <div class="kh-lang"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <button class="kh-bt" onclick="kmOpen()" aria-label="Menú">
+      <svg viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <circle cx="20.5" cy="9" r="6" stroke="currentColor" stroke-width="2.4"/>
+        <path class="ln l1" d="M25 13.5 29 17.6"/><path class="ln l1" d="M2 9h10"/>
+        <path class="ln l2" d="M2 15.5h16"/><path class="ln l3" d="M2 22h20"/>
+      </svg>
+    </button>
+  </div>
+</header>
+<nav class="km" id="km" aria-hidden="true">
+  <div class="km-top">
+    <a class="km-l" href="index.html"><span class="kh-mk">K</span><span class="kh-nm">Kingdom<br>in Action<i>Family</i></span></a>
+    <button class="km-x" onclick="kmClose()" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <div class="km-list">
+    <a href="vision.html"><span data-es>Nuestra Visión</span><span data-en>Our Vision</span><em>+</em></a>
+    <a href="cuba.html"><span>Cuba</span><em>+</em></a>
+    <a href="cobertura.html"><span data-es>Cobertura</span><span data-en>Covering</span><em>+</em></a>
+    <a href="proyectos.html"><span data-es>Proyectos</span><span data-en>Projects</span><em>+</em></a>
+    <a href="eeuu.html"><span data-es>Estados Unidos</span><span data-en>United States</span></a>
+    <a href="argentina.html"><span>Argentina</span></a>
+    <a href="eventos.html"><span data-es>Eventos</span><span data-en>Events</span></a>
+  </div>
+  <div class="km-bot">
+    <button class="kbt kbt--rojo" onclick="kmClose();openDonate()"><span data-es>Donar ahora</span><span data-en>Give now</span></button>
+    <div class="km-proy">
+      <a href="pool-of-mercy.html" style="--ac:var(--teal)">Pool of Mercy</a>
+      <a href="solar-hope.html" style="--ac:var(--ambar-tx)">Solar Hope Network</a>
+      <a href="wagner.html" style="--ac:var(--rojo)">Wagner University Cuba</a>
+    </div>
+  </div>
+</nav>
 
 <!-- HERO -->
-<div class="page-hero cuba-hero" style="height:76vh;"><img fetchpriority="high" src="assets/img/cuba/web/hero-mujer.jpg" alt="Cuba" class="kb-zoom"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Cuba</div><div class="ey" data-en>Mission · Cuba</div><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>Reino en Acción en Cuba</h1><h1 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>Kingdom in Action in Cuba</h1></div></div>
+<div class="page-hero cuba-hero" style="height:76vh;"><img fetchpriority="high" src="assets/img/cuba/web/hero-mujer.jpg" alt="Cuba" class="kb-zoom"><div class="page-hero-ov"></div><div class="page-hero-cnt"><div class="ey" data-es>Misión · Cuba</div><div class="ey" data-en>Mission · Cuba</div><h1 style="font-family:'Figtree',system-ui,sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-es>Reino en Acción en Cuba</h1><h1 style="font-family:'Figtree',system-ui,sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:800;text-transform:uppercase;color:var(--text-lt);line-height:.95;" data-en>Kingdom in Action in Cuba</h1></div></div>
 
 <div class="cue"><span data-es>Desliza</span><span data-en>Keep scrolling</span><i></i></div>
 
@@ -172,7 +219,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="impact-card" style="border-radius:16px;"><div class="impact-bar"></div><div class="impact-num" data-anim="1440">0</div><div class="impact-lbl" data-es>Comidas orfanato</div><div class="impact-lbl" data-en>Orphanage meals</div></div>
 <div class="impact-card" style="border-radius:16px;"><div class="impact-bar"></div><div class="impact-num" data-anim="800">0</div><div class="impact-lbl" data-es>Hogares ancianos</div><div class="impact-lbl" data-en>Nursing homes</div></div>
 <div class="impact-card" style="border-radius:16px;"><div class="impact-num">&#8734;</div><div class="impact-lbl" data-es>Vidas tocadas</div><div class="impact-lbl" data-en>Lives touched</div></div>
-<div class="impact-total" style="border-radius:16px;"><div class="ey" style="justify-content:center;" data-es>Total Mensual</div><div class="ey" style="justify-content:center;" data-en>Monthly Total</div><div class="impact-num" data-anim="16000">0</div><p style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dk);margin-top:8px;" data-es>Comidas y Distribuciones Cada Mes</p><p style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dk);margin-top:8px;" data-en>Meals and Distributions Every Month</p></div>
+<div class="impact-total" style="border-radius:16px;"><div class="ey" style="justify-content:center;" data-es>Total Mensual</div><div class="ey" style="justify-content:center;" data-en>Monthly Total</div><div class="impact-num" data-anim="16000">0</div><p style="font-family:'Figtree',system-ui,sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dk);margin-top:8px;" data-es>Comidas y Distribuciones Cada Mes</p><p style="font-family:'Figtree',system-ui,sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dk);margin-top:8px;" data-en>Meals and Distributions Every Month</p></div>
 </div></div></div>
 
 <!-- ADULTOS MAYORES -->
@@ -243,7 +290,48 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="qband"><blockquote data-es>"De cierto les digo que en cuanto lo hicieron a uno de estos mis hermanos más pequeños, a mí lo hicieron."</blockquote><blockquote data-en>"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me."</blockquote><cite>Mateo 25:40</cite></div>
 
 <!-- FOOTER -->
-<footer class="footer"><img loading="lazy" decoding="async" src="assets/img/logo/kiaf-dark.jpg" alt="KIAF" class="f-logo-img"><div class="f-copy">© 2026 Josué Santiago · International Ministry</div><div class="f-links"><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a><a href="argentina.html">Argentina</a><a href="eeuu.html">EEUU</a><a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a></div></footer>
+<section class="knl">
+  <div class="kw">
+    <h2 class="knl-h" data-es>Recibe las historias antes que nadie.</h2>
+    <h2 class="knl-h" data-en>Get the stories before anyone else.</h2>
+    <p class="knl-p" data-es>Una vez al mes: lo que pasó en el campo, contado por quienes estuvieron ahí.</p>
+    <p class="knl-p" data-en>Once a month: what happened in the field, told by those who were there.</p>
+    <form class="knl-f" onsubmit="return knlSend(event)">
+      <input type="email" required placeholder="tu@correo.com" aria-label="Email">
+      <button type="submit"><span data-es>Suscribirme</span><span data-en>Subscribe</span></button>
+    </form>
+    <div class="knl-msg" id="knlMsg"></div>
+  </div>
+</section>
+
+<footer class="kf">
+  <div class="kw">
+    <div class="kf-soc"><a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3zm0 11A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3zm6.9-11.2a1.6 1.6 0 1 1-1.6-1.6 1.6 1.6 0 0 1 1.6 1.6z"/></svg></a><a href="https://www.facebook.com/Kingdominaction2017ntiago" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.8V5.1c-.5-.1-2.1-.2-4-.2-4 0-6.6 2.4-6.6 6.9v3H3.5v3.9h3.2V22h4v-3.3h3.2l.5-3.9h-3.7v-2.6c0-1.1.3-1.9 1.8-1.9z"/></svg></a><a href="https://www.youtube.com/@Pastorjosuesantiago" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a2.9 2.9 0 0 0-2-2.1C19.2 4.6 12 4.6 12 4.6s-7.2 0-9 .5a2.9 2.9 0 0 0-2 2.1A30 30 0 0 0 .5 12a30 30 0 0 0 .5 4.8 2.9 2.9 0 0 0 2 2.1c1.8.5 9 .5 9 .5s7.2 0 9-.5a2.9 2.9 0 0 0 2-2.1 30 30 0 0 0 .5-4.8 30 30 0 0 0-.5-4.8zM9.7 15.4V8.6l6 3.4z"/></svg></a><a href="https://wa.me/17409756112" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8.4 8.4 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6a2 2 0 0 0 .3-.5.6.6 0 0 0 0-.5c0-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.6 6 6 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c.7.3 1.3.5 1.7.6a4.2 4.2 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3zM12 2.2A9.7 9.7 0 0 0 3.6 16.8L2.2 21.8l5.2-1.4A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8 8 0 1 1 12 19.9z"/></svg></a></div>
+    <a class="kf-row" href="https://maps.google.com/?q=975+Mt+Vernon+Rd+Newark+OH+43055" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
+      975 Mt. Vernon Rd, Newark, OH 43055</a>
+    <a class="kf-row" href="mailto:kingdominactionministry@gmail.com">
+      <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm1.6 1.6L12 12.4l7.4-5.8z"/></svg>
+      kingdominactionministry@gmail.com</a>
+    <a class="kf-row" href="tel:+17409756112">
+      <svg viewBox="0 0 24 24"><path d="M6.6 3h3.1l1.6 4-2 1.3a12.6 12.6 0 0 0 5.4 5.4l1.3-2 4 1.6v3.1A2 2 0 0 1 18 18.4 15.6 15.6 0 0 1 5.6 6 2 2 0 0 1 6.6 3z"/></svg>
+      +1 (740) 975-6112</a>
+    <div class="kf-links">
+      <a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a>
+      <a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a>
+      <a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a>
+      <a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a>
+    </div>
+    <div class="kf-legal">Kingdom in Action Family · 501(c)(3) · © 2026 Josué Santiago
+      <span data-es>· El 100% va al campo misionero</span><span data-en>· 100% goes to the mission field</span></div>
+  </div>
+</footer>
+<div class="kiaf-franja">
+  <a class="f1" href="pool-of-mercy.html">Pool of Mercy</a>
+  <a class="f2" href="solar-hope.html">Solar Hope Network</a>
+  <a class="f3" href="wagner.html">Wagner University Cuba</a>
+</div>
+
 
 <!-- DONATE + LB -->
 <button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
@@ -280,7 +368,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent-lt);outline-
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="lb-x" onclick="closeLb()">&#10005;</button><button class="lb-p" onclick="lbNav(-1)">&#8249;</button><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><button class="lb-nx" onclick="lbNav(1)">&#8250;</button></div>
 
 <script>window.KIAF_INVITE={"id": "cuba", "img": "assets/img/cuba/web/hero-mujer.jpg", "badgeEs": "Cuba · Reino en Acción", "badgeEn": "Cuba · Kingdom in Action", "eyEs": "Cuba te necesita", "eyEn": "Cuba needs you", "titleEs": "120.000 libras de arroz<br>empezaron con una decisión", "titleEn": "120,000 pounds of rice<br>started with one decision", "textEs": "Alimentamos a 16.000 personas cada mes en 35 iglesias. No hay intermediarios: lo que das llega a la mesa de una familia cubana. El 100% va al campo misionero.", "textEn": "We feed 16,000 people each month across 35 churches. There are no middlemen: what you give reaches a Cuban family’s table. 100% goes to the mission field.", "actions": [{"action": "donate", "es": "Donar a Cuba", "en": "Give to Cuba"}, {"href": "proyectos.html", "es": "Ver los proyectos", "en": "See the projects", "ghost": true}]};</script>
-<script src="shared.js?v=3"></script>
+<script src="shared.js?v=4"></script>
 <script>
 (function(){
   var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
