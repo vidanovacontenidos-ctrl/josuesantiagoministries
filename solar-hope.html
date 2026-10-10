@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png?v=2">
 <link rel="manifest" href="site.webmanifest?v=2">
 <meta name="theme-color" content="#0D0F11">
-<link rel="stylesheet" href="shared.css?v=4">
+<link rel="stylesheet" href="shared.css?v=7">
 <style>
 
 :root{--white:#FFFFFF;--muted:#6B6560;--teal:#17788A;}
@@ -311,6 +311,11 @@ body{background:#FFFFFF;color:#101215;}
       <a href="pool-of-mercy.html" style="--ac:var(--teal)">Pool of Mercy</a>
       <a href="solar-hope.html" style="--ac:var(--ambar-tx)">Solar Hope Network</a>
       <a href="wagner.html" style="--ac:var(--rojo)">Wagner University Cuba</a>
+    </div>
+    <div class="km-proy">
+      <a href="colabora-pastor.html" style="--ac:var(--teal)"><span data-es>Apadrina un pastor</span><span data-en>Partner with a pastor</span></a>
+      <a href="colabora-kiaf.html" style="--ac:var(--rojo)"><span data-es>Hazte socio</span><span data-en>Become a partner</span></a>
+      <a href="cobertura-solicitud.html" style="--ac:var(--azul)"><span data-es>Solicitar cobertura</span><span data-en>Request covering</span></a>
     </div>
   </div>
 </nav>
@@ -671,6 +676,9 @@ body{background:#FFFFFF;color:#101215;}
       <a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a>
       <a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a>
       <a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a>
+      <a href="colabora-pastor.html" data-es>Apadrina un pastor</a><a href="colabora-pastor.html" data-en>Partner with a pastor</a>
+      <a href="colabora-kiaf.html" data-es>Hazte socio</a><a href="colabora-kiaf.html" data-en>Become a partner</a>
+      <a href="cobertura-solicitud.html" data-es>Solicitar cobertura</a><a href="cobertura-solicitud.html" data-en>Request covering</a>
     </div>
     <div class="kf-legal">Kingdom in Action Family · 501(c)(3) · © 2026 Josué Santiago
       <span data-es>· El 100% va al campo misionero</span><span data-en>· 100% goes to the mission field</span></div>
@@ -715,24 +723,6 @@ body{background:#FFFFFF;color:#101215;}
 <p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p>
 </div></div>
 <div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><span class="lb-x" onclick="closeLb()">&#10005;</span><span class="lb-p" onclick="lbNav(-1)">&#8249;</span><img loading="lazy" decoding="async" class="lb-img" id="lbImg" src="" alt=""><span class="lb-nx" onclick="lbNav(1)">&#8250;</span></div>
-
-<script>
-function setLang(l){document.documentElement.setAttribute('data-lang',l);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));try{localStorage.setItem('lang',l);}catch(e){}}
-function toggleNav(){document.getElementById('navOv').classList.toggle('open');}
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
-(function(){try{var l=localStorage.getItem('lang')||'es';setLang(l);}catch(e){setLang('es');}})();
-function openDonate(){document.getElementById('dmodal').classList.add('open');document.body.style.overflow='hidden';}
-function closeDonate(){document.getElementById('dmodal').classList.remove('open');document.body.style.overflow='';}
-
-setInterval(chNext,4500);
-let lbSet=[],lbI=0;
-function openLb(s,i){lbSet=s;lbI=i;document.getElementById('lbImg').src=lbSet[lbI];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
-function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
-function lbNav(d){lbI=(lbI+d+lbSet.length)%lbSet.length;document.getElementById('lbImg').src=lbSet[lbI];}
-document.addEventListener('keydown',e=>{if(document.getElementById('dmodal').classList.contains('open')&&e.key==='Escape')closeDonate();if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='Escape')closeLb();}});
-const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:.08});
-document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
-</script>
 
 <script>
 /* parche de inmersion: progreso, parallax compatible con iOS, reveals */
@@ -930,7 +920,7 @@ document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
 </script>
 
 <script>window.KIAF_INVITE={"id":"shn","img":"assets/img/iniciativas/shn/paneles.jpg","badgeEs":"Instalación en curso","badgeEn":"Installation in progress","eyEs":"Faros de Esperanza","eyEn":"Lighthouses of Hope","titleEs":"Con $75 una familia<br>deja de vivir a oscuras","titleEn":"With $75 one family<br>stops living in darkness","textEs":"Cada iglesia equipada atiende a 100 familias. La inversión es de $7.500 por iglesia, o $75 por familia, y el sistema sigue produciendo energía durante años.","textEn":"Each equipped church serves 100 families. The investment is $7,500 per church, or $75 per family, and the system keeps producing energy for years.","actions":[{"action":"donate","es":"Quiero colaborar","en":"I want to partner"},{"href":"assets/docs/solar-hope-network.pdf","es":"Descargar el proyecto","en":"Download the project","ghost":true}]};</script>
-<script src="shared.js?v=4"></script>
+<script src="shared.js?v=7"></script>
 <script>
 (function(){
   var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;

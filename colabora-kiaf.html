@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hazte Socio | Kingdom in Action Family</title>
+<meta name="description" content="Hazte socio de Kingdom in Action Family. Elige el área que quieres sostener: alimento, huérfanos, pastores, energía solar o formación de líderes.">
+<link rel="icon" href="assets/favicon/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png?v=2">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png?v=2">
+<link rel="manifest" href="site.webmanifest?v=2">
+<meta name="theme-color" content="#0D0F11">
+<link rel="stylesheet" href="shared.css?v=7">
+<style>
+/* ===== colabora-kiaf.html ===== */
+.kfm-page{--ac:var(--rojo);--ac-soft:rgba(200,16,46,.14);--ac-tint:#FDF3F5;}
+.ph{position:relative;height:clamp(300px,42vh,400px);overflow:hidden;margin-top:var(--nav-h);background:var(--negro);}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:50% 24%;filter:saturate(.82) contrast(1.04);}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(16,18,21,.94)0%,rgba(16,18,21,.6)46%,rgba(16,18,21,.3)100%);}
+.ph-cnt{position:absolute;left:0;right:0;bottom:0;max-width:980px;margin:0 auto;
+  padding:0 clamp(20px,5vw,48px) clamp(26px,5vw,40px);}
+.ph-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:700;
+  letter-spacing:.5em;text-transform:uppercase;color:#fff;margin-bottom:12px;}
+.ph-ey::before{content:'';width:22px;height:2px;background:var(--ac);flex-shrink:0;}
+.ph-h{font-family:'Figtree',system-ui,sans-serif;font-size:clamp(2rem,5.6vw,3.4rem);
+  font-weight:800;letter-spacing:-.025em;line-height:1.02;color:#fff;}
+.ph-s{font-size:clamp(15px,2.2vw,18px);line-height:1.6;color:rgba(255,255,255,.82);
+  margin-top:12px;max-width:52ch;}
+
+/* ===== CORRECCION DE COLOR (cierre) =====
+   Va al final de la hoja local para ganarle a cualquier regla heredada
+   del tema oscuro original. */
+body{background:#FFFFFF;color:#101215;}
+.stitle{color:#101215;}
+.slead{color:#64696F;}
+.ey{color:#C8102E;}
+.on-dark .stitle,.knl .stitle,.page-hero-cnt .stitle,.qband .stitle{color:#FFFFFF;}
+.on-dark .slead,.knl .slead,.page-hero-cnt .slead{color:rgba(255,255,255,.74);}
+.page-hero-cnt .ey,.knl .ey{color:#EF3951;}
+.page-hero-cnt h1,.page-hero-cnt .ph-h{color:#FFFFFF;}
+</style>
+</head>
+<body class="kfm-page">
+<header class="kh" id="kh">
+  <a class="kh-l" href="index.html">
+    <span class="kh-mk">K</span>
+    <span class="kh-nm">Kingdom<br>in Action<i>Family</i></span>
+  </a>
+  <nav class="kh-nav">
+    <a href="vision.html" data-es>Nuestra Visión</a><a href="vision.html" data-en>Our Vision</a>
+    <a href="cuba.html">Cuba</a>
+    <a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a>
+    <a href="proyectos.html" class="on" data-es>Proyectos</a><a href="proyectos.html" class="on" data-en>Projects</a>
+    <a href="eeuu.html" data-es>Estados Unidos</a><a href="eeuu.html" data-en>United States</a>
+    <a href="argentina.html">Argentina</a>
+    <a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a>
+  </nav>
+  <div class="kh-r">
+    <button class="kh-cta" onclick="openDonate()"><span data-es>Donar</span><span data-en>Give</span></button>
+    <div class="kh-lang"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button></div>
+    <button class="kh-bt" onclick="kmOpen()" aria-label="Menú">
+      <svg viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path class="ln l1" d="M3 8h24"/>
+        <path class="ln l2" d="M3 15h24"/>
+        <path class="ln l3" d="M3 22h24"/>
+      </svg>
+    </button>
+  </div>
+</header>
+<nav class="km" id="km" aria-hidden="true">
+  <div class="km-top">
+    <a class="km-l" href="index.html"><span class="kh-mk">K</span><span class="kh-nm">Kingdom<br>in Action<i>Family</i></span></a>
+    <button class="km-x" onclick="kmClose()" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  </div>
+  <div class="km-list">
+    <a href="vision.html"><span data-es>Nuestra Visión</span><span data-en>Our Vision</span><em>+</em></a>
+    <a href="cuba.html"><span>Cuba</span><em>+</em></a>
+    <a href="cobertura.html"><span data-es>Cobertura</span><span data-en>Covering</span><em>+</em></a>
+    <a href="proyectos.html" class="on"><span data-es>Proyectos</span><span data-en>Projects</span><em>+</em></a>
+    <a href="eeuu.html"><span data-es>Estados Unidos</span><span data-en>United States</span></a>
+    <a href="argentina.html"><span>Argentina</span></a>
+    <a href="eventos.html"><span data-es>Eventos</span><span data-en>Events</span></a>
+  </div>
+  <div class="km-bot">
+    <button class="kbt kbt--rojo" onclick="kmClose();openDonate()"><span data-es>Donar ahora</span><span data-en>Give now</span></button>
+    <div class="km-proy">
+      <a href="pool-of-mercy.html" style="--ac:var(--teal)">Pool of Mercy</a>
+      <a href="solar-hope.html" style="--ac:var(--ambar-tx)">Solar Hope Network</a>
+      <a href="wagner.html" style="--ac:var(--rojo)">Wagner University Cuba</a>
+    </div>
+    <div class="km-proy">
+      <a href="colabora-pastor.html" style="--ac:var(--teal)"><span data-es>Apadrina un pastor</span><span data-en>Partner with a pastor</span></a>
+      <a href="colabora-kiaf.html" style="--ac:var(--rojo)"><span data-es>Hazte socio</span><span data-en>Become a partner</span></a>
+      <a href="cobertura-solicitud.html" style="--ac:var(--azul)"><span data-es>Solicitar cobertura</span><span data-en>Request covering</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="ph">
+  <img fetchpriority="high" src="assets/img/iniciativas/pom/entrega.jpg" alt="Entrega de alimento a una familia">
+  <div class="ph-ov"></div>
+  <div class="ph-cnt">
+    <div class="ph-ey" data-es>Colaboración · KIAF</div><div class="ph-ey" data-en>Partnership · KIAF</div>
+    <h1 class="ph-h" data-es>Hazte Socio</h1><h1 class="ph-h" data-en>Become a Partner</h1>
+    <p class="ph-s" data-es>Elige el área que te mueve. Nosotros te contamos qué pasó con lo que diste.</p><p class="ph-s" data-en>Choose the area that moves you. We will tell you what happened with what you gave.</p>
+  </div>
+</div>
+
+<main class="kfm-wrap">
+<div class="kfm-note"><p><span data-es><strong>Ser socio</strong> no es firmar un contrato: es decidir que esto también es tuyo. Eliges el área que te mueve y nosotros te contamos, con nombre y foto, qué pasó con lo que diste.</span><span data-en><strong>Becoming a partner</strong> is not signing a contract: it is deciding that this is yours too. You choose the area that moves you and we tell you, with names and photos, what happened with what you gave.</span></p><p><span data-es>El 100% va al campo misionero. Somos una 501(c)(3), así que tu aporte es deducible de impuestos en los Estados Unidos.</span><span data-en>100% goes to the mission field. We are a 501(c)(3), so your contribution is tax-deductible in the United States.</span></p></div><form id="fKiaf" data-kfm data-kfm-ok="okKiaf" data-kfm-name="Hazte Socio de KIAF / Become a KIAF Partner" data-kfm-tipo="socio" data-kfm-subject="Hazte Socio de KIAF" novalidate onsubmit="return kfmSend(event)"><fieldset class="kfm-fs"><div class="kfm-fs-hd"><span class="kfm-fs-n">1</span><legend class="kfm-fs-h"><span data-es>Tus datos</span><span data-en>Your details</span></legend></div><div class="kfm-grid"><div class="kfm-f"><span class="kfm-l"><span data-es>Nombre</span><span data-en>First name</span><span class="kfm-req">*</span></span><input type="text" name="Nombre" required autocomplete="given-name"><span class="kfm-f-err"></span></div><div class="kfm-f"><span class="kfm-l"><span data-es>Apellido</span><span data-en>Last name</span><span class="kfm-req">*</span></span><input type="text" name="Apellido" required autocomplete="family-name"><span class="kfm-f-err"></span></div><div class="kfm-f"><span class="kfm-l"><span data-es>Correo electrónico</span><span data-en>Email address</span><span class="kfm-req">*</span></span><input type="email" name="Email" required autocomplete="email"><span class="kfm-f-err"></span></div><div class="kfm-f"><span class="kfm-l"><span data-es>Teléfono</span><span data-en>Phone number</span><span class="kfm-req">*</span></span><input type="tel" name="Telefono" required placeholder="(000) 000-0000" autocomplete="tel"><span class="kfm-f-err"></span></div></div></fieldset><fieldset class="kfm-fs"><div class="kfm-fs-hd"><span class="kfm-fs-n">2</span><legend class="kfm-fs-h"><span data-es>Tu dirección</span><span data-en>Your address</span></legend></div><p class="kfm-fs-d"><span data-es>La usamos para enviarte el recibo de donación deducible de impuestos.</span><span data-en>We use it to send you your tax-deductible giving receipt.</span></p><div class="kfm-grid"><div class="kfm-f kfm-f--full"><span class="kfm-l"><span data-es>Calle y número</span><span data-en>Street address</span></span><input type="text" name="Calle" autocomplete="address-line1"><span class="kfm-f-err"></span></div><div class="kfm-f kfm-f--full"><span class="kfm-l"><span data-es>Piso, depto. (opcional)</span><span data-en>Address line 2 (optional)</span></span><input type="text" name="Calle2" autocomplete="address-line2"><span class="kfm-f-err"></span></div><div class="kfm-f"><span class="kfm-l"><span data-es>Ciudad</span><span data-en>City</span></span><input type="text" name="Ciudad" autocomplete="address-level2"><span class="kfm-f-err"></span></div><div class="kfm-f"><span class="kfm-l"><span data-es>Estado o provincia</span><span data-en>State / Province</span></span><input type="text" name="Estado" autocomplete="address-level1"><span class="kfm-f-err"></span></div><div class="kfm-f"><span class="kfm-l"><span data-es>Código postal</span><span data-en>Postal / Zip code</span></span><input type="text" name="CP" autocomplete="postal-code"><span class="kfm-f-err"></span></div><div class="kfm-f"><span class="kfm-l"><span data-es>País</span><span data-en>Country</span></span><select name="Pais" autocomplete="country-name"><option value="">—</option><option value="United States">United States</option><option value="Argentina">Argentina</option><option value="Cuba">Cuba</option><option disabled>──────────</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Antigua and Barbuda">Antigua and Barbuda</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option><option value="Botswana">Botswana</option><option value="Brazil">Brazil</option><option value="Brunei">Brunei</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cabo Verde">Cabo Verde</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Central African Republic">Central African Republic</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo">Congo</option><option value="Costa Rica">Costa Rica</option><option value="Cote d'Ivoire">Cote d'Ivoire</option><option value="Croatia">Croatia</option><option value="Cyprus">Cyprus</option><option value="Czechia">Czechia</option><option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Equatorial Guinea">Equatorial Guinea</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Eswatini">Eswatini</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guinea-Bissau">Guinea-Bissau</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kiribati">Kiribati</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libya">Libya</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Marshall Islands">Marshall Islands</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Micronesia">Micronesia</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Montenegro">Montenegro</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nauru">Nauru</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="North Macedonia">North Macedonia</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palau">Palau</option><option value="Palestine">Palestine</option><option value="Panama">Panama</option><option value="Papua New Guinea">Papua New Guinea</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Rwanda">Rwanda</option><option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option><option value="Saint Lucia">Saint Lucia</option><option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option><option value="Samoa">Samoa</option><option value="San Marino">San Marino</option><option value="Sao Tome and Principe">Sao Tome and Principe</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="Seychelles">Seychelles</option><option value="Sierra Leone">Sierra Leone</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Solomon Islands">Solomon Islands</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="South Sudan">South Sudan</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sudan">Sudan</option><option value="Suriname">Suriname</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Timor-Leste">Timor-Leste</option><option value="Togo">Togo</option><option value="Tonga">Tonga</option><option value="Trinidad and Tobago">Trinidad and Tobago</option><option value="Tunisia">Tunisia</option><option value="Turkiye">Turkiye</option><option value="Turkmenistan">Turkmenistan</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Vanuatu">Vanuatu</option><option value="Vatican City">Vatican City</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option><option value="Other">Other</option></select><span class="kfm-f-err"></span></div></div></fieldset><fieldset class="kfm-fs"><div class="kfm-fs-hd"><span class="kfm-fs-n">3</span><legend class="kfm-fs-h"><span data-es>¿Qué te mueve?</span><span data-en>What moves you?</span></legend></div><p class="kfm-fs-d"><span data-es>Marca lo que más te interesa. Eso nos dice dónde poner tu aporte y qué historias contarte después.</span><span data-en>Tick what matters most to you. That tells us where to put your contribution and which stories to send you afterwards.</span></p><div class="kfm-grid"><div class="kfm-f kfm-f--full"><span class="kfm-l"><span data-es>Áreas de KIAF con las que te gustaría colaborar</span><span data-en>Areas of KIAF you would like to partner with</span><span class="kfm-req">*</span></span><div class="kfm-ops kfm-ops--2" data-kfm-min="1"><label class="kfm-op"><input type="checkbox" name="Areas" value="Pool of Mercy" data-label="Pool of Mercy"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Pool of Mercy</span><span data-en>Pool of Mercy</span></span><span class="kfm-op-d"><span data-es>Alimento y ayuda directa a familias.</span><span data-en>Food and direct aid to families.</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Solar Hope Network" data-label="Solar Hope Network"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Solar Hope Network</span><span data-en>Solar Hope Network</span></span><span class="kfm-op-d"><span data-es>Energía solar para iglesias y centros comunitarios.</span><span data-en>Solar power for churches and community centers.</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Wagner University Cuba" data-label="Wagner University Cuba"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Wagner University Cuba</span><span data-en>Wagner University Cuba</span></span><span class="kfm-op-d"><span data-es>Formación teológica y liderazgo en Cuba.</span><span data-en>Theological and leadership training in Cuba.</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Feeding Centers" data-label="Feeding Centers"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Centros de alimentación</span><span data-en>Feeding centers</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Orphans" data-label="Orphans"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Huérfanos</span><span data-en>Orphans</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Recovery Services" data-label="Recovery Services"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Servicios de recuperación</span><span data-en>Recovery services</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Leadership Training & Development" data-label="Leadership Training & Development"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Formación y desarrollo de líderes</span><span data-en>Leadership training & development</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Pastors & Churches" data-label="Pastors & Churches"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Pastores e iglesias</span><span data-en>Pastors & churches</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Missions / Ministry Trips" data-label="Missions / Ministry Trips"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Viajes misioneros</span><span data-en>Missions / ministry trips</span></span></span></label><label class="kfm-op"><input type="checkbox" name="Areas" value="Other" data-label="Other"><span class="kfm-op-bx"></span><span class="kfm-op-tx"><span class="kfm-op-t"><span data-es>Otra área</span><span data-en>Other</span></span></span></label></div><span class="kfm-hint"><span data-es>Puedes marcar todas las que quieras.</span><span data-en>You can tick as many as you like.</span></span><span class="kfm-f-err"></span></div><div class="kfm-f kfm-f--full kfm-cond" data-kfm-cond="Areas=Other"><span class="kfm-l"><span data-es>Si marcaste “Otra área”, cuéntanos cuál</span><span data-en>If you chose “Other”, let us know</span></span><textarea name="Otra"></textarea><span class="kfm-f-err"></span></div></div></fieldset><div class="kfm-f kfm-hp"><label>Should be empty<input type="text" class="kfm-hp-in" name="_gotcha" tabindex="-1" autocomplete="off"></label></div><div class="kfm-foot"><button type="submit" class="kfm-send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg><span data-es>Quiero ser socio</span><span data-en>Become a partner</span></button><p class="kfm-msg"></p><div class="kfm-rescate"><button type="button" data-kfm-copiar><span data-es>Copiar mis respuestas</span><span data-en>Copy my answers</span></button><a href="mailto:kingdominactionministry@gmail.com"><span data-es>Escribir un correo</span><span data-en>Send an email</span></a></div><p class="kfm-small"><span data-es>Tus datos llegan directamente al equipo de Kingdom in Action Family. No los compartimos con nadie más y solo los usamos para responderte.</span><span data-en>Your details go straight to the Kingdom in Action Family team. We do not share them with anyone else and use them only to reply to you.</span></p></div></form><div class="kfm-ok" id="okKiaf"><div class="kfm-ok-ic"><svg viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 7"/></svg></div><h2 class="kfm-ok-h"><span data-es>¡Bienvenido a la familia!</span><span data-en>Welcome to the family!</span></h2><p class="kfm-ok-p"><span data-es>Te escribiremos pronto con los próximos pasos y las formas de aportar. Si quieres empezar ahora mismo, puedes hacerlo por PayPal.</span><span data-en>We will write to you soon with the next steps and the ways to contribute. If you want to start right now, you can do it through PayPal.</span></p><div class="kfm-ok-acts"><a class="kbt kbt--rojo" href="index.html"><span data-es>Volver al inicio</span><span data-en>Back to home</span></a><a class="kbt" href="proyectos.html"><span data-es>Ver los proyectos</span><span data-en>See the projects</span></a></div></div><div class="kfm-cross" style="--ac2:var(--teal-tx)"><div class="kfm-cross-h"><span data-es>Otras formas de colaborar</span><span data-en>Other ways to partner</span></div><div class="kfm-cross-g"><a href="colabora-pastor.html"><div class="kfm-cross-t"><span data-es>Apadrina a un pastor</span><span data-en>Partner with a pastor</span></div><div class="kfm-cross-d"><span data-es>Sostén mes a mes a un pastor concreto en Cuba.</span><span data-en>Sustain one specific pastor in Cuba, month after month.</span></div></a><a href="cobertura-solicitud.html"><div class="kfm-cross-t"><span data-es>Pedir cobertura apostólica</span><span data-en>Request apostolic covering</span></div><div class="kfm-cross-d"><span data-es>Para pastores y ministerios que buscan relación y respaldo.</span><span data-en>For pastors and ministries seeking relationship and support.</span></div></a></div></div>
+</main>
+
+<section class="knl">
+  <div class="kw">
+    <h2 class="knl-h" data-es>Recibe las historias antes que nadie.</h2>
+    <h2 class="knl-h" data-en>Get the stories before anyone else.</h2>
+    <p class="knl-p" data-es>Una vez al mes: lo que pasó en el campo, contado por quienes estuvieron ahí.</p>
+    <p class="knl-p" data-en>Once a month: what happened in the field, told by those who were there.</p>
+    <form class="knl-f" onsubmit="return knlSend(event)">
+      <input type="email" required placeholder="tu@correo.com" aria-label="Email">
+      <button type="submit"><span data-es>Suscribirme</span><span data-en>Subscribe</span></button>
+    </form>
+    <div class="knl-msg" id="knlMsg"></div>
+  </div>
+</section>
+
+<footer class="kf">
+  <div class="kw">
+    <div class="kf-soc"><a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3zm0 11A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3zm6.9-11.2a1.6 1.6 0 1 1-1.6-1.6 1.6 1.6 0 0 1 1.6 1.6z"/></svg></a><a href="https://www.facebook.com/Kingdominaction2017ntiago" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.8V5.1c-.5-.1-2.1-.2-4-.2-4 0-6.6 2.4-6.6 6.9v3H3.5v3.9h3.2V22h4v-3.3h3.2l.5-3.9h-3.7v-2.6c0-1.1.3-1.9 1.8-1.9z"/></svg></a><a href="https://www.youtube.com/@Pastorjosuesantiago" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a2.9 2.9 0 0 0-2-2.1C19.2 4.6 12 4.6 12 4.6s-7.2 0-9 .5a2.9 2.9 0 0 0-2 2.1A30 30 0 0 0 .5 12a30 30 0 0 0 .5 4.8 2.9 2.9 0 0 0 2 2.1c1.8.5 9 .5 9 .5s7.2 0 9-.5a2.9 2.9 0 0 0 2-2.1 30 30 0 0 0 .5-4.8 30 30 0 0 0-.5-4.8zM9.7 15.4V8.6l6 3.4z"/></svg></a><a href="https://wa.me/17409756112" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8.4 8.4 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6a2 2 0 0 0 .3-.5.6.6 0 0 0 0-.5c0-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.6 6 6 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c.7.3 1.3.5 1.7.6a4.2 4.2 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3zM12 2.2A9.7 9.7 0 0 0 3.6 16.8L2.2 21.8l5.2-1.4A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-3-.2-.3A8 8 0 1 1 12 19.9z"/></svg></a></div>
+    <a class="kf-row" href="https://maps.google.com/?q=975+Mt+Vernon+Rd+Newark+OH+43055" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
+      975 Mt. Vernon Rd, Newark, OH 43055</a>
+    <a class="kf-row" href="mailto:kingdominactionministry@gmail.com">
+      <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm1.6 1.6L12 12.4l7.4-5.8z"/></svg>
+      kingdominactionministry@gmail.com</a>
+    <a class="kf-row" href="tel:+17409756112">
+      <svg viewBox="0 0 24 24"><path d="M6.6 3h3.1l1.6 4-2 1.3a12.6 12.6 0 0 0 5.4 5.4l1.3-2 4 1.6v3.1A2 2 0 0 1 18 18.4 15.6 15.6 0 0 1 5.6 6 2 2 0 0 1 6.6 3z"/></svg>
+      +1 (740) 975-6112</a>
+    <div class="kf-links">
+      <a href="proyectos.html" data-es>Proyectos</a><a href="proyectos.html" data-en>Projects</a>
+      <a href="eventos.html" data-es>Eventos</a><a href="eventos.html" data-en>Events</a>
+      <a href="cobertura.html" data-es>Cobertura</a><a href="cobertura.html" data-en>Covering</a>
+      <a href="index.html#contacto" data-es>Contacto</a><a href="index.html#contacto" data-en>Contact</a>
+      <a href="colabora-pastor.html" data-es>Apadrina un pastor</a><a href="colabora-pastor.html" data-en>Partner with a pastor</a>
+      <a href="colabora-kiaf.html" data-es>Hazte socio</a><a href="colabora-kiaf.html" data-en>Become a partner</a>
+      <a href="cobertura-solicitud.html" data-es>Solicitar cobertura</a><a href="cobertura-solicitud.html" data-en>Request covering</a>
+    </div>
+    <div class="kf-legal">Kingdom in Action Family · 501(c)(3) · © 2026 Josué Santiago
+      <span data-es>· El 100% va al campo misionero</span><span data-en>· 100% goes to the mission field</span></div>
+  </div>
+</footer>
+<div class="kiaf-franja">
+  <a class="f1" href="pool-of-mercy.html">Pool of Mercy</a>
+  <a class="f2" href="solar-hope.html">Solar Hope Network</a>
+  <a class="f3" href="wagner.html">Wagner University Cuba</a>
+</div>
+
+<button class="donate-float" onclick="openDonate()"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span data-es>Donar</span><span data-en>Give</span></button>
+<div class="dmodal-bg" id="dmodal" onclick="if(event.target===this)closeDonate()"><div class="dmodal">
+<button class="dmodal-x" onclick="closeDonate()">&#10005;</button>
+<h2 data-es>Cómo Donar</h2><h2 data-en>How to Give</h2>
+<p class="dmodal-sub" data-es>Tu donación sostiene misiones, pastores, huérfanos y comunidades en 3 naciones.</p>
+<p class="dmodal-sub" data-en>Your donation supports missions, pastors, orphans and communities in 3 nations.</p>
+
+<div class="dpay">
+  <div class="dpay-k" data-es>Donar con tarjeta o PayPal</div>
+  <div class="dpay-k" data-en>Give with card or PayPal</div>
+  <p class="dpay-help" data-es>Déjanos tus datos y te llevamos a PayPal. Si prefieres, puedes ir directo.</p>
+  <p class="dpay-help" data-en>Leave your details and we will take you to PayPal. If you prefer, you can go straight there.</p>
+  <div class="dpay-form">
+    <input type="text" id="dnNombre" placeholder="Nombre / First name" autocomplete="given-name">
+    <input type="text" id="dnApellido" placeholder="Apellido / Last name" autocomplete="family-name">
+    <input type="email" id="dnEmail" placeholder="Email" autocomplete="email">
+  </div>
+  <button class="dpay-btn" onclick="submitDonation()">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.6 21.3H4.1a.7.7 0 0 1-.7-.8L6.2 3.4a.9.9 0 0 1 .9-.7h6.4c3.5 0 5.6 1.7 5.1 5-.5 3.6-3.1 5.3-6.6 5.3H9.7a.9.9 0 0 0-.9.7l-.8 6.8a.5.5 0 0 1-.4.8z"/><path opacity=".55" d="M19.4 8.1c.6 2.9-1.5 5.6-5.4 5.6h-1.9a.9.9 0 0 0-.9.8l-.9 6.1a.7.7 0 0 0 .7.8h2.9a.8.8 0 0 0 .8-.7l.6-4.2a.8.8 0 0 1 .8-.7h1c3.1 0 5.4-1.5 5.9-4.7.3-1.7-.3-2.8-1.6-3z"/></svg>
+    <span data-es>Ir a PayPal</span><span data-en>Go to PayPal</span>
+  </button>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-es>Ir directo a PayPal, sin dejar datos</a>
+  <a class="dpay-direct" href="https://www.paypal.com/donate/?hosted_button_id=JABA38NT3X6KW" target="_blank" rel="noopener" data-en>Go straight to PayPal, without leaving details</a>
+  <div class="dpay-msg" id="dnMsg"></div>
+</div>
+
+<div class="dblock"><div class="dblock-label">Zelle / USA</div><div class="dblock-val">Kingdominactionministry@gmail.com</div></div>
+<div class="dblock"><div class="dblock-label" data-es>Transferencia / Otros medios</div><div class="dblock-label" data-en>Wire / Other methods</div><div class="dblock-val" data-es>Escríbenos y te damos las instrucciones.</div><div class="dblock-val" data-en>Write to us and we will send instructions.</div><div class="dblock-note"><a href="mailto:Kingdominactionministry@gmail.com" style="color:var(--accent)">Kingdominactionministry@gmail.com</a></div></div>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-es>100% va al campo misionero.</p>
+<p style="font-size:12px;color:var(--muted-lt);margin-top:14px;" data-en>100% goes to the mission field.</p>
+</div></div>
+
+<script src="shared.js?v=7"></script>
+</body>
+</html>

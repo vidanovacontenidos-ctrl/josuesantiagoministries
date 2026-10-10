@@ -314,11 +314,20 @@ function submitDonation(){
   /* si Formspree tarda, no hacemos esperar al donante */
   setTimeout(function(){ finish(true); }, 2500);
 
-  fetch('https://formspree.io/f/mojoywvg', {
+  function aFormspree(){
+    fetch('https://formspree.io/f/mojoywvg', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({_subject:'Nueva Donación / New Donation', nombre:n, apellido:a, email:e, origen: location.pathname})
+    }).then(function(r){ finish(r.ok); }).catch(function(){ finish(false); });
+  }
+  fetch('/api/form', {
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body: JSON.stringify({_subject:'Nueva Donación / New Donation', nombre:n, apellido:a, email:e, origen: location.pathname})
-  }).then(function(r){ finish(r.ok); }).catch(function(){ finish(false); });
+    body: JSON.stringify({_form:'donacion', _email:e, _origen:location.pathname,
+      'Nombre':n, 'Apellido':a, 'Correo electrónico':e})
+  }).then(function(r){ if(r.ok){ finish(true); } else { aFormspree(); } })
+    .catch(function(){ aFormspree(); });
 }
 
 /* ============ MENU A PANTALLA COMPLETA ============ */
@@ -348,9 +357,398 @@ function knlSend(e){
     if(ok)inp.value='';
   }
   setTimeout(function(){fin(true);},2500);
-  fetch('https://formspree.io/f/mojoywvg',{method:'POST',
+  function aFormspree(){
+    fetch('https://formspree.io/f/mojoywvg',{method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:'Newsletter KIAF',email:mail,origen:location.pathname})
+    }).then(function(r){fin(r.ok);}).catch(function(){fin(false);});
+  }
+  fetch('/api/form',{method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({_subject:'Newsletter KIAF',email:mail,origen:location.pathname})
-  }).then(function(r){fin(r.ok);}).catch(function(){fin(false);});
+    body:JSON.stringify({_form:'newsletter',_email:mail,_origen:location.pathname,
+      'Correo electrónico':mail})
+  }).then(function(r){ if(r.ok){fin(true);} else {aFormspree();} })
+    .catch(function(){aFormspree();});
   return false;
 }
+
+/* =================================================================
+   FORMULARIOS NATIVOS KIAF  ·  kfmSend()
+   -----------------------------------------------------------------
+   Valida en el navegador, marca los campos que faltan y envía a
+   Formspree. Igual que la donación, nunca deja al visitante
+   esperando: a los 2,5 s se confirma aunque la red no responda.
+   ================================================================= */
+(function(){
+  var ENDPOINT = 'https://formspree.io/f/mojoywvg';
+
+  function es(){ return document.documentElement.getAttribute('data-lang') !== 'en'; }
+
+  function etiqueta(campo){
+    var l = campo.querySelector('.kfm-l');
+    if(!l) return '';
+    var sp = l.querySelector(es() ? '[data-es]' : '[data-en]');
+    var t = (sp ? sp.textContent : l.textContent) || '';
+    return t.replace(/\*/g,'').trim();
+  }
+
+  /* --- opciones: pinta la tarjeta elegida (respaldo de :has) --- */
+  function pintarOpciones(form){
+    form.querySelectorAll('.kfm-op>input').forEach(function(inp){
+      var op = inp.closest('.kfm-op');
+      if(!op) return;
+      if(inp.type === 'radio' && inp.name){
+        form.querySelectorAll('.kfm-op>input[name="'+inp.name+'"]').forEach(function(o){
+          var c = o.closest('.kfm-op'); if(c) c.classList.toggle('on', o.checked);
+        });
+      } else {
+        op.classList.toggle('on', inp.checked);
+      }
+    });
+  }
+
+  /* --- campos que aparecen según la respuesta anterior --- */
+  function aplicarCondiciones(form){
+    form.querySelectorAll('[data-kfm-cond]').forEach(function(bloque){
+      var regla = bloque.getAttribute('data-kfm-cond').split('=');
+      var nombre = regla[0], valor = (regla[1] || '').trim();
+      var activo = false;
+      form.querySelectorAll('[name="'+nombre+'"]').forEach(function(c){
+        if(c.type === 'radio' || c.type === 'checkbox'){
+          if(c.checked && (!valor || c.value === valor)) activo = true;
+        } else if(c.value && (!valor || c.value === valor)) activo = true;
+      });
+      bloque.classList.toggle('on', activo);
+      bloque.querySelectorAll('input,select,textarea').forEach(function(c){ c.disabled = !activo; });
+    });
+  }
+
+  function limpiar(form){
+    form.querySelectorAll('.kfm-f.bad').forEach(function(f){ f.classList.remove('bad'); });
+  }
+
+  function marcar(campo, texto){
+    campo.classList.add('bad');
+    var e = campo.querySelector('.kfm-f-err');
+    if(e) e.textContent = texto;
+  }
+
+  /* --- validación --- */
+  function validar(form){
+    limpiar(form);
+    var falta = [], primero = null, idi = es();
+    var txtFalta = idi ? 'Este dato es necesario.' : 'This field is required.';
+    var txtMail  = idi ? 'Revisa la dirección de correo.' : 'Please check the email address.';
+
+    form.querySelectorAll('.kfm-f').forEach(function(campo){
+      if(campo.classList.contains('kfm-cond') && !campo.classList.contains('on')) return;
+      var req = campo.querySelectorAll('[required]');
+      if(!req.length) return;
+      req.forEach(function(c){
+        if(c.disabled) return;
+        var vacio;
+        if(c.type === 'checkbox' || c.type === 'radio'){
+          vacio = !form.querySelector('[name="'+c.name+'"]:checked');
+        } else {
+          vacio = !(c.value || '').trim();
+        }
+        if(vacio){
+          marcar(campo, txtFalta);
+          falta.push(etiqueta(campo));
+          if(!primero) primero = campo;
+        } else if(c.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.value.trim())){
+          marcar(campo, txtMail);
+          falta.push(etiqueta(campo));
+          if(!primero) primero = campo;
+        }
+      });
+    });
+
+    /* grupos de casillas con al menos una obligatoria */
+    form.querySelectorAll('[data-kfm-min]').forEach(function(g){
+      var min = parseInt(g.getAttribute('data-kfm-min'), 10) || 1;
+      if(g.querySelectorAll('input:checked').length < min){
+        var campo = g.closest('.kfm-f') || g;
+        marcar(campo, idi ? 'Elige al menos una opción.' : 'Please choose at least one option.');
+        falta.push(etiqueta(campo));
+        if(!primero) primero = campo;
+      }
+    });
+
+    return { ok: !falta.length, primero: primero, falta: falta };
+  }
+
+  /* --- recoge todo lo escrito, con las etiquetas visibles --- */
+  function recoger(form){
+    var datos = {};
+    form.querySelectorAll('.kfm-f').forEach(function(campo){
+      if(campo.classList.contains('kfm-cond') && !campo.classList.contains('on')) return;
+      var nombre = etiqueta(campo) || 'Campo';
+      var marcadas = [];
+      campo.querySelectorAll('input,select,textarea').forEach(function(c){
+        if(c.disabled || c.classList.contains('kfm-hp-in')) return;
+        if(c.type === 'checkbox' || c.type === 'radio'){
+          if(c.checked) marcadas.push(c.getAttribute('data-label') || c.value);
+        } else {
+          var v = (c.value || '').trim();
+          if(v) marcadas.push(v);
+        }
+      });
+      if(marcadas.length) datos[nombre] = marcadas.join(' · ');
+    });
+    return datos;
+  }
+
+  window.kfmSend = function(ev){
+    ev.preventDefault();
+    var form = ev.target;
+    var msg  = form.querySelector('.kfm-msg');
+    var btn  = form.querySelector('.kfm-send');
+    var ok   = document.getElementById(form.getAttribute('data-kfm-ok') || '');
+    var idi  = es();
+
+    /* trampa para robots: si viene llena, fingimos éxito y no enviamos */
+    var hp = form.querySelector('.kfm-hp-in');
+    if(hp && (hp.value || '').trim()){
+      if(ok){ form.style.display = 'none'; ok.classList.add('on'); }
+      return false;
+    }
+
+    var v = validar(form);
+    if(!v.ok){
+      if(msg){
+        msg.className = 'kfm-msg err';
+        msg.textContent = idi
+          ? 'Faltan algunos datos: ' + v.falta.slice(0,3).join(', ') + (v.falta.length > 3 ? '…' : '')
+          : 'Some fields are missing: ' + v.falta.slice(0,3).join(', ') + (v.falta.length > 3 ? '…' : '');
+      }
+      if(v.primero) v.primero.scrollIntoView({ behavior:'smooth', block:'center' });
+      return false;
+    }
+
+    if(msg){ msg.className = 'kfm-msg'; msg.textContent = idi ? 'Enviando…' : 'Sending…'; }
+    if(btn) btn.disabled = true;
+
+    var cuerpo = recoger(form);
+
+    /* Si el envio falla no inventamos un exito: lo que escribio la persona es
+       demasiado valioso para perderlo. Le avisamos y le damos sus respuestas
+       en texto para que pueda mandarlas por correo sin volver a escribirlas. */
+    function textoPlano(){
+      var l = [];
+      for(var k in cuerpo){
+        if(k.charAt(0) === '_' || k === 'email') continue;
+        l.push(k + ': ' + cuerpo[k]);
+      }
+      return l.join('\n');
+    }
+
+    function rescate(){
+      var zona = form.querySelector('.kfm-rescate');
+      if(!zona) return;
+      zona.classList.add('on');
+      var cop = zona.querySelector('[data-kfm-copiar]');
+      if(cop && !cop.dataset.listo){
+        cop.dataset.listo = '1';
+        cop.addEventListener('click', function(){
+          var t = textoPlano();
+          function hecho(){
+            cop.textContent = es() ? 'Copiado' : 'Copied';
+            setTimeout(function(){
+              cop.textContent = es() ? 'Copiar mis respuestas' : 'Copy my answers';
+            }, 2200);
+          }
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(t).then(hecho, function(){ respaldoCopia(t, hecho); });
+          } else { respaldoCopia(t, hecho); }
+        });
+      }
+    }
+    function respaldoCopia(t, hecho){
+      var a = document.createElement('textarea');
+      a.value = t; a.style.position = 'fixed'; a.style.opacity = '0';
+      document.body.appendChild(a); a.select();
+      try{ document.execCommand('copy'); hecho(); }catch(e){}
+      document.body.removeChild(a);
+    }
+
+    var listo = false;
+    function fin(bien){
+      if(listo) return; listo = true;
+      if(bien){
+        if(ok){
+          form.style.display = 'none';
+          ok.classList.add('on');
+          ok.scrollIntoView({ behavior:'smooth', block:'center' });
+        } else if(msg){
+          msg.className = 'kfm-msg ok';
+          msg.textContent = idi ? '¡Recibido! Te respondemos pronto.' : 'Received! We will reply soon.';
+        }
+      } else {
+        if(btn) btn.disabled = false;
+        if(msg){
+          msg.className = 'kfm-msg err';
+          msg.textContent = idi
+            ? 'No pudimos enviarlo ahora. No pierdas lo que escribiste: copia tus respuestas y envíalas a kingdominactionministry@gmail.com, o vuelve a intentarlo.'
+            : 'We could not send it right now. Do not lose what you wrote: copy your answers and send them to kingdominactionministry@gmail.com, or try again.';
+        }
+        rescate();
+      }
+    }
+
+    /* si el servidor no contesta en 12 s lo damos por caido */
+    setTimeout(function(){ fin(false); }, 12000);
+
+    cuerpo._subject = form.getAttribute('data-kfm-subject') || 'Formulario KIAF';
+    cuerpo.Formulario = form.getAttribute('data-kfm-name') || '';
+    cuerpo.Idioma = idi ? 'Español' : 'English';
+    cuerpo.Origen = location.pathname;
+    var correo = form.querySelector('input[type=email]');
+    if(correo && correo.value) cuerpo.email = correo.value.trim();
+
+    /* Copia para el backend propio. Las claves con "_" no se guardan como
+       respuestas: solo sirven para enrutar y etiquetar el registro. */
+    var propio = {};
+    for(var k in cuerpo) propio[k] = cuerpo[k];
+    delete propio._subject;
+    delete propio.email;
+    propio._form   = form.getAttribute('data-kfm-tipo') || '';
+    propio._email  = cuerpo.email || '';
+    propio._idioma = idi ? 'es' : 'en';
+    propio._origen = location.pathname;
+
+    enviar(propio, cuerpo, fin);
+    return false;
+  };
+
+  /* ---------------------------------------------------------------
+     Primero el backend propio del sitio (/api/form, en la misma
+     Cloudflare). Si todavía no está conectado o falla, cae a Formspree,
+     para poder hacer el cambio sin ventana de corte.
+     --------------------------------------------------------------- */
+  function enviar(propio, cuerpo, fin){
+    function aFormspree(){
+      fetch(ENDPOINT, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+        body: JSON.stringify(cuerpo)
+      }).then(function(r){ fin(r.ok); }).catch(function(){ fin(false); });
+    }
+    if(!propio._form){ aFormspree(); return; }   /* sin tipo: directo al respaldo */
+    fetch('/api/form', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify(propio)
+    }).then(function(r){
+      if(r.ok){ fin(true); return; }
+      aFormspree();                               /* 404/503: backend aún no montado */
+    }).catch(function(){ aFormspree(); });
+  }
+
+  /* --- arranque --- */
+  function iniciar(){
+    document.querySelectorAll('form[data-kfm]').forEach(function(form){
+      pintarOpciones(form);
+      aplicarCondiciones(form);
+      form.addEventListener('change', function(){
+        pintarOpciones(form);
+        aplicarCondiciones(form);
+      });
+      form.addEventListener('input', function(e){
+        var campo = e.target.closest('.kfm-f');
+        if(campo) campo.classList.remove('bad');
+      });
+      /* el teclado también debe poder marcar la tarjeta */
+      form.querySelectorAll('.kfm-op').forEach(function(op){
+        op.addEventListener('keydown', function(e){
+          if(e.key === ' ' || e.key === 'Enter'){
+            var inp = op.querySelector('input');
+            if(inp && document.activeElement === op){ e.preventDefault(); inp.click(); }
+          }
+        });
+      });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar);
+  else iniciar();
+})();
+
+/* =================================================================
+   MÉTRICAS KIAF
+   -----------------------------------------------------------------
+   Dos piezas, las dos sin cookies y sin datos personales:
+
+   1) Cloudflare Web Analytics — tráfico (visitas, países, páginas,
+      de dónde vienen). Pega tu token abajo y se enciende.
+   2) Contadores propios en tu base — las acciones que muestran
+      mejoras: cuántos abrieron el cuadro de donar, cuántos llegaron
+      a PayPal, cuántos empezaron un formulario, cuántos bajaron un
+      folleto. Eso es lo que Cloudflare no puede decirte.
+   ================================================================= */
+(function(){
+  /* ---- 1. Cloudflare Web Analytics ----
+     Reemplaza TOKEN_AQUI por el token que te da Cloudflare en
+     Web Analytics → Add a site. Mientras diga TOKEN_AQUI, no carga nada. */
+  var CF_TOKEN = 'TOKEN_AQUI';
+  if(CF_TOKEN && CF_TOKEN !== 'TOKEN_AQUI'){
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_TOKEN }));
+    document.head.appendChild(s);
+  }
+
+  /* ---- 2. contadores propios ---- */
+  /* Cloudflare Pages sirve /cuba.html como /cuba, así que normalizamos para
+     que una misma página no cuente dos veces con dos nombres distintos. */
+  var pag = (location.pathname.split('/').pop() || '').replace(/\.html$/i, '') || 'inicio';
+
+  function marcar(evento, detalle){
+    try{
+      var cuerpo = JSON.stringify({ e: evento, d: detalle || pag });
+      /* sendBeacon sobrevive al cambio de página (importante para PayPal) */
+      if(navigator.sendBeacon){
+        navigator.sendBeacon('/api/ev', new Blob([cuerpo], {type:'application/json'}));
+      } else {
+        fetch('/api/ev', {method:'POST', headers:{'Content-Type':'application/json'},
+          body: cuerpo, keepalive: true}).catch(function(){});
+      }
+    }catch(e){}
+  }
+  window.kiafMarcar = marcar;
+
+  /* visita */
+  marcar('visita');
+
+  /* Todo por delegación: así sigue funcionando aunque una página
+     redefina openDonate() en un script propio. */
+  document.addEventListener('click', function(ev){
+    var t = ev.target;
+    if(!t || !t.closest) return;
+
+    /* abrir el cuadro de donar */
+    if(t.closest('[onclick*="openDonate"]')) marcar('donar_abierto');
+
+    /* el botón del cuadro que lleva a PayPal (salto por JS, no es enlace) */
+    if(t.closest('.dpay-btn')) marcar('paypal');
+
+    /* enlaces: PayPal directo y folletos */
+    var a = t.closest('a');
+    if(a){
+      var h = a.getAttribute('href') || '';
+      if(h.indexOf('paypal.com') > -1) marcar('paypal');
+      else if(/\.pdf($|\?)/i.test(h)) marcar('pdf', h.split('/').pop().split('?')[0]);
+    }
+  }, true);
+
+  /* primer tecleo en un formulario = intención real */
+  var arrancado = {};
+  document.addEventListener('input', function(ev){
+    var f = ev.target.closest && ev.target.closest('form[data-kfm]');
+    if(!f) return;
+    var t = f.getAttribute('data-kfm-tipo') || 'form';
+    if(arrancado[t]) return;
+    arrancado[t] = 1;
+    marcar('form_inicio', t);
+  }, true);
+})();

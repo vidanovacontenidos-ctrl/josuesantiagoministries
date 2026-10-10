@@ -1,0 +1,14 @@
+# Configuración local para probar con  npx wrangler pages dev .
+# En producción estos enlaces se definen en el panel de Cloudflare Pages.
+name = "kiaf"
+pages_build_output_dir = "."
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kiaf"
+database_id = "local"
+
+[vars]
+ADMIN_ABIERTO = "no"
+MAIL_FALLBACK = "kingdominactionministry@gmail.com"

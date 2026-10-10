@@ -911,3 +911,196 @@ body{background:var(--papel)!important;color:var(--negro)!important;font-weight:
 .sec-warm-alt{background:var(--papel-2);color:var(--negro);}
 /* el hero conserva su foto y su velo */
 .hero,.page-hero,.pj-hero,.ph-hero,.cv-hero-quote{background:var(--negro);}
+
+/* =================================================================
+   FORMULARIOS NATIVOS KIAF   ·   prefijo .kfm-
+   -----------------------------------------------------------------
+   Reemplazan los formularios externos. Mismo lenguaje que el resto
+   del sitio: esquinas rectas, borde --linea, blanco dominante y un
+   acento por formulario que entra por --ac / --ac-soft / --ac-tint.
+   ================================================================= */
+.kfm-page{--ac:var(--rojo);--ac-soft:rgba(200,16,46,.13);--ac-tint:#FDF4F5;}
+.kfm-wrap{max-width:980px;margin:0 auto;
+  padding:clamp(40px,7vw,76px) clamp(20px,5vw,48px) clamp(64px,9vw,104px);}
+
+/* ---------- encabezado del formulario ---------- */
+.kfm-head{border-bottom:2px solid var(--negro);padding-bottom:var(--e3);margin-bottom:var(--e4);}
+.kfm-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:700;
+  letter-spacing:.5em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;}
+.kfm-ey::before{content:'';width:22px;height:2px;background:var(--ac);flex-shrink:0;}
+.kfm-h{font-family:'Figtree',system-ui,sans-serif;font-size:clamp(1.85rem,4.4vw,2.85rem);
+  font-weight:800;letter-spacing:-.02em;line-height:1.06;color:var(--negro);margin-bottom:var(--e2);}
+.kfm-lead{font-size:17px;line-height:1.75;color:var(--gris);max-width:64ch;}
+.kfm-lead strong{color:var(--negro);font-weight:600;}
+.kfm-lead+.kfm-lead{margin-top:14px;}
+
+/* ---------- nota destacada ---------- */
+.kfm-note{border-left:3px solid var(--ac);background:var(--papel-2);
+  padding:var(--e3);margin-bottom:var(--e5);}
+.kfm-note p{font-size:15px;line-height:1.75;color:#3A4047;}
+.kfm-note p+p{margin-top:12px;}
+.kfm-note strong{color:var(--negro);font-weight:700;}
+
+/* ---------- índice de secciones (formulario largo) ---------- */
+.kfm-toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:var(--e5);}
+.kfm-toc a{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#3A4047;border:1px solid var(--linea);padding:9px 14px;
+  transition:border-color .2s,color .2s;}
+.kfm-toc a:hover{border-color:var(--ac);color:var(--ac);}
+
+/* ---------- secciones ---------- */
+.kfm-fs{border:0;margin:0 0 var(--e6);padding:0;scroll-margin-top:calc(var(--nav-h) + 20px);}
+.kfm-fs:last-of-type{margin-bottom:var(--e5);}
+.kfm-fs-hd{display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--linea);
+  padding-bottom:12px;margin-bottom:var(--e3);}
+.kfm-fs-n{flex-shrink:0;width:34px;height:34px;display:grid;place-items:center;
+  background:var(--ac);color:#fff;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;}
+.kfm-fs-h{font-family:'Figtree',system-ui,sans-serif;font-size:clamp(1.05rem,2.4vw,1.35rem);
+  font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--negro);}
+.kfm-fs-d{font-size:14.5px;line-height:1.75;color:var(--gris);margin-bottom:var(--e3);max-width:68ch;}
+
+/* ---------- rejilla de campos ---------- */
+.kfm-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--e3) var(--e2);}
+.kfm-grid--3{grid-template-columns:1fr 1fr 1fr;}
+.kfm-f{display:flex;flex-direction:column;gap:8px;min-width:0;}
+.kfm-f--full{grid-column:1/-1;}
+.kfm-l{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#3A4047;}
+.kfm-req{color:var(--ac);margin-left:4px;font-weight:800;}
+.kfm-hint{font-size:12.5px;line-height:1.6;color:var(--gris);}
+
+.kfm-f input[type=text],.kfm-f input[type=email],.kfm-f input[type=tel],
+.kfm-f input[type=url],.kfm-f input[type=number],.kfm-f select,.kfm-f textarea{
+  width:100%;font-family:inherit;font-size:15.5px;line-height:1.5;color:var(--negro);
+  background:#fff;border:1px solid var(--linea);border-radius:0;padding:13px 14px;
+  transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none;}
+.kfm-f textarea{min-height:140px;resize:vertical;line-height:1.75;}
+.kfm-f input::placeholder,.kfm-f textarea::placeholder{color:#A4A9AE;}
+.kfm-f select{padding-right:42px;cursor:pointer;background-repeat:no-repeat;
+  background-position:right 14px center;background-size:12px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23101215' stroke-width='1.6'/%3E%3C/svg%3E");}
+.kfm-f input:focus,.kfm-f select:focus,.kfm-f textarea:focus{
+  outline:none;border-color:var(--ac);box-shadow:0 0 0 3px var(--ac-soft);}
+
+/* campo con error */
+.kfm-f-err{font-size:12.5px;line-height:1.5;font-weight:600;color:var(--rojo-dk);display:none;}
+.kfm-f.bad .kfm-f-err{display:block;}
+.kfm-f.bad input,.kfm-f.bad select,.kfm-f.bad textarea{
+  border-color:var(--rojo);box-shadow:0 0 0 3px rgba(200,16,46,.12);}
+.kfm-f.bad .kfm-ops{outline:1px solid var(--rojo);outline-offset:4px;}
+
+/* ---------- opciones (radio / checkbox) ---------- */
+.kfm-ops{display:grid;gap:10px;}
+.kfm-ops--2{grid-template-columns:1fr 1fr;}
+.kfm-op{position:relative;display:flex;align-items:flex-start;gap:13px;
+  border:1px solid var(--linea);background:#fff;padding:14px 16px;cursor:pointer;
+  transition:border-color .2s,background .2s;}
+.kfm-op:hover{border-color:#B6B2AB;}
+/* el control real queda encima de la casilla dibujada: invisible, pero
+   clicable, enfocable y siempre dentro de la tarjeta */
+.kfm-op>input{position:absolute;left:16px;top:16px;width:19px;height:19px;
+  margin:0;opacity:0;cursor:pointer;}
+.kfm-op-bx{flex-shrink:0;width:19px;height:19px;margin-top:2px;border:1.5px solid #9BA0A6;
+  background:#fff;display:grid;place-items:center;transition:border-color .2s,background .2s;}
+.kfm-op-bx::after{content:'';display:block;width:10px;height:5px;margin-top:-3px;
+  border-left:2px solid #fff;border-bottom:2px solid #fff;
+  transform:rotate(-45deg) scale(0);transition:transform .18s var(--ease);}
+.kfm-op>input[type=radio]~.kfm-op-bx,
+.kfm-op>input[type=radio]~.kfm-op-bx::after{border-radius:50%;}
+.kfm-op>input[type=radio]~.kfm-op-bx::after{width:8px;height:8px;margin:0;border:0;
+  background:#fff;transform:scale(0);}
+.kfm-op>input:checked~.kfm-op-bx{background:var(--ac);border-color:var(--ac);}
+.kfm-op>input[type=checkbox]:checked~.kfm-op-bx::after{transform:rotate(-45deg) scale(1);}
+.kfm-op>input[type=radio]:checked~.kfm-op-bx::after{transform:scale(1);}
+.kfm-op>input:focus-visible~.kfm-op-bx{box-shadow:0 0 0 3px var(--ac-soft);}
+.kfm-op.on{border-color:var(--ac);background:var(--ac-tint);}
+.kfm-op:has(>input:checked){border-color:var(--ac);background:var(--ac-tint);}
+.kfm-op-tx{min-width:0;}
+.kfm-op-t{display:block;font-size:15px;line-height:1.45;font-weight:500;color:var(--negro);}
+.kfm-op-d{display:block;font-size:13px;line-height:1.6;color:var(--gris);margin-top:4px;}
+/* cada idioma ocupa su propia linea dentro de la opcion */
+.kfm-op-t>[data-es],.kfm-op-t>[data-en],
+.kfm-op-d>[data-es],.kfm-op-d>[data-en]{display:block;}
+html[data-lang=es] .kfm-op-t>[data-en],html[data-lang=es] .kfm-op-d>[data-en],
+html[data-lang=en] .kfm-op-t>[data-es],html[data-lang=en] .kfm-op-d>[data-es]{display:none!important;}
+
+/* ---------- campo condicional ---------- */
+.kfm-cond{display:none;}
+.kfm-cond.on{display:flex;}
+
+/* ---------- declaración ---------- */
+.kfm-dec{border:1px solid var(--negro);background:var(--papel-2);
+  padding:clamp(20px,4vw,34px);margin-bottom:var(--e4);}
+.kfm-dec-h{font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--ac);margin-bottom:var(--e2);}
+.kfm-dec p{font-size:14.5px;line-height:1.8;color:#3A4047;}
+.kfm-dec p+p{margin-top:14px;}
+.kfm-dec strong{color:var(--negro);font-weight:700;}
+
+/* ---------- firma ---------- */
+.kfm-sig{max-width:460px;}
+.kfm-sig input[type=text]{border:0;border-bottom:2px solid var(--negro);
+  background:transparent;font-size:21px;padding:10px 2px;}
+.kfm-sig input[type=text]:focus{box-shadow:none;border-bottom-color:var(--ac);}
+
+/* ---------- pie del formulario ---------- */
+.kfm-foot{border-top:1px solid var(--linea);padding-top:var(--e4);
+  display:flex;flex-direction:column;align-items:flex-start;gap:var(--e2);}
+.kfm-send{display:inline-flex;align-items:center;gap:12px;background:var(--ac);color:#fff;
+  border:0;border-radius:0;font-family:inherit;font-size:12.5px;font-weight:800;
+  letter-spacing:.2em;text-transform:uppercase;padding:18px 34px;cursor:pointer;
+  transition:transform .25s var(--ease),filter .25s;}
+.kfm-send:hover{transform:translateY(-2px);filter:brightness(1.12);}
+.kfm-send:disabled{opacity:.5;cursor:default;transform:none;filter:none;}
+.kfm-send svg{width:15px;height:15px;fill:currentColor;flex-shrink:0;}
+.kfm-msg{font-size:14.5px;line-height:1.7;}
+.kfm-rescate{display:none;flex-wrap:wrap;gap:10px;align-items:center;}
+.kfm-rescate.on{display:flex;}
+.kfm-rescate button,.kfm-rescate a{font-family:inherit;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;border:1px solid var(--negro);
+  background:transparent;color:var(--negro);cursor:pointer;transition:background .2s,color .2s;}
+.kfm-rescate button:hover,.kfm-rescate a:hover{background:var(--negro);color:#fff;}
+.kfm-msg.err{color:var(--rojo-dk);font-weight:600;}
+.kfm-msg.ok{color:#14652C;font-weight:600;}
+.kfm-small{font-size:12.5px;line-height:1.75;color:var(--gris);max-width:64ch;}
+.kfm-hp{position:absolute!important;left:-9999px!important;top:auto!important;
+  width:1px!important;height:1px!important;overflow:hidden!important;}
+
+/* ---------- panel de confirmación ---------- */
+.kfm-ok{display:none;border:2px solid var(--ac);background:var(--papel-2);
+  padding:clamp(30px,6vw,56px);text-align:center;}
+.kfm-ok.on{display:block;}
+.kfm-ok-ic{width:56px;height:56px;margin:0 auto var(--e3);background:var(--ac);
+  display:grid;place-items:center;}
+.kfm-ok-ic svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2.6;
+  stroke-linecap:round;stroke-linejoin:round;}
+.kfm-ok-h{font-family:'Figtree',system-ui,sans-serif;font-size:clamp(1.3rem,3vw,1.75rem);
+  font-weight:800;letter-spacing:-.01em;color:var(--negro);margin-bottom:12px;}
+.kfm-ok-p{font-size:15.5px;line-height:1.75;color:var(--gris);max-width:54ch;
+  margin:0 auto var(--e3);}
+.kfm-ok-acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+
+/* ---------- otros formularios en la misma página ---------- */
+.kfm-cross{border-top:1px solid var(--linea);margin-top:var(--e6);padding-top:var(--e4);}
+.kfm-cross-h{font-size:10.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gris);margin-bottom:var(--e3);}
+.kfm-cross-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.kfm-cross-g a{border:1px solid var(--linea);padding:18px 20px;display:block;
+  transition:border-color .2s,transform .2s var(--ease);}
+.kfm-cross-g a:hover{border-color:var(--ac2,var(--rojo));transform:translateY(-2px);}
+.kfm-cross-t{font-family:'Figtree',system-ui,sans-serif;font-size:15px;font-weight:800;
+  letter-spacing:.02em;color:var(--negro);margin-bottom:5px;}
+.kfm-cross-d{font-size:13px;line-height:1.6;color:var(--gris);}
+
+@media(max-width:760px){
+  .kfm-grid,.kfm-grid--3,.kfm-ops--2,.kfm-cross-g{grid-template-columns:1fr;}
+  .kfm-fs{margin-bottom:var(--e5);}
+  .kfm-send{width:100%;justify-content:center;}
+  .kfm-foot{align-items:stretch;}
+}
+@media(prefers-reduced-motion:reduce){
+  .kfm-send:hover,.kfm-cross-g a:hover{transform:none;}
+  .kfm-op-bx::after{transition:none;}
+}
+/* variante de contorno para el boton compartido, usada en los formularios */
+.kbt--ol{background:transparent;color:var(--negro);box-shadow:inset 0 0 0 1px var(--linea);}
+.kbt--ol:hover{background:var(--papel-2);box-shadow:inset 0 0 0 1px var(--negro);transform:translateX(5px);}
